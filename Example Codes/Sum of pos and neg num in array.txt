@@ -1,0 +1,17 @@
+~ This is a program to find sum of positive ad negative numbers of an array
+
+$main << int
+  int x[5] = {23,-4,9,19,-5};
+  int pos_sum = 0, neg_sum=0;
+  
+  {The syntax of for-loop
+    for <var> : <range of var>
+  }
+  for i : [0,5]
+	  if x[i] > 0 
+		  pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
+	  else if x[i] < 0 
+		  neg_sum= neg_sum + x[i]; /
+  /
+  return 0;		                                        ~ returning a value follows the syntax "return <var>"
+%
