@@ -15,7 +15,7 @@ The language is easy to code. Tureasy has 40 keywords.
 "state" is used to import external libraries.
 This is an example program for printing "Hello World" in Tureasy.
   ```c
-  $main 
+  $main << void
 string s = "Hello World\n";
 write s;
 %
