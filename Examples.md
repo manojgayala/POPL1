@@ -3,16 +3,19 @@
 
 ~This is how single comment is done
 
-{ This is how multicomment is done :)}
+^^^
+	3 caps are used for multi-line comment
+	This is how multicomment is done :)
+^^^
   
 ~ This is a simple program to print Hello World in Tureasy
 
-{ In Tureasy structure of a function is
+^^^ In Tureasy structure of a function is
     $<function name> << <return type>
       body of function
     %
   '$' denotes the start of a function and '%' denotes the end of the function
-}
+^^^
 
 $main << void
 	string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
@@ -28,9 +31,10 @@ $main << int
 	int x[5] = {23,-4,9,19,-5};
 	int pos_sum = 0, neg_sum=0;
   
-	{The syntax of for-loop
+	^^^
+		The syntax of for-loop
 		for <var> : <range of var>
-	}
+	^^^
 	for i : [0,5]
 		if x[i] > 0 
 			pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
