@@ -30,16 +30,23 @@ The execution begins with $main and it executes sequentially. String is an in-bu
 
 An example program to find the sum of positive and negative numbers in an array is 
 ```c
+~ This is a program to find sum of positive ad negative numbers of an array
+
 $main << int
-int x[5] = {23,-4,9,19,-5};
-int pos_sum = 0, neg_sum=0;
-for i : [0,5] 
-	if x[i] > 0 
-		pos_sum = pos_sum + x[i]; /
-	else if x[i] < 0 
-		neg_sum= neg_sum + x[i]; /
-return 0;		
-/%
+  int x[5] = {23,-4,9,19,-5};
+  int pos_sum = 0, neg_sum=0;
+  
+  {The syntax of for-loop
+    for <var> : <range of var>
+  }
+  for i : [0,5]
+	  if x[i] > 0 
+		  pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
+	  else if x[i] < 0 
+		  neg_sum= neg_sum + x[i]; /
+  /
+  return 0;		                                        ~ returning a value follows the syntax "return <var>"
+%
 ```
 
 Every single line instructions are ended with ";" , the conditional statements and the iterative statements end with "/".
@@ -60,14 +67,17 @@ Every single line instructions are ended with ";" , the conditional statements a
 
 In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default stores the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
 ```c
+~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
+
 $main
-String a = "a in main";
-String b = "b in main";
-write a b;		~ each parameter of write is printed in new line
-foo @a b;
-write a b;
+  string a = "a in main";
+  string b = "b in main";
+  write a b;
+  foo @a b;                                       ~ '@' used to pass arguments by reference
+  write a b;
 %
-$foo(String a,String b) << void
+
+$foo (string a,string b) << void
    a = "a in foo";
    b = "b in foo";
 %
@@ -83,27 +93,33 @@ b in main
 There is a unique concept of **tags in Tureasy** which makes it different from other languages. These tags refer to common codes and algorithms such as graphs, greedy algorithms, dynamic programming, loops within loops etc. These tags are mainly used by the compiler to identify what kind of suggestions and optimisations are possible. The tags are even used in improving the compiler's intelligence by learning better implementations of codes and algorithms from users when connected to the internet.
 An example code including tags and functions is
 ```c
-$General_func ( float w0, int a[], int b[], int m) << float
-	float w = w0; 
-	#innerloop
-	 while d < 0.01
-		 d=0;
-		 for i:[0,M]
-			 d= d + a[i] + b[i]*w;
-		/ w = w - 0.001*d;
+~ Declaration of function 'General_func' is similar to main
+
+$General_func ( float w0, int a[], int b[], int m)
+	float w = w0;  
+  
+  ~ In Tureasy '#' denotes the start of a tag
+  #innerloop
+    ~ syntax for while-loop is same as C except that there are no () braces
+	  while d < 0.01
+		  d=0;
+		  for i:[0,M]
+			  d= d + a[i] + b[i]*w;
+		  / 
+      w = w - 0.001*d;
 		/ 
-	#!innerloop
-	return w;
+	#!innerloop                                  ~ '#!' denotes the end of a tag
+	return w;                                   ~ returning a value in Tureasy is same as in C
 %
 
 ~This is how single comment is done
 
 { Now the function main begins..
   BTW this is how multicomment is done :)}
-
-$main << void
+  
+$main
 int w0,m;
-read w0 m;
+read w0 m;                                    ~ 'read' is a function to read the input from the user 
 int a[m],b[m];
 for i : [0,m]
 	read a[i];
@@ -111,7 +127,7 @@ for i : [0,m]
 for i: [0,m]
 	read b[i];
 /
-int ans = General_func w0 a b m; 
+int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
 write ans
 %
 ```
@@ -123,10 +139,10 @@ tip: inner loop has w variable unchanged - can be written outside outer loop
 The suggestions also include parallel algorithms and their efficient implementations which enable programmer to make best use of the hardware. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. 
 # Do's and USP of Tureasy
 
- - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability.
+ - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability. Single line comments begin with ~ and multi line comments are enclosed within parenthesis.  Inside functions.
 
  - Functions can be defined at any part of the body. No prior prototype declaration is necessary.
- - Use same variable names for the parameters and the arguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
+ - Use same variable names for the parameters and the anrguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
 
 Tureasy can be used by everyone for improvement of their coding skills. In industry, it could be used by companies by making private tags that ensures that their data is safe and also helps in development of their own technology. Tureasy can be extended with libraries for meeting specific requirements.
 
