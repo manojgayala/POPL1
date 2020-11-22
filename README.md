@@ -15,9 +15,9 @@ The language is easy to code. Tureasy has 40 keywords.
 "state" is used to import external libraries.
 This is an example program for printing "Hello World" in Tureasy.
   ```c
-  $main << void
-string s = "Hello World\n";
-write s;
+$main << void
+	string s = "Hello World\n";
+	write s;
 %
 ```
 This code needs to be stored with a .te file extension and can be compiled using the command
@@ -69,17 +69,18 @@ In Tureasy, programmer can decide **whether to pass a parameter by value or by r
 ```c
 ~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
 
+
+$foo (string a,string b) << void
+   a = "a in foo";
+   b = "b in foo";
+%
+
 $main
   string a = "a in main";
   string b = "b in main";
   write a b;
   foo @a b;                                       ~ '@' used to pass arguments by reference
   write a b;
-%
-
-$foo (string a,string b) << void
-   a = "a in foo";
-   b = "b in foo";
 %
 ```
 Output for this program would be
