@@ -1,9 +1,9 @@
-// This is a simple program in Tureasy to print "Hello World" on the console
+~ This is a simple program in Tureasy to print "Hello World" on the console
 
-// Function declaration in Tureasy starts with '$' and ends with '%'
-// The excecution begins with $main and proceedes sequentially
+~ Function declaration in Tureasy starts with '$' and ends with '%'
+~ The excecution begins with $main and proceedes sequentially
 $main
-string s = "Hello World\n";               // 'string' is a datatype in Tureasy which is used to store strings (group of characters)
-                                          // Every single line instruction ends with ';'
-write s;                                  // 'write' is a command to print a string on the console
-%                                         // '%' marks the end of a function
+string s = "Hello World\n";               ~ 'string' is a datatype in Tureasy which is used to store strings (group of characters)
+                                          ~ Every single line instruction ends with ';'
+write s;                                  ~ 'write' is a command to print a string on the console
+%                                         ~ '%' marks the end of a function
