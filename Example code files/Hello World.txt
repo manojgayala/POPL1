@@ -3,5 +3,6 @@
 // Function declaration in Tureasy starts with '$' and ends with '%'
 $main
 string s = "Hello World\n";               // 'string' is a datatype in Tureasy which is used to store strings (group of characters)
+                                          // Every single line instruction ends with ';'
 write s;                                  // 'write' is a command to print a string on the console
 %                                         // '%' marks the end of a function
