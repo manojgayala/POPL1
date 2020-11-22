@@ -15,18 +15,9 @@ The language is easy to code. Tureasy has 40 keywords.
 "state" is used to import external libraries.
 This is an example program for printing "Hello World" in Tureasy.
   ```c
- ~ This is a simple program to print Hello World in Tureasy
-
-{ In Tureasy structure of a function is
-    $<function name> << <return type>
-      body of function
-    %
-  '$' denotes the start of a function and '%' denotes the end of the function
-}
-
-$main << void
-  string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
-  write s;                                      ~ "write" is a function to print an output on the console
+  $main << void
+string s = "Hello World\n";
+write s;
 %
 ```
 This code needs to be stored with a .te file extension and can be compiled using the command
@@ -124,12 +115,12 @@ int ans = General_func w0 a b m;
 write ans
 %
 ```
-
-The function definition starts with $ similar to main and % symbol marks the end of it. "#innerloop" and "#!innerloop" mark the beginning and end of tags. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler.
+In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler. Internally the tag uses GLORE algorithm to identify this.
 Suggestions would look like:
 ```	
 tip: inner loop has w variable unchanged - can be written outside outer loop
 ```
+The suggestions also include parallel algorithms and their efficient implementations which enable programmer to make best use of the hardware. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. 
 # Do's and USP of Tureasy
 
  - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability. Single line comments begin with ~ and multi line comments are enclosed within parenthesis.  Inside functions.
