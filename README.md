@@ -58,7 +58,7 @@ Every single line instructions are ended with ";" , the conditional statements a
 |  #        | opening a tag                 |
 |   #!       | closing a tag                 |
 
-In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default store the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
+In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default stores the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
 ```c
 $main
 String a = "a in main";
