@@ -1,0 +1,22 @@
+~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
+
+$main
+  string a = "a in main";
+  string b = "b in main";
+  write a b;
+  foo @a b;                                       ~ '@' used to pass arguments by reference
+  write a b;
+%
+
+$foo (string a,string b) << void
+   a = "a in foo";
+   b = "b in foo";
+%
+
+~ Output for this program would be
+{
+  a in main
+  b in main
+  a in main
+  b in foo
+}
