@@ -40,12 +40,12 @@ $main() << int
 			pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
 		else if x[i] < 0 
 			neg_sum= neg_sum + x[i]; /
-  /
+        /
   return 0;		                                        ~ returning a value follows the syntax "return <var>"
 %
 ```
 
-# Program 3 to demonstrate the concept passing arguments in Tureasy
+# Program 3 to demonstrate the concept of passing arguments in Tureasy
 ```c
 ~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
 
@@ -75,7 +75,7 @@ b in main
 ```c
 ~ Declaration of function 'General_func' is similar to main
 
-$General_func ( float w0, int a[], int b[], int m)
+$General_func ( float w0, int a[], int b[], int m) << float
 	float w = w0;  
   
   ~ In Tureasy '#' denotes the start of a tag
@@ -86,8 +86,8 @@ $General_func ( float w0, int a[], int b[], int m)
 		  for i:[0,M]
 			  d= d + a[i] + b[i]*w;
 		  / 
-      w = w - 0.001*d;
-		/ 
+                  w = w - 0.001*d;
+         / 
 	#!innerloop                                  ~ '#!' denotes the end of a tag
 	return w;                                    ~ returning a value in Tureasy is same as in C
 %
@@ -112,7 +112,7 @@ $main() << void
 ~ class definition starts with '*' and ends with '*%' 
 ~ private members and methods are declared with '_' at the start
 *Dog
-		~ it's members are defined in the 'mem' block ended with '/'
+		~ it's members are defined in the 'mem' block.
     mem:
      string name;
      int  age;
@@ -129,8 +129,9 @@ $main() << void
     
 		~ constructors for the class are defined in the 'con' block
 		~ constructor is started with parameters in '( )' and ends with '%'
+		~ ':' is used for constructors as they dont have any return type.
     con:
-   (String name,int age):
+   (string name,int age):
       name.here = name;
       age.here = age;
       Updatefollowers 1;
