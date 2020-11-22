@@ -13,22 +13,8 @@ The language is easy to code. Tureasy has 40 keywords.
 |  igend 	| *ignores all errors after this line till the end of program 	|
 
 "state" is used to import external libraries.
-This is an example program for printing "Hello World" in Tureasy.
-  ```c
-~ This is a simple program to print Hello World in Tureasy
 
-{ In Tureasy structure of a function is
-    $<function name> << <return type>
-      body of function
-    %
-  '$' denotes the start of a function and '%' denotes the end of the function
-}
-
-$main << void
-	string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
-	write s;                                      ~ "write" is a function to print an output on the console
-%
-```
+Program 1 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) shows how to print "Hello World" in Tureasy
 This code needs to be stored with a .te file extension and can be compiled using the command
 
 <code> tureasy <file_name>.te </code>
@@ -37,26 +23,7 @@ This creates an executable file which can be run for the output.
 The execution begins with $main and it executes sequentially. String is an in-built data type that stores group of characters. The "write s" is a function used to write the output of the variable 's' onto the screen.The functions are called with parameters space separated after the name of function. By default, the compiled code of few libraries (along with the standard library) is linked to .te file.
 
 
-An example program to find the sum of positive and negative numbers in an array is 
-```c
-~ This is a program to find sum of positive ad negative numbers of an array
-
-$main << int
-	int x[5] = {23,-4,9,19,-5};
-	int pos_sum = 0, neg_sum=0;
-  
-	{The syntax of for-loop
-		for <var> : <range of var>
-	}
-	for i : [0,5]
-		if x[i] > 0 
-			pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
-		else if x[i] < 0 
-			neg_sum= neg_sum + x[i]; /
-  /
-  return 0;		                                        ~ returning a value follows the syntax "return <var>"
-%
-```
+Program 2 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) shows how to find sum of positive and negative numbers in an array
 
 Every single line instructions are ended with ";" , the conditional statements and the iterative statements end with "/".
 
@@ -75,71 +42,14 @@ Every single line instructions are ended with ";" , the conditional statements a
 |   #!       | closing a tag                 |
 
 In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default stores the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
-```c
-~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
 
-$foo (string a,string b) << void
-   a = "a in foo";
-   b = "b in foo";
-%
+Program 3 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) demonstrates passing parameters in Tureasy
 
-$main
-  string a = "a in main";
-  string b = "b in main";
-  write a b;
-  foo @a b;                                       ~ '@' used to pass arguments by reference
-  write a b;
-%
-```
-Output for this program would be
 
-```
-a in main
-b in main
-a in foo
-b in main
-```
 There is a unique concept of **tags in Tureasy** which makes it different from other languages. These tags refer to common codes and algorithms such as graphs, greedy algorithms, dynamic programming, loops within loops etc. These tags are mainly used by the compiler to identify what kind of suggestions and optimisations are possible. The tags are even used in improving the compiler's intelligence by learning better implementations of codes and algorithms from users when connected to the internet.
-An example code including tags and functions is
-```c
-~ Declaration of function 'General_func' is similar to main
 
-$General_func ( float w0, int a[], int b[], int m)
-	float w = w0;  
-  
-  ~ In Tureasy '#' denotes the start of a tag
-  #innerloop
-    ~ syntax for while-loop is same as C except that there are no () braces
-	  while d < 0.01
-		  d=0;
-		  for i:[0,M]
-			  d= d + a[i] + b[i]*w;
-		  / 
-      w = w - 0.001*d;
-		/ 
-	#!innerloop                                  ~ '#!' denotes the end of a tag
-	return w;                                    ~ returning a value in Tureasy is same as in C
-%
+Program 4 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) demonstrates the unique concept of tags in Tureasy
 
-~This is how single comment is done
-
-{ Now the function main begins..
-  BTW this is how multicomment is done :)}
-  
-$main
-	int w0,m;
-	read w0 m;                                    ~ 'read' is a function to read the input from the user 
-	int a[m],b[m];
-	for i : [0,m]
-		read a[i];
-	/
-	for i: [0,m]
-		read b[i];
-	/
-	int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
-	write ans
-%
-```
 In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler. Internally the tag uses GLORE algorithm to identify this.
 Suggestions would look like:
 ```	
