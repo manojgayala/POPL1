@@ -4,7 +4,7 @@
 ~This is how single comment is done
 
 ``
-	3 caps are used for multi-line comment
+	two open quotes are used for multi-line comment
 	This is how multicomment is done :)
 ``
   
