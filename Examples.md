@@ -106,3 +106,43 @@ $main
 	write ans
 %
 ```
+
+# Classes & Objects
+  ```c
+~ class definition starts with '*' and ends with '*%' 
+~ private members and methods are declared with '_' at the start
+*Dog
+		~ it's members are defined in the 'mem' block ended with '/'
+    mem:
+     string name;
+     int  age;
+     _int insta_followers = 0;
+    /
+		~ methods are defined in 'met' block
+    met:
+    $Dispabout() << void
+      write name " " age " " _insta_followers;
+    %
+    _$Updatefollowers(int newvalue) << void
+      insta_followers.here = newvalue   
+    %
+    /
+		~ constructors for the class are defined in the 'con' block ended with '\'
+		~ constructor is started with parameters in '( )' and ends with '%'
+    con:
+   (String name,int age):
+      name.here = name;
+      age.here = age;
+      Updatefollowers 1;
+    % 
+    \ 
+       
+*%    
+
+$main << void
+	name = "woofy";
+	age = "7";
+	Dog aDog = new Dog woofy 7;
+	Dog.Dispabout;
+    
+``` 
