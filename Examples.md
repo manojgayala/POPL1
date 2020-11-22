@@ -17,7 +17,7 @@
   '$' denotes the start of a function and '%' denotes the end of the function
 ``
 
-$main << void
+$main() << void
 	string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
 	write s;                                      ~ "write" is a function to print an output on the console
 %
@@ -27,7 +27,7 @@ $main << void
 ```c
 ~ This is a program to find sum of positive ad negative numbers of an array
 
-$main << int
+$main() << int
 	int x[5] = {23,-4,9,19,-5};
 	int pos_sum = 0, neg_sum=0;
   
@@ -54,7 +54,7 @@ $foo (string a,string b) << void
    b = "b in foo";
 %
 
-$main
+$main() << void
   string a = "a in main";
   string b = "b in main";
   write a b;
@@ -92,7 +92,7 @@ $General_func ( float w0, int a[], int b[], int m)
 	return w;                                    ~ returning a value in Tureasy is same as in C
 %
   
-$main
+$main() << void
 	int w0,m;
 	read w0 m;                                    ~ 'read' is a function to read the input from the user 
 	int a[m],b[m];
@@ -117,7 +117,7 @@ $main
      string name;
      int  age;
      _int insta_followers = 0;
-    /
+  
 		~ methods are defined in 'met' block
     met:
     $Dispabout() << void
@@ -126,8 +126,8 @@ $main
     _$Updatefollowers(int newvalue) << void
       insta_followers.here = newvalue   
     %
-    /
-		~ constructors for the class are defined in the 'con' block ended with '\'
+    
+		~ constructors for the class are defined in the 'con' block
 		~ constructor is started with parameters in '( )' and ends with '%'
     con:
    (String name,int age):
@@ -135,11 +135,10 @@ $main
       age.here = age;
       Updatefollowers 1;
     % 
-    \ 
        
 *%    
 
-$main << void
+$main() << void
 	name = "woofy";
 	age = "7";
 	Dog aDog = new Dog woofy 7;
