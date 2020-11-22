@@ -56,7 +56,7 @@ Every single line instructions are ended with ";" , the conditional statements a
 |  ~        | single line comments          |
 |   {}      |  multiline comments           |
 |  #        | opening a tag                 |
-|   #       | closing a tag                 |
+|   #!       | closing a tag                 |
 
 In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default store the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
 ```c
@@ -116,7 +116,7 @@ write ans
 %
 ```
 
-The function definition starts with $ similar to main and % symbol marks the end of it. "#innerloop" and "!innerloop" mark the beginning and end of tags. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler.
+The function definition starts with $ similar to main and % symbol marks the end of it. "#innerloop" and "#!innerloop" mark the beginning and end of tags. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler.
 Suggestions would look like:
 ```	
 tip: inner loop has w variable unchanged - can be written outside outer loop
