@@ -25,8 +25,8 @@ This is an example program for printing "Hello World" in Tureasy.
 }
 
 $main << void
-  string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
-  write s;                                      ~ "write" is a function to print an output on the console
+	string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
+	write s;                                      ~ "write" is a function to print an output on the console
 %
 ```
 This code needs to be stored with a .te file extension and can be compiled using the command
