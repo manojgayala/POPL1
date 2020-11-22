@@ -126,7 +126,7 @@ The suggestions also include parallel algorithms and their efficient implementat
  - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability.
 
  - Functions can be defined at any part of the body. No prior prototype declaration is necessary.
- - Use same variable names for the parameters and the anrguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
+ - Use same variable names for the parameters and the arguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
 
 Tureasy can be used by everyone for improvement of their coding skills. In industry, it could be used by companies by making private tags that ensures that their data is safe and also helps in development of their own technology. Tureasy can be extended with libraries for meeting specific requirements.
 
