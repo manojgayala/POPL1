@@ -63,7 +63,7 @@ In Tureasy, programmer can decide **whether to pass a parameter by value or by r
 $main
 String a = "a in main";
 String b = "b in main";
-write a b;
+write a b;		~ each parameter of write is printed in new line
 foo @a b;
 write a b;
 %
