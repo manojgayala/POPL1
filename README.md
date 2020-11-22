@@ -21,7 +21,7 @@ The execution begins with $main and it executes sequentially. string is a in-bui
 An example program to find the sum of positive and negative numbers in an array is 
 ```c
 $main << int
-int x[5] = {23,-4,9,19,-5};
+int x[5] = {23,-4,9,19,-5}; 
 int pos_sum = 0, neg_sum=0;
 for i : [0,5] 
 	if x[i] > 0 
