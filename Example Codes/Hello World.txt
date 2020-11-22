@@ -1,0 +1,13 @@
+~ This is a simple program to print Hello World in Tureasy
+
+{ In Tureasy structure of a function is
+    $<function name> << <return type>
+      body of function
+    %
+  '$' denotes the start of a function and '%' denotes the end of the function
+}
+
+$main << void
+  string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
+  write s;                                      ~ "write" is a function to print an output on the console
+%

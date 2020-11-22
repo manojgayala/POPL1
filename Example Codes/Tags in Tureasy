@@ -1,0 +1,32 @@
+~ Declaration of function 'General_func' is similar to main
+
+$General_func ( float w0, int a[], int b[], int m)
+	float w = w0;  
+  
+  ~ In Tureasy '#' denotes the start of a tag
+  #innerloop
+    ~ syntax for while-loop is same as C except that there are no () braces
+	  while d < 0.01
+		  d=0;
+		  for i:[0,M]
+			  d= d + a[i] + b[i]*w;
+		  / 
+      w = w - 0.001*d;
+		/ 
+	#!innerloop                                  ~ '#!' denotes the end of a tag
+	return w;                                   ~ returning a value in Tureasy is same as in C
+%
+
+$main
+int w0,m;
+read w0 m;                                    ~ 'read' is a function to read the input from the user 
+int a[m],b[m];
+for i : [0,m]
+	read a[i];
+/
+for i: [0,m]
+	read b[i];
+/
+int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
+write ans
+%
