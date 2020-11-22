@@ -5,14 +5,15 @@ TUREASY is a general purpose programming language which has a unique feature of 
 The language is easy to code. Tureasy has 40 keywords. 
 | Key word  |       			    |
 |---		|---			        |
-| state  	| *to import libraries    |
+| collect  	| to import libraries    |
 | write  	| to print output 	    |
 | read  	| to take input		    |
 | string 	| sequence of characters|
-|  setnull| *all unassigned values are made null     |
-|  igend 	| *ignores all errors after this line till the end of program 	|
+|  setnull| all unassigned values are made null     |
+|  igend 	| ignores all errors after this line till the end of program 	|
+|  here | to identify a variable as a member of a class |
 
-"state" is used to import external libraries.
+"collect" is used to import external libraries.
 
 Program 1 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) shows how to print "Hello World" in Tureasy
 This code needs to be stored with a .te file extension and can be compiled using the command
@@ -37,7 +38,7 @@ Every single line instructions are ended with ";" , the conditional statements a
 |  @ 	    | pass by reference 	        |
 |  << 	    | specifying return type of a function |
 |  ~        | single line comments          |
-|   {}      |  multiline comments           |
+| " "      |  multiline comments           |
 |  #        | opening a tag                 |
 |   #!       | closing a tag                 |
 
@@ -66,16 +67,16 @@ Constructors for the class are defined in the **'con'** block ended with '\' and
 
 # Do's and USP of Tureasy
 
- - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability. Single line comments begin with ~ and multi line comments are enclosed within parenthesis.  Inside functions.
+ - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability. Single line comments begin with **~** and multi line comments are enclosed within **""**.  Inside functions.
 
  - Functions can be defined at any part of the body. No prior prototype declaration is necessary.
  - Use same variable names for the parameters and the anrguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
+ - Initialise the private variables. So even when there are no setter methods for them, they can be accessed safely.
 
 Tureasy can be used by everyone for improvement of their coding skills. In industry, it could be used by companies by making private tags that ensures that their data is safe and also helps in development of their own technology. **Private tags** mean that they have some private **turzers** for their companies. Basically, turzers are the files where the models and techniques corresponding to tags are stored. The data collected from tags are trained and tested on various models which can later be used to give suggestions. Turzers can be ket private under an organization's database which develops as the organization grows. These turzers help in maintaining constancy in the productivity of company since staff of the organizatons change but their unique implemenatations and ideologies are stored within the turzer files as models. Tureasy can be also be extended with libraries for meeting specific requirements like gaming.  
 
 # Don'ts of Tureasy 
  - It is advised not to use irrelevant tags because that might increase compilation time. It is possible that user's implementation is unique and irrelevant suggestions might be given. So suggestions should not be implemented unless the programmer is sure about it. 
  - It is advised not to use global variables to avoid scope issues.
- - Initialise the private variables. So even when there are no setter methods for them, they can be accessed safely.
- - Try to make private methods for functionalities  which are used frequently in all the methods of the class so that that cannot be overridden.
+ - Dont try to make  methods  which are used frequently as public,because they can be overridden in the future.
  - Don't use "_{datatype}" (eg: '_int'} outside of a class frequently , it may  unnecessarily restrict the function to the file it is created in.
