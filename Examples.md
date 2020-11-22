@@ -107,7 +107,7 @@ $main
 %
 ```
 
-# Classes & Objects
+# Program 5 to demonstrate Classes & Objects in Tureasy
   ```c
 ~ class definition starts with '*' and ends with '*%' 
 ~ private members and methods are declared with '_' at the start
