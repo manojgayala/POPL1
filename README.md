@@ -42,17 +42,17 @@ An example program to find the sum of positive and negative numbers in an array 
 ~ This is a program to find sum of positive ad negative numbers of an array
 
 $main << int
-  int x[5] = {23,-4,9,19,-5};
-  int pos_sum = 0, neg_sum=0;
+	int x[5] = {23,-4,9,19,-5};
+	int pos_sum = 0, neg_sum=0;
   
-  {The syntax of for-loop
-    for <var> : <range of var>
-  }
-  for i : [0,5]
-	  if x[i] > 0 
-		  pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
-	  else if x[i] < 0 
-		  neg_sum= neg_sum + x[i]; /
+	{The syntax of for-loop
+		for <var> : <range of var>
+	}
+	for i : [0,5]
+		if x[i] > 0 
+			pos_sum = pos_sum + x[i]; /                     ~ '/' denotes the end of loops/conditions like "if" etc.,
+		else if x[i] < 0 
+			neg_sum= neg_sum + x[i]; /
   /
   return 0;		                                        ~ returning a value follows the syntax "return <var>"
 %
@@ -119,7 +119,7 @@ $General_func ( float w0, int a[], int b[], int m)
       w = w - 0.001*d;
 		/ 
 	#!innerloop                                  ~ '#!' denotes the end of a tag
-	return w;                                   ~ returning a value in Tureasy is same as in C
+	return w;                                    ~ returning a value in Tureasy is same as in C
 %
 
 ~This is how single comment is done
@@ -128,17 +128,17 @@ $General_func ( float w0, int a[], int b[], int m)
   BTW this is how multicomment is done :)}
   
 $main
-int w0,m;
-read w0 m;                                    ~ 'read' is a function to read the input from the user 
-int a[m],b[m];
-for i : [0,m]
-	read a[i];
-/
-for i: [0,m]
-	read b[i];
-/
-int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
-write ans
+	int w0,m;
+	read w0 m;                                    ~ 'read' is a function to read the input from the user 
+	int a[m],b[m];
+	for i : [0,m]
+		read a[i];
+	/
+	for i: [0,m]
+		read b[i];
+	/
+	int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
+	write ans
 %
 ```
 In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler. Internally the tag uses GLORE algorithm to identify this.
