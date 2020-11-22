@@ -1,5 +1,10 @@
-**Program 1 to print Hello World using Tureasy**
+#Program 1 to print Hello World using Tureasy
   ```c
+
+~This is how single comment is done
+
+{ This is how multicomment is done :)}
+  
 ~ This is a simple program to print Hello World in Tureasy
 
 { In Tureasy structure of a function is
@@ -82,11 +87,6 @@ $General_func ( float w0, int a[], int b[], int m)
 	#!innerloop                                  ~ '#!' denotes the end of a tag
 	return w;                                    ~ returning a value in Tureasy is same as in C
 %
-
-~This is how single comment is done
-
-{ Now the function main begins..
-  BTW this is how multicomment is done :)}
   
 $main
 	int w0,m;
