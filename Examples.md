@@ -1,4 +1,4 @@
-#Program 1 to print Hello World using Tureasy
+# Program 1 to print Hello World using Tureasy
   ```c
 
 ~This is how single comment is done
@@ -20,7 +20,7 @@ $main << void
 %
 ```
 
-**Program 2 to find sum of positive and negative numbers in an array**
+# Program 2 to find sum of positive and negative numbers in an array
 ```c
 ~ This is a program to find sum of positive ad negative numbers of an array
 
@@ -41,7 +41,7 @@ $main << int
 %
 ```
 
-**Program 3 to demonstrate the concept passing arguments in Tureasy**
+# Program 3 to demonstrate the concept passing arguments in Tureasy
 ```c
 ~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
 
@@ -67,7 +67,7 @@ a in foo
 b in main
 ```
 
-**Program 4 to demonstrate the unique concept of tags in Tureasy**
+# Program 4 to demonstrate the unique concept of tags in Tureasy
 ```c
 ~ Declaration of function 'General_func' is similar to main
 
