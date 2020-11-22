@@ -55,7 +55,45 @@ Suggestions would look like:
 ```	
 tip: inner loop has w variable unchanged - can be written outside outer loop
 ```
-The suggestions also include parallel algorithms and their efficient implementations which enable programmer to make best use of the hardware. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. 
+The suggestions also include parallel algorithms and their efficient implementations which enable programmer to make best use of the hardware. We can use more than one tags, in that case the intersection of their suggestions is used by compiler.
+
+# Classes & Objects
+  ```c
+*Dog
+    mem:
+     String name;
+     int  age;
+     _int insta_followers = 0;
+    \
+    met:
+    $Dispabout() << void
+      write name " " age " " _insta_followers;
+    %
+    _$Updatefollowers(int newvalue) << void
+      insta_followers.here = newvalue   
+    %
+    \
+    con:
+   (String name,int age):
+      name.here = name;
+      age.here = age;
+      Updatefollowers 1;
+    % 
+    \ 
+       
+*%    
+
+$main << void
+
+name = "woofy";
+age = "7";
+Dog aDog = new Dog woofy 7;
+Dog.Dispabout;
+    
+```
+This is how a simple class is created in Tureasy, **class definition** starts with * and ends with *% and its members are defined in the **'mem'** block ended with '/' and similarly methods are defined in **'met'** block.Private members and methods  are declared with **'_'** at the start.Private members  and methods cannot be accessed by the object directly.**Getter methods for the private variables are created implicitly when the class is defined.**
+Constructors for the class are defined in the **'con'** block ended with '\' and each constructor is started with parameters in **'( )'** and ends with '%'  
+
 # Do's and USP of Tureasy
 
  - It is recommended to make use of the tags and improve the code. Good programmers can also work online with tags so that data is collected by tureasy server to improve the compiler. It is advised to indent the code for better readability. Single line comments begin with ~ and multi line comments are enclosed within parenthesis.  Inside functions.
@@ -68,6 +106,8 @@ Tureasy can be used by everyone for improvement of their coding skills. In indus
 Turzers are tags which excellent programmers of an organization attach to parts of their code which shows good logic and ideas. Data is collected from Turzer tags are trained and tested on various models which can later be used to give suggestions to the later changes. Turzers can be ket private under an organization's database which develops completely when the organization's staff are performing at their best. When their staff changes or the employees are not of higher caliber that the previously had, turzer suggestive algorithm optimizers help to keep their productive high as before.  
 
 # Don'ts of Tureasy
-It is advised not to use irrelevant tags because that might increase compilation time. It is possible that user's implementation is unique and irrelevant suggestions might be given. So suggestions should not be implemented unless the programmer is sure about it. 
-
+ -It is advised not to use irrelevant tags because that might increase compilation time. It is possible that user's implementation is unique and irrelevant suggestions might be given. So suggestions should not be implemented unless the programmer is sure about it. 
  - It is advised not to use global variables to avoid scope issues.
+ - Initialise the private variables,So even when there are no setter methods for them, they can be accessed safely.
+ - Try to make private methods for functionalities  which are used frequently in all the methods of the class so that that cannot be overridden.
+ - Don't use "_{datatype}" (eg: '_int'} outside of a class frequently , it may  unnecessarily restrict the function to the file it is created in.
