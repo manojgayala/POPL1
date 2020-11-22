@@ -25,7 +25,7 @@ This code needs to be stored with a .te file extension and can be compiled using
 <code> tureasy <file_name>.te </code>
 
 This creates an executable file which can be run for the output.
-The execution begins with $main and it executes sequentially. string is a in-built data type that stores group of characters. The "write s" is a function used to write the output of the variable 's' onto the screen.The functions are called with parameters space separated after the name of function. By default, few libraries'(along with the standard library) compiled code is linked to .te file.
+The execution begins with $main and it executes sequentially. String is an in-built data type that stores group of characters. The "write s" is a function used to write the output of the variable 's' onto the screen.The functions are called with parameters space separated after the name of function. By default, few libraries'(along with the standard library) compiled code is linked to .te file.
 
 
 An example program to find the sum of positive and negative numbers in an array is 
