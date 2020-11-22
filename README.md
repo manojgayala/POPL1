@@ -2,7 +2,7 @@
 TUREASY is a general purpose programming language which has a unique feature of smart compiler. Unlike the traditional compilers which translate code to assembly language, this compiler tries to optimise the code and gives suggestions to the user in improving his code's performance. Tureasy supports generic, object oriented and functional programming. The suggestions and optimisations are implemented using the reflective programming, which is a type of meta-programming. 
 
 # Syntax and Semantics
-The language is easy to code. This is an example program for printing "Hello World" in Tureasy.
+The language is easy to code. [a link](https://github.com/manojgayala/POPL1/blob/main/Example%20code%20files/Hello%20World.txt) is an example program for printing "Hello World" in Tureasy.
  
 
   ```c
