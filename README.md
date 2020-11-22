@@ -37,7 +37,7 @@ Every single line instructions are ended with ";" , the conditional statements a
 |  @ 	    | pass by reference 	        |
 |  << 	    | specifying return type of a function |
 |  ~        | single line comments          |
-|   `` ``      |  multiline comments           |
+|   {}      |  multiline comments           |
 |  #        | opening a tag                 |
 |   #!       | closing a tag                 |
 
@@ -58,39 +58,9 @@ tip: inner loop has w variable unchanged - can be written outside outer loop
 The suggestions also include parallel algorithms and their efficient implementations which enable programmer to make best use of the hardware. We can use more than one tags, in that case the intersection of their suggestions is used by compiler.
 
 # Classes & Objects
-  ```c
-*Dog
-    mem:
-     String name;
-     int  age;
-     _int insta_followers = 0;
-    \
-    met:
-    $Dispabout() << void
-      write name " " age " " _insta_followers;
-    %
-    _$Updatefollowers(int newvalue) << void
-      insta_followers.here = newvalue   
-    %
-    \
-    con:
-   (String name,int age):
-      name.here = name;
-      age.here = age;
-      Updatefollowers 1;
-    % 
-    \ 
-       
-*%    
 
-$main << void
+Program 5 in [this](https://github.com/manojgayala/POPL1/blob/srikar/Examples.md) demonstrates Classes & Objects in Tureasy
 
-name = "woofy";
-age = "7";
-Dog aDog = new Dog woofy 7;
-Dog.Dispabout;
-    
-```
 This is how a simple class is created in Tureasy, **class definition** starts with * and ends with *% and its members are defined in the **'mem'** block ended with '/' and similarly methods are defined in **'met'** block.Private members and methods  are declared with **'_'** at the start.Private members  and methods cannot be accessed by the object directly.**Getter methods for the private variables are created implicitly when the class is defined.**
 Constructors for the class are defined in the **'con'** block ended with '\' and each constructor is started with parameters in **'( )'** and ends with '%'  
 
@@ -101,8 +71,9 @@ Constructors for the class are defined in the **'con'** block ended with '\' and
  - Functions can be defined at any part of the body. No prior prototype declaration is necessary.
  - Use same variable names for the parameters and the anrguments which are passed by reference to ensure that no ambiguity occurs in readability and it also makes it easy for the complier.
 
-Tureasy can be used by everyone for improvement of their coding skills. In industry, it could be used by companies by making private tags that ensures that their data is safe and also helps in development of their own technology. Private tags mean that they have some private turzers for their companies. Basically, turzers are the files where the models and techniques corresponding to tags are stored. The data collected from tags are trained and tested on various models which can later be used to give suggestions. Turzers can be ket private under an organization's database which develops as the organization grows. These turzers help in maintaining constancy in the productivity of company since staff of the organizatons change but their unique implemenatations and ideologies are stored within the turzer files as models. 
-Tureasy can be also be extended with libraries for meeting specific requirements like gaming.  
+Tureasy can be used by everyone for improvement of their coding skills. In industry, it could be used by companies by making private tags that ensures that their data is safe and also helps in development of their own technology. Tureasy can be extended with libraries for meeting specific requirements.
+
+Turzers are tags which excellent programmers of an organization attach to parts of their code which shows good logic and ideas. Data is collected from Turzer tags are trained and tested on various models which can later be used to give suggestions to the later changes. Turzers can be ket private under an organization's database which develops completely when the organization's staff are performing at their best. When their staff changes or the employees are not of higher caliber that the previously had, turzer suggestive algorithm optimizers help to keep their productive high as before.  
 
 # Don'ts of Tureasy 
  -It is advised not to use irrelevant tags because that might increase compilation time. It is possible that user's implementation is unique and irrelevant suggestions might be given. So suggestions should not be implemented unless the programmer is sure about it. 
