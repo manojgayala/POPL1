@@ -15,9 +15,18 @@ The language is easy to code. Tureasy has 40 keywords.
 "state" is used to import external libraries.
 This is an example program for printing "Hello World" in Tureasy.
   ```c
-  $main << void
-string s = "Hello World\n";
-write s;
+ ~ This is a simple program to print Hello World in Tureasy
+
+{ In Tureasy structure of a function is
+    $<function name> << <return type>
+      body of function
+    %
+  '$' denotes the start of a function and '%' denotes the end of the function
+}
+
+$main << void
+  string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
+  write s;                                      ~ "write" is a function to print an output on the console
 %
 ```
 This code needs to be stored with a .te file extension and can be compiled using the command
