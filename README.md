@@ -2,9 +2,18 @@
 TUREASY is a general purpose programming language which has a unique feature of smart compiler. Unlike the traditional compilers which translate code to assembly language, this compiler tries to optimise the code and gives suggestions to the user in improving his code's performance. Tureasy supports generic, object oriented and functional programming. The suggestions and optimisations are implemented using the reflective programming, which is a type of meta-programming. 
 
 # Syntax and Semantics
-The language is easy to code. This is an example program for printing "Hello World" in Tureasy.
- 
+The language is easy to code. Tureasy has 40 keywords. 
+| Key word  |       			    |
+|---		|---			        |
+| state  	| *to import libraries    |
+| write  	| to print output 	    |
+| read  	| to take input		    |
+| string 	| sequence of characters|
+|  setnull| *all unassigned values are made null     |
+|  igend 	| *ignores all errors after this line till the end of program 	|
 
+"state" is used to import external libraries.
+This is an example program for printing "Hello World" in Tureasy.
   ```c
   $main 
 string s = "Hello World\n";
@@ -18,10 +27,11 @@ This code needs to be stored with a .te file extension and can be compiled using
 This creates an executable file which can be run for the output.
 The execution begins with $main and it executes sequentially. string is a in-built data type that stores group of characters. The "write s" is a function used to write the output of the variable 's' onto the screen.The functions are called with parameters space separated after the name of function. By default, few libraries'(along with the standard library) compiled code is linked to .te file.
 
+
 An example program to find the sum of positive and negative numbers in an array is 
 ```c
 $main << int
-int x[5] = {23,-4,9,19,-5}; 
+int x[5] = {23,-4,9,19,-5};
 int pos_sum = 0, neg_sum=0;
 for i : [0,5] 
 	if x[i] > 0 
@@ -32,7 +42,21 @@ return 0;
 /%
 ```
 
-Every single line instructions are ended with ";" , the conditional statements end with "@" and the iterative statements end with "/".
+Every single line instructions are ended with ";" , the conditional statements and the iterative statements end with "/".
+
+
+| symbol  	|   function		        	|
+|---		|---			                |
+|  $	    | start of a function       	|
+|   %	    | end of function	            |
+|  ; 	    | end of line               	|
+|  / 	    | end of loops/ iterations  	|
+|  @ 	    | pass by reference 	        |
+|  << 	    | specifying return type of a function |
+|  ~        | single line comments          |
+|   {}      |  multiline comments           |
+|  #        | opening a tag                 |
+|   #!       | closing a tag                 |
 
 In Tureasy, programmer can decide **whether to pass a parameter by value or by reference **(which by default store the reference addresses of that instance of its class)at the point of time when it is being called.Prefixing  a parameter with '**@**',passes the parameter by reference without creating a local copy of it.
 ```c
@@ -92,7 +116,7 @@ write ans
 %
 ```
 
-The function definition starts with $ similar to main and % symbol marks the end of it. "#innerloop" and "!innerloop" mark the beginning and end of tags. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler.
+The function definition starts with $ similar to main and % symbol marks the end of it. "#innerloop" and "#!innerloop" mark the beginning and end of tags. We can use more than one tags, in that case the intersection of their suggestions is used by compiler. In this case there is an approach of O(M+K) instead of O(M*K) which would be suggested by compiler.
 Suggestions would look like:
 ```	
 tip: inner loop has w variable unchanged - can be written outside outer loop
