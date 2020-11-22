@@ -77,8 +77,8 @@ Output for this program would be
 ```
 a in main
 b in main
-a in main
-b in foo
+a in foo
+b in main
 ```
 There is a unique concept of **tags in Tureasy** which makes it different from other languages. These tags refer to common codes and algorithms such as graphs, greedy algorithms, dynamic programming, loops within loops etc. These tags are mainly used by the compiler to identify what kind of suggestions and optimisations are possible. The tags are even used in improving the compiler's intelligence by learning better implementations of codes and algorithms from users when connected to the internet.
 An example code including tags and functions is
