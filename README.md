@@ -78,7 +78,6 @@ In Tureasy, programmer can decide **whether to pass a parameter by value or by r
 ```c
 ~ This is a program that demonstrates how to pass arguments by reference and by value in Tureasy
 
-
 $foo (string a,string b) << void
    a = "a in foo";
    b = "b in foo";
