@@ -37,7 +37,7 @@ Every single line instructions are ended with ";" , the conditional statements a
 |  @ 	    | pass by reference 	        |
 |  << 	    | specifying return type of a function |
 |  ~        | single line comments          |
-|   {}      |  multiline comments           |
+|   `` ``      |  multiline comments           |
 |  #        | opening a tag                 |
 |   #!       | closing a tag                 |
 
