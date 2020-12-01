@@ -185,3 +185,43 @@ if(n1.sameas(n2))
 else
  write("No,even they are identical they refer to different objects.");
 ```
+
+## TAGS IN TUREASY
+
+1) The code snippet prints the bfs tree in ascending order of neighbors
+<code>
+ int vis[n];		~ whether visited or not
+for i : [0,n]
+	vis[i]=0;
+/
+
+vis[0]=1;	~ starting from 0th vertex
+
+	#bfs #unique_queue			~ unique_queue tag signifies that elements in queue must be unique
+Queue q;						~ standard bfs	
+q.enqueue(0);
+write(0);
+List l,neighbors;
+
+while !q.Empty()
+	int x = q.dequeue();
+	l = g[x];
+
+	for i : l
+		if !vis[i]
+			neighbors.add(i);
+		/
+	/
+
+	l.sort();
+
+	for i : l
+		q.enqueue(i);
+		vis[i]=1;
+		write(i);
+	/
+/							~ we get a tip that vis[i] is double checked....this must be understood that vis[i]=1 must 
+										~ be placed inside while loop to avoid parallel edges and self loops leading to
+	#!unique_queue	#!bfs								~ queue not being unique		
+
+ </code>
