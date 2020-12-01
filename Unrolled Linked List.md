@@ -1,7 +1,8 @@
 Tureasy provides some functions which have variable number of arguments to be passed.
 
-~ This is an example which depicts the usage of Unrolled Linked List which can be used as an alternative for some databaes
 ```c
+~ This is an example which depicts the usage of Unrolled Linked List which can be used as an alternative for some databaes
+
 `` In this example we are considering two databases in the form of an array and an unrolled linked list. one database stores the names of departments and the other stores the 
    top 3 CGs of that department
 ``
