@@ -1,41 +1,8 @@
 ## OOPS IN TUREASY
 Every object in tureasy is an instance of a class.
 
+
 1.)
-```c
-*Node
-mem:
- int v;
-/
-con:
- (int v): 
-   v.here = v;
- %
-*%
-```
-
-Objects cannot be compared through '==' operator.
-```c
-$main << void
-Node n1 = new Node(4);
-Node n2 = new Node(4);
-if(n1==n2)
- write("Both are equal");
-else
- write("No,even they are identical they refer to different objects."); 
-
-```
-Use 'sameas' method to compare contents of two objects.This method can only be invoked if both objects are of the same class.
-```c
-$main << void
-Node n1 = new Node(4);
-Node n2 = new Node(4);
-if(n1.sameas(n2))
- write("Both are equal");
-else
- write("No,even they are identical they refer to different objects.");
-```
-2.)
 Multiple constructors can be made for a class.
 ```c
 *Node
@@ -62,7 +29,7 @@ value.here = value;
 key.here = key;
 %
 ```
-3.)
+2.)
 Public methods start with `$`
 Overridden methods start with `.$`.
 
@@ -92,7 +59,7 @@ next.here = next;
 %
 ```
 
-4.)
+3.)
 Multiple inheritance can be done in tureasy.(i.e a class can inherit from multiple classes) and similarly childclass constructor has to specify constructors of the parent classes in the same order as in the definition.
 **The common methods have to overriden in the child class.**
 (Common methods are the ones with same method name and also same set of parameters.)
@@ -147,7 +114,7 @@ $main() << void
 C c = new C(1,2)
 c.foo();  ~this method cannot be resolved now.
 ```
-5.)
+4.)
 Private methods start with `_$` and private methods can only be invoked in the class it's defined.
 
 ```c
@@ -183,4 +150,38 @@ write("I want to call foo in A\n");
 parent.A.foo()
 %
 *%
+```
+5.)
+```c
+*Node
+mem:
+ int v;
+/
+con:
+ (int v): 
+   v.here = v;
+ %
+*%
+```
+
+Objects cannot be compared through '==' operator.
+```c
+$main << void
+Node n1 = new Node(4);
+Node n2 = new Node(4);
+if(n1==n2)
+ write("Both are equal");
+else
+ write("No,even they are identical they refer to different objects."); 
+
+```
+Use 'sameas' method to compare contents of two objects.This method can only be invoked if both objects are of the same class.
+```c
+$main << void
+Node n1 = new Node(4);
+Node n2 = new Node(4);
+if(n1.sameas(n2))
+ write("Both are equal");
+else
+ write("No,even they are identical they refer to different objects.");
 ```
