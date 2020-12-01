@@ -19,7 +19,7 @@
 
 $main() << void
 	string s = "Hello World\n";                   ~ "string" is a datatype to store a group of characters
-	write s;                                      ~ "write" is a function to print an output on the console
+	write(s);                                      ~ "write" is a function to print an output on the console
 %
 ```
 
@@ -57,9 +57,9 @@ $foo (string a,string b) << void
 $main() << void
   string a = "a in main";
   string b = "b in main";
-  write a b;
-  foo @a b;                                       ~ '@' used to pass arguments by reference
-  write a b;
+  write(a + "\n" + b);
+  foo(@a,b);                                       ~ '@' used to pass arguments by reference
+  write("\n"+ a + "\n" + b);
 %
 ```
 Output for this program would be
@@ -97,13 +97,13 @@ $main() << void
 	read w0 m;                                    ~ 'read' is a function to read the input from the user 
 	int a[m],b[m];
 	for i : [0,m]
-		read a[i];
+		read(a[i]);
 	/
 	for i: [0,m]
-		read b[i];
+		read(b[i]);
 	/
 	int ans = General_func w0 a b m;              ~ This is the format of callng a function in Tureasy
-	write ans
+	write(ans);
 %
 ```
 
@@ -142,7 +142,7 @@ $main() << void
 $main() << void
 	name = "woofy";
 	age = "7";
-	Dog aDog = new Dog woofy 7;
-	Dog.Dispabout;
+	Dog aDog = new Dog(woofy,7);
+	Dog.Dispabout();
     
 ``` 
