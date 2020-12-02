@@ -1,15 +1,18 @@
 ## Functions in Tureasy
 
-### Examples which conform
+### Functions in Tureasy
 
-1) Structure of  function is as below in Tureasy
+Structure of  function is as below in Tureasy
 ```c
 $function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
    statements;
    return value; (if the return type is not void)
 %                                                    ~ '%' signifies end of  function
 ```
-2) In tueasy variables can be passed by reference or by value
+
+### Pass by value and reference
+
+In tueasy variables can be passed by reference or by value
 ```c
 $function (string a) << void
    a = "I am in function";
@@ -24,7 +27,9 @@ $main() << void
 %
 ```
 
-3) Recursive functions are written in the below form in Tureasy
+### Recursion
+
+Recursive functions are written in the below form in Tureasy
 ```c
 $fact(int n) << int
   if n == 1
@@ -35,7 +40,10 @@ $fact(int n) << int
   /
 %
 ```
-4) Tureasy provides a wide range of pure functions
+
+### Pure functions
+
+Tureasy provides a wide range of pure functions
 ```c
 $main() << void
    int x,y;
@@ -46,11 +54,7 @@ $main() << void
 In the output we have x as 4 (unchanged) and y as 2
 ```
 
-```c
-
-```
-
-### Examples which do not conform
+### return type of functions
 
 1) In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
 ```c
@@ -59,21 +63,4 @@ $function () << void
   i = 1+1;
   return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
 %
-```
-
-2) 
-```c
-
-```
-
-```c
-
-```
-
-```c
-
-```
-
-```c
-
 ```
