@@ -213,6 +213,99 @@ else
 
 
 
+
+
+
+
+# Strings
+
+### Creations of strings
+
+Strings are declared using keyword **string**.
+` string msg = 'Hello World';
+~strings can have spaces
+write(msg);
+~ prints 'Hello World `
+
+
+### Accessing characters in a string
+We can access individual characters of a string by **indexing** or defining the **range of characters** using slicing.
+If we access an element out of range our program will raise an ` IndexError `
+
+
+ ``` 
+ string str = 'Language design';
+  write('str[2] = ',str[2]);  ~prints the third character 
+  
+  write('str[1:6]= ',str[1:6]);  ~prints 2nd to 7th
+###note in languages like python str[1:6] prints 2nd char to 6th char
+
+write('str[-2]= ',str[-2]); ~prints the last 2nd character
+```
+
+when we run the above program, we get the following output:
+```
+str[2] = n
+str[1:6]= anguag
+str[-2]= g 
+```
+
+if we slice the string array incorrectly we will raise an ` RangeError `
+```
+write(str[12:10]);
+>>> RangeError: range specified is invalid
+
+write(str[10:-10]) ~this is wrong as length of string is 16
+>>> RangeError: range specified is invalid
+```
+
+### string operations
+
+#### concatenation of strings
+
+we can use + operator to join strings together and  * operator can be used to make multiple copies of a string. 
+
+```
+string state = 'TS';
+string number = '2345';
+
+write('Number plate = ', state+number);
+
+string repeat = 'Hi';
+write(repeat*3);
+```
+above code will output
+```
+Number plate = TS2345
+HiHiHi
+```
+
+we should be cautious about where you want blank spaces to occur by placing single quotation marks between strings as shown below.
+```
+string msg = 'Welcome' + ' ' + 'everyone';
+
+string repeat = ('Hi'+' ')*3;
+```
+### substring checking
+we can test if a substring exists within a string or not, using ` : ` symbol. 
+```
+>>> 'some' : 'cumbersome'
+>True
+~ as the word is found, it returns boolean True
+
+>>> 'right' !: 'Alright'
+>False 
+~ the string 'right' is in 'Alright' but the query was !: which is negation
+
+```
+
+> Note: the above method is case sensetive
+
+
+### some built-in functions
+
+
+
 # TAGS 
 ### nested tags
 Tags can be nested for better suggestions
