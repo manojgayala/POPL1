@@ -35,9 +35,15 @@ $fact(int n) << int
   /
 %
 ```
-
+4) Tureasy provides a wide range of pure functions
 ```c
-
+$main() << void
+   int x,y;
+   x = 4;
+   y = sqrt(x);
+   write(x,y);
+%
+In the output we have x as 4 (unchanged) and y as 2
 ```
 
 ```c
