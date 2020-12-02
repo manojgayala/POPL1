@@ -2,7 +2,14 @@
 
 ### Examples which conform
 
-1) In tueasy variables can be passed by reference or by value
+1) Structure of  function is as below in Tureasy
+```c
+$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
+   statements;
+   return value; (if the return type is not void)
+%                                                    ~ '%' signifies end of  function
+```
+2) In tueasy variables can be passed by reference or by value
 ```c
 $function (string a) << void
    a = "I am in function";
@@ -17,7 +24,7 @@ $main() << void
 %
 ```
 
-2) Recursive functions are written in the below form in Tureasy
+3) Recursive functions are written in the below form in Tureasy
 ```c
 $fact(int n) << int
   if n == 1
@@ -27,10 +34,6 @@ $fact(int n) << int
     return n*fact(n-1);
   /
 %
-```
-
-```c
-
 ```
 
 ```c
