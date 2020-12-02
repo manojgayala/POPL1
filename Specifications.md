@@ -493,7 +493,7 @@ In the output we have x as 4 (unchanged) and y as 2
 
 ### return type of functions
 
-1) In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
+In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
 ```c
 $function () << void
   int i,j=0;
@@ -502,5 +502,22 @@ $function () << void
 %
 ```
 
+### in-built functions
 
+There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
+```c
+$main() << void
+	output_value = function_name(input_values)
+%
+```
 
+### uder-defined functions
+
+```c
+$sqrt() << float
+	statements;
+	return output;
+%
+
+This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
+```
