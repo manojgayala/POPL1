@@ -222,10 +222,13 @@ else
 ### Creations of strings
 
 Strings are declared using keyword **string**.
-` string msg = 'Hello World';
+
+```
+string msg = 'Hello World';
 ~strings can have spaces
 write(msg);
-~ prints 'Hello World `
+~ prints 'Hello World'
+```
 
 
 ### Accessing characters in a string
@@ -238,7 +241,7 @@ If we access an element out of range our program will raise an ` IndexError `
   write('str[2] = ',str[2]);  ~prints the third character 
   
   write('str[1:6]= ',str[1:6]);  ~prints 2nd to 7th
-###note in languages like python str[1:6] prints 2nd char to 6th char
+ ~note in languages like python str[1:6] prints 2nd char to 6th char
 
 write('str[-2]= ',str[-2]); ~prints the last 2nd character
 ```
