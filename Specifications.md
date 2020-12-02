@@ -1,3 +1,218 @@
+# Classes and Objects 
+### Constructors
+
+Multiple constructors can be made for a class.
+```
+*Node         ~Class
+mem:
+string value;
+string key;
+con:
+(string key,string value):    ~constructor with two argumets
+key.here = key;
+value.here = value;
+%
+(string key):        ~ constructor with a single argument.
+key.here = key;
+%
+*%
+```
+But different constructors with same type and number of arguments is not valid as they cannot be resolved.
+```c
+con:       ~ Both contructors have same string argument.
+(string value): 
+value.here = value;
+%
+(string key):
+key.here = key;
+%
+```
+### Inheritance
+
+```
+
+`` A subclass can be created by using "inherit" keyword 
+   followed by parent class name  in the class definition.``
+
+~Node is the same class defined before.
+
+*linkNode inherit Node 
+mem:
+  linkNode next;
+con: 
+ (string datakey,linkNode next):(datakey):  ~nxt set of parameters is for the parentclass constructor.
+  next.here = next;
+%
+*%
+
+$main << void
+linkNode n = new linkNode("1",new linkNode());
+write(n.key) ~prints '1'
+```
+Every non-default constructor of subclass has to specify the parameters for a parent class'(es') constructor to be called. If default constructor has to be called, then rather empty  `()` has to be specified.
+
+This is not valid.
+```
+con:  
+(string datakey,linkNode next):     ~no parent cconstructor is specified.
+next.here = next;
+%
+```
+
+### Multiple Inheritance
+Multiple inheritance can be done in tureasy. 
+
+
+```
+*A ~Class A
+mem:
+int dataA;
+con:
+ (int d)
+  dataA = d;
+ %
+met:
+ $foo() << void   ~foo in A
+ write(dataA);
+ %
+*%
+
+*B ~Class B
+mem:
+int dataB;
+con:
+ (int d)
+  dataB = d;
+ %
+met:
+ $foo() << void   ~foo in B
+ write(dataB);
+ %
+*%
+
+*C inherit A,B   ~Class C inherits both A and B.
+	con:
+	``constructors for A and B has to be specified in the same order
+	   as in definition.``
+
+	 (int data1,int data2):(data1):(data2): 
+	  write("Constructor of C is called");
+	 %
+	met:
+	 .$foo() << void ~ foo method is overridden using '.$' as it is in both A and B;
+	  parent.A.foo();
+	%
+*%
+```
+**The common methods have to  be overridden in the child class.**
+(Common methods are the ones with same method name and also same set of parameters.)
+
+this leads to compile-time error
+```
+*C inherit A,B
+ con:
+   (int data1,int data2):(data1):(data2):
+     write("Constructor of C is called");
+   %
+ *%
+
+$main() << void
+C c = new C(1,2);
+c.foo();  ~this method cannot be resolved now.
+```
+
+### Private Methods
+
+Private methods start with `_$` and private methods can only be invoked in the class it's defined.
+
+```
+*A
+mem:
+_$prifoo() << void        ~this is a private method of A.
+write("private method");
+%
+$foo() << void
+prifoo();               ~"prifoo()" can be called in any method of A.
+write("\nprivate method is called and returned");
+return;
+%
+
+```
+
+Private methods(also members) are not inherited by the subclass and also cannot be invoked even with the `parent` keyword.
+ 
+```
+*A
+ met:
+  _$foo() << void
+    write("this method is only confined to A");
+  %
+*%
+
+*B inherit A:  ~B is a subclass of A.
+ met:
+  $fooB() << void 
+    write("I want to call foo in A\n");
+    parent.A.foo()       ~ this is not allowed.
+  %
+*%
+
+$main << void
+ B b = new B();
+ B.foo();        ~This cannot be done because foo method is not inherited by B.
+%
+```
+### Object Equivalence
+
+Unlike primitive datatypes,`==` operator cannot be used to compare two different objects.
+```
+``Classes Node,Node2 are created with same contents.
+*Node 
+mem:
+ int v;
+/
+con:
+ (int v): 
+   v.here = v;
+ %
+*%
+*Node2 
+mem:
+ int c;
+/
+con:
+ (int c): 
+   c.here = c;
+ %
+*%
+```
+
+
+
+
+```
+$main << void
+  Node a = new Node(4); ~instance of Node
+  Node b = new Node(4); ~instance of Node
+  Node c = new NodeB(4); ~instance of Node2
+  write(a==c); ~this gives a compilation error as they are of different classes.
+  write(a==b); ~this prints false;
+%
+
+```
+Use `sameas` method to compare contents of two objects.This method can only be used if both objects are of the same class.
+```
+$main << void
+Node n1 = new Node(4);
+Node n2 = new Node(4);
+if(n1.sameas(n2)).       ~returns true.
+ write("Both are equal");
+else
+ write("No,even they are identical they refer to different objects.");
+```
+
+
+
 # TAGS 
 ### nested tags
 Tags can be nested for better suggestions
