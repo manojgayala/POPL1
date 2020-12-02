@@ -55,15 +55,9 @@ $function () << void
 %
 ```
 
-2) Declaration of callee function should be before the caller function in Tureasy. The below example do not conform this rule and hence gives an error
+2) 
 ```c
-$main() << void
-  Hello();
-%
 
-$Hello() << void
-  write("Hello World!");
-%
 ```
 
 ```c
