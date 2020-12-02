@@ -435,7 +435,7 @@ There is actually a possibility of rewriting the code as a[i]=1 for all i's and 
 ``	
 ```
 
-# Functions in Tureasy
+# Functions
 
 ### Functions in Tureasy
 
