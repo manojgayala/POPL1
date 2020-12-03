@@ -5,7 +5,7 @@
 $getBinary(int n) << void
 	int loop;
 	~ loop = 15, for 16 bits value, 15th bit to 0th bit
-	write("Binary number for n = " + n + " is: ");
+	write("Binary number of n = " + n + " is: ");
 	for loop:[15,0]
 		if( (1 << loop) & n)    ~ '<<' is the left shift operator, while '&' is the bitwise AND operator
             		write("1"); /
@@ -68,6 +68,29 @@ Default Grouping :( p == 0 ? p += 1 : p ) += 2
 Using paranthesis will clarify the preceding example:
 ```
     ( p == 0 ) ? ( p += 1 ) : ( p += 2 );
+```
+### Type Compatibilty:    
+```
+$genFunction (int n) << void
+    write("n = ",n);    ~ prints "n = 3"
+    ~ loss of data occurs due to incompatibility in type of actual and formal parameters.
+%
+$main () << void
+    float f = 2.5;
+    int n = f;      		~ n = 2; loss of a decimal
+    write(n + "\n");       	~ prints "2"
+    >>> warning: possible loss of data
+    genFunction(3.2);
+%
+```
+
+```
+string s = "Hello";
+int n = 45;
+n = s;
+>>> error: cannot assign string to int
+s = n;
+>>> error: cannot assign int to string
 ```
 # Classes and Objects 
 ### Constructors
