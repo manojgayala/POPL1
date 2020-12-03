@@ -531,7 +531,7 @@ $getBinary(int n) << void
 	~ loop = 15, for 16 bits value, 15th bit to 0th bit
 	write("Binary number for n = " + n + " is: ");
 	for loop:[15,0]
-		if( (1 <- loop) & n)    ~ '<-' is the left shift operator, while '&' is the bitwise AND operator
+		if( (1 << loop) & n)    ~ '<<' is the left shift operator, while '&' is the bitwise AND operator
             		write("1"); /
 		else
 			write "0"; /
