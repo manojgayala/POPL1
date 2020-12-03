@@ -372,38 +372,32 @@ Existence of substring within string can be checked with ':' operator.
 > Note: the above method is case sensetive
 
 ### Standard String functions
+Some of functions metioned below takes the addresses of strings and does their respective operations on them.
 ```
-strcmpr(@str1,@str2)	~ return -1 or 0 or +1 for str1  <, ==, >  str2 respectively
+strcmpr(@str1,@str2);	~ return -1 or 0 or +1 for str1  <, ==, >  str2 respectively
 ~the above function can be overloded by passing another argument as follows
-strcmpr(@str1,@str2,n)	~ same function as above, but compares only first n characters
+strcmpr(@str1,@str2,n);	~ same function as above, but compares only first n characters
 
 
-strcpy(@str1,@str2)		~copies the contents in str2 to str1
+strcpy(@str1,@str2);		~copies the contents in str2 to str1
 ~the above function can be overloaded with more constraints
-strcpy(@str1,@str2,n)	~copies at most n characters of str2 to str1
-
-
-~the functions mentioned below are to be applied on string objects
- 
-strReplace
-
-strSplitOn
-
-strCombine
-
-StrWordCount	//by default outputs size of string, else counts specific word
-
+strcpy(@str1,@str2,n);	~copies at most n characters of str2 to str1
 ```
 
 
+Functions shown here apply on string objects
+``` 
+object.strReplace("str1","str2");	~Tries to find str1 in object, if found replaces it with str2
 
-### Escape sequences
+object.strSplitOn("CharToSplitOn");	~this returns a list of strings obtained by splitting on the specifed character
 
-**optional**
+object.strFind("str");	~Searches for "str" in object, if foud returns indexPosition else returns -1
 
-### Formatting strings
+object.WordCount("str");	~outputs the count of specific string in object
+~if str not passesd, the functions outputs length of string by default
 
-**optional**
+```
+
 
 # Classes and Objects
 ### Constructors
