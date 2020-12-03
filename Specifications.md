@@ -136,11 +136,16 @@ for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending ord
 ### if else statement
 ```c
 if k>n
-    write(k);/
- else if k<n
-    write(k);/
- else
-    write("0");/
+  
+  
+  
+
+
+
+
+
+
+
 ```
 
 ### switch
@@ -496,21 +501,21 @@ else
  write("No,even they are identical they refer to different objects.");
 ```
 # TAGS 
-### nested tags
+### Nested tags
 Tags can be nested for better suggestions
 ```
 #number_theory
 #exponentiation
 int ans = 1;
-for i : [0,b]
+for i : (0,b-1)					~ a and b are variables in actual function
 	ans= ans*a /
 ``	
 Tip: {while b>0
-	if b&1 ans = ans*a;/
+	if b&1
+          ans = ans*a;/
 	a = a*a; 
-	b=b/2; 	/} in line 2 =>
-O(lg(n)) method possible using binary exponentiation
-	
+	b=b/2; 	/	} in line 2 =>
+O(lg(n)) method possible using binary exponentiation	
 ``
 #!exponentiation
 #!number_theory
@@ -522,7 +527,7 @@ Tags do not work if they aren't closed and nested tags should be closed in first
 #max_events
 i=0;
 write(i);
-for j : [1,n]
+for j : (1,n-1)
 	if s[j]>=f[i]		
 	~ s[i] is the start time and f[i] is the finish time of event	
 		write(j);
@@ -534,7 +539,7 @@ for j : [1,n]
 Constraints can be set on some parameters using tags and that can be used for correctness of algorithm's execution.
 ```
 int vis[n]; 				~ whether visited or not 
-for i : [0,n] 
+for i : (0,n) 
 	vis[i]=0; /
 vis[0]=1; 					~ starting from 0th vertex
 
@@ -551,7 +556,7 @@ while !q.Empty()
 
 for i : l
 	if !vis[i]
-		neighbors.add(i);//
+		neighbors.add(i);//		~ line 19
 
 neighbors.sort();
 for i,j : neighbors
@@ -564,18 +569,15 @@ Tip: {vis[i]=1} in line 19 => maintains unique_queue
 This tip signifies that vis[i]=1 must be before neighbors.add(i) which will ensure neighbors is unique and thereby queue is unique.
 ``
 ```
-When the parameters fail to satisfy constraints, there could be many ways to fix it. The tags do not suggest all of them, it only suggests one. Sometimes, there could be more trivial way to solve it which isn't suggested by tags. Here is an example.
-```
 
-``` 
 ### tags for parallelism
 Parallel codes can be suggested to users for better hardware use.
 ```
-#loop
-for i : [0,7]
+#loop	
+for i : (0,6)
 	a[i] = 0;	/
 ``
-Tip : {forAsync i : [0,7]	
+Tip : {forAsync i : (0,6)	
 			a[i] = 0; /} in line 1 => for faster execution 
 ``	
 #!loop
@@ -614,7 +616,7 @@ while compilation, it checks the contents of .tcnf file for authentication
 Here is an example which do not confirm to specification. The tags might not give tips for such cases.
 ```
 a[0]=1;
-for i : [1,n]
+for i : (1,n-1)
 	a[i]=a[i-1];	/
 ``
 There is actually a possibility of rewriting the code as a[i]=1 for all i's and use parallelism. But, the tags cannot give that tip.
