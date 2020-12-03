@@ -121,28 +121,20 @@ for i:(0,n-1)               ~	iterates till i<n
     j=i-1;
 /
    ```
-```
-for i:(0,n)     	
-  k=a[i]; 	~ this is invalid because even single line for body must be ended with '/'
-```
+
 By default update statement for 'for' loop in tureasy is incrementation by 1. **desc** should be used to traverse in reverse order.
 ```
 for i: desc (0,n-1)     ~keyword  'desc' should be used to traverse in descending order
   k=a[i];
   /                 ~single line statements should also be closed
 ```
-All single line statements or loops should be closed with '/'
+Even single line statements in for loops should be closed with '/'
 
 ```
 for i:(0,n-2) 
     k[i]=a[i]+a[i+1];    ~this executes below statements also
-write(k[n-1]);
+write(k[n-1]);           ~this will throw an error.
 
-
-for i:(0,n-2)
-    k[i]=a[i]+a[i+1];
-  /                 ~single line statements should be closed
-write(k[n-1]);
 ```   
 ### while loop
 ```
@@ -163,18 +155,7 @@ write(k[n-1]);
     return 0;
 }
 ```
-### Do while
-```
-    int n, sum = 0;
-    do
-    {
-        read(n);
-        sum += number;
-    }
-    while(number != 0) /
 
-    write("Sum = "+sum);
-```
 
 ### break and continue
   **break** is used to end loop imediately
@@ -192,13 +173,14 @@ write(k[n-1]);
 ### if else statement
 ```
 int m;
-if k>n
+if k>n 
     write(k);/
  else if k<n
     write(k);/
  else
     write("0");/
   ```  
+  
 ### switch
 ```
 for i:(0,n-1)
@@ -704,4 +686,27 @@ for i : (1,n-1)
 There is actually a possibility of rewriting the code as a[i]=1 for all i's and use parallelism. But, the tags cannot give that tip.
 ``	
 ```
+ Turzer identifies the constraints/contexts by processing the tags provided by the programmer
+       and the processed tag is identified through a vocabulary corpus used by tureasy.
+       So programmer has to name the tags appropriatly.
+       Irrelavent tags may not help the turzer to identify or even may lead to misleading tips.
+ 
+ ```
+ ~Here the user wants to check whether length of string exceeds 6.
+ 
+ #string<6.             ~But this tag is processed to check whether the value of string exceeds 6.
+    String s = "1234". ~ line 2
+    char[] a;
+    char k = 'a';
+    for(int i=0;i<10;i++){
+       if(a[i]=k).   ~this logical error leads to concatenation of 10 chars to the string.
+          s+=i;
+    }
+ #!string<6 
+ 
+So the tureasy would give the tip related to the value of string more than 6.
+
+Tip: (s = "1234"} in line 2 => violates constraint.
+ 
+ ```
 
