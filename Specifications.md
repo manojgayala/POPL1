@@ -265,7 +265,7 @@ $main() << void
 	int z = s.max();							~ finds the max
 %
 ```
-### user-defined functions
+### Overriding built-in functions
 ```
 $sqrt(float x) << float
 	return x*x;
@@ -293,6 +293,24 @@ $main() << void
 	write(x);
 %
 ```
+### functions for Operator Overridding
+
+```
+*Node        
+mem:
+int v;   
+met:
+.$ +(int x)<< int        ~ '+' is overridded for the class Node
+    return (here.v+x)
+%
+*%
+
+$main << void
+Node n = new Node(3);
+write(n+4);   ~prints 7 
+%
+```
+
 # Strings
 
 ### Creations of strings
