@@ -125,13 +125,26 @@ for i:(0,n-1)               ~	iterates till i<n
 By default update statement for 'for' loop in tureasy is incrementation by 1. Reversing range of 'for' loop doesn't work for decrementation.
 ```
 for i:(n,0)     	~loop doesnt run
-  k=a[i];       	~loop doesnt end untill we close it  
+  k=a[i]; /  
 ```
 **desc** should be used to traverse in reverse order.
 ```
 for i: desc (0,n-1)     ~keyword  'dsc' should be used to traverse in descending order
   k=a[i];
   /                 ~single line statements should also be closed
+```
+All single line statements or loops should be closed with '/'
+
+```
+for i:(0,n-2) 
+    k[i]=a[i]+a[i+1];    ~this executes below statements also
+write(k[n-1]);
+
+
+for i:(0,n-2)
+    k[i]=a[i]+a[i+1];
+  /                 ~single line statements should be closed
+write(k[n-1]);
 ```   
 ### while loop
 ```
@@ -152,6 +165,32 @@ for i: desc (0,n-1)     ~keyword  'dsc' should be used to traverse in descending
     return 0;
 }
 ```
+### Do while
+```
+    int n, sum = 0;
+    do
+    {
+        read(n);
+        sum += number;
+    }
+    while(number != 0) /
+
+    write("Sum = "+sum);
+```
+
+### break and continue
+  **break** is used to end loop imediately
+  **continue** statement skips the current iteration of the loop and continues with the next iteration
+  ```
+  
+  for i:(0,n)
+      if a[i]<0
+        continue;  /        ~skips negative numbers
+      if a[i]=0
+          break;   /        ~exits out of loop if encounters 0
+      s=s+a[i];
+      /
+   ```    
 ### if else statement
 ```
 int m;
@@ -162,20 +201,6 @@ if k>n
  else
     write("0");/
   ```  
-  
-All single line statements or loops should be closed with '/'
-
-```
-for i:(0,n-2) 
-    k[i]=a[i]+a[i+1];    ~this executes below statements also
-write(k[n-1]);
-
-
-for i:(0,n-2)
-    k[i]=a[i]+a[i+1];
-  /                 ~single line statements should be closed
-write(k[n-1]);
-```   
 ### switch
 ```
 for i:(0,n-1)
