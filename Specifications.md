@@ -1,4 +1,15 @@
-# Operators
+# Variables and Operators
+### Declaration of variables
+The variables can start with alphabets or '_' symbol. Do not use keywords for variable names. Here is an example.
+```
+int x;			~	
+List >> int y;		~ this is used for storing lists of type int
+```
+This is an example that do not conform.
+```
+int $z;		~ starts with '$'
+string int;	~ keyword
+```
 ### Bit-Wise Operators:
 ```
 ~ getBinary function, given a decimal number, prints it's binary number
@@ -6,27 +17,25 @@ $getBinary(int n) << void
 	int loop;
 	~ loop = 15, for 16 bits value, 15th bit to 0th bit
 	write("Binary number of n = " + n + " is: ");
-	for loop:[15,0]
-		if( (1 << loop) & n)    ~ '<<' is the left shift operator, while '&' is the bitwise AND operator
+	for loop: desc (0,15)
+		if (1 << loop) & n    ~ '<<' is the left shift operator, while '&' is the bitwise AND operator
             		write("1"); /
 		else
-			write "0"; /
+			write("0"); /
     	/
 %
-```
-For n = 15768, above code will output:
-```
-Binary number of n = 15768 is: 0011110100111110
+''
+Output : Binary number of n = 15768 is: 0011110100111110
+''
 ```
 Left shift / Right shift beyond the size of the variable will lead to undefined behavior.
 ```
 int j = 1;  
-j << 33; j>> 33;	~ incorrect
+j << 33; j>> 33;	~ not valid
 ~ variable 'j' is of type integer where its size is 32bits. 
 ~ So, when we try to shift it to 33rd bit position we will get an error.
 ```
-
-Also they should not be used for negative numbers. We can neither shift a negative number nor get a number shifted by negative number.
+Also they should not be used for negative numbers. Shifting a negative number or shifting by a negative value do not confirm to tureasy.
 ```
 int j = -1;
 j << 1;		~ (-1 << 1) - undefined behavior
@@ -40,11 +49,11 @@ $precedenceInOP() << void
     result = a + b * c / d;                                     ~ result = 20 + (( 10 * 15 ) / 5) = 50
     ~ if d equals 0, then this causes run-time error
     result = (a + b) * (c / d);                                 ~ result = (30) * (15/5) = 90
-    ~ Operator precedence: '*' > '/' > '+'
-    result = a+b*c%d-a*b                                        ~ a + ((b*c) % d) - (a*b) therefore result  = -180
+    ~ Operator precedence: '%' > '*' > '/' > '+'
+    result = a+b*c%d-a*b                                        ~ a + (b*(c % d)) - (a*b) therefore result  = -180
     while(d>1)
-        d -= 2;                                                 ~ d = d - 2                     
-        result = d**2**3;                                       ~ result = d^(2^3) = d^8
+        d = d- 2;                                                 ~ d = d - 2                     
+        result = d**2**3;                                       ~ result = exp(exp(d,2),3)
         ~ for exponent operator, associativity: right to left
     /	~ at the end of while loop, result = 1
 %
@@ -52,8 +61,7 @@ $precedenceInOP() << void
 Statements such as the following cause error:
 ```
     int a, b, c = 3;
-    a + b = c*c;    ~ this is a semantic error
-    >>> error: lvalue required as left operand of assignment
+    a + b = c*c;    ~ this is a semantic error, lvalue should be some variable
 ```
 ```
 p == 0 ? p += 1: p += 2; 	~ causes a syntax error
@@ -63,18 +71,11 @@ The last operand is considered to be p rather than p += 2, since occurrence of p
 more closely to the conditional-expression operator than it does to the assignment operator.
 This results in a syntax error as += 2 does not have a left-hand operand.
 Default Grouping :( p == 0 ? p += 1 : p ) += 2
+Use of paranthesis for grouping would help.
 ``
-```
-Using paranthesis will clarify the preceding example:
-```
-    ( p == 0 ) ? ( p += 1 ) : ( p += 2 );
 ```
 ### Type Compatibilty:    
 ```
-$genFunction (int n) << void
-    write("n = ",n);    ~ prints "n = 3"
-    ~ loss of data occurs due to incompatibility in type of actual and formal parameters.
-%
 $main () << void
     float f = 2.5;
     int n = f;      		~ n = 2; loss of a decimal
@@ -82,20 +83,14 @@ $main () << void
     >>> warning: possible loss of data
     genFunction(3.2);
 %
-```
 
-```
-string s = "Hello";
-int n = 45;
-n = s;
->>> error: cannot assign string to int
-s = n;
->>> error: cannot assign int to string
+$genFunction (int n) << void
+    write("n = "+n);    ~ prints "n = 3"
+    ~ loss of data occurs due to incompatibility in type of actual and formal parameters.
+%
 ```
 # Iterative and conditional statements in tureasy
-
 ### For Loops
-
 ```c
                     ~for loop in tureasy
 int k,j,a[n];
@@ -181,22 +176,27 @@ for i:[0,n]
 ```
 
 # Functions
-
-### Functions in Tureasy
-
-Structure of a basic function is as below in Tureasy
-```c
-$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
-   statements;
-   return value; (if the return type is not void)
-%                                                    ~ '%' signifies end of  function
+### Definition 
+Here is an example.
 ```
+$ add(int a,int b) << int        ~ '$' signifies the start of a function
+   return a+b; 					~ if the return type is not void
+%                                                    ~ '%' signifies end of  function	
+```
+### return type of functions
 
-### Pass by value and reference
-
-In tueasy variables can be passed by reference or by value
+In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function. This example do not conform to Tureasy.
 ```c
-$function (string a) << void
+$function () << void
+  int i,j=0;
+  i = 1+1;
+  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
+%
+```
+### Pass by value or reference
+In Tureasy variables can be passed by reference or by value
+```c
+$ sample (string a) << void
    a = "I am in function";
 %
 
@@ -204,15 +204,13 @@ $main() << void
   string a = "I am in main";
   function(a)                                         ~ variable is passed by reference
   write(a + "\n");                                    ~ a is "I am in main "
-  function(@a);                                       ~ '@' used to pass arguments by reference
+  function(@a);                                       ~ '@' suggests that it was passed by reference
   write(a + "\n");                                    ~ a is "I am in function"
 %
 ```
-
 ### Recursion
-
-Recursive functions are written in the below form in Tureasy
-```c
+An example of recursive functions.
+```
 $fact(int n) << int
   if n == 1
     return 1;
@@ -222,55 +220,28 @@ $fact(int n) << int
   /
 %
 ```
-
-### Pure functions
-
-Tureasy provides a wide range of pure functions
-```c
-$main() << void
-   int x,y;
-   x = 4;
-   y = sqrt(x);
-   write(x,y);
-%
-In the output we have x as 4 (unchanged) and y as 2
+### Functional paradigm
+Tureasy also supports functional paradigm.
 ```
-
-### return type of functions
-
-In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
-```c
-$function () << void
-  int i,j=0;
-  i = 1+1;
-  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
-%
-```
-
-### in-built functions
-
-There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
-```c
 $main() << void
-	output_value = function_name(input_values)
-%
-
-All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
-```
-
-### user-defined functions
-
-```c
-$sqrt() << float
-	statements;
-	return output;
-%
-$main() << void
+   int a[n];
+   for i : (0,5)
+   		a[i]=i*i+i;			/
 	
+	List >> int s = a.findAll(x%2==0);			~ finds the list of elements that satisfy condition
+	int z = s.max();							~ finds the max
 %
-This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
 ```
-
+### user-defined functions
+```
+$sqrt(float x) << float
+	return x*x;
+%
+``
+This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy.
+These can be overridden by using .$ before function only in the current program.
+``
+```
 ### Local functions
 The functions can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. Here is an example.
 ```
@@ -392,9 +363,8 @@ library function **strswap** can be used instead.
 ```c
 strswap(@st1,@st2);       ~parameters are two strings
 ```
-# Classes and Objects 
+# Classes and Objects
 ### Constructors
-
 Multiple constructors can be made for a class.
 ```
 *Node         ~Class
@@ -402,122 +372,27 @@ mem:
 string value;
 string key;
 con:
-(string key,string value):    ~constructor with two argumets
-key.here = key;
-value.here = value;
+(string key,string value)    ~constructor with two argumets
+here.key = key;
+here.value = value;
 %
-(string key):        ~ constructor with a single argument.
-key.here = key;
+(string key)        ~ constructor with a single argument.
+here.key = key;
 %
 *%
 ```
 But different constructors with same type and number of arguments is not valid as they cannot be resolved.
 ```c
 con:       ~ Both contructors have same string argument.
-(string value): 
-value.here = value;
+(string value)
+here.value = value;
 %
-(string key):
-key.here = key;
-%
-```
-### Inheritance
-
-```
-
-`` A subclass can be created by using "inherit" keyword 
-   followed by parent class name  in the class definition.``
-
-~Node is the same class defined before.
-
-*linkNode inherit Node 
-mem:
-  linkNode next;
-con: 
- (string datakey,linkNode next):(datakey):  ~nxt set of parameters is for the parentclass constructor.
-  next.here = next;
-%
-*%
-
-$main << void
-linkNode n = new linkNode("1",new linkNode());
-write(n.key) ~prints '1'
-```
-Every non-default constructor of subclass has to specify the parameters for a parent class'(es') constructor to be called. If default constructor has to be called, then rather empty  `()` has to be specified.
-
-This is not valid.
-```
-con:  
-(string datakey,linkNode next):     ~no parent cconstructor is specified.
-next.here = next;
+(string key)
+here.key = key;
 %
 ```
-
-### Multiple Inheritance
-Multiple inheritance can be done in tureasy. 
-
-
-```
-*A ~Class A
-mem:
-int dataA;
-con:
- (int d)
-  dataA = d;
- %
-met:
- $foo() << void   ~foo in A
- write(dataA);
- %
-*%
-
-*B ~Class B
-mem:
-int dataB;
-con:
- (int d)
-  dataB = d;
- %
-met:
- $foo() << void   ~foo in B
- write(dataB);
- %
-*%
-
-*C inherit A,B   ~Class C inherits both A and B.
-	con:
-	``constructors for A and B has to be specified in the same order
-	   as in definition.``
-
-	 (int data1,int data2):(data1):(data2): 
-	  write("Constructor of C is called");
-	 %
-	met:
-	 .$foo() << void ~ foo method is overridden using '.$' as it is in both A and B;
-	  parent.A.foo();
-	%
-*%
-```
-**The common methods have to  be overridden in the child class.**
-(Common methods are the ones with same method name and also same set of parameters.)
-
-this leads to compile-time error
-```
-*C inherit A,B
- con:
-   (int data1,int data2):(data1):(data2):
-     write("Constructor of C is called");
-   %
- *%
-
-$main() << void
-C c = new C(1,2);
-c.foo();  ~this method cannot be resolved now.
-```
-
 ### Private Methods
-
-Private methods start with `_$` and private methods can only be invoked in the class it's defined.
+Private methods start with `_$`.
 
 ```
 *A
@@ -532,8 +407,7 @@ return;
 %
 
 ```
-
-Private methods(also members) are not inherited by the subclass and also cannot be invoked even with the `parent` keyword.
+Private methods (also members) are not inherited by the subclass.
  
 ```
 *A
@@ -546,15 +420,102 @@ Private methods(also members) are not inherited by the subclass and also cannot 
 *B inherit A:  ~B is a subclass of A.
  met:
   $fooB() << void 
-    write("I want to call foo in A\n");
-    parent.A.foo()       ~ this is not allowed.
+    write("I want to call foo in A\n");				
   %
 *%
 
 $main << void
  B b = new B();
- B.foo();        ~This cannot be done because foo method is not inherited by B.
+ b.foo();        ~This cannot be done because foo method is not inherited by B.
 %
+```
+### Inheritance
+```
+`` A subclass can be created by using "inherit" keyword 
+   followed by parent class name  in the class definition.``
+
+	~Node is the same class defined before.
+
+*linkNode inherit Node 
+mem:
+  linkNode next;
+con: 
+ (string datakey,linkNode next):(datakey)  ~next set of parameters is for the parentclass constructor.
+  here.next = next;
+%
+*%
+
+$main << void
+linkNode n = new linkNode("1",new linkNode());		~ new linkNode() is the default constructor which stores NULL in all members
+write(n.key) ~prints '1'
+```
+Every non-default constructor of subclass must have a parent constructor call( default or non-default). Default constructor requires no parameters.
+This is not valid.
+```
+con:  
+(string datakey,linkNode next)    ~no parent constructor is specified.
+here.next = next;
+%
+```
+
+### Multiple Inheritance
+Multiple inheritance can be done in Tureasy. 
+```
+*A 					~Class A
+mem:
+int data;
+con:
+ (int d)
+  data = d;
+ %
+met:
+ $foo() << void  	 ~foo in A
+ write(data);
+ %
+*%
+
+*B 							~Class B
+mem:
+int data;
+con:
+ (int d)
+  data = d;
+ %
+met:
+ $foo() << void   ~foo in B
+ write(data);
+ %
+*%
+
+*C inherit A,B   			~Class C inherits both A and B.
+	con:
+	``constructors for A and B has to be specified in the same order
+	   as in definition.``
+
+	 (int data1,int data2):(data1):(data2) 
+	  write("Constructor of C is called");
+	 %
+	met:
+	 .$foo() << void 				~ foo method is overridden using '.$' as it is in both A and B;
+	  parent.A.foo();
+	%
+*%
+```
+**The common methods have to be overridden in the child class.**
+(Common methods are the ones with same method name and also same set of parameters.)
+
+This leads to compile-time error
+```
+*C inherit A,B
+ con:
+   (int data1,int data2):(data1):(data2):
+     write("Constructor of C is called");
+   %
+ *%
+
+$main() << void
+C c = new C(1,2);
+c.foo(); 				 ~this method cannot be resolved now.
 ```
 ### Object Equivalence
 
