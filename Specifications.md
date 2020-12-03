@@ -91,41 +91,41 @@ $genFunction (int n) << void
 ```
 # Iterative and conditional statements in tureasy
 ### For Loops
-```c
+```
                     ~for loop in tureasy
 int k,j,a[n];
-for i:[0,n]               ~intialise statement and  range  [0,n] implies 0,n are included,
+for i:(0,n-1)               ~intialise statement and  range  [0,n] implies 0,n are included,
     k=a[i];
     j=i-1;
    /
-for i:[0,n)               -iterates till i<n                            
+for i:(0,n-1)               ~	iterates till i<n                            
     k=a[i];
     j=i-1;
 /
    ```
-by default update statement for for loop in tureasy is incrementation by 1. reversing range of for loop doest work for decrementation.
-```c
-for i:[n,0]     ~loop doesnt run
-  k=a[i];       ~loop doesnt end untill we close it  
+By default update statement for 'for' loop in tureasy is incrementation by 1. Reversing range of 'for' loop doesn't work for decrementation.
 ```
-**dsc** should be used to traverse in reverse order. single line statements should also be closed for ending loop .
-```c
-for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending order
+for i:(n,0)     	~loop doesnt run
+  k=a[i];       	~loop doesnt end untill we close it  
+```
+**desc** should be used to traverse in reverse order.
+```
+for i: desc (0,n-1)     ~keyword  'dsc' should be used to traverse in descending order
   k=a[i];
   /                 ~single line statements should also be closed
 ```   
 ### while loop
-```c
- $main << int
+```
+ $main() << int
     int t1 = 0, t2 = 1, next = 0, n;
     write("Enter a positive number: ");
     read(n);
     
-    write("Fibonacci Series:"+ t1+" " +t2);
+    write("Fibonacci Series:"+ t1+" " +t2+" ");
     next = t1 + t2;
 
-    while  next <= n              ~condition in while loop
-        write(next);
+    while  next < n              ~condition in while loop
+        write(next+" ");				~ all fibonacci numbers less than n
         t1 = t2;
         t2 = next;
         next = t1 + t2;
@@ -134,7 +134,7 @@ for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending ord
 }
 ```
 ### if else statement
-```c
+```
 if k>n
   
   
@@ -149,8 +149,8 @@ if k>n
 ```
 
 ### switch
-```c
-for i:[0,n]
+```
+for i:(0,n-1)
 		read(o,k);
 		
 		switch : o							~ : followed by expression
@@ -168,7 +168,7 @@ for i:[0,n]
 			case 4:
 				printtree(@root);
 				break; 
-			deault:                  
+			default:                  
 				write("check");
 				break;
         /
