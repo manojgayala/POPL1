@@ -566,7 +566,7 @@ $precedenceInOP() << void
     ~ Operator precedence: '*' > '/' > '+'
     result = a+b*c%d-a*b                                        ~ a + ((b*c) % d) - (a*b) therefore result  = -180
     while(d>1)
-        d -= 2;                                                 ~ a = a - 5                     
+        d -= 2;                                                 ~ d = d - 2                     
         result = d**2**3;                                       ~ result = d^(2^3) = d^8
         ~ for exponent operator, associativity: right to left
     /	~ at the end of while loop, result = 1
@@ -586,7 +586,7 @@ operator than it does to the compound-assignment operator. A syntax error occurs
     p == 0 ? p += 1: p += 2; ~ causes a syntax error
     ~ Default Grouping :( p == 0 ? p += 1 : p ) += 2
 ```
-Using paranthesis will clarify clarify the preceding example:
+Using paranthesis will clarify the preceding example:
 ```
     ( p == 0 ) ? ( p += 1 ) : ( p += 2 )
 ```
