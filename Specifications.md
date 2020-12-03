@@ -121,15 +121,13 @@ for i:(0,n-1)               ~	iterates till i<n
     j=i-1;
 /
    ```
-   
-By default update statement for 'for' loop in tureasy is incrementation by 1. Reversing range of 'for' loop doesn't work for decrementation.
 ```
-for i:(n,0)     	~loop doesnt run
-  k=a[i]; /  
+for i:(0,n)     	
+  k=a[i]; 	~ this is invalid because even single line for body must be ended with '/'
 ```
-**desc** should be used to traverse in reverse order.
+By default update statement for 'for' loop in tureasy is incrementation by 1. **desc** should be used to traverse in reverse order.
 ```
-for i: desc (0,n-1)     ~keyword  'dsc' should be used to traverse in descending order
+for i: desc (0,n-1)     ~keyword  'desc' should be used to traverse in descending order
   k=a[i];
   /                 ~single line statements should also be closed
 ```
