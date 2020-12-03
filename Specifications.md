@@ -39,7 +39,7 @@ Also they should not be used for negative numbers. Shifting a negative number or
 ```
 int j = -1;
 j << 1;		~ (-1 << 1) - undefined behavior
-j << a;		~ (1 << -1) - undefined behavior
+1 << j;		~ (1 << -1) - undefined behavior
 ```
 ### Precedence:
 The following code snippet depicts the precedence of some binary operators.
@@ -88,6 +88,24 @@ $genFunction (int n) << void
     write("n = "+n);    ~ prints "n = 3"
     ~ loss of data occurs due to incompatibility in type of actual and formal parameters.
 %
+```
+### Variable Scope:
+```
+    float f = 2.32;
+    $main() << void
+        float f = 1.16;
+        write("Value of f is " + f);       ~ Output : "Value of f is 1.16"
+        ~ if there exists a local variable with same name as global variable, then global variable is shadowed
+    % 
+```
+
+```
+int a = 1;
+while a==1
+    int x = 2;
+    a = 0;
+/
+write(x);   ~ displays "error: 'x' undeclared
 ```
 # Iterative and conditional statements in tureasy
 ### For Loops
