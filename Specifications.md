@@ -304,13 +304,6 @@ if(n1.sameas(n2)).       ~returns true.
 else
  write("No,even they are identical they refer to different objects.");
 ```
-
-
-
-
-
-
-
 # Strings
 
 ### Creations of strings
@@ -503,6 +496,115 @@ for i:[0,n]
     /    
 ```
 
+# Functions
+
+### Functions in Tureasy
+
+Structure of a basic function is as below in Tureasy
+```c
+$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
+   statements;
+   return value; (if the return type is not void)
+%                                                    ~ '%' signifies end of  function
+```
+
+### Pass by value and reference
+
+In tueasy variables can be passed by reference or by value
+```c
+$function (string a) << void
+   a = "I am in function";
+%
+
+$main() << void
+  string a = "I am in main";
+  function(a)                                         ~ variable is passed by reference
+  write(a + "\n");                                    ~ a is "I am in main "
+  function(@a);                                       ~ '@' used to pass arguments by reference
+  write(a + "\n");                                    ~ a is "I am in function"
+%
+```
+
+### Recursion
+
+Recursive functions are written in the below form in Tureasy
+```c
+$fact(int n) << int
+  if n == 1
+    return 1;
+  /
+  else
+    return n*fact(n-1);
+  /
+%
+```
+
+### Pure functions
+
+Tureasy provides a wide range of pure functions
+```c
+$main() << void
+   int x,y;
+   x = 4;
+   y = sqrt(x);
+   write(x,y);
+%
+In the output we have x as 4 (unchanged) and y as 2
+```
+
+### return type of functions
+
+In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
+```c
+$function () << void
+  int i,j=0;
+  i = 1+1;
+  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
+%
+```
+
+### in-built functions
+
+There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
+```c
+$main() << void
+	output_value = function_name(input_values)
+%
+
+All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
+```
+
+### user-defined functions
+
+```c
+$sqrt() << float
+	statements;
+	return output;
+%
+$main() << void
+	
+%
+This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
+```
+
+### Local functions
+The functions can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. Here is an example.
+```
+$main() << void
+	List >> int a = [13,45,5,90,7];			~ List of numbers
+ func s = [@] $()	<< int 					~ @ is for reference and no name is given to function since we have reference
+ 	int sum=0;
+	
+	for i : a
+		sum=sum+a[i];		/
+		
+	return sum;						~ sum is returned
+ %
+ 
+ 	int x = s();				~ no parameters required to call which saves a lot of memory during multiple calls
+	write(x);
+%
+```
 
 # TAGS 
 ### nested tags
@@ -630,93 +732,3 @@ There is actually a possibility of rewriting the code as a[i]=1 for all i's and 
 ``	
 ```
 
-# Functions
-
-### Functions in Tureasy
-
-Structure of a basic function is as below in Tureasy
-```c
-$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
-   statements;
-   return value; (if the return type is not void)
-%                                                    ~ '%' signifies end of  function
-```
-
-### Pass by value and reference
-
-In tueasy variables can be passed by reference or by value
-```c
-$function (string a) << void
-   a = "I am in function";
-%
-
-$main() << void
-  string a = "I am in main";
-  function(a)                                         ~ variable is passed by reference
-  write(a + "\n");                                    ~ a is "I am in main "
-  function(@a);                                       ~ '@' used to pass arguments by reference
-  write(a + "\n");                                    ~ a is "I am in function"
-%
-```
-
-### Recursion
-
-Recursive functions are written in the below form in Tureasy
-```c
-$fact(int n) << int
-  if n == 1
-    return 1;
-  /
-  else
-    return n*fact(n-1);
-  /
-%
-```
-
-### Pure functions
-
-Tureasy provides a wide range of pure functions
-```c
-$main() << void
-   int x,y;
-   x = 4;
-   y = sqrt(x);
-   write(x,y);
-%
-In the output we have x as 4 (unchanged) and y as 2
-```
-
-### return type of functions
-
-In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
-```c
-$function () << void
-  int i,j=0;
-  i = 1+1;
-  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
-%
-```
-
-### in-built functions
-
-There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
-```c
-$main() << void
-	output_value = function_name(input_values)
-%
-
-All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
-```
-
-### user-defined functions
-
-```c
-$sqrt() << float
-	statements;
-	return output;
-%
-$main() << void
-	
-%
-This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
-```
