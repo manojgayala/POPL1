@@ -511,7 +511,7 @@ $main() << void
 %
 ```
 
-### uder-defined functions
+### user-defined functions
 
 ```c
 $sqrt() << float
@@ -520,4 +520,25 @@ $sqrt() << float
 %
 
 This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
+```
+# Operators
+
+### Bit-Wise Operators
+```
+~ getBinary function, given a decimal number, prints it's binary number
+$getBinary(int n) << void
+	int loop;
+	~ loop = 15, for 16 bits value, 15th bit to 0th bit
+	write("Binary number for n = " + n + " is: ");
+	for loop:[15,0]
+		if( (1 <- loop) & n)    ~ '<-' is the left shift operator, while '&' is the bitwise AND operator
+            		write("1"); /
+		else
+			write "0"; /
+    	/
+%
+```
+For n = 15768, above code will output:
+```
+Binary number of n = 15768 is: 0011110100111110
 ```
