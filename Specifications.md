@@ -136,16 +136,11 @@ for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending ord
 ### if else statement
 ```c
 if k>n
-  
-  
-  
-
-
-
-
-
-
-
+    write(k);/
+ else if k<n
+    write(k);/
+ else
+    write("0");/
 ```
 
 ### switch
