@@ -265,38 +265,29 @@ $main() << void
 ### Creations of strings
 
 Strings are declared using keyword **string**.
-
 ```
-string msg = 'Hello World';
-~strings can have spaces
-write(msg);
-~ prints 'Hello World'
+string msg = "Hello World";			~strings can have spaces
+write(msg);					~ prints 'Hello World'
 ```
-
-
 ### Accessing characters in a string
-We can access individual characters of a string by **indexing** or defining the **range of characters** using slicing.
-If we access an element out of range our program will raise an ` IndexError `
-
-
+Individual characters of a string can be accessed by **indexing** or defining the **range of characters** using slicing.
+Accessing an element out of range in program will raise an ` IndexError `
  ``` 
- string str = 'Language design';
-  write('str[2] = ',str[2]);  ~prints the third character 
+ string str = "Language design";
+  write("str[2] = "+str[2]);  ~prints the third character 
   
-  write('str[1:6]= ',str[1:6]);  ~prints 2nd to 7th
- ~note in languages like python str[1:6] prints 2nd char to 6th char
+  write("str[1:6]= "+str[1:6]);  ~prints 2nd to 7th		~ it includes all the characters within bounds
 
-write('str[-2]= ',str[-2]); ~prints the last 2nd character
-```
+write("str[-2]= "+str[-2]); 					~prints the last 2nd character
 
-when we run the above program, we get the following output:
-```
+``
+Output:
 str[2] = n
 str[1:6]= anguag
 str[-2]= g 
+``
 ```
-
-if we slice the string array incorrectly we will raise an ` RangeError `
+Incorrect slicing of string will raise an ` RangeError `
 ```
 write(str[12:10]);
 >>> RangeError: range specified is invalid
@@ -305,64 +296,33 @@ write(str[10:-10]) ~this is wrong as length of string is 16
 >>> RangeError: range specified is invalid
 ```
 
-### string operations
+### String operations
 
-#### concatenation of strings
-
-we can use + operator to join strings together and  * operator can be used to make multiple copies of a string. 
-
++ operator is used to join strings together and  * operator can be used to make multiple copies of a string. 
 ```
-string state = 'TS';
-string number = '2345';
+string state = "TS";
+string number = "2345";
 
-write('Number plate = ', state+number);
+write("Number plate = "+ state+number);
 
-string repeat = 'Hi';
+string repeat = "Hi";
 write(repeat*3);
-```
-above code will output
-```
+``
+Output:
 Number plate = TS2345
 HiHiHi
+``
 ```
-
-we should be cautious about where you want blank spaces to occur by placing single quotation marks between strings as shown below.
+Existence of substring within string can be checked with ':' operator.
 ```
-string msg = 'Welcome' + ' ' + 'everyone';
-
-string repeat = ('Hi'+' ')*3;
+"some" : "cumbersome"		~ Output: true
+"right" !: "Alright"		~ Output: false	(it means not a substring) 
 ```
-### substring checking
-we can test if a substring exists within a string or not, using ` : ` symbol. 
-```
->>> 'some' : 'cumbersome'
->True
-~ as the word is found, it returns boolean True
+Note: the above method is case sensetive
 
->>> 'right' !: 'Alright'
->False 
-~ the string 'right' is in 'Alright' but the query was !: which is negation
-
-```
-
-> Note: the above method is case sensetive
+### Standard String functions
 
 
-### some built-in functions
-
-swapping strings
-### string_swap
-```c
-$swap (string @st1, string @st2) << void
-  temp=st1;
-  st1=st2;
-  st2=temp;
- %
-```
-library function **strswap** can be used instead.
-```c
-strswap(@st1,@st2);       ~parameters are two strings
-```
 # Classes and Objects
 ### Constructors
 Multiple constructors can be made for a class.
@@ -521,39 +481,14 @@ c.foo(); 				 ~this method cannot be resolved now.
 
 Unlike primitive datatypes,`==` operator cannot be used to compare two different objects.
 ```
-``Classes Node,Node2 are created with same contents.
-*Node 
-mem:
- int v;
-/
-con:
- (int v): 
-   v.here = v;
- %
-*%
-*Node2 
-mem:
- int c;
-/
-con:
- (int c): 
-   c.here = c;
- %
-*%
-```
-
-
-
-
-```
+			~Classes Node,Node2 are created with same contents.
 $main << void
-  Node a = new Node(4); ~instance of Node
+  Node a = new Node(4); ~instance of Node		~ as defined above
   Node b = new Node(4); ~instance of Node
-  Node c = new NodeB(4); ~instance of Node2
-  write(a==c); ~this gives a compilation error as they are of different classes.
-  write(a==b); ~this prints false;
+  Node2 c = new NodeB(4); ~instance of Node2		~ similar class
+  write(a==c); 				~this gives a compilation error as they are of different classes.
+  write(a==b); 				~this prints false;
 %
-
 ```
 Use `sameas` method to compare contents of two objects.This method can only be used if both objects are of the same class.
 ```
