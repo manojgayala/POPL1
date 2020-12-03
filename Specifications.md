@@ -107,7 +107,7 @@ while a==1
 /
 write(x);   ~ displays "error: 'x' undeclared
 ```
-# Iterative and conditional statements in tureasy
+# I/O handling and Control Flow
 ### For Loops
 ```
                     ~for loop in tureasy
