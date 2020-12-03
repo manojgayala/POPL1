@@ -346,10 +346,41 @@ Existence of substring within string can be checked with ':' operator.
 "some" : "cumbersome"		~ Output: true
 "right" !: "Alright"		~ Output: false	(it means not a substring) 
 ```
-Note: the above method is case sensetive
+> Note: the above method is case sensetive
 
 ### Standard String functions
+```
+strcmpr(@str1,@str2)	~ return -1 or 0 or +1 for str1  <, ==, >  str2 respectively
+~the above function can be overloded by passing another argument as follows
+strcmpr(@str1,@str2,n)	~ same function as above, but compares only first n characters
 
+
+strcpy(@str1,@str2)		~copies the contents in str2 to str1
+~the above function can be overloaded with more constraints
+strcpy(@str1,@str2,n)	~copies at most n characters of str2 to str1
+
+
+~the functions mentioned below are to be applied on string objects
+ 
+strReplace
+
+strSplitOn
+
+strCombine
+
+StrWordCount	//by default outputs size of string, else counts specific word
+
+```
+
+
+
+### Escape sequences
+
+**optional**
+
+### Formatting strings
+
+**optional**
 
 # Classes and Objects
 ### Constructors
