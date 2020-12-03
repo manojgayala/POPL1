@@ -542,3 +542,16 @@ For n = 15768, above code will output:
 ```
 Binary number of n = 15768 is: 0011110100111110
 ```
+Left shift / Right shift beyond the size of the variable will lead to undefined behavior.
+```
+int j = 1;  
+j << 33; j>> 33;    //incorrect
+```
+Here, variable “j” is of type integer where its size is 32bits. When we try to shift it to 33rd bit position we will get an error.
+
+Also they should not be used for negative numbers. We can neither shift a negative number nor get a number shifted by negative number.
+```
+int j = -1;
+j << 1;	~ (-1 << 1) - undefined behavior
+j << a;	~ (1 << -1) - undefined behavior
+```
