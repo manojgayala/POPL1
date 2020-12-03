@@ -92,6 +92,306 @@ n = s;
 s = n;
 >>> error: cannot assign int to string
 ```
+# Iterative and conditional statements in tureasy
+
+### For Loops
+
+```c
+                    ~for loop in tureasy
+int k,j,a[n];
+for i:[0,n]               ~intialise statement and  range  [0,n] implies 0,n are included,
+    k=a[i];
+    j=i-1;
+   /
+for i:[0,n)               -iterates till i<n                            
+    k=a[i];
+    j=i-1;
+/
+   ```
+by default update statement for for loop in tureasy is incrementation by 1. reversing range of for loop doest work for decrementation.
+```c
+for i:[n,0]     ~loop doesnt run
+  k=a[i];       ~loop doesnt end untill we close it  
+```
+**dsc** should be used to traverse in reverse order. single line statements should also be closed for ending loop .
+```c
+for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending order
+  k=a[i];
+  /                 ~single line statements should also be closed
+```   
+### while loop
+```c
+ $main << int
+    int t1 = 0, t2 = 1, next = 0, n;
+    write("Enter a positive number: ");
+    read(n);
+    
+    write("Fibonacci Series:"+ t1+" " +t2);
+    next = t1 + t2;
+
+    while  next <= n              ~condition in while loop
+        write(next);
+        t1 = t2;
+        t2 = next;
+        next = t1 + t2;
+    /
+    return 0;
+}
+```
+### if else statement
+```c
+if k>n
+  
+  
+  
+
+
+
+
+
+
+
+```
+
+### switch
+```c
+for i:[0,n]
+		read(o,k);
+		
+		switch : o							~ : followed by expression
+			case 1:
+				insert(@root,k);
+				break;
+
+			case 2:
+				delete(@root,k);
+				break;
+			 
+			case 3:
+				t=find(root,k,0);
+				break;  
+			case 4:
+				printtree(@root);
+				break; 
+			deault:                  
+				write("check");
+				break;
+        /
+    /    
+```
+
+# Functions
+
+### Functions in Tureasy
+
+Structure of a basic function is as below in Tureasy
+```c
+$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
+   statements;
+   return value; (if the return type is not void)
+%                                                    ~ '%' signifies end of  function
+```
+
+### Pass by value and reference
+
+In tueasy variables can be passed by reference or by value
+```c
+$function (string a) << void
+   a = "I am in function";
+%
+
+$main() << void
+  string a = "I am in main";
+  function(a)                                         ~ variable is passed by reference
+  write(a + "\n");                                    ~ a is "I am in main "
+  function(@a);                                       ~ '@' used to pass arguments by reference
+  write(a + "\n");                                    ~ a is "I am in function"
+%
+```
+
+### Recursion
+
+Recursive functions are written in the below form in Tureasy
+```c
+$fact(int n) << int
+  if n == 1
+    return 1;
+  /
+  else
+    return n*fact(n-1);
+  /
+%
+```
+
+### Pure functions
+
+Tureasy provides a wide range of pure functions
+```c
+$main() << void
+   int x,y;
+   x = 4;
+   y = sqrt(x);
+   write(x,y);
+%
+In the output we have x as 4 (unchanged) and y as 2
+```
+
+### return type of functions
+
+In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
+```c
+$function () << void
+  int i,j=0;
+  i = 1+1;
+  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
+%
+```
+
+### in-built functions
+
+There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
+```c
+$main() << void
+	output_value = function_name(input_values)
+%
+
+All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
+```
+
+### user-defined functions
+
+```c
+$sqrt() << float
+	statements;
+	return output;
+%
+$main() << void
+	
+%
+This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
+```
+
+### Local functions
+The functions can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. Here is an example.
+```
+$main() << void
+	List >> int a = [13,45,5,90,7];			~ List of numbers
+ func s = [@] $()	<< int 					~ @ is for reference and no name is given to function since we have reference
+ 	int sum=0;
+	
+	for i : a
+		sum=sum+a[i];		/
+		
+	return sum;						~ sum is returned
+ %
+ 
+ 	int x = s();				~ no parameters required to call which saves a lot of memory during multiple calls
+	write(x);
+%
+```
+# Strings
+
+### Creations of strings
+
+Strings are declared using keyword **string**.
+
+```
+string msg = 'Hello World';
+~strings can have spaces
+write(msg);
+~ prints 'Hello World'
+```
+
+
+### Accessing characters in a string
+We can access individual characters of a string by **indexing** or defining the **range of characters** using slicing.
+If we access an element out of range our program will raise an ` IndexError `
+
+
+ ``` 
+ string str = 'Language design';
+  write('str[2] = ',str[2]);  ~prints the third character 
+  
+  write('str[1:6]= ',str[1:6]);  ~prints 2nd to 7th
+ ~note in languages like python str[1:6] prints 2nd char to 6th char
+
+write('str[-2]= ',str[-2]); ~prints the last 2nd character
+```
+
+when we run the above program, we get the following output:
+```
+str[2] = n
+str[1:6]= anguag
+str[-2]= g 
+```
+
+if we slice the string array incorrectly we will raise an ` RangeError `
+```
+write(str[12:10]);
+>>> RangeError: range specified is invalid
+
+write(str[10:-10]) ~this is wrong as length of string is 16
+>>> RangeError: range specified is invalid
+```
+
+### string operations
+
+#### concatenation of strings
+
+we can use + operator to join strings together and  * operator can be used to make multiple copies of a string. 
+
+```
+string state = 'TS';
+string number = '2345';
+
+write('Number plate = ', state+number);
+
+string repeat = 'Hi';
+write(repeat*3);
+```
+above code will output
+```
+Number plate = TS2345
+HiHiHi
+```
+
+we should be cautious about where you want blank spaces to occur by placing single quotation marks between strings as shown below.
+```
+string msg = 'Welcome' + ' ' + 'everyone';
+
+string repeat = ('Hi'+' ')*3;
+```
+### substring checking
+we can test if a substring exists within a string or not, using ` : ` symbol. 
+```
+>>> 'some' : 'cumbersome'
+>True
+~ as the word is found, it returns boolean True
+
+>>> 'right' !: 'Alright'
+>False 
+~ the string 'right' is in 'Alright' but the query was !: which is negation
+
+```
+
+> Note: the above method is case sensetive
+
+
+### some built-in functions
+
+swapping strings
+### string_swap
+```c
+$swap (string @st1, string @st2) << void
+  temp=st1;
+  st1=st2;
+  st2=temp;
+ %
+```
+library function **strswap** can be used instead.
+```c
+strswap(@st1,@st2);       ~parameters are two strings
+```
 # Classes and Objects 
 ### Constructors
 
@@ -304,308 +604,6 @@ if(n1.sameas(n2)).       ~returns true.
 else
  write("No,even they are identical they refer to different objects.");
 ```
-# Strings
-
-### Creations of strings
-
-Strings are declared using keyword **string**.
-
-```
-string msg = 'Hello World';
-~strings can have spaces
-write(msg);
-~ prints 'Hello World'
-```
-
-
-### Accessing characters in a string
-We can access individual characters of a string by **indexing** or defining the **range of characters** using slicing.
-If we access an element out of range our program will raise an ` IndexError `
-
-
- ``` 
- string str = 'Language design';
-  write('str[2] = ',str[2]);  ~prints the third character 
-  
-  write('str[1:6]= ',str[1:6]);  ~prints 2nd to 7th
- ~note in languages like python str[1:6] prints 2nd char to 6th char
-
-write('str[-2]= ',str[-2]); ~prints the last 2nd character
-```
-
-when we run the above program, we get the following output:
-```
-str[2] = n
-str[1:6]= anguag
-str[-2]= g 
-```
-
-if we slice the string array incorrectly we will raise an ` RangeError `
-```
-write(str[12:10]);
->>> RangeError: range specified is invalid
-
-write(str[10:-10]) ~this is wrong as length of string is 16
->>> RangeError: range specified is invalid
-```
-
-### string operations
-
-#### concatenation of strings
-
-we can use + operator to join strings together and  * operator can be used to make multiple copies of a string. 
-
-```
-string state = 'TS';
-string number = '2345';
-
-write('Number plate = ', state+number);
-
-string repeat = 'Hi';
-write(repeat*3);
-```
-above code will output
-```
-Number plate = TS2345
-HiHiHi
-```
-
-we should be cautious about where you want blank spaces to occur by placing single quotation marks between strings as shown below.
-```
-string msg = 'Welcome' + ' ' + 'everyone';
-
-string repeat = ('Hi'+' ')*3;
-```
-### substring checking
-we can test if a substring exists within a string or not, using ` : ` symbol. 
-```
->>> 'some' : 'cumbersome'
->True
-~ as the word is found, it returns boolean True
-
->>> 'right' !: 'Alright'
->False 
-~ the string 'right' is in 'Alright' but the query was !: which is negation
-
-```
-
-> Note: the above method is case sensetive
-
-
-### some built-in functions
-
-swapping strings
-### string_swap
-```c
-$swap (string @st1, string @st2) << void
-  temp=st1;
-  st1=st2;
-  st2=temp;
- %
-```
-library function **strswap** can be used instead.
-```c
-strswap(@st1,@st2);       ~parameters are two strings
-```
-
-# Iterative and conditional statements in tureasy
-
-### For Loops
-
-```c
-                    ~for loop in tureasy
-int k,j,a[n];
-for i:[0,n]               ~intialise statement and  range  [0,n] implies 0,n are included,
-    k=a[i];
-    j=i-1;
-   /
-for i:[0,n)               -iterates till i<n                            
-    k=a[i];
-    j=i-1;
-/
-   ```
-by default update statement for for loop in tureasy is incrementation by 1. reversing range of for loop doest work for decrementation.
-```c
-for i:[n,0]     ~loop doesnt run
-  k=a[i];       ~loop doesnt end untill we close it  
-```
-**dsc** should be used to traverse in reverse order. single line statements should also be closed for ending loop .
-```c
-for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending order
-  k=a[i];
-  /                 ~single line statements should also be closed
-```   
-### while loop
-```c
- $main << int
-    int t1 = 0, t2 = 1, next = 0, n;
-    write("Enter a positive number: ");
-    read(n);
-    
-    write("Fibonacci Series:"+ t1+" " +t2);
-    next = t1 + t2;
-
-    while  next <= n              ~condition in while loop
-        write(next);
-        t1 = t2;
-        t2 = next;
-        next = t1 + t2;
-    /
-    return 0;
-}
-```
-### if else statement
-```c
-if k>n
-  
-  
-  
-
-
-
-
-
-
-
-```
-
-### switch
-```c
-for i:[0,n]
-		read(o,k);
-		
-		switch : o							~ : followed by expression
-			case 1:
-				insert(@root,k);
-				break;
-
-			case 2:
-				delete(@root,k);
-				break;
-			 
-			case 3:
-				t=find(root,k,0);
-				break;  
-			case 4:
-				printtree(@root);
-				break; 
-			deault:                  
-				write("check");
-				break;
-        /
-    /    
-```
-
-# Functions
-
-### Functions in Tureasy
-
-Structure of a basic function is as below in Tureasy
-```c
-$function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
-   statements;
-   return value; (if the return type is not void)
-%                                                    ~ '%' signifies end of  function
-```
-
-### Pass by value and reference
-
-In tueasy variables can be passed by reference or by value
-```c
-$function (string a) << void
-   a = "I am in function";
-%
-
-$main() << void
-  string a = "I am in main";
-  function(a)                                         ~ variable is passed by reference
-  write(a + "\n");                                    ~ a is "I am in main "
-  function(@a);                                       ~ '@' used to pass arguments by reference
-  write(a + "\n");                                    ~ a is "I am in function"
-%
-```
-
-### Recursion
-
-Recursive functions are written in the below form in Tureasy
-```c
-$fact(int n) << int
-  if n == 1
-    return 1;
-  /
-  else
-    return n*fact(n-1);
-  /
-%
-```
-
-### Pure functions
-
-Tureasy provides a wide range of pure functions
-```c
-$main() << void
-   int x,y;
-   x = 4;
-   y = sqrt(x);
-   write(x,y);
-%
-In the output we have x as 4 (unchanged) and y as 2
-```
-
-### return type of functions
-
-In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function
-```c
-$function () << void
-  int i,j=0;
-  i = 1+1;
-  return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
-%
-```
-
-### in-built functions
-
-There are a wide range of in-built functions in Tureasy. The procedure of calling them is as follows
-```c
-$main() << void
-	output_value = function_name(input_values)
-%
-
-All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
-```
-
-### user-defined functions
-
-```c
-$sqrt() << float
-	statements;
-	return output;
-%
-$main() << void
-	
-%
-This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
-```
-
-### Local functions
-The functions can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. Here is an example.
-```
-$main() << void
-	List >> int a = [13,45,5,90,7];			~ List of numbers
- func s = [@] $()	<< int 					~ @ is for reference and no name is given to function since we have reference
- 	int sum=0;
-	
-	for i : a
-		sum=sum+a[i];		/
-		
-	return sum;						~ sum is returned
- %
- 
- 	int x = s();				~ no parameters required to call which saves a lot of memory during multiple calls
-	write(x);
-%
-```
-
 # TAGS 
 ### nested tags
 Tags can be nested for better suggestions
