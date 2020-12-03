@@ -103,6 +103,7 @@ for i:(0,n-1)               ~	iterates till i<n
     j=i-1;
 /
    ```
+   
 By default update statement for 'for' loop in tureasy is incrementation by 1. Reversing range of 'for' loop doesn't work for decrementation.
 ```
 for i:(n,0)     	~loop doesnt run
@@ -135,19 +136,28 @@ for i: desc (0,n-1)     ~keyword  'dsc' should be used to traverse in descending
 ```
 ### if else statement
 ```
+int m;
 if k>n
+    write(k);/
+ else if k<n
+    write(k);/
+ else
+    write("0");/
+  ```  
   
-  
-  
-
-
-
-
-
-
+All single line statements or loops should be closed with '/'
 
 ```
+for i:(0,n-2) 
+    k[i]=a[i]+a[i+1];    ~this executes below statements also
+write(k[n-1]);
 
+
+for i:(0,n-2)
+    k[i]=a[i]+a[i+1];
+  /                 ~single line statements should be closed
+write(k[n-1]);
+```   
 ### switch
 ```
 for i:(0,n-1)
