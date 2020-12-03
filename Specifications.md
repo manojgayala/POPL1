@@ -555,3 +555,38 @@ int j = -1;
 j << 1;		~ (-1 << 1) - undefined behavior
 j << a;		~ (1 << -1) - undefined behavior
 ```
+### Precedence
+The following code snippet depicts the precedence of some binary operators.
+```
+$precedenceInOP() << void
+    int a = 20, b = 10, c = 15, d = 5, result;
+    result = a + b * c / d;                                     ~ result = 20 + (( 10 * 15 ) / 5) = 50
+    ~ if d equals 0, then this causes run-time error
+    result = (a + b) * (c / d);                                 ~ result = (30) * (15/5) = 90
+    ~ Operator precedence: '*' > '/' > '+'
+    result = a+b*c%d-a*b                                        ~ a + ((b*c) % d) - (a*b) therefore result  = -180
+    while(d>1)
+        d -= 2;                                                 ~ a = a - 5                     
+        result = d**2**3;                                       ~ result = d^(2^3) = d^8
+        ~ for exponent operator, associativity: right to left
+    /	~ at the end of while loop, result = 1
+%
+```
+Statements such as the following cause error:
+```
+    int a, b, c = 3;
+    a + b = c*c;    ~ this is a semantic error
+    <<< error: lvalue required as left operand of assignment
+```
+In this expression, the equality operator (==) has the highest precedence, followed by conditional-expression operator (? :). So p == 0 is 
+grouped as an operand. Its first operand is p == 0, and its second operand is p += 1. However, the last operand of the conditional-expression 
+operator is considered to be p rather than p += 2, since this occurrence of p binds more closely to the conditional-expression 
+operator than it does to the compound-assignment operator. A syntax error occurs because += 2 does not have a left-hand operand.
+```
+    p == 0 ? p += 1: p += 2; ~ causes a syntax error
+    ~ Default Grouping :( p == 0 ? p += 1 : p ) += 2
+```
+Using paranthesis will clarify clarify the preceding example:
+```
+    ( p == 0 ) ? ( p += 1 ) : ( p += 2 )
+```
