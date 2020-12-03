@@ -401,6 +401,107 @@ we can test if a substring exists within a string or not, using ` : ` symbol.
 
 ### some built-in functions
 
+swapping strings
+### string_swap
+```c
+$swap (string @st1, string @st2) << void
+  temp=st1;
+  st1=st2;
+  st2=temp;
+ %
+```
+library function **strswap** can be used instead.
+```c
+strswap(@st1,@st2);       ~parameters are two strings
+```
+
+# Iterative and conditional statements in tureasy
+
+### For Loops
+
+```c
+                    ~for loop in tureasy
+int k,j,a[n];
+for i:[0,n]               ~intialise statement and  range  [0,n] implies 0,n are included,
+    k=a[i];
+    j=i-1;
+   /
+for i:[0,n)               -iterates till i<n                            
+    k=a[i];
+    j=i-1;
+/
+   ```
+by default update statement for for loop in tureasy is incrementation by 1. reversing range of for loop doest work for decrementation.
+```c
+for i:[n,0]     ~loop doesnt run
+  k=a[i];       ~loop doesnt end untill we close it  
+```
+**dsc** should be used to traverse in reverse order. single line statements should also be closed for ending loop .
+```c
+for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending order
+  k=a[i];
+  /                 ~single line statements should also be closed
+```   
+### while loop
+```c
+ $main << int
+    int t1 = 0, t2 = 1, next = 0, n;
+    write("Enter a positive number: ");
+    read(n);
+    
+    write("Fibonacci Series:"+ t1+" " +t2);
+    next = t1 + t2;
+
+    while  next <= n              ~condition in while loop
+        write(next);
+        t1 = t2;
+        t2 = next;
+        next = t1 + t2;
+    /
+    return 0;
+}
+```
+###if else statement
+```c
+if k>n
+  
+  
+  
+
+
+
+
+
+
+
+```
+
+###switch
+```c
+for i:[0,n]
+		read(o,k);
+		
+		switch : o							~ : followed by expression
+			case 1:
+				insert(@root,k);
+				break;
+
+			case 2:
+				delete(@root,k);
+				break;
+			 
+			case 3:
+				t=find(root,k,0);
+				break;  
+			case 4:
+				printtree(@root);
+				break; 
+			deault:                  
+				write("check");
+				break;
+        /
+    /    
+```
 
 
 # TAGS 
