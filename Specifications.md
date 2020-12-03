@@ -510,7 +510,7 @@ There is actually a possibility of rewriting the code as a[i]=1 for all i's and 
 
 ### Functions in Tureasy
 
-Structure of  function is as below in Tureasy
+Structure of a basic function is as below in Tureasy
 ```c
 $function_name() << data_type_of_return_value        ~ '$' signifies the start of a function
    statements;
@@ -580,6 +580,8 @@ There are a wide range of in-built functions in Tureasy. The procedure of callin
 $main() << void
 	output_value = function_name(input_values)
 %
+
+All the in-built functions in Tureasy follow pure functional programming i.e., they don't modify the input to give the output.
 ```
 
 ### user-defined functions
@@ -589,6 +591,8 @@ $sqrt() << float
 	statements;
 	return output;
 %
-
+$main() << void
+	
+%
 This is not the correct procedure because sqrt function is already an inbuilt function in Tureasy. Hence the function should be overridden
 ```
