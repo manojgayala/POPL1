@@ -461,7 +461,7 @@ for i:[0,n] dsc     ~keyword  'dsc' should be used to traverse in descending ord
     return 0;
 }
 ```
-###if else statement
+### if else statement
 ```c
 if k>n
   
@@ -476,7 +476,7 @@ if k>n
 
 ```
 
-###switch
+### switch
 ```c
 for i:[0,n]
 		read(o,k);
