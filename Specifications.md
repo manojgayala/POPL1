@@ -636,7 +636,7 @@ for j : (1,n-1)
 #!greedy_algorithm	~ error is shown while compilation
 #!max_events
 ```
-### using tags for constraints
+### Using tags for constraints
 Constraints can be set on some parameters using tags and that can be used for correctness of algorithm's execution.
 ```
 int vis[n]; 				~ whether visited or not 
@@ -671,7 +671,7 @@ This tip signifies that vis[i]=1 must be before neighbors.add(i) which will ensu
 ``
 ```
 
-### tags for parallelism
+### Tags for parallelism
 Parallel codes can be suggested to users for better hardware use.
 ```
 #loop	
@@ -683,7 +683,7 @@ Tip : {forAsync i : (0,6)
 ``	
 #!loop
 ```
-### tags for memory optimisation
+### Tags for memory optimisation
 The tags suggest ways to modify code for proper usage of memory.
 ```
 ~ Recursive insertion in Binary Search Tree
