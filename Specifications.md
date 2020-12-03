@@ -108,6 +108,30 @@ while a==1
 write(x);   ~ displays "error: 'x' undeclared
 ```
 # I/O handling and Control Flow
+
+### Input and output   
+read is used for taking input; and write is used for printing output
+parameters of read is variable name
+```
+$main << void
+  int n,w;
+  read(n);			~taking single variable as input
+  read(n,w);			~taking multiple variables separated by','
+  write("value of n is " + n)     ~printing output
+%
+```
+### file handling
+```
+$main << void
+	FILE @f;
+	read(f);
+	fopen f
+  readf: f:(t);
+	k=2*t;
+	writef: f: (k);
+	fclose;
+%
+```
 ### For Loops
 ```
                     ~for loop in tureasy
