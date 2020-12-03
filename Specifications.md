@@ -186,7 +186,7 @@ $ add(int a,int b) << int        ~ '$' signifies the start of a function
 ### return type of functions
 
 In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function. This example do not conform to Tureasy.
-```c
+```
 $function () << void
   int i,j=0;
   i = 1+1;
@@ -195,7 +195,7 @@ $function () << void
 ```
 ### Pass by value or reference
 In Tureasy variables can be passed by reference or by value
-```c
+```
 $ sample (string a) << void
    a = "I am in function";
 %
