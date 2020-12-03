@@ -1,6 +1,5 @@
 # Operators
-
-### Bit-Wise Operators
+### Bit-Wise Operators:
 ```
 ~ getBinary function, given a decimal number, prints it's binary number
 $getBinary(int n) << void
@@ -21,9 +20,10 @@ Binary number of n = 15768 is: 0011110100111110
 ```
 Left shift / Right shift beyond the size of the variable will lead to undefined behavior.
 ```
-	int j = 1;  
-	j << 33; j>> 33;	~ incorrect
-	~ variable 'j' is of type integer where its size is 32bits. So, when we try to shift it to 33rd bit position we will get an error.
+int j = 1;  
+j << 33; j>> 33;	~ incorrect
+~ variable 'j' is of type integer where its size is 32bits. 
+~ So, when we try to shift it to 33rd bit position we will get an error.
 ```
 
 Also they should not be used for negative numbers. We can neither shift a negative number nor get a number shifted by negative number.
@@ -32,7 +32,7 @@ int j = -1;
 j << 1;		~ (-1 << 1) - undefined behavior
 j << a;		~ (1 << -1) - undefined behavior
 ```
-### Precedence
+### Precedence:
 The following code snippet depicts the precedence of some binary operators.
 ```
 $precedenceInOP() << void
@@ -56,14 +56,14 @@ Statements such as the following cause error:
     >>> error: lvalue required as left operand of assignment
 ```
 ```
-    p == 0 ? p += 1: p += 2; ~ causes a syntax error
-    ``
-   	Precedence: (==) > (? :). So, its first operand is p == 0, and its second operand is p += 1. 
-	However, the last operand is considered to be p rather than p += 2, since occurrence of p binds 
-	more closely to the conditional-expression operator than it does to the assignment operator.
-	A syntax error occurs because += 2 does not have a left-hand operand. 
-	Default Grouping :( p == 0 ? p += 1 : p ) += 2
-    ``
+p == 0 ? p += 1: p += 2; 	~ causes a syntax error
+``
+Precedence: (==) > (? :). So, its first operand is p == 0, and its second operand is p += 1. 
+The last operand is considered to be p rather than p += 2, since occurrence of p binds 
+more closely to the conditional-expression operator than it does to the assignment operator.
+This results in a syntax error as += 2 does not have a left-hand operand.
+Default Grouping :( p == 0 ? p += 1 : p ) += 2
+``
 ```
 Using paranthesis will clarify the preceding example:
 ```
