@@ -109,28 +109,31 @@ write(x);   ~ displays "error: 'x' undeclared
 ```
 # I/O handling and Control Flow
 
-### Input and output   
-read is used for taking input; and write is used for printing output
-parameters of read is variable name
+### Console I/O  
 ```
 $main << void
   int n,w;
   read(n);			~taking single variable as input
-  read(n,w);			~taking multiple variables separated by','
+  read(n,w);			~taking multiple variables separated by',' as inputs
   write("value of n is " + n)     ~printing output
 %
 ```
-### file handling
+### File handling
 ```
-$main << void
-	FILE @f;
-	read(f);
-	fopen f
-  readf: f:(t);
-	k=2*t;
-	writef: f: (k);
-	fclose;
-%
+	FILE f;
+	string path;
+	read(path);
+	f.open(path,"r");			~ opens the file in read mode
+ 	string s = f.readLine();		~ reads the first line of file
+	f.close();
+```
+The below code do not confirm to Tureasy.
+```
+	f.open(path,"w");
+	f.write("Hi Universe!!");		~ this writes into the file
+	string s = f.readLine();			~ this is invalid because we have opened in write mode, so we cannot dynamically read
+	write(s);
+	f.close();
 ```
 ### For Loops
 ```
@@ -145,6 +148,12 @@ for i:(0,n-1)               ~	iterates till i<n
     j=i-1;
 /
    ```
+The for loop can be used to traverse a list or an array.
+```
+int sum =0;
+for i : frequency			~ a list
+	sum = sum +i;		/	~ i contains the value of the element in list 
+```
 
 By default update statement for 'for' loop in tureasy is incrementation by 1. **desc** should be used to traverse in reverse order.
 ```
@@ -181,30 +190,28 @@ write(k[n-1]);           ~this will throw an error.
 ```
 
 
-### break and continue
-  **break** is used to end loop imediately
-  **continue** statement skips the current iteration of the loop and continues with the next iteration
+### Continue statement
+  **continue** statement skips the current iteration of the loop and continues with the next iteration. The below code runs infinitely because of wrong position of continue statement.
   ```
+  int i=0,count=0;
+  while i<10
+  	count +=i;
+	if i==5
+  		continue;	/			~ there is no increment beyond 5 and leads to infinite loop
+	i= i+1;
+  /
   
-  for i:(0,n)
-      if a[i]<0
-        continue;  /        ~skips negative numbers
-      if a[i]=0
-          break;   /        ~exits out of loop if encounters 0
-      s=s+a[i];
-      /
    ```    
 ### if else statement
 ```
 int m;
-if k>n 
+if k>n && k!=2*n		~ checks both conditions 
     write(k);/
  else if k<n
     write(k);/
  else
     write("0");/
   ```  
-  
 ### switch
 ```
 for i:(0,n-1)
@@ -395,31 +402,25 @@ Existence of substring within string can be checked with ':' operator.
 ```
 > Note: the above method is case sensetive
 
-### Standard String functions
-Some of functions metioned below takes the addresses of strings and does their respective operations on them.
+### Some Standard String functions
 ```
-strcmpr(@str1,@str2);	~ return -1 or 0 or +1 for str1  <, ==, >  str2 respectively
-~the above function can be overloded by passing another argument as follows
-strcmpr(@str1,@str2,n);	~ same function as above, but compares only first n characters
+string s;
+s.cmp(str2);	~ return -1 or 0 or +1 for str1  <, ==, >  str2 respectively
+								~the above function can be overloded by passing another argument as follows
+s.cmp(str2,n);	~ same function as above, but compares only first n characters
 
-
-strcpy(@str1,@str2);		~copies the contents in str2 to str1
-~the above function can be overloaded with more constraints
-strcpy(@str1,@str2,n);	~copies at most n characters of str2 to str1
+List >> string ls = s.split(" ");			~ divides the string with delimiter as " ", any delimiter can be used as parameter
+											~ returns a List 
 ```
 
-
-Functions shown here apply on string objects
 ``` 
-object.strReplace("str1","str2");	~Tries to find str1 in object, if found replaces it with str2
+string object;
+object.Replace("str1","str2");	~Tries to find str1 in object, if found replaces it with str2
 
-object.strSplitOn("CharToSplitOn");	~this returns a list of strings obtained by splitting on the specifed character
-
-object.strFind("str");	~Searches for "str" in object, if foud returns indexPosition else returns -1
+object.Find("str");	~Searches for "str" in object, if foud returns indexPosition else returns -1
 
 object.WordCount("str");	~outputs the count of specific string in object
-~if str not passesd, the functions outputs length of string by default
-
+				~if str not passesd, the functions outputs length of string by default
 ```
 
 
@@ -713,7 +714,8 @@ while compilation, it checks the contents of .tcnf file for authentication
 ``
 ```
 ### Limitations in tips
-Here is an example which do not confirm to specification. The tags might not give tips for such cases.
+Here are the examples which do not confirm to specification.
+The tags might not give tips for such cases.
 ```
 a[0]=1;
 for i : (1,n-1)
@@ -722,15 +724,11 @@ for i : (1,n-1)
 There is actually a possibility of rewriting the code as a[i]=1 for all i's and use parallelism. But, the tags cannot give that tip.
 ``	
 ```
- Turzer identifies the constraints/contexts by processing the tags provided by the programmer
-       and the processed tag is identified through a vocabulary corpus used by tureasy.
-       So programmer has to name the tags appropriatly.
-       Irrelavent tags may not help the turzer to identify or even may lead to misleading tips.
- 
+Inappropriate tags might give misleading tips.
  ```
- ~Here the user wants to check whether length of string exceeds 6.
+ ~Here the user wants to ensure that the length of string is less than 6.
  
- #string<6.             ~But this tag is processed to check whether the value of string exceeds 6.
+ #string<6.             ~But this tag is processed to ensure type casted value is less than 6.
     String s = "1234". ~ line 2
     char[] a;
     char k = 'a';
