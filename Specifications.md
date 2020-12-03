@@ -89,7 +89,7 @@ $genFunction (int n) << void
     ~ loss of data occurs due to incompatibility in type of actual and formal parameters.
 %
 ```
-### Variable Scope:
+### Scope of variables:
 ```
     float f = 2.32;
     $main() << void
@@ -169,7 +169,7 @@ for i:(0,n-2)
 write(k[n-1]);           ~this will throw an error.
 
 ```   
-### while loop
+### While loop
 ```
  $main() << int
     int t1 = 0, t2 = 1, next = 0, n;
@@ -202,7 +202,7 @@ write(k[n-1]);           ~this will throw an error.
   /
   
    ```    
-### if else statement
+### If else statement
 ```
 int m;
 if k>n && k!=2*n		~ checks both conditions 
@@ -212,7 +212,7 @@ if k>n && k!=2*n		~ checks both conditions
  else
     write("0");/
   ```  
-### switch
+### Switch
 ```
 for i:(0,n-1)
 		read(o,k);
@@ -247,7 +247,7 @@ $ add(int a,int b) << int        ~ '$' signifies the start of a function
    return a+b; 					~ if the return type is not void
 %                                                    ~ '%' signifies end of  function	
 ```
-### return type of functions
+### Return type
 
 In Tureasy functions can return a maximum of only one value which is of same datatype as the one mentioned during the start of the function. This example do not conform to Tureasy.
 ```
@@ -257,7 +257,7 @@ $function () << void
   return i,j;           ~ The function type should be void but it is returning an integer and it is returning more than 1 parameter
 %
 ```
-### Pass by value or reference
+### Pass by value or pass by reference
 In Tureasy variables can be passed by reference or by value
 ```
 $ sample (string a) << void
@@ -324,7 +324,7 @@ $main() << void
 	write(x);
 %
 ```
-### functions for Operator Overridding
+### Functions for Operator Overridding
 
 ```
 *Node        
@@ -580,7 +580,7 @@ c.foo(); 				 ~this method cannot be resolved now.
 ```
 ### Object Equivalence
 
-Unlike primitive datatypes,`==` operator cannot be used to compare two different objects.
+'==' operator can be used to check if two variables refer to same object. It works only with objects of same class. 
 ```
 			~Classes Node,Node2 are created with same contents.
 $main << void
@@ -588,15 +588,15 @@ $main << void
   Node b = new Node(4); ~instance of Node
   Node2 c = new NodeB(4); ~instance of Node2		~ similar class
   write(a==c); 				~this gives a compilation error as they are of different classes.
-  write(a==b); 				~this prints false;
+  write(a==b); 				~this prints false because they are two different objects
 %
 ```
-Use `sameas` method to compare contents of two objects.This method can only be used if both objects are of the same class.
+Use `sameAs` method to compare contents of two objects.This method can only be used if both objects are of the same class.
 ```
 $main << void
 Node n1 = new Node(4);
 Node n2 = new Node(4);
-if(n1.sameas(n2)).       ~returns true.
+if(n1.sameAs(n2)).       ~returns true.
  write("Both are equal");
 else
  write("No,even they are identical they refer to different objects.");
