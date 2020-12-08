@@ -1,11 +1,11 @@
 # Introduction
 This manual describes the Tureasy language in detail. All the specifications related to language features and basic essentials are covered in subsequent sections. The reader is advised to go through the tutorial before referring to the manual for getting familiarised with the syntax and concepts of Tureasy. The manual is mainly intended for people who are comfortable to code in Tureasy and wish to explore precise rules about particular aspects of the language.
 
-# Lexical Analysis
+# Lexical Structure
 
-# Data models
+# Types, values and Variables
 
-# Execution model
+# Names
 
 # Conversions:
 
@@ -41,7 +41,7 @@ Preceding conditions not met;
 * Otherwise, either operand is of type unsigned int          Other operand is converted to type unsigned int
 * None of the previous conditions met                        Operands are converted to type int
 ```
-# Expressions:
+# Expressions
 ### Cast:
 The type_name is a type and cast_expression is a value to be converted to that type.
 ```
@@ -167,14 +167,9 @@ Assignment_Operator:  = *= /= %= += -= <<= >>= &= ^= |=
 Expression1 Assignment_Operator Expression2
 ```
 
-# Names
-    shadowing 
-
-# Statements
-
+# Blocks and Statements
 
 # Classes
-
 
 # Tags and Turzers
 The tags are special kind of statements which groups part of code which has some special implementation involved. It is used in this format 
