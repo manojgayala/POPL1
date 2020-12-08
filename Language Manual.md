@@ -1,7 +1,82 @@
 # Introduction
 This manual describes the Tureasy language in detail. All the specifications related to language features and basic essentials are covered in subsequent sections. The reader is advised to go through the tutorial before referring to the manual for getting familiarised with the syntax and concepts of Tureasy. The manual is mainly intended for people who are comfortable to code in Tureasy and wish to explore precise rules about particular aspects of the language.
+*This language manual is intended to help the readers dive in deep and explore more on details of Tureasy. The reader is assumed to have already gone thoroughly through the tutorial and is comfortable with coding in Tureasy in order to understand and get more familiarized with the base concepts of Tureasy. The topics will be more clear on going through subsequent sections of the manual.*
 
 # Lexical Structure
+A program in Tureasy undergoes several processing levels sequentially. After all the processing is done, the program is now been reduced to set a **tokens**.
+
+## Tokens
+Tureasy comprises of the following tokens:
+* Identifiers
+* Keywords
+* Tags
+* Constants
+* String literals
+* Operators
+
+White space (blanks, tabs, comments, form feeds etc.,) are ignored in Tureasy since they separate tokens.
+
+## Comments
+Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **`` ``** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
+
+## Identifiers
+Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Identifiers are case-sensitive i.e., Tureasy and tureasy are different. An identifier should not begin with a digit or an underscore. Length of identifiers are not restricted. 
+
+## Keywords
+
+The following are the identifiers reserved to use only as keywords. 
+| | | |	| |
+|---|---|---|---|---|
+| *if* | *else* | *switch* | *case* | *default* |
+| *for* | *while* | *do* | *break* | *continue* |
+| *desc* | *asc* | *void* | *int* | *float* |
+| *string* | *List* | *char* | *return* | *mem* |
+| *met* | *con* | *new* | *here* | *inherit* |
+| *parent* |
+
+const, double, long, short, static, signed, unsigned
+
+These words can't be used as variable names. In any usage of these identifiers as keywords, an error is popped up.
+
+## Tags
+
+## Constants
+Constants in Tureasy are classified as
+	Integer constants
+	Character constants
+	Float constants
+	String constants
+
+### Integer constants
+
+### Character constants
+Character constants are sequence of characters. Single-character constants are enclosed in '' eg., 'a'. Multi-character constants are implementation based.  Character constants or String constants (discussed later) can't represent newlines, tabs etc., These kind of special characters are represented by escape sequences shown below.
+
+|	|	|
+|---|---|
+| newline  | \n | 
+| backslash | \\ |
+| horizontal tab | \t |
+| single quote | \ |
+| backspace | \b |
+| double quote | \ |
+
+### Float constants
+Floating point constants consists of 4 parts
+	Decimal part
+	Fraction part
+	character 'e'
+	Precision part
+
+Eg., 10.83e-3 is same as 0.01083 where 10 is the decimal part, .83 is the fraction part and -3 defines the precision
+
+### Strings constants
+String constants also known as string literals are written in detail in the section String Literals.
+
+## String Literals
+String literals commonly called as Strings are a sequence of characters surrounded by " " (double
+quotes). Two subsequent/adjacent strings are concatenated to form a single string where the end character '\0' of first string is combined with the next one. 
+Array of strings can also be defined as integers whose behavior is implementation-defined.
 
 # Types, values and Variables
 
