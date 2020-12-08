@@ -164,6 +164,12 @@ Preceding conditions not met;
 * None of the previous conditions met                        Operands are converted to type int
 ```
 # Expressions
+The expressions are vital to the language. The expressions are evaluated for their side effects (assiginment to variables) or for their values in larger expressions as operands or to affect the execution sequence in statements. The evaluation of expressions would yield one of the following :
+-> a variable 
+-> a value
+-> void
+The expression's evaluation respects the rules of precedence and parenthesis.
+                      ` CONTINUE EDITING`
 ### Cast:
 The type_name is a type and cast_expression is a value to be converted to that type.
 ```
