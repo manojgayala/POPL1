@@ -17,7 +17,7 @@ Tureasy comprises of the following tokens:
 White space (blanks, tabs, comments, form feeds etc.,) are ignored in Tureasy since they separate tokens.
 
 ## Comments
-Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **`` ``** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
+Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **\`` \``** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
 
 ## Identifiers
 Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Identifiers are case-sensitive i.e., Tureasy and tureasy are different. An identifier should not begin with a digit or an underscore. Length of identifiers are not restricted. 
@@ -55,11 +55,11 @@ Character constants are sequence of characters. Single-character constants are e
 | Meaning | Escape sequence |
 |---|---|
 | newline  | \n | 
-| backslash | \\ |
+| backslash | \\\ |
 | horizontal tab | \t |
-| single quote | \ |
+| single quote | \\' |
 | backspace | \b |
-| double quote | \ |
+| double quote | \\" |
 
 ### Float constants
 Floating point constants consists of 4 parts
