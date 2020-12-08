@@ -23,17 +23,17 @@ converted to either the next higher or the next lower representable value. The r
 ### Arithmetic Converisons:
 Many binary operators cause conversions of operands, so as to bring them into the same type. These conversions are called arithmetic conversions.
 ```
-| Condition: | Conversion:|
-|--- |--- |
-| Either operand is of type long double | Other operand is converted to long double |
-| Otherwise, if either operand is of type double | Other operand is converted to double |
-| Otherwise, if either operand is of type float | Other operand is converted to float |
-| Preceding conditions not met;| |
-| If either operand is of type unsigned long | Other operand is converted to type unsigned long |
-| Otherwise, if either operand is of type long  and the other of type unsigned int | Both operands are converted to type unsigned long |                  
-| Otherwise, if either operand is of type long | Other operand is converted to type long |
-| Otherwise, either operand is of type unsigned int | Other operand is converted to type unsigned int |
-| None of the previous conditions met | Operands are converted to type int |
+Condition:                                                   Conversion:
+* Either operand is of type long double                      Other operand is converted to long double
+* Otherwise, if either operand is of type double             Other operand is converted to double
+* Otherwise, if either operand is of type float              Other operand is converted to float
+Preceding conditions not met;
+* If either operand is of type unsigned long                 Other operand is converted to type unsigned long
+* Otherwise, if either operand is of type long               Both operands are converted to type unsigned long
+    and the other of type unsigned int                          
+* Otherwise, if either operand is of type long               Other operand is converted to type long
+* Otherwise, either operand is of type unsigned int          Other operand is converted to type unsigned int
+* None of the previous conditions met                        Operands are converted to type int
 ```
 # Expressions:
 ### Cast:
