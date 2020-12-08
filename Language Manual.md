@@ -180,3 +180,125 @@ The tags use turzers during compilation to provide these tips. The tags are used
 Turzers are the files which contain the machine learning models for analyzing the data between tags. The abstract syntax tree is used as input for the turzers. The models within turzers are made using trees and its traversal has certain cost associated to it. The program is compared with these models and tips are given accordingly.
 
 There are private turzers and private tags associated with companies. These turzers have an additional requirement of `.tcnf` files which are the turzer configuration files. These tags can be uniquely defined and modified by the company based on its requirements. 
+
+## Declarations
+
+Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
+
+### Syntax for Declarations
+#### Variables:
+   *declaration*: \
+     *specifiers ini-declarator-list*
+
+*specifiers:\
+   storageclass-specifier specifiers<sub>opt</sub>*\
+   *type-specifier   type-qualifier<sub>opt</sub> specifiers<sub>opt</sub>*
+ 
+ *ini-declarator-list:\
+   ini-declarator\
+   ini-declarator-list , ini-declarator*
+
+*ini-declarator:\
+  declarator\
+  declarator `=` initializer*
+
+#### functions and Constructors:
+
+*func-declaration:     -->for functions\
+  `$`func-declarator `<<` type-specifier `'\n'` func-initializer* 
+
+*con-declaration:      -->for constructors\
+(paramerter-type-list)  `:`  `'\n'`  func-initializer*   
+
+
+
+
+
+#### Classes:  
+   *declaration: \
+     `*`class-declarator `'\n'` class-initilaizer* <sub>opt</sub> 
+
+
+
+
+
+### StorageClass Specifiers
+These keywords specify the lifetime of a variable.`local` variables have a local lifetime and are allocated new storage each time execution control passes to the block in which they are defined.
+Also they cannot be accessed outside of that block.Variables named with `static` or `global` specifiers have a memory allocated and exist throughout the program. 
+
+#### Syntax:
+storageclass-specifier: \
+`local` \
+`static` \
+`global` 
+
+
+### Type Specifiers
+
+#### Syntax: 
+`void` \
+`int` \
+`long` \
+`class-identifier` \
+`func-identifier` 
+
+
+### Type Qualifiers
+
+#### Syntax 
+`const` \
+`fluid` 
+
+### Declarators 
+Declarators declare a unique identifier and is a part of declaration.
+The type of the variable(an array or a single variable) or the  parameters of a function are specified by the declarator. 
+
+#### Syntax for variable declarator 
+*declarator:  \
+identifier \
+declarator [constant-expression<sub>opt</sub>]  -->for arrays* 
+
+#### Syntax for function declarator
+*func-initializer: \
+statements `%`* 
+
+*statements: \
+statement. \
+statements statement<sub>opt</sub>* 
+
+#### Syntax for Class declarator
+
+*class-declarator:   \
+class-identifier generic-type-specifier* 
+
+*generic-type-specifier: \
+`<<` type-specifier* 
+
+
+### Initializers
+When an object is declared it's value can be specified by a `initializer` then that declaration is called `definition`.
+
+#### Variable initializers
+*initializer: \
+assigment-expression.   -->assigning a value \
+{ initializer list }.   -->for an array \
+`new` class-identifier (parameter-type-list).   -->calling a constructor. \
+func-declarator*.  -->calling a function. 
+
+*initialzer-list. \
+initializer \
+initialozer-list initlializer<sub>opt</sub>* 
+
+#### Funciton initiliazers
+*func-initializer:  -->also used for constructors. \
+statements `%`* 
+
+#### Class initializers
+
+*class-initializer:  \
+blk<sub>opt</sub> blk<sub>opt</sub>      blk<sub>opt</sub>*  
+
+*blk: \
+`mem:` statements `\` \
+`con:` constructors `\` \
+`met:` functions `\`* 
