@@ -25,7 +25,7 @@ Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Iden
 ## Keywords
 
 The following are the identifiers reserved to use only as keywords. 
-| | | |	| |
+| Keywords | | | | |
 |---|---|---|---|---|
 | *if* | *else* | *switch* | *case* | *default* |
 | *for* | *while* | *do* | *break* | *continue* |
@@ -42,17 +42,17 @@ These words can't be used as variable names. In any usage of these identifiers a
 
 ## Constants
 Constants in Tureasy are classified as
-	Integer constants
-	Character constants
-	Float constants
-	String constants
+* Integer constants
+* Character constants
+* Float constants
+* String constants
 
 ### Integer constants
 
 ### Character constants
 Character constants are sequence of characters. Single-character constants are enclosed in '' eg., 'a'. Multi-character constants are implementation based.  Character constants or String constants (discussed later) can't represent newlines, tabs etc., These kind of special characters are represented by escape sequences shown below.
 
-|	|	|
+| Meaning | Escape sequence |
 |---|---|
 | newline  | \n | 
 | backslash | \\ |
