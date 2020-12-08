@@ -1,10 +1,16 @@
 # Introduction
-This manual describes the Tureasy language in detail. All the specifications related to language features and basic essentials are covered in subsequent sections. The reader is advised to go through the tutorial before referring to the manual for getting familiarised with the syntax and concepts of Tureasy.
+This manual describes the Tureasy language in detail. All the specifications related to language features and basic essentials are covered in subsequent sections. The reader is advised to go through the tutorial before referring to the manual for getting familiarised with the syntax and concepts of Tureasy. The manual is mainly intended for people who are comfortable to code in Tureasy and wish to explore precise rules about particular aspects of the language.
+
+# Lexical Analysis
+
+# Data models
+
+# Execution model
+
 # Conversions:
+
 ### Integral Promotion:
-Objects of an integral type can be converted to another wider integral type, i.e, a type that can represent a larger set
-of values. This widening type of conversion is called integral promotion. If an int can represent all the values of the
-original type, then the value is converted to int; otherwise the value is converted to unsigned int.
+Objects of data types which take less number of bits are converted to data types like int or unsigned int during operation. Such conversion is called integral promotion. If an int can represent the value of the original type, then it is converted to int; otherwise the value is converted to unsigned int.
 
 ### Integral Conversions:
 
@@ -160,6 +166,14 @@ in the left operand and it's type is that of the left operand.
 Assignment_Operator:  = *= /= %= += -= <<= >>= &= ^= |=
 Expression1 Assignment_Operator Expression2
 ```
+
+# Names
+    shadowing 
+
+# Statements
+
+
+# Classes
 
 
 # Tags and Turzers
