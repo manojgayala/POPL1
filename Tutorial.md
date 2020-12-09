@@ -18,6 +18,28 @@ Now we would try to understand the code line by line. The first line has `main` 
 
 The set of characters enclosed within double quotes(" ") is called string. Some characters beginning with '\' are called escape sequences which are used for representing hard to type or invisible characters. The escape sequences would be covered in the later sections.
 
+### Arrays
+Array is almost like a list, except that its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
+
+#### Initiliziation of arrays
+Initilization of all elements of array is done by  ` type arrayname[ ] = {list of values}; `
+We can also initilize particular elements by using array subscripts ` arrayname[subscript] = value; `
+
+
+  
+  one more sublte difference to note is that character arrays are initized to exact length of sequence of characters. For instance,
+  ```
+  char sequence[] = "abcd";
+  ~the length of array will be 4
+  ``` 
+  where as in case of string objects, a special character called null character (\0) is added at end of sequence of characters, which helps the compiler to differentiate the fixed size character array from a dynamic-size string. 
+  ```
+  string sequence = "abcd";
+  ~ the length of above will be 5 as it will include "\0" at end
+  ```
+  
+  
+
 # Strings
 
 
