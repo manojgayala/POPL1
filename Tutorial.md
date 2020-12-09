@@ -38,7 +38,65 @@ We can also initilize particular elements by using array subscripts ` arrayname[
   ~ the length of above will be 5 as it will include "\0" at end
   ```
   
-  
+# I/O Handling
+Console Input and Output in Tureasy is easy to understand and program. This doesn't require any formatting unlike other languages like C, C++ etc., The compiler is smart enough to identify the data type of input and output variables and does type casting if required.
+Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user.  The parameters of read are separated by a **,** (comma). An example of it is as below
+```c
+$main() << void
+	int x;
+	float y;
+	read(x);		~ Taking a single input
+	read(x,y);		~ Taking multiple inputs
+%
+```   
+Here is an example to take input of a string with space
+```c
+
+```
+
+The function **write** which is used to print output to the console.  The parameter of the function write is of data type string. An example of it is as below
+```c
+$main() << void
+	int x = 10;
+	write("The value of x is "+x);
+%
+```
+**x** is type casted to string internally and the string "The value of x is " and x (after type-casting) are concatenated to one and the final result is printed.   
+
+# File handling
+Basic steps while handling files in Tureasy are:
+1. Opening a file
+2. Operations performed by file
+3. Closing the file
+
+A simple code explaining the concept of file handling in Tureasy is as below:
+```c
+$main() << void
+	FILE fptr;
+	string path = "C:\Users\HP\Downloads\test.txt";
+	fptr.open(path,"r");
+	while(fptr.readLine() != EOF)
+		write(fptr.readLine());
+	/
+	fptr.close();
+%
+```
+A pointer need to be created to access any file named **FILE** and the path of the file need to be stored.  
+The file can be opened in any of the below methods
+| *r* | *w* | *a* | *br* | *bw* | *ba* |
+|---|---|---|---|---|---|
+
+* **r**: opening a file in *read* mode
+*  **w**: opening a file in *write* mode
+*  **a**: opening a file in *append* mode
+*  **br**: opening a  file in *binary read* mode
+*  **bw**: opening a file in *binary write* mode
+*  **ba**: opening a file in *binary append* mode
+
+**readLine** is a function to read file line to line
+
+A filed open in Tureasy must be close using the function **close**
+
 
 # Strings
 
