@@ -108,7 +108,7 @@ Declarations provide the necessary properties of an identifier, they may or may 
   `$`func-declarator `<<` type-specifier `'\n'` func-initializer* 
 
 *con-declaration:      -->for constructors\
-con-declarator  `'\n'`  func-initializer*   
+(paramerter-type-list)  `:`  `'\n'`  func-initializer*   
 
 
 
@@ -116,11 +116,8 @@ con-declarator  `'\n'`  func-initializer*
 
 #### Classes:  
    *declaration: \
-     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
+     `*`class-declarator `'\n'` class-initilaizer* <sub>opt</sub> 
 
-*parent-class-list:
-parent-class-identifier
-parent-class-list parent-class-identifier<sub>opt</sub>*
 
 
 
@@ -130,7 +127,7 @@ These keywords specify the lifetime of a variable.`local` variables have a local
 Also they cannot be accessed outside of that block.Variables named with `static` or `global` specifiers have a memory allocated and exist throughout the program. 
 
 #### Syntax:
-*storageclass-specifier:* \
+storageclass-specifier: \
 `local` \
 `static` \
 `global` 
@@ -152,9 +149,6 @@ Also they cannot be accessed outside of that block.Variables named with `static`
 `const` \
 `fluid` 
 
-`const` variables and objects cannot be changed after being initialized
- and fluid variables and objects can be changed or modified at any time of the program.If no qualifier is specified it i defaultly qualified as `fluid`
-
 ### Declarators 
 Declarators declare a unique identifier and is a part of declaration.
 The type of the variable(an array or a single variable) or the  parameters of a function are specified by the declarator. 
@@ -165,24 +159,20 @@ identifier \
 declarator [constant-expression<sub>opt</sub>]  -->for arrays* 
 
 #### Syntax for function declarator
+*func-initializer: \
+statements `%`* 
 
- *func-declarator: \
- func-identifier (parameter-type-list)* 
-
-*con-declarator: \
-(parameter-type-list) \
-con-declarator`:`(parameter-type-list)<sub>opt</sub> --> to specify the parent class constructor.*
-
-
-
+*statements: \
+statement. \
+statements statement<sub>opt</sub>* 
 
 #### Syntax for Class declarator
 
 *class-declarator:   \
-class-identifier `<<`  generic-type-specifier* 
+class-identifier generic-type-specifier* 
 
-
-
+*generic-type-specifier: \
+`<<` type-specifier* 
 
 
 ### Initializers
@@ -197,24 +187,22 @@ func-declarator*.  -->calling a function.
 
 *initialzer-list. \
 initializer \
-initializer-list initlializer<sub>opt</sub>* 
+initialozer-list initlializer<sub>opt</sub>* 
 
-#### Function initializers
+#### Funciton initiliazers
 *func-initializer:  -->also used for constructors. \
 statements `%`* 
 
-*statements: \
-statement. \
-statements statement<sub>opt</sub>* 
 #### Class initializers
 
 *class-initializer:  \
-block<sub>opt</sub> block<sub>opt</sub>      block<sub>opt</sub>*  
+blk<sub>opt</sub> blk<sub>opt</sub>      blk<sub>opt</sub>*  
 
-*block: \
-`mem:` declarations  \
-`con:` constructors  \
-`met:` functions*
+*blk: \
+`mem:` statements `\` \
+`con:` constructors `\` \
+`met:` functions `\`* 
+
 
 # Conversions:
 
@@ -248,24 +236,45 @@ Many binary operators cause conversions of operands, so as to bring them into th
 |Otherwise, if either operand is of type long | Other operand is converted to type long |
 |Otherwise, either operand is of type unsigned int | Other operand is converted to type unsigned int |
 |None of the previous conditions met | Operands are converted to type int |
+
 # Expressions
 The expressions are vital to the language. The expressions are evaluated for their side effects (assiginment to variables) or for their values in larger expressions as operands or to affect the execution sequence in statements. The evaluation of expressions would yield one of the following :
 -> a variable 
 -> a value
 -> void
 The expression's evaluation respects the rules of precedence and parenthesis.
-                      ` CONTINUE EDITING`
+
+### Primary Expressions
+The simplest form of expressions from which others are constructed are called primary expressions. It includes strings, constants and identifiers. Strings are built in data types in Tureasy, constants and identifiers have been mentioned in Lexical structure section.
+
 ### Cast:
 The type_name is a type and cast_expression is a value to be converted to that type.
 ```
-    (type_name) cast_expression
+    type_name(cast_expression)
 ```
-The cast_expression is converted as if it had been assigned to a variable of type type_name. An expression with a type cast is not an l-value.
-Legal Casts: Casting an integral or floating point value to integral type; Casting an arithmetic type to floating type  
+The cast_expression is taken as input and the method yields its casted value. When there is upcasting (lower memsize to higher memsize), the value is retained as it is so it is done implicitly when required. The downcasting (higher to lower) leads to loss of data and precision, which happens during assignments implicitly. 
+
+### Array references
+For accessing an element of array, postfix expression followed by square brackets including another expression is used. Eg. A[b] refers to array named A and the bth index of array.
+
+### Function calls 
+The function call is an expression followed by paranthesis which include arguments to be passed to the function. The arguments are separated by comma and in case some value is returned from the function, it is assigned to an lvalue. The standard integral promotions and conversions take place when the types of parameters in function declaration and arguments do not agree.
+
+### Class references
+The members or methods of a class can be accessed by using an expression followed by `.` and another expression. The first expression refers to the class name and the second expression refers to the member or method. Public methods and members can be accessed anywhere but the private members can be accessed using this expression only within the class definition.
+
+### Tag expressions
+They mark the beginning and end of tags. They use the operator `#` for beginning and end with `#!`. The data between these expressions undergo analysis during compilation.
+
+### Unary operators
+These operators work with single operands. These operators include `: ! memsize()`
+The expression :a is used for the bitwise negation of a. The operand must be integer or character which could be type casted to int using its ascii value.
+The expression !a is used for logical negation of a. The operand is treated to be true for integral value of 0 or NULL, in all other cases it yields false.
+The expression memsize(A) is used to find out the memory allocated to final result of A expression. Even objects of classes can be operands of this operator.
 
 ### Multiplicative Operators:
 The operators * , / , and % are called the multiplicative operators. 
-They are syntactically left-associative (i.e, they group left-to-right) and have the same precedence.
+These are syntactically left-associative (i.e, they group left-to-right) and have the same precedence.
 ```
     Expression * Expression
     Expression / Expression
@@ -278,7 +287,7 @@ Incase the second operand is 0 in any of the operators / and % the result is und
 But it is always guaranteed that the absolute value of the remainder is smaller than that of the divisor.
 
 ### Additive Operators:
-The addition operator + and subtraction operator - are called additive operators. These group left-to-right.
+The addition operator + and subtraction operator - are called additive operators. These are left-associative.
 ```
 Expression + Expression
 Expression - Expression
@@ -296,7 +305,10 @@ The << operator causes the bits in Expression1 to be shifted to the left by the 
 The bit positions that have been vacated by the shift operation are zero-filled.
 The >> operator causes the bits in Expression1 to be shifted to the right by the number of positions specified in Expression2.
 For both operators, each operand must be integral. The result is undefined if the right operand is negative, or greater than or equal 
-to the number of bits in the Expression1's type.
+to the number of bits in the Expression1's type in left shift.
+
+When the first operand is function declaration for << operator, it means that the return type of function is second operand.
+When the first operand is one of the generic types for >> operator it means that the second operand is its type.
 
 ### Relational Operators:
 The binary operators: less than (<), greater than (>), less than or equal to (<=), greater than or equal to (>=) are
@@ -318,13 +330,13 @@ Expression == Expression
 Expression != Expression
 ```
 These operators are analogous to Relational Operators, i.e, they support integral or floating-point numeric type and 
-also char type(character codes are compared). And the result type is bool.
+also string type. The result type is bool.
 The == operator returns true(1) if both operands have the same value; otherwise, it returns false(0). 
 The != operator returns true(1) if the operands don't have the same value; otherwise, it returns false(0).
 
 ### Bitwise AND Operator:
 The & operator compares each bit of the first operand to the corresponding bit of the second operand. 
-If both bits are 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
+If corresponding bits are 1, the result bit is set to 1. Otherwise, the result bit is set to 0.
 ```
 Expression & Expression
 ```
@@ -352,7 +364,7 @@ If either operand is false, the result is false. If the first operand is false, 
 ```
 Expression && Expression
 ```
-The operands need not have the same type, but each must have boolean or integral type. The result's type is bool.
+The operands must be bool type or must be convertible to it. The result's type is bool.
 
 ### Logical OR Operator:
 The || operator returns true if either or both operands is true, otherwise false. This operator groups left-to-right.
@@ -360,267 +372,32 @@ The second operand is evaluated only if the first operand evaluates to false.
 ```
 Expression || Expression
 ```
-The operands need not have the same type, but each must have boolean or integral type. The result's type is bool.
+he operands must be bool type or must be convertible to it. The result's type is bool.
 
 ### Conditional Expression Operator:
 ```
-Logical-OR Expression ? Expression1 : Expression2
+Expression0 ? Expression1 : Expression2
 ```
-The Logical-OR Expression must have integral or floating type.
-If Logical-OR Expression unequals 0, Expression1 is evaluated. So, the result of the expression is given by the Expression1.
-If Logical-OR Expression equals 0, Expression2 is evaluated. So, the result of the expression is the value of Expression2.
+The Expression0 must have bool type or must be convertible to it.
+If Expression0 unequals 0, Expression1 is evaluated. So, the result of the expression is given by the Expression1.
+If Expression0 equals 0, Expression2 is evaluated. So, the result of the expression is the value of Expression2.
 So in any case only one of Expression1, Expression2 is evaluated. And if both operands have void type, the result type is void.
 
 ### Assignment Operator:
-Here, the value of the right-hand operand is assigned to the storage location named by the left-hand operand. Therefore, the 
-left-hand operand must be a modifiable l-value. After the assignment, the value of assignment expression is the value stored 
-in the left operand and it's type is that of the left operand.
+Here, the value of the right-hand operand is assigned to the storage location named by the left-hand operand. Therefore, the left-hand operand must be a modifiable lvalue. There are operators of the form `op=` that perform the operation op between value stored in lvalue and right-hand operand and then assignment is done to lvalue.
 ```
 Assignment_Operator:  = *= /= %= += -= <<= >>= &= ^= |=
 Expression1 Assignment_Operator Expression2
+```
+### Comma Operator
+It is used to separate the data in grouping of elements. The groups can be arguments to functions, the array elements, the generic type elements etc.
+```
+Expression1,Expression2
 ```
 
 # Blocks and Statements
 
 # Classes
-This section covers the basic semantics of Classes and how they are implemented.
-
-Body of the class contains members, constructors, methods declared in `mem`,`con`,`met` blocks respectively.Classes can have subclasses 
-
-   *declaration: \
-     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
-
-Complete syntax is specified **here**
-   
-   This is the basic declaration of a class where *class-declarator* specifies whether the class is a *normal class* or a *generic class*(a class which uses generic type variables which has different declarations among different instances of the class) along with the name of the class *class-identifier*
-
-## Generic class declaration 
-```
-*GenClass << G
-mem:
-G g;
-met:
-$display() << void 
-write(g)
-%
-*%
-
-$main << void
-GenClass << int x;
-GenClass << string y;
-%
-```
-
-## Inherited Classes and Parent Classes
-
-Parent classes of a class can be specified using the `inherit` keyword, these specified class are called *immediate parent classes*
-and the latter class is called the *immediate inherited or subclass*.
-
-Subclass relation is transitive closure of the *immediate subclass* relation.
-
-```
-*A inherit B,C
-mem:
-int x:
-*%
-*B inherit D
-mem:
-int y
-*%
-```
-here,A is both subclass of B, C and also D.  
-B, C are the immediate parentclasses of A 
-D is a parentclass of B.
-
-## Class Body
-Class Body contains declaration of members, methods, constructors
-```
-*Class
-mem:
-var-declarations ...
-met:
-functions ...
-con:
-contructors ...
-*%
-```
-This is the general body of a class.Scope of all the members and functions that are declared in or inherited in, is the  entire body of the Class.
-
-## Class Members
-
- There are three types of members 
-                   1.  members that are inherited from its immediate parentclass.
-                   2. members are declared  public in this class
-                   3. members that are declared private in this class.
-     
-   Methods which are inherited should not be declared again.  
-  
-  #### Syntax:
-  *members:*
-  *`mem:` mem-declaration-list* 
-  
- *mem-declaration-list: \
- mem -declaration \
- mem-declarations mem-declaration<sub>opt</sub>*	
- 	
-*mem-declaration: \
- var-declaration --> public members   \
-`_`var_declartion -->private members*      
-
-Every member of the class can be accessed through `this` keyword.
-        
-## Class Methods
-There are five types of methods:
-
- 1. Methods which are inherited from its immediate parent class.
- 2. Methods which are declared public in the this class
- 3. Methods which are declared private in this class
- 4. Methods which are overridded in this class
- 5. Methods which are overloaded in this class.
-
-#### Syntax:
-*methods:*
-*`met:` met-declaration-list* 
-
-*met-declaration-list: \
-met-declaration \
-met-declaraion-list met-declaration<sub>opt</sub>*
-
-*met-declaration:
-func-declaration  -->public and overloaded methods \
-`_`func-declaration  -->private methods \
-`.`func-declaration -->overridden methods.*      
-
-  Every method of the class can be accessed through `this` keyword.     
- 
- Methods of a generic class can use the generic type to declare objects in their code and can even return the generic type.These methods are called `generic methods`.
-
-### Inherited methods
-A class inherits all the public members and methods from its immediate parent class.
-No other method in the class should have the same method 
-signature(name and parameter-list) and the return type as of the inherited methods.
-
-There is an exception in the inheritance of public methods when multiple inheritance is occurred. All the common public  methods of the parent classes have to be overridden in the present class or one method can be chosen using `parent` keyword.
-
-### Overriden methods
-Only the public methods that are inherited from the parent class can be overridden.Even if the methods are overridden ,the old methods can be invoked using the `parent` keyword (folllowed by the parent class-identifier if multiple inherited)
-
-The overridden method has to be public.
-
-Overridden methods should have the same set of parameters as the parent method but the return type can be different.
-```
-*Parent
-met:
-$foo(int x) << int
-return 1;
-%
-
-*Sub inherit Parent
-met:
-.$foo(int x) << string.      ~overridded method with different return type.
-return '1'
-%
-
-```
-
-
-### Overloaded methods
-Two  non -private methods  of a class having same name with different arguments are called overloaded methods.
-Resolving the methods is done at compile-time using the set of arguments of both the methods.
-
-Return types of overloaded methods may or may not be same.
-```
-*Parent
-mem:
-int x;
-met:
- $getX() << int
-  return x;
- %
-*%
-*sub inherit Parent
-mem:
-float x;
-met:
- $getX() << float
-  return x;
- %
- *%
- ```
- This return compile-time error as both the getX methods have no difference in their parameter -list to resolve.
- ## Class Constructors
- A constructor is used in the creation of an object that is an instance of a class.
- #### Syntax:
-*constructors:*
- *`con:` con-declaration-list \
-con-declaration-list* 
-
-*con-declaration:
-con-declaration-list con-declaration<sub>opt</sub>*
-
-Syntax of con-declaration is specified **here** \
-
-Constructors are identified through their parameter list and they don't need a particular  identifier because by default,*class-identifier*(name) is taken as the identifier of the constructor.
-
-
-```
-*Node
-mem:
-int x,y
-con:
-(int x,int y)
-here.x = x;
-here.y = y;
-%
-*%
-```
-
-
-*parameter-type-list* is same as the formal parameter list used for the methods and functions
-
-### Constructor overloading
-It is similar to method overloading ,to overload a constructor formal parameter list has to be unique for both the constructors otherwise it is a compile-time error.
-
-### Constructor for Inherited Classes
-When a class inherits an other class at the time of creation of object, the parentclass constructor should be called before the present class's constructor. So the constructor has to specify the parent's constructor to be called through its parameter-list after specifying the current class' list.
-If multiple inheritance has taken place, the parameter-lists has to be specified sequentially in the same order.
-```
-*Parent
-mem:
-int x,y;
-con:
-(int x,int y)
-here.x = x;
-here.y = here.y;
-%
-*%
-
-*Child inherit Parent
-mem:
-int z;
-con:
-(int z):(int x,int y)
-  here.z = here.z + parent.x +parent.y;
- %
-*%
-```
-### Generic Constructors
-Constructors can also declare objects of generic type and the generic type can also be specified in the parameter-list.Only generic classes have generic constructors.
-```
-*GenClass << G
-mem:
-G g;
-met:
-$display() << void 
-write(g)
-%
-con:
-(G g)
-here.g = g;
-%
-*%
-```
-        
 
 # Tags and Turzers
 The tags are special kind of statements which groups part of code which has some special implementation involved. It is used in this format 
