@@ -92,7 +92,7 @@ Tureasy provides the following data types
 `float`- 8 bytes\
 `double`- 16 bytes\
 `string` - no fixed size\
-`char` - 1 byte \
+`char` - 1 byte 
 
 ### Derived types
 Derived types are constructed from the fundamental types in the following way.
@@ -196,24 +196,22 @@ There are two types of scope to consider: one being lexical scope of an identifi
 The lexical scope of an function or object identifier in an external declaration begins after its declaration and persists till end of the region in which it was declared. The scope of a parameter is from beginning to the end of the block.
 If an identifier is declared outside of a block and also inside the block, the declaration of the identifier outside the block will be shadowed until the inner block ends.
 
-### Shadowing
-Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the previously declared entity.
+#### Shadowing
 
-Shadowing applies only to members which would otherwise be inherited. 
-* A declaration '*x*' of a type name '*t*' shadows the declaration of any other types name 't' the are in scope at that position where '*x*' occurs thoughout its scope.
-*  A declaration  '*x*' of a parameter named '*t*' shadows the declaration of any other variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
-* A  declaration '*x*' of a variable  named '*t*' shadows the declaration of any other parameter / variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
-* A declaration '*x*' of a function named '*t*' shadows the declarations of any other functions named '*t*' that are enclosed in its scope.
+Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the newly declared entity.
+
+Shadowing applies to variables and also to members and methods of a class.
+
+When a declaration of a variable/member/method is done then it shadows all the variable/member/method which are in scope at that point.
 
 
 ### Obscuring
 
-A simple name may sometimes be misinterpretted as the name of a variable, type, or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to a class, and a class will be choosen in precedence to a package. Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
+A simple name may sometimes be misinterpreted as the name of a variable or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to class and Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
+
+Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to begin with an uppercase letter.
 
 
-There will be no obscuring between the name of a module and name of a variable/ type / package, which means a module ca have the same name as a variable, types and packages.
-
-Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to bgin with an uppercase letter.
 
 ### Classes:  
 
@@ -840,12 +838,12 @@ here.g = g;
 The tags are special kind of statements which groups part of code which has some special implementation involved. It is used in this format 
 ` #<tag_name> code #!<tag_name>`
 
-Some of the commonly used tags are
+Some of the commonly used public tags are
 
-|	|	|	|	|	|
+|loop	|unique `var`	|`var` < (const)	|	|	|
 |---	|---	|---	|---	|---	|
-|	|	|	|	|	|
-|	|	|	|	|	|
+|graph-theory	|number-theory	|`var` in range (range)	|	|	|
+|unused  	|	|	|	|	|
 |	|	|	|	|	|
 |	|	|	|	|	|
 |	|	|	|	|	|
