@@ -452,7 +452,7 @@ Expression1,Expression2
 ```
 
 # Statements
-Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their effect and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved such that they cannot be used as names of variables or functions. statements are terminated by ';'. They fall into several groups.  
+Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their side effects and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved so they cannot be used as names of variables or functions. statements are terminated by ';'. They fall into several categories.  
 
    * labeled-statement
    * expression-statement 
@@ -461,11 +461,11 @@ Statements in tureasy are executed in sequence. The statements of a program cont
    * iteration-statement 
    * jump-statement 
 
-### labeled statements
-Statements may carry label prefixes. A label is an identifier used to flag a location in a program as the target of a goto statement or switch statement.A simple identifier followed by a colon (:) is a label. \
+### Labeled statements
+Statements may carry label prefixes. A label is an identifier used to flag a location in a program such as `switch` or `mem` inside class .A simple identifier followed by a colon (:) is a label. \
 
    *labeled-statement: \
-         identifier : statement \
+         identifier  \
          case constant-expression : statement \
          default : statement* \
          
@@ -475,15 +475,18 @@ Within switch statements, case and default labeled statements exist. A statement
 indicates that control will pass to this statement if the value of the control expression of the switch statement matches the value of the constant-expression. (In this case, the type of the constant-expression must be an integer or character.) A statement of the form
 `default : statement`
 indicates that control will pass to this statement if the control expression of the switch statement does not match any of the constant-expressions within the switch statement. If the default statement is omitted, the control will pass to the statement following the switch statement. Within a switch statement, there can be only one default statement, unless the switch statement is within another switch statement. 
-### expression statements
+In classes there are labels which are precisely described [here](#Classes)
+
+### Expression statements
 Most statements are expression statements, which have the form \
 
    *expression-statement: \
         expression <sub>opt</sub>;* \
         
-Expression statements do all of the real work in a program. expression statements are used for assignments and function calls.. All side effects from the expression are completed before the next statement is executed. An empty expression statement is called a null statement. Expressions and expression statements can be arbitrarily complicated. They don't have to consist of exactly one simple function call, or of one simple assignment to a variable. For one thing, many functions return values, and the values they return can then be used by other parts of the expression.
-### compound statement
-A compound statement (also called a "block") typically appears as the body of another statement, such as the if statement. A compound statement groups multiple statements into a single statement. Declarations and Types describes the form and meaning of the declarations that can appear at the head of a compound statement.
+Expression statements do most of the real work in a program. Expression statements are used for assignments and function calls. All side effects from the expression are completed before the next statement is executed. An empty expression statement is called a null statement. Expressions and expression statements can be arbitrarily complicated. They don't have to consist of exactly one simple function call, or of one simple assignment to a variable.
+
+### Compound statements
+A compound statement (also called a "block") typically appears as the body of another statement, such as the if statement. A compound statement groups multiple statements into a single statement. Declarations and Types which appear at the head of the block determine the meaning of names used within block.
 
 *compound-statement:\
  declaration-list<sub>opt</sub> statement-list<sub>opt</sub> \
@@ -495,10 +498,10 @@ declaration-list:\
   statement\
   statement-list statement*
   
-If there are declarations, they must come before any statements. The scope of each identifier declared at the beginning of a compound statement extends from its declaration point to the end of the block. It is visible throughout the block unless a declaration of the same identifier exists in an inner block.\
+If there are declarations, they must come before any statements. The scope of each identifier declared at the beginning of a compound statement extends from its declaration point to the end of the block. It is visible throughout the block unless a declaration of the same identifier exists in an inner block. The scope is precisely covered [here](#Names)\
 Function and class definitions are also syntactically compound statements.
 
-### selection/conditional statement
+### Selection/Conditional statement
 Selection statements choose one of several flows of control. There are 3 types of selection staements in tureasy: 
 * if
 * if else
