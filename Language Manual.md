@@ -835,8 +835,9 @@ The tags are special kind of statements which groups part of code which has some
 
 Some of the commonly used public tags are
 
-|loop	|unique `var`	|`var` < (const)|
+|	|	|	|
 |---	|---	|---|
+|loop	|unique `var`	|`var` < (const)|
 |graph-theory	|number-theory	|`var` in range (range)	|
 |unused  	|dp	|innerloop	|
 
