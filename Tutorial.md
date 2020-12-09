@@ -21,13 +21,13 @@ The set of characters enclosed within double quotes(" ") is called string. Some 
 ### Arrays
 Array is almost like a list, except that its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
 
-#### Initiliziation of arrays
-Initilization of all elements of array is done by  ` type arrayname[ ] = {list of values}; `
+#### Initializiation of arrays
+Initialization of all elements of array is done by  ` type arrayname[ ] = {list of values}; `
 We can also initilize particular elements by using array subscripts ` arrayname[subscript] = value; `
 
 
   
-  one more sublte difference to note is that character arrays are initized to exact length of sequence of characters. For instance,
+  one more subtle difference to note is that character arrays are initized to exact length of sequence of characters. For instance,
   ```
   char sequence[] = "abcd";
   ~the length of array will be 4
@@ -161,7 +161,7 @@ Down here, we'll see an example code in Tureasy that covers different types of e
 $main() << void
     int a, b, result;
     string finalAns;
-    read(a,b);
+    read(a b);
     result = a*b + (a/b - b%a)*b;
     `` 
         The value of expression after equality is computed taking a = 7, b = 3 
@@ -224,7 +224,7 @@ $main() << void
     int a,b;
     double result;
     result = (double) a / b;
-    write("Result = ",result);
+    write("Result = " + result);
     ``
     For a = 14, b = 5, the following output gets printed on console:
     Result = 2.800000
