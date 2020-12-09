@@ -211,6 +211,11 @@ Objects of data types which take less number of bits are converted to data types
 
 ### Integral Conversions:
 
+Integral conversions are conversions between integral types. The integral types are char, short, int, long.
+Signed to Unsigned: Objects of signed integral types can be converted to unsigned types.  Here, the actual bit pattern doesn't change. However, it's interpretation changes.
+Unsigned to Signed: Objects of unsigned integral types can be converted to signed types.
+If the unsigned value is outside the representable range of the signed type, the result won't have the correct value.
+
 ### Integer and Floating:
 When an object of floating type is converted to an integral type, the fractional part is truncated. 
 If the resulting value cannot be represented in the integral type, the behavior is undefined.
