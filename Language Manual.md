@@ -73,17 +73,31 @@ String literals commonly called as Strings are a sequence of characters surround
 quotes). Two strings separated by '+' are concatenated to form a single string where the end character '\0' of first string is replaced by the next string and '\0' is added at the end. 
 Array of strings can also be defined as integers whose behavior is implementation-defined.
 
-# Types, values and Variables
-### Variables:
-Identifier is the name you supply for a variable in your program. They must differ in spelling and case from any keywords, i.e,
-keywords cannot be used as identifiers as they are reserved for special use.
-Syntax: *identifier*
-```
-    nondigit: _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
-                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-    digit: 0 1 2 3 4 5 6 7 8 9
-    The first character of the identifier must be a nondigit.
-```
+# Types and qualifiers
+
+## Storage class
+A storage class is used to represent additional information about a variable. Storage class represents the scope and lifespan of a variable. It also tells who can access a variable and from where. There are three storage classes in tureasy : automatic, static and register.
+* Automatic storage class : Every variable defined in a function or block belongs to automatic storage class by default if there is no storage class mentioned. The variables of a function or block belong to the automatic storage class are declared with the `auto` specifier. Variables under auto in C are local to the block where they are defined and get discarded outside of the block.
+* Register storage class: The variables belonging to a `register` storage class are equivalent to auto but are stored in CPU registers and not in the memory, hence the name. They are the ones accessed frequently. The register specifier is used to declare the variable of the register storage class. Variables of a register storage class are local to the block where they are defined and destroyed when the block ends.
+* Static objects may be local to a block or external to all blocks, but in either case retain their values across exit from and re-entry to functions and blocks. Within a block static objects are declared with the keyword `static`. The visibility of static variables is zero outside their function or file, but the binding remains. Static variables are within a function or file. The static specifier works differently with local and global variables.
+
+## Basic types
+
+
+### Derived types
+Derived types are constructed from the fundamental types in the following way.
+* arrays of objects of a given type;
+* functions returning objects of a given type;
+* lists of objects of same type;
+
+In general these methods of constructing objects can be applied recursively and are orthogonal to each other.
+
+### Type qualifiers
+An object can have additional qualifiers. Declaring object as `fixed` implies that its value cannot be changed; declaring it volatile announces that it has special properties relevant to optimization. Neither qualifier affects the range of values or arithmetic properties of the object.
+
+### Lvalues
+ 
+Lvalue refers to memory location which identifies an object. Lvalue may appear as either left hand or right hand side of an assignment operator(=). l-value often represents as identifier. Expressions referring to modifiable locations are called “modifiable Lvalues“. A modifiable Lvalue cannot have an array type, an incomplete type, or a type with the `fixed` attribute.
 
 # Names
 Names a.k.a identifiers are entities that are declared at some point of the code. They have a scope, the part of code where it is known and a binding, the region of code where a specific location is associated with it. The names also get shadowed sometimes when their linkage is changed. This will be covered in subsequent sections.
@@ -91,9 +105,8 @@ Names a.k.a identifiers are entities that are declared at some point of the code
 ## Declarations
 Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
 
-
 ### Syntax for Declarations
-#### Variables:
+#### Variables
    *declaration*: \
      *specifiers ini-declarator-list*
 
@@ -113,9 +126,9 @@ ini-declarator contains a declarator and also an initializer if the variable is 
   declarator\
   declarator `=` initializer*
 
-#### functions and Constructors:
+#### Functions and Constructors:
 
-func-declaration along with the declarator also contain the definition of the function which is a given by func-initializer
+Func-declaration along with the declarator also contain the definition of the function which is a given by func-initializer
 
 *func-declaration:     -->for functions\
   `$`func-declarator `<<` type-specifier `'\n'` func-initializer* 
@@ -130,12 +143,12 @@ which is also given by func-initializer simialr to the functions.
 con-declarator  `'\n'`  func-initializer*   
 
 
-## Identifiers
+## Types of Identifiers
 There are two forms of names: simple and qualified.
-a simple name is a single identifier (e.g. direct name of a variable).
+A simple name is a single identifier (e.g. direct name of a variable).
 A qualified name consits of a name, " . " and an identifier. (e.g. classidentifier.member)
 
-in this program:
+In this program:
 ```
 ~ class definition starts with '*' and ends with '*%' 
 ~ private members and methods are declared with '_' at the start
@@ -168,21 +181,18 @@ The names Dog, string, main have appered in the example.
 
 ## Scope
 
-The scope of a declaration is the region in the program within which that entity can be referred to by its name, if it is not shadowed.
+The scope of a declaration is the part of program within which that entity can be referred to by its name, if it is not shadowed.
 There are two types of scope to consider: one being lexical scope of an identifiers which is the region of the program within which the identifier's characteristics are understood *and* other being the scope associated with objects and functions with external linkage.
 
 #### Lexical scope
 
-The lexical scope of an function or object identifier in an external declaration begins after its declaratin and persists till the end of region in which it was declared. The scope of a parameter is from beginning to the end of the function.
-The scope of the label in the whole of code it encloses till its closing tag.
-
-If an identifier is declared outside of a block and also inside the block, the declaration of the identifier outside the block will be put on hold until the inner block ends.
+The lexical scope of an function or object identifier in an external declaration begins after its declaration and persists till end of the region in which it was declared. The scope of a parameter is from beginning to the end of the block.
+If an identifier is declared outside of a block and also inside the block, the declaration of the identifier outside the block will be shadowed until the inner block ends.
 
 #### Shadowing
-Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the newly declared entity.
+Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the previously declared entity.
 
-Shadowing applies only to members which would otherwise be inherited.
- 
+Shadowing applies only to members which would otherwise be inherited. 
 * A declaration '*x*' of a type name '*t*' shadows the declaration of any other types name 't' the are in scope at that position where '*x*' occurs thoughout its scope.
 *  A declaration  '*x*' of a parameter named '*t*' shadows the declaration of any other variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
 * A  declaration '*x*' of a variable  named '*t*' shadows the declaration of any other parameter / variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
@@ -191,14 +201,12 @@ Shadowing applies only to members which would otherwise be inherited.
 
 #### Obscuring
 
-A simple name may sometimes be misinterpretted as the name of a variable, type, or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to a type, and a type will be choosen in precedence to a package. Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
+A simple name may sometimes be misinterpretted as the name of a variable, type, or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to a class, and a class will be choosen in precedence to a package. Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
 
 
 There will be no obscuring between the name of a module and name of a variable/ type / package, which means a module ca have the same name as a variable, types and packages.
 
 Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to bgin with an uppercase letter.
-
-
 
 #### Classes:  
 
