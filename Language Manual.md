@@ -113,7 +113,7 @@ con-declarator  `'\n'`  func-initializer*
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
-*parent-class-list:
+*parent-class-list: \
 parent-class-identifier
 parent-class-list parent-class-identifier<sub>opt</sub>*
 
@@ -515,7 +515,7 @@ Body of the class contains members, constructors, methods declared in `mem`,`con
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
-Complete syntax is specified **here**
+Complete syntax is specified [here]()
    
    This is the basic declaration of a class where *class-declarator* specifies whether the class is a *normal class* or a *generic class*(a class which uses generic type variables which has different declarations among different instances of the class) along with the name of the class *class-identifier*
 
@@ -581,7 +581,7 @@ This is the general body of a class.Scope of all the members and functions that 
    Methods which are inherited should not be declared again.  
   
   #### Syntax:
-  *members:*
+  *members:* \
   *`mem:` mem-declaration-list* 
   
  *mem-declaration-list: \
@@ -604,7 +604,7 @@ There are five types of methods:
  5. Methods which are overloaded in this class.
 
 #### Syntax:
-*methods:*
+*methods:* \
 *`met:` met-declaration-list* 
 
 *met-declaration-list: \
