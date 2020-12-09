@@ -49,10 +49,7 @@ $main() << void
 	read(x,y);		~ Taking multiple inputs
 %
 ```   
-Here is an example to take input of a string with space
-```c
-
-```
+Strings with space between them can't be taken as an input through the function *read* which can be achieved by concatenation.
 
 The function **write** which is used to print output to the console.  The parameter of the function write is of data type string. An example of it is as below
 ```c
@@ -82,7 +79,7 @@ $main() << void
 	fptr.close();
 %
 ```
-A pointer need to be created to access any file named **FILE** and the path of the file need to be stored.  
+**FILE** is the keyword to denote that the variable *fptr* does operations with the specified file and the path of the file need to be stored.  
 The file can be opened in any of the below methods
 | *r* | *w* | *a* | *br* | *bw* | *ba* |
 |---|---|---|---|---|---|
@@ -292,7 +289,7 @@ $fibanocci(int n) << int
   /
 %
 ```
-You may notice that the value of *n* doesn't change in the whole process **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, the value of the input parameters are not modified in these functions. An important point to note is that *recursive function doesn't use loops like for or while*. 
+You may notice that the value of _n_ doesn't change in the whole process **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, the value of the input parameters are not modified in these functions. An important point to note is that *recursive function doesn't use loops like for or while*. Recursive functions follow declarative programming **i.e., these kind of functions concentrate more on the mental model of the programmer rather than operational**. In short recursive functions express the logic of the computation without describing it's control flow and hence they find many applications in real world problems which are *model based* 
 
 ### Local functions
 
