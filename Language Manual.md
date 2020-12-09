@@ -73,16 +73,26 @@ String literals commonly called as Strings are a sequence of characters surround
 quotes). Two strings separated by '+' are concatenated to form a single string where the end character '\0' of first string is replaced by the next string and '\0' is added at the end. 
 Array of strings can also be defined as integers whose behavior is implementation-defined.
 
-# Types and qualifiers
+# Names
+Names a.k.a identifiers are entities that are declared at some point of the code. They have a scope, the part of code where it is known and a binding, the region of code where a specific location is associated with it. The names also get shadowed sometimes when their linkage is changed. This will be covered in subsequent sections.
 
-## Storage class
+### Storage class
 A storage class is used to represent additional information about a variable. Storage class represents the scope and lifespan of a variable. It also tells who can access a variable and from where. There are three storage classes in tureasy : automatic, static and register.
 * Automatic storage class : Every variable defined in a function or block belongs to automatic storage class by default if there is no storage class mentioned. The variables of a function or block belong to the automatic storage class are declared with the `auto` specifier. Variables under auto in C are local to the block where they are defined and get discarded outside of the block.
 * Register storage class: The variables belonging to a `register` storage class are equivalent to auto but are stored in CPU registers and not in the memory, hence the name. They are the ones accessed frequently. The register specifier is used to declare the variable of the register storage class. Variables of a register storage class are local to the block where they are defined and destroyed when the block ends.
 * Static objects may be local to a block or external to all blocks, but in either case retain their values across exit from and re-entry to functions and blocks. Within a block static objects are declared with the keyword `static`. The visibility of static variables is zero outside their function or file, but the binding remains. Static variables are within a function or file. The static specifier works differently with local and global variables.
 
-## Basic types
+### Basic types
+Basic Type Specifiers specify the data-type of a variable or the class of an object.They also determine the location of variable in the memory layout.
+Tureasy provides the following data types
 
+`void` 	- NULL\
+`int` 	- 4 bytes\
+`long` - 8 bytes\
+`float`- 8 bytes\
+`double`- 16 bytes\
+`string` - no fixed size\
+`char` - 1 byte \
 
 ### Derived types
 Derived types are constructed from the fundamental types in the following way.
@@ -98,9 +108,6 @@ An object can have additional qualifiers. Declaring object as `fixed` implies th
 ### Lvalues
  
 Lvalue refers to memory location which identifies an object. Lvalue may appear as either left hand or right hand side of an assignment operator(=). l-value often represents as identifier. Expressions referring to modifiable locations are called “modifiable Lvalues“. A modifiable Lvalue cannot have an array type, an incomplete type, or a type with the `fixed` attribute.
-
-# Names
-Names a.k.a identifiers are entities that are declared at some point of the code. They have a scope, the part of code where it is known and a binding, the region of code where a specific location is associated with it. The names also get shadowed sometimes when their linkage is changed. This will be covered in subsequent sections.
 
 ## Declarations
 Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
@@ -184,12 +191,12 @@ The names Dog, string, main have appered in the example.
 The scope of a declaration is the part of program within which that entity can be referred to by its name, if it is not shadowed.
 There are two types of scope to consider: one being lexical scope of an identifiers which is the region of the program within which the identifier's characteristics are understood *and* other being the scope associated with objects and functions with external linkage.
 
-#### Lexical scope
+### Lexical scope
 
 The lexical scope of an function or object identifier in an external declaration begins after its declaration and persists till end of the region in which it was declared. The scope of a parameter is from beginning to the end of the block.
 If an identifier is declared outside of a block and also inside the block, the declaration of the identifier outside the block will be shadowed until the inner block ends.
 
-#### Shadowing
+### Shadowing
 Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the previously declared entity.
 
 Shadowing applies only to members which would otherwise be inherited. 
@@ -199,7 +206,7 @@ Shadowing applies only to members which would otherwise be inherited.
 * A declaration '*x*' of a function named '*t*' shadows the declarations of any other functions named '*t*' that are enclosed in its scope.
 
 
-#### Obscuring
+### Obscuring
 
 A simple name may sometimes be misinterpretted as the name of a variable, type, or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to a class, and a class will be choosen in precedence to a package. Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
 
@@ -208,7 +215,7 @@ There will be no obscuring between the name of a module and name of a variable/ 
 
 Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to bgin with an uppercase letter.
 
-#### Classes:  
+### Classes:  
 
 class-declaration along with the declarator also contain the definition of the class which is a given by class-initializer
 
@@ -220,40 +227,6 @@ parent-class-list contains sequence of parents(if inherited) of the current clas
 *parent-class-list: \
 parent-class-identifier
 parent-class-list parent-class-identifier<sub>opt</sub>*
-
-
-
-
-### StorageClass Specifiers
-These keywords specify the lifetime and scope of a variable.`local` variables have a local lifetime and are allocated new storage each time execution control passes to the block in which they are defined.
-Also they cannot be accessed outside of that block.Variables named with `static` or `global` specifiers have a memory allocated and exist throughout the program. 
-
-#### Syntax:
-*storageclass-specifier:* \
-`local` \
-`static` \
-`global` 
-
-
-### Type Specifiers
-Type Specifiers specify the data-type of a variable or the class of an object.They also determine the  location of variable in the memory layout.
-#### Syntax: 
-*type-specifiers:* \
-`void` \
-`int` \
-`long` \
-`class-identifier` \
-`func-identifier` 
-
-
-### Type Qualifiers
-These specify the modifiability of a variable or an object.
-#### Syntax 
-`const` \
-`fluid` 
-
-`const` variables and objects cannot be changed after being initialized
- and fluid variables and objects can be changed or modified at any time of the program. If no qualifier is specified, then it is qualified as `fluid` by default.
 
 ### Declarators 
 Declarators declare a unique identifier and is a part of declaration.
@@ -339,28 +312,27 @@ block<sub>opt </sub>`\n` block<sub>opt</sub>`\n`      block<sub>opt</sub>* ` *% 
 
 Each block is used atmost once.
 
-
 # Conversions:
 
-### Integral Promotion:
+### Integral Promotion
 Objects of data types which take less number of bits are converted to data types like int during operation. Such conversion is called integral promotion. If an int can represent the value of the original type, then it is converted to int.
 
-### Integral Conversions:
+### Integral Conversions
 Integral conversions are conversions between integral types. The integral types are char, short, int, long. Tureasy has no data types for unsigned values, so there are no integral conversions for the same.
 
-### Integer and Floating:
+### Integer and Floating
 When an object of floating type is converted to an integral type, the fractional part is truncated. 
 If the resulting value cannot be represented in the integral type, the behavior is undefined.
 When a value of integral type is converted to floating type and the value is not exactly representable, then the result may 
 be either the next higher or next lower representable value. If the result is out of range, the behavior is undefined.
 
-### Floating Types:
+### Floating Types
 A value of floating type can be safely converted to a more precise floating type with the value unchanged, i.e, conversions 
 from float to double or from double to long double are safe.
 When a value of floating type is converted to a less precise type and the value isn't representable precisely, it can be
 converted to either the next higher or the next lower representable value. The result is undefined if result is out of range.
 
-### Arithmetic Converisons:
+### Arithmetic Converisons
 Many binary operators cause conversions of operands, so as to bring them into the same type. These conversions are called arithmetic conversions. These are mostly widening conversions where a lower sized data type gets converted to higher sized data type.
 | Condition: | Conversion: |
 |------|---- |
@@ -380,7 +352,7 @@ The expression's evaluation respects the rules of precedence and parenthesis.
 ### Primary Expressions
 The simplest form of expressions from which others are constructed are called primary expressions. It includes strings, constants and identifiers. Strings are built in data types in Tureasy, constants and identifiers have been mentioned in Lexical structure section.
 
-### Cast:
+### Cast
 The type_name is a type and cast_expression is a value to be converted to that type.
 ```
     type_name(cast_expression)
@@ -405,7 +377,7 @@ The expression :a is used for the bitwise negation of a. The operand must be int
 The expression !a is used for logical negation of a. The operand is treated to be true for integral value of 0 or NULL, in all other cases it yields false.
 The expression memsize(A) is used to find out the memory allocated to final result of A expression. Even objects of classes can be operands of this operator.
 
-### Multiplicative Operators:
+### Multiplicative Operators
 The operators * , / , and % are called the multiplicative operators. 
 These are syntactically left-associative (i.e, they group left-to-right) and have the same precedence.
 ```
@@ -419,7 +391,7 @@ While the % operator the remainder of the division of the first operand by the s
 Incase the second operand is 0 in any of the operators / and % the result is undefined. 
 But it is always guaranteed that the absolute value of the remainder is smaller than that of the divisor.
 
-### Additive Operators:
+### Additive Operators
 The addition operator + and subtraction operator - are called additive operators. These are left-associative.
 ```
 Expression + Expression
@@ -428,7 +400,7 @@ Expression - Expression
 The operands can be integral or floating values.
 The result of the + operator is the sum of the operands while the result of the - operator is the difference of the operands.
 
-### Shift Operators:
+### Shift Operators
 The left shift operator << and right shift operator >> group left-to-right.
 ```
 Expression1 << Expression2
@@ -443,7 +415,7 @@ to the number of bits in the Expression1's type in left shift.
 When the first operand is function declaration for << operator, it means that the return type of function is second operand.
 When the first operand is one of the generic types for >> operator it means that the second operand is its type.
 
-### Relational Operators:
+### Relational Operators
 The binary operators: less than (<), greater than (>), less than or equal to (<=), greater than or equal to (>=) are
 called relational operators and have left-to-right associativity.
 ```
@@ -456,7 +428,7 @@ These operators support integral or floating-point numeric type.
 The char type also supports these operators. In this case, the corresponding character codes are compared.
 Here, the result type is bool. If the relationship in the expression is false, the value returned is false(0); otherwise true(1).
 
-### Equality Operators:
+### Equality Operators
 The equality operators equal to(==) and not equal to(!=) compare their operands for equality and inequality.
 ```
 Expression == Expression
@@ -467,7 +439,7 @@ also string type. The result type is bool.
 The == operator returns true(1) if both operands have the same value; otherwise, it returns false(0). 
 The != operator returns true(1) if the operands don't have the same value; otherwise, it returns false(0).
 
-### Bitwise AND Operator:
+### Bitwise AND Operator
 The & operator compares each bit of the first operand to the corresponding bit of the second operand. 
 If corresponding bits are 1, the result bit is set to 1. Otherwise, the result bit is set to 0.
 ```
@@ -475,7 +447,7 @@ Expression & Expression
 ```
 Both operands must have integral types. The usual arithmetic conversions are performed.
 
-### Bitwise Exclusive OR Operator:
+### Bitwise Exclusive OR Operator
 The ^ operator compares each bit of the first operand to the corresponding bit of the second operand. 
 If one bit is 0 and the other bit is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
 ```
@@ -483,7 +455,7 @@ Expression ^ Expression
 ```
 Both operands must have integral types. The usual arithmetic conversions are performed.
 
-### Bitwise Inclusive OR Operator:
+### Bitwise Inclusive OR Operator
 The | operator compares each bit of the first operand to the corresponding bit of the second operand. 
 If either bit is 1, the corresponding result bit is set to 1. Otherwise, the corresponding result bit is set to 0.
 ```
@@ -491,7 +463,7 @@ Expression | Expression
 ```
 Both operands must have integral types. The usual arithmetic conversions are performed.
 
-### Logical AND Operator:
+### Logical AND Operator
 The && operator returns true if both operands are true, otherwise false. This operator groups left-to-right.
 If either operand is false, the result is false. If the first operand is false, the second operand is not evaluated.
 ```
@@ -499,7 +471,7 @@ Expression && Expression
 ```
 The operands must be bool type or must be convertible to it. The result's type is bool.
 
-### Logical OR Operator:
+### Logical OR Operator
 The || operator returns true if either or both operands is true, otherwise false. This operator groups left-to-right.
 The second operand is evaluated only if the first operand evaluates to false.
 ```
@@ -507,7 +479,7 @@ Expression || Expression
 ```
 The operands must be bool type or must be convertible to it. The result's type is bool.
 
-### Conditional Expression Operator:
+### Conditional Expression Operator
 ```
 Expression0 ? Expression1 : Expression2
 ```
@@ -516,7 +488,7 @@ If Expression0 unequals 0, Expression1 is evaluated. So, the result of the expre
 If Expression0 equals 0, Expression2 is evaluated. So, the result of the expression is the value of Expression2.
 So in any case only one of Expression1, Expression2 is evaluated. And if both operands have void type, the result type is void.
 
-### Assignment Operator:
+### Assignment Operator
 Here, the value of the right-hand operand is assigned to the storage location named by the left-hand operand. Therefore, the left-hand operand must be a modifiable lvalue. There are operators of the form `op=` that perform the operation op between value stored in lvalue and right-hand operand and then assignment is done to lvalue.
 ```
 Assignment_Operator:  = *= /= %= += -= <<= >>= &= ^= |=
