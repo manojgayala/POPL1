@@ -198,6 +198,23 @@ $main() << void
         / 
 %
 ```
+### Type Casting:
+Converting one datatype into another is known as type casting.
+Convertion of values from one type to another explicitly can be done using the cast operator as follows −
+```
+$main() << void
+    int a,b;
+    double result;
+    result = (double) a / b;
+    write("Result = ",result);
+    ``
+    For a = 14, b = 5, the following output gets printed on console:
+    Result = 2.800000
+    ``
+%
+```
+In the above example, variables a and b are declared under integer datatype. Note here that the cast operator has precedence over division, so
+the value of a is first converted to type 'double' and finally it gets divided by b yielding a double value which is assigned to result.
 # Tags
 Tureasy offers its programmers a unique feature of tags. These tags help in improving the code and even finds common logical bugs by understanding what the user is intended to do. Let us understand its usage with an example.
 ``` 
