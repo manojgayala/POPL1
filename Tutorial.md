@@ -120,7 +120,35 @@ while i<=n
     
 Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
 
-# Arrays
+# Lists and Arrays
+
+### Lists
+List is a generic data type in Tureasy, it is a sequence of objects.
+
+A list can be created by the declaration `List>>type identifierName;`
+The above declaration creates an empty list.
+
+The elements of a list can be initilized during declaration by enclosing them in square brackets as shown
+`  List>>int  scores = [ 22 , 36, 14, 21, 40]; `
+
+To add new elements to an existing list, using append( )
+` scores.append(29); ~ this adds 29 to end of the list`
+
+
+Multiple elements can be added to an existing list by concatenate them shown
+```
+scores += [ 19, 27];
+```
+You can reassign or extract a part of a list using slicing operator `:`
+```
+List>>int scores2 = scores[0:3]; ~scores2 will get [ 22, 36, 14, 21]
+
+List>>int score3 = score[:2]; ~score3 will get [22, 36, 14]
+
+score[1:3] = [35, 15, 20] ~Replaces 36,14,21 with 35,15,20 espectively
+``` 
+
+### Arrays
 Array is almost like a list, except that its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
 
 ### Initializiation of arrays
