@@ -73,7 +73,8 @@ A simple code explaining the concept of file handling in Tureasy is as below:
 ```c
 $main() << void
 	FILE fptr;
-	string path = "C:\Users\HP\Downloads\test.txt";
+	string path;
+	read(path);
 	fptr.open(path,"r");
 	while(fptr.readLine() != EOF)
 		write(fptr.readLine());
