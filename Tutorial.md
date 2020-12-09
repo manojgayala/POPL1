@@ -102,7 +102,7 @@ A filed open in Tureasy must be close using the function **close**
 # Strings
 
 
-The ability to manipulate text easily is a major part of most programming languages. Tureasy offers ** string ** type and includes a variety of useful string operations.
+The ability to manipulate text easily is a major part of most programming languages. Tureasy offers **string** type and includes a variety of useful string operations.
 Strings are stored as a sequence of characters, which are indexed by integers starting from zero. The string type 
 
 ### Creating strings
@@ -144,7 +144,7 @@ In above example string concatenation operator ` + ` and string duplicate operat
 ### Manipulating strings
 
 ```
-exmples to be written
+examples to be written
 ```
 
 Table of some important functions supported for string objects. 
@@ -328,14 +328,17 @@ $main() << void
 # Classes and Objects
 Tureasy supports object-oriented programming and all the objects are instances of a class.
  Every class consists of three blocks namely members constructors ,methods represented by `mem` ,`con`,`met` respectively. 
+ Every Class starts with `*` and ends with `*%`
+ Members,Methods are merely variables/objects ,functions respectively in tureasy but in classes private members and methods can be defined.
+ Private members/methods are only accessible in the Class body and are declared using `_` as a prefix to their usual declaration.
   
 ### Basic Class Declaration: 
 ```
-*ClassA         ~name of the class should not have any whitespaces.
-mem:  ~member block.
+*ClassA           ~name of the class should not have any whitespaces.
+mem:               ~member block.
 int a;
 string b;
-met:  ~method block.
+met:                ~method block.
 $printmem() << void
 write(a+" "+b);
 %
@@ -343,30 +346,54 @@ $setmem(int x,string s)<< void
 b = s;
 a = x;
 %
-con:   ~constructor block.
+con:                ~constructor block.
 (int x,string s)
 a = x;
 b = s;
+%                  ~constructor terminator
 *%                ~class terminator.
+```
+Members,Methods are merely variables/objects ,functions respectively in tureasy but in classes private members and methods can be defined.
+Private members/methods are only accessible in the Class body and are declared using `_` as a prefix to their usual declaration.
+```
+*ClassA
+mem:
+int a;
+_string b;
+met:
+$printmem() << void
+write(a+" "+b);
+%
+_$setstring(string s) << void
+b = s;
+%
+*%
+
+$main << void
+ClassA obj = new ClassA();
+obj.setstring("hlo private var");       ~this is not allowed as setstring() is a private method of ClassA.
+%
+
 ```
   There can be multiple constructors for a class.
 ### Object -Instance of a Class
-Objects are created by calling the constructor of a class suing `new` keyword.
+Objects are created by calling the constructor of a class using `new` keyword.
+The members and methods are accessed by `.` operator.
 ```
 ~Here Two objects are created using two constructors of the ClassA.
 $main << void
-ClassA obj = new ClassA();     ~default constructor.
+ClassA obj = new ClassA();                 ~default constructor.
 ClassA obj2 = new ClassA(2,'second constructor`);
-obj.a = 3;  ~member access
+obj.a = 3;                                 ~member access
 obj.setmem(5,'setting throgh a method');   ~method access
 obj2.printmem();  
 ```
 ### Inheritance
 
 A class can inherit methods and members of a class using inheritance.
-Inheritance is one using `inherit` keyword in the declaration of the class followed by the classname of the parent class.  
+Inheritance is done using `inherit` keyword in the declaration of the class followed by the classname of the parent class.  
 
-This class can access both the members and methods of itself and also of the parent class;
+This class can access both the members and methods of itself and also the public methods of the parent class;
 ```
 *ClassB inherit ClasA
 mem:
@@ -375,12 +402,12 @@ float d;
 
 $main << void
 ClassB inh_obj = new ClassB();
-inh_obj.a = 2;  ~accessing parent memeber.
+inh_obj.a = 2;       ~accessing parent memeber.
 inh_obj.d = 24.0;
-inh_obj.printmem(); ~calling the parent method.
+inh_obj.printmem();  ~calling the parent method.
 ```
 Multiple inheritance can also be done in the similar way.
-```
+ ```
 *Class1 
 mem:
 int x;
@@ -389,7 +416,7 @@ int x;
 mem:
 string y;
 
-*Class3 inherit Class2,Class1
+*Class3 inherit Class2,Class1. ~Multiple inheritance.
 met:
 $printmem()
 write(x+" "+y);  ~ x and y are inherited from Class1,Class2.
