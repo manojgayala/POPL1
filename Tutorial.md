@@ -348,6 +348,97 @@ $main() << void
 	write(x);
 %
 ``` 
+# Classes and Objects
+Tureasy supports object-oriented programming and all the objects are instances of a class.
+ Every class consists of three blocks namely members constructors ,methods represented by `mem` ,`con`,`met` respectively. 
+  
+### Basic Class Declaration: 
+```
+*ClassA         ~name of the class should not have any whitespaces.
+mem:  ~member block.
+int a;
+string b;
+met:  ~method block.
+$printmem() << void
+write(a+" "+b);
+%
+$setmem(int x,string s)<< void
+b = s;
+a = x;
+%
+con:   ~constructor block.
+(int x,string s)
+a = x;
+b = s;
+*%                ~class terminator.
+```
+  There can be multiple constructors for a class.
+### Object -Instance of a Class
+Objects are created by calling the constructor of a class suing `new` keyword.
+```
+~Here Two objects are created using two constructors of the ClassA.
+$main << void
+ClassA obj = new ClassA();     ~default constructor.
+ClassA obj2 = new ClassA(2,'second constructor`);
+obj.a = 3;  ~member access
+obj.setmem(5,'setting throgh a method');   ~method access
+obj2.printmem();  
+```
+### Inheritance
+
+A class can inherit methods and members of a class using inheritance.
+Inheritance is one using `inherit` keyword in the declaration of the class followed by the classname of the parent class.  
+
+This class can access both the members and methods of itself and also of the parent class;
+```
+*ClassB inherit ClasA
+mem:
+float d;
+*%
+
+$main << void
+ClassB inh_obj = new ClassB();
+inh_obj.a = 2;  ~accessing parent memeber.
+inh_obj.d = 24.0;
+inh_obj.printmem(); ~calling the parent method.
+```
+Multiple inheritance can also be done in the similar way.
+```
+*Class1 
+mem:
+int x;
+*%
+*Class2
+mem:
+string y;
+
+*Class3 inherit Class2,Class1
+met:
+$printmem()
+write(x+" "+y);  ~ x and y are inherited from Class1,Class2.
+%
+*%
+ 
+```
+
+###  Overriding and Overloading
+Methods of a class can be overloaded(different methods with same names) and also its parent methods can be overridden(changing the definition of the method).
+Overriding is done by using `.$`
+```
+*ClassB inherit ClassA
+mem:
+float d;
+met:
+.$printmem(). ~overridden method.
+write(a+" "+b +" "+d);
+%
+$setmem(int x,string s,float f).  ~overloaded method.
+d =f;  
+parent.setmem(x,s);  ~parent method can be accessed through 'parent' keyword.
+%
+*% 
+```
+
 
 # Tags
 Tureasy offers its programmers a unique feature of tags. These tags help in improving the code and even finds common logical bugs by understanding what the user is intended to do. Let us understand its usage with an example.
