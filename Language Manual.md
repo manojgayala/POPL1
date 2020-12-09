@@ -580,45 +580,41 @@ if expression statement\
 if expression statement else statement\
 switch (expression) statement*\
 
-In both forms of the if statement, the expression, which must have arithmetic or pointer type,is evaluated, including all side effects.\
+In both forms of the if statement, the expression, which must have arithmetic type,is evaluated, including all side effects.\
 If statement:\
 In if statement the sub statement or the block will only be executed if the expression is true i.e.the expression value is non zero.\
 If else statement:\
-In this type of if statement , first substatement will only be executed if expression is non zero, otherwise the second sub statement(under else) is executed which mathches with closest unmatched if(i.e. nested at same level).\
+In this type of if statement , first substatement will only be executed if expression is non zero, otherwise the second sub statement(under else) is executed which matches with closest unmatched if(i.e. nested at same level).\
 switch statements: \
 The switch statement causes control to be transferred to one of several statements depending
-on the value of an expression, which must have integral type. The expression here is an integer or a character. The statement here is usually compound and it contains case-labeled statements and optionally a default-labeled statement.refer`labeled statements`. The compound statement should not have local variables as the jump to an internal label may skip over the initialization of such variables. 
+on the value of an expression, which must have integral type. The expression here is an integer or a character. The statement here is usually compound and it contains case-labeled statements and optionally a default-labeled statement.Refer [here](#Labeled statements). The compound statement of switch should not have local variables as the jump to an internal label may skip over the initialization of such variables. 
 
-### iteration statement
+### Iteration statement
 Iteration statements specify looping. There are 2 kinds of iterative statements: for and while.
 
 *iteration-statement:\
 while expression statement \
-for  type : (low,;high) statement \
-for  list*\
-In while statements, the substatements are executed repeatedly as long as the expression is non zero, the expression has arithmetic type. If the control expression evaluates to zero the first time through, the substatement may not run at all. With while, the test, including all side effects from the expression, occurs before each execution of the statement.\
+for  identifier : (low,high) statement \
+for  identifier : List*\
 
-In `for` statement, the loop runs till expression is less then high. By default the count is incremented by 1. he for statement lets you repeat a statement or compound statement a specified number of times. The body of a for statement is executed zero or more times until an optional condition becomes false.  Side-effects from each expression are completed immediately after its evaluation.\
-The for loop can be used to traverse a list or an array. For loop traverses all the elements of a list.\
-A for statement also terminates when a break, goto, or return statement within the statement body is executed. A continue statement in a for loop causes loop-expression to be evaluated. When a break statement is executed inside a for loop, loop-expression is not evaluated or executed. 
+In while statements, the substatements are executed repeatedly as long as the expression is non zero(true), the expression has arithmetic type. If the control expression evaluates to zero for the first time, the substatement will not run at all. The test happens at the beginning of the while loop and the increments are done within the block.\
 
-### jump statement
+In `for` statement, the loop iterates over the values between low and high (inclusive). By default the count is incremented by 1. The for statement lets you repeat a statement or compound statement a specified number of times. Side-effects from each expression are completed immediately after its evaluation.\
+The for loop can be used to traverse a list or an array also.\
+A for statement also terminates when a break or return statement within its body is executed. A continue statement in a for loop causes loop to start its next iteration abruptly. 
+
+### Jump statement
 Jump statements transfer control unconditionally. \
 *jump-statement:\
-goto identifier;\
 continue;\
 break;\
 return expression<sub>opt</sub>;\
 
-In the `goto` statement, the identifier must be a label located in the current function. Control transfers to the labeled statement.
+The `continue` statement appears only in iteration statements. It is used within the substatement of iteration statements to transfer control flow to the place just before the end of the substatement. 
 
-The `continue` stayement appears only in iteration statements. It is used within the substatement of iteration statements to transfer control flow to the place just before the end of the substatement. 
+The `break` statement appears in iteration and switch statements and terminates execution of the innermost block containing it and control passes to the statement follwing the block.
 
-The `break` statements appperar in iteration and switch statements and terminates execution of the smallest enclosing such statement , control passes to the statement follwing terminated statemnt.
-
-A function returns caller by the `return` statement. If the function return type is void, the function may not return a value; otherwise, the expression represents the value to be returned. 
-
-
+The `return` statement is used to return to its caller. If the function return type is void, the function may not return a value; otherwise, the expression represents the value to be returned.
 
 # Classes
 This section covers the basic semantics of Classes and how they are implemented.
