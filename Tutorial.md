@@ -18,6 +18,63 @@ Now we would try to understand the code line by line. The first line has `main` 
 
 The set of characters enclosed within double quotes(" ") is called string. Some characters beginning with '\' are called escape sequences which are used for representing hard to type or invisible characters. The escape sequences would be covered in the later sections.
 
+# Strings
+
+
+The ability to manipulate text easily is a major part of most programming languages. Tureasy offers ** string ** type and includes a variety of useful string operations.
+Strings are stored as a sequence of characters, which are indexed by integers starting from zero. The string type 
+
+### Creating strings
+
+This programming language allows literal strings to be specified as a sequence of characters enclosed in double quote marks.
+
+```
+string a = “Hello World”;
+```
+  
+### String operations
+To extract a single character, use indexing operator ` a[i] ` as shown:
+```
+string b = a[6];	~ b gets "W"
+```
+To obatain a sub-string, use the slicing operator ` a[i:j]  `, where [i:j] specifies the range as all the characters in a whose index is x such that i <= x <= j. Either index can be ommitted to imply, the beginning or the end of string as shown below:
+```
+string c = a[2:8];	~ c gets "llo Wor"
+string d = a[:5];	~ d get "Hello "
+string e = a[:];	~ as both ommited, e gets entire "Hello World"
+
+```
+
+Strings are mutable, i.e. content in the strings can be modified without creating a new object. The size of the arrays holding the strings can change size dynamically to provide flexibility for the strings.
+```
+string str1 = "Hello";
+string str2 = "World";
+
+str1 = str1 + " " + str2;
+~ str1 finally holds "Hello World"
+
+string str3 = str1*3;
+~ str3 gets HelloHelloHello
+```
+In above example string concatenation operator ` + ` and string duplicate operator ` * `  were used.
+
+
+
+### Manipulating strings
+
+```
+exmples to be written
+```
+
+Table of some important functions supported for string objects. 
+function | task
+-------- | -----
+cmp(str2) | compares the sum of ASCII values of characters in string and returns -1 if str1<str2,  1 if str1>str2 and 0 if equal 
+Replace(str2,str3) | replaces specifed sub-string(str2) with str3
+Find(str) 	| searches for the specified sub-string(str) and outputs position
+WordCount(str)	| gives the count of number of occurences of specifed character in the string OR length of string
+
+
 # Tags
 Tureasy offers its programmers a unique feature of tags. These tags help in improving the code and even finds common logical bugs by understanding what the user is intended to do. Let us understand its usage with an example.
 ``` 
