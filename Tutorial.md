@@ -198,6 +198,35 @@ $main() << void
         / 
 %
 ```
+# Loops and conditional statements
+This is a program to print factors of a number.
+``` 
+$main() << void 
+    int num;
+    write("Enter a positive integer: ");
+    read(num);
+    write("Factors of "+ num +" are: ");
+    for i: (1;num) 
+        if num % i == 0 
+            write(i +" "); /
+        else
+            continue; /
+ % 
+ ```
+The output of this program is factors of the given number separated by spaces.`i` is initialised to 1, \
+`(1;num)` specifies range of `i` till which loop has to run.\
+For each iteration i is incrimented by 1, For loop iterates form i=1 to i=num. when i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
+for loops can also be used for list traversing.\
+`for listA`
+When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and traversesa all elements one by one in ascending order.\
+suppose if we want alternative elements, whille loop can be used as shown below,\
+
+`int n,i=0;
+while i<=n
+    write(a[i]);
+    i=i+2; /`
+    
+Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
 ### Type Casting:
 Converting one datatype into another is known as type casting.
 Convertion of values from one type to another explicitly can be done using the cast operator as follows −
