@@ -86,13 +86,15 @@ A storage class is used to represent additional information about a variable. St
 Basic Type Specifiers specify the data-type of a variable or the class of an object.They also determine the location of variable in the memory layout.
 Tureasy provides the following data types
 
-`void` 	- NULL\
-`int` 	- 4 bytes\
-`long` - 8 bytes\
-`float`- 8 bytes\
-`double`- 16 bytes\
-`string` - no fixed size\
-`char` - 1 byte 
+|Type	|Bytes	|
+|---	|---	|
+|void	|NULL|
+|int|4 bytes|
+|long|8 bytes|
+|float|8 bytes|
+|double|16 bytes|
+|string|no fixed size|
+|char|1 byte| 
 
 ### Derived types
 Derived types are constructed from the fundamental types in the following way.
@@ -834,12 +836,9 @@ The tags are special kind of statements which groups part of code which has some
 Some of the commonly used public tags are
 
 |loop	|unique `var`	|`var` < (const)|
-|---	|---	|---	|---	|---	|
-|graph-theory	|number-theory	|`var` in range (range)	|	|	|
-|unused  	|dp	|innerloop	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
+|---	|---	|---|
+|graph-theory	|number-theory	|`var` in range (range)	|
+|unused  	|dp	|innerloop	|
 
 The tags provide programmers with tips related to
 1. Parallelism	: 	There are some constructs of Tureasy which support parallel execution. The programs including such constructs would improve performance but are hard to code. The tags analyze the data and provide suitable constructs that could replace the existing code.
