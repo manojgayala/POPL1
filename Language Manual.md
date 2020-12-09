@@ -46,6 +46,7 @@ Constants in Tureasy are classified as
 * Tag constants
 
 ### Integer constants
+Integer constants are sequence of digits. The integer constants that do not begin with digit zero (0) are referred as *decimals*. Any integer constant which is not a decimal are considered to be **octal**. **Hexadecimal** integer constants consists of digits 0-9 and letters a-f (or A-F) where a through f signify 10-15.
 
 ### Character constants
 Character constants are sequence of characters. Single-character constants are enclosed in '' eg., 'a'. Multi-character constants are implementation based.  Character constants or String constants (discussed later) can't represent newlines, tabs etc., These kind of special characters are represented by escape sequences shown below.
