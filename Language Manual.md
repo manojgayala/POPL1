@@ -378,6 +378,13 @@ The tags are special kind of statements which groups part of code which has some
 
 Some of the commonly used tags are
 
+|	|	|	|	|	|
+|---	|---	|---	|---	|---	|
+|	|	|	|	|	|
+|	|	|	|	|	|
+|	|	|	|	|	|
+|	|	|	|	|	|
+|	|	|	|	|	|
 
 The tags provide programmers with tips related to
 1. Parallelism	: 	There are some constructs of Tureasy which support parallel execution. The programs including such constructs would improve performance but are hard to code. The tags analyze the data and provide suitable constructs that could replace the existing code.
