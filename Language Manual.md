@@ -90,6 +90,7 @@ Names a.k.a identifiers are entities that are declared at some point of the code
 ## Declarations
 Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
 
+
 ### Syntax for Declarations
 #### Variables:
    *declaration*: \
@@ -128,6 +129,73 @@ which is also given by func-initializer simialr to the functions.
 con-declarator  `'\n'`  func-initializer*   
 
 
+## Identifiers
+There are two forms of names: simple and qualified.
+a simple name is a single identifier (e.g. direct name of a variable).
+A qualified name consits of a name, " . " and an identifier. (e.g. classidentifier.member)
+
+in this program:
+```
+~ class definition starts with '*' and ends with '*%' 
+~ private members and methods are declared with '_' at the start
+*Dog
+  	~ it's members are defined in the 'mem' block.
+ mem:
+ string name;
+ int  age;
+   
+ ~ constructors for the class are defined in the 'con' block
+ ~ constructor is started with parameters in '( )' and ends with '%'
+ ~ ':' is used for constructors as they dont have any return type.
+ con:
+ (string name,int age):
+ name.here = name;
+ age.here = age;
+ Updatefollowers 1;
+ % 
+  
+*% 
+$main() << void
+ name = "woofy";
+ age = "7";
+ Dog aDog = new Dog(woofy,7);
+ Dog.Dispabout();
+```
+In above example aDog, name ,age are identifiers to specify the name of declared entity.
+The names Dog, string, main have appered in the example.   
+
+
+## Scope
+
+The scope of a declaration is the region in the program within which that entity can be referred to by its name, if it is not shadowed.
+There are two types of scope to consider: one being lexical scope of an identifiers which is the region of the program within which the identifier's characteristics are understood *and* other being the scope associated with objects and functions with external linkage.
+
+#### Lexical scope
+
+The lexical scope of an function or object identifier in an external declaration begins after its declaratin and persists till the end of region in which it was declared. The scope of a parameter is from beginning to the end of the function.
+The scope of the label in the whole of code it encloses till its closing tag.
+
+If an identifier is declared outside of a block and also inside the block, the declaration of the identifier outside the block will be put on hold until the inner block ends.
+
+#### Shadowing
+Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the newly declared entity.
+
+Shadowing applies only to members which would otherwise be inherited.
+ 
+* A declaration '*x*' of a type name '*t*' shadows the declaration of any other types name 't' the are in scope at that position where '*x*' occurs thoughout its scope.
+*  A declaration  '*x*' of a parameter named '*t*' shadows the declaration of any other variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
+* A  declaration '*x*' of a variable  named '*t*' shadows the declaration of any other parameter / variables named 't' that are in scope at the position where '*x*' occurs thoughout its scope.
+* A declaration '*x*' of a function named '*t*' shadows the declarations of any other functions named '*t*' that are enclosed in its scope.
+
+
+#### Obscuring
+
+A simple name may sometimes be misinterpretted as the name of a variable, type, or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to a type, and a type will be choosen in precedence to a package. Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
+
+
+There will be no obscuring between the name of a module and name of a variable/ type / package, which means a module ca have the same name as a variable, types and packages.
+
+Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to bgin with an uppercase letter.
 
 
 
