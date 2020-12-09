@@ -82,7 +82,6 @@ Array of strings can also be defined as integers whose behavior is implementatio
 
 # Names
 ## Declarations
-
 Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
 
 ### Syntax for Declarations
@@ -108,7 +107,7 @@ Declarations provide the necessary properties of an identifier, they may or may 
   `$`func-declarator `<<` type-specifier `'\n'` func-initializer* 
 
 *con-declaration:      -->for constructors\
-(paramerter-type-list)  `:`  `'\n'`  func-initializer*   
+con-declarator  `'\n'`  func-initializer*   
 
 
 
@@ -116,8 +115,11 @@ Declarations provide the necessary properties of an identifier, they may or may 
 
 #### Classes:  
    *declaration: \
-     `*`class-declarator `'\n'` class-initilaizer* <sub>opt</sub> 
+     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
+*parent-class-list:
+parent-class-identifier
+parent-class-list parent-class-identifier<sub>opt</sub>*
 
 
 
@@ -127,7 +129,7 @@ These keywords specify the lifetime of a variable.`local` variables have a local
 Also they cannot be accessed outside of that block.Variables named with `static` or `global` specifiers have a memory allocated and exist throughout the program. 
 
 #### Syntax:
-storageclass-specifier: \
+*storageclass-specifier:* \
 `local` \
 `static` \
 `global` 
@@ -149,6 +151,9 @@ storageclass-specifier: \
 `const` \
 `fluid` 
 
+`const` variables and objects cannot be changed after being initialized
+ and fluid variables and objects can be changed or modified at any time of the program.If no qualifier is specified it i defaultly qualified as `fluid`
+
 ### Declarators 
 Declarators declare a unique identifier and is a part of declaration.
 The type of the variable(an array or a single variable) or the  parameters of a function are specified by the declarator. 
@@ -159,20 +164,24 @@ identifier \
 declarator [constant-expression<sub>opt</sub>]  -->for arrays* 
 
 #### Syntax for function declarator
-*func-initializer: \
-statements `%`* 
 
-*statements: \
-statement. \
-statements statement<sub>opt</sub>* 
+ *func-declarator:  \
+ func-identifier (parameter-type-list)* 
+
+*con-declarator:  \
+(parameter-type-list) \
+con-declarator`:`(parameter-type-list)<sub>opt</sub> --> to specify the parent class constructor.*
+
+
+
 
 #### Syntax for Class declarator
 
 *class-declarator:   \
-class-identifier generic-type-specifier* 
+class-identifier `<<`  generic-type-specifier* 
 
-*generic-type-specifier: \
-`<<` type-specifier* 
+
+
 
 
 ### Initializers
@@ -185,23 +194,26 @@ assigment-expression.   -->assigning a value \
 `new` class-identifier (parameter-type-list).   -->calling a constructor. \
 func-declarator*.  -->calling a function. 
 
-*initialzer-list. \
+*initializer-list. \
 initializer \
-initialozer-list initlializer<sub>opt</sub>* 
+initializer-list initlializer<sub>opt</sub>* 
 
-#### Funciton initiliazers
+#### Function initializers
 *func-initializer:  -->also used for constructors. \
 statements `%`* 
 
+*statements: \
+statement. \
+statements statement<sub>opt</sub>* 
 #### Class initializers
 
 *class-initializer:  \
-blk<sub>opt</sub> blk<sub>opt</sub>      blk<sub>opt</sub>*  
+block<sub>opt</sub> block<sub>opt</sub>      block<sub>opt</sub>*  
 
-*blk: \
-`mem:` statements `\` \
-`con:` constructors `\` \
-`met:` functions `\`* 
+*block: \
+`mem:` declarations  \
+`con:` constructors  \
+`met:` functions* 
 
 
 # Conversions:
@@ -500,6 +512,243 @@ A function returns caller by the `return` statement. If the function return type
 
 
 # Classes
+This section covers the basic semantics of Classes and how they are implemented.
+
+Body of the class contains members, constructors, methods declared in `mem`,`con`,`met` blocks respectively.Classes can have subclasses 
+
+   *declaration: \
+     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
+
+Complete syntax is specified **here**
+   
+   This is the basic declaration of a class where *class-declarator* specifies whether the class is a *normal class* or a *generic class*(a class which uses generic type variables which has different declarations among different instances of the class) along with the name of the class *class-identifier*
+
+## Generic class declaration 
+```
+*GenClass << G
+mem:
+G g;
+met:
+$display() << void 
+write(g)
+%
+*%
+
+$main << void
+GenClass << int x;
+GenClass << string y;
+%
+```
+
+## Inherited Classes and Parent Classes
+
+Parent classes of a class can be specified using the `inherit` keyword, these specified class are called *immediate parent classes*
+and the latter class is called the *immediate inherited or subclass*.
+
+Subclass relation is transitive closure of the *immediate subclass* relation.
+
+```
+*A inherit B,C
+mem:
+int x:
+*%
+*B inherit D
+mem:
+int y
+*%
+```
+here,A is both subclass of B, C and also D.  
+B, C are the immediate parentclasses of A \
+D is a parentclass of B.
+
+## Class Body
+Class Body contains declaration of members, methods, constructors
+```
+*Class
+mem:
+var-declarations ...
+met:
+functions ...
+con:
+contructors ...
+*%
+```
+This is the general body of a class.Scope of all the members and functions that are declared in or inherited in, is the  entire body of the Class.
+
+## Class Members
+
+ There are three types of members 
+                   1.  members that are inherited from its immediate parentclass.
+                   2. members are declared  public in this class
+                   3. members that are declared private in this class.
+     
+   Methods which are inherited should not be declared again.  
+  
+  #### Syntax:
+  *members:*
+  *`mem:` mem-declaration-list* 
+  
+ *mem-declaration-list: \
+ mem -declaration \
+ mem-declarations mem-declaration<sub>opt</sub>*	
+ 	
+*mem-declaration: \
+ var-declaration --> public members   \
+`_`var_declartion -->private members*      
+
+Every member of the class can be accessed through `this` keyword.
+        
+## Class Methods
+There are five types of methods:
+
+ 1. Methods which are inherited from its immediate parent class.
+ 2. Methods which are declared public in the this class
+ 3. Methods which are declared private in this class
+ 4. Methods which are overridded in this class
+ 5. Methods which are overloaded in this class.
+
+#### Syntax:
+*methods:*
+*`met:` met-declaration-list* 
+
+*met-declaration-list: \
+met-declaration \
+met-declaraion-list met-declaration<sub>opt</sub>*
+
+*met-declaration:
+func-declaration  -->public and overloaded methods \
+`_`func-declaration  -->private methods \
+`.`func-declaration -->overridden methods.*      
+
+  Every method of the class can be accessed through `this` keyword.     
+ 
+ Methods of a generic class can use the generic type to declare objects in their code and can even return the generic type.These methods are called `generic methods`.
+
+### Inherited methods
+A class inherits all the public members and methods from its immediate parent class.
+No other method in the class should have the same method 
+signature(name and parameter-list) and the return type as of the inherited methods.
+
+There is an exception in the inheritance of public methods when multiple inheritance is occurred. All the common public  methods of the parent classes have to be overridden in the present class or one method can be chosen using `parent` keyword.
+
+### Overriden methods
+Only the public methods that are inherited from the parent class can be overridden.Even if the methods are overridden ,the old methods can be invoked using the `parent` keyword (folllowed by the parent class-identifier if multiple inherited)
+
+The overridden method has to be public.
+
+Overridden methods should have the same set of parameters as the parent method but the return type can be different.
+```
+*Parent
+met:
+$foo(int x) << int
+return 1;
+%
+
+*Sub inherit Parent
+met:
+.$foo(int x) << string.      ~overridded method with different return type.
+return '1'
+%
+
+```
+
+
+### Overloaded methods
+Two  non -private methods  of a class having same name with different arguments are called overloaded methods.
+Resolving the methods is done at compile-time using the set of arguments of both the methods.
+
+Return types of overloaded methods may or may not be same.
+```
+*Parent
+mem:
+int x;
+met:
+ $getX() << int
+  return x;
+ %
+*%
+*sub inherit Parent
+mem:
+float x;
+met:
+ $getX() << float
+  return x;
+ %
+ *%
+ ```
+ This return compile-time error as both the getX methods have no difference in their parameter -list to resolve.
+ ## Class Constructors
+ A constructor is used in the creation of an object that is an instance of a class.
+ #### Syntax:
+*constructors:*
+ *`con:` con-declaration-list \
+con-declaration-list* 
+
+*con-declaration:
+con-declaration-list con-declaration<sub>opt</sub>*
+
+Syntax of con-declaration is specified **here** \
+
+Constructors are identified through their parameter list and they don't need a particular  identifier because by default,*class-identifier*(name) is taken as the identifier of the constructor.
+
+
+```
+*Node
+mem:
+int x,y
+con:
+(int x,int y)
+here.x = x;
+here.y = y;
+%
+*%
+```
+
+
+*parameter-type-list* is same as the formal parameter list used for the methods and functions
+
+### Constructor overloading
+It is similar to method overloading ,to overload a constructor formal parameter list has to be unique for both the constructors otherwise it is a compile-time error.
+
+### Constructor for Inherited Classes
+When a class inherits an other class at the time of creation of object, the parentclass constructor should be called before the present class's constructor. So the constructor has to specify the parent's constructor to be called through its parameter-list after specifying the current class' list.
+If multiple inheritance has taken place, the parameter-lists has to be specified sequentially in the same order.
+```
+*Parent
+mem:
+int x,y;
+con:
+(int x,int y)
+here.x = x;
+here.y = here.y;
+%
+*%
+
+*Child inherit Parent
+mem:
+int z;
+con:
+(int z):(int x,int y)
+  here.z = here.z + parent.x +parent.y;
+ %
+*%
+```
+### Generic Constructors
+Constructors can also declare objects of generic type and the generic type can also be specified in the parameter-list.Only generic classes have generic constructors.
+```
+*GenClass << G
+mem:
+G g;
+met:
+$display() << void 
+write(g)
+%
+con:
+(G g)
+here.g = g;
+%
+*%
+```
 
 # Tags and Turzers
 The tags are special kind of statements which groups part of code which has some special implementation involved. It is used in this format 
