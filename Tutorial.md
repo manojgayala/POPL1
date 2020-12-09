@@ -18,10 +18,112 @@ Now we would try to understand the code line by line. The first line has `main` 
 
 The set of characters enclosed within double quotes(" ") is called string. Some characters beginning with '\' are called escape sequences which are used for representing hard to type or invisible characters. The escape sequences would be covered in the later sections.
 
-### Arrays
+# I/O Handling
+Console Input and Output in Tureasy is easy to program. This doesn't require any formatting unlike other languages like C, C++ etc., The compiler is smart enough to identify the data type of input and output variables and does type casting if required.
+Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user.  The parameters of read are separated by a **,** (comma). An example of it is as below
+```c
+$main() << void
+	int x;
+	float y;
+	read(x);		~ Taking a single input
+	read(x,y);		~ Taking multiple inputs
+%
+```   
+Strings with space between them can't be taken as an input through the function *read* which can be achieved by concatenation later.
+
+The function **write** which is used to print output to the console.  The parameter of the function write is of data type string. An example of it is as below
+```c
+$main() << void
+	int x = 10;
+	write("The value of x is "+x);
+%
+```
+**x** is type casted to string internally and the string "The value of x is " and x (after type-casting) are concatenated to one and the final result is printed. 
+
+# Variables and Operators:
+Down here, we'll see an example code in Tureasy that covers different types of expressions:
+```
+$main() << void
+    int a, b, result;
+    string finalAns;
+    read(a b);
+    result = a*b + (a/b - b%a)*b;
+    `` 
+        The value of expression after equality is computed taking a = 7, b = 3 
+        a*b + (7/3 - b%a)*b
+        a*b + (2 - b%a)*b
+        a*b + (2 - 3%7)*b
+        a*b + (2 - 3)*b         here 7/3 is truncated off to 2
+        a*b + (-1)*b
+        7*3 + (-1)*b
+        21 + (-1)*3
+        21 + (-3)
+        18
+    ``
+    if a > 0 && b > 0
+        finalAns = (result >= 18) ? "Yes" : "No";
+        write(finalAns);
+        / 
+%
+```
+In the above example, values of two variables a, b are read from the user. Assume that the input given from the user for a and  b is 7,3.
+Then following precedence rules, the variable result is computed from the arithmetic expression. Then there is a condition to check if a and 
+b are positive. Since a = 7 and b = 3, the statements under if are executed. See that the above statement has both relational and
+logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 18 >= 18. So the string "Yes" gets printed
+on the console.
+
+### Type Casting:
+Converting one datatype into another is known as type casting.
+Convertion of values from one type to another explicitly can be done using the cast operator as follows −
+```
+$main() << void
+    int a,b;
+    double result;
+    result = (double) a / b;
+    write("Result = " + result);
+    ``
+    For a = 14, b = 5, the following output gets printed on console:
+    Result = 2.800000
+    ``
+%
+```
+In the above example, variables a and b are declared under integer datatype. Note here that the cast operator has precedence over division, so
+the value of a is first converted to type 'double' and finally it gets divided by b yielding a double value which is assigned to result.
+
+# Loops and conditional statements
+This is a program to print factors of a number.
+``` 
+$main() << void 
+    int num;
+    write("Enter a positive integer: ");
+    read(num);
+    write("Factors of "+ num +" are: ");
+    for i: (1;num) 
+        if num % i == 0 
+            write(i +" "); /
+        else
+            continue; /
+ % 
+ ```
+The output of this program is factors of the given number separated by spaces.`i` is initialised to 1, \
+`(1;num)` specifies range of `i` till which loop has to run.\
+For each iteration i is incrimented by 1, For loop iterates form i=1 to i=num. when i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
+for loops can also be used for list traversing.\
+`for listA`
+When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and traversesa all elements one by one in ascending order.\
+suppose if we want alternative elements, whille loop can be used as shown below,\
+
+`int n,i=0;
+while i<=n
+    write(a[i]);
+    i=i+2; /`
+    
+Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
+
+# Arrays
 Array is almost like a list, except that its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
 
-#### Initializiation of arrays
+### Initializiation of arrays
 Initialization of all elements of array is done by  ` type arrayname[ ] = {list of values}; `
 We can also initilize particular elements by using array subscripts ` arrayname[subscript] = value; `
 
@@ -38,67 +140,7 @@ We can also initilize particular elements by using array subscripts ` arrayname[
   ~ the length of above will be 5 as it will include "\0" at end
   ```
   
-# I/O Handling
-Console Input and Output in Tureasy is easy to understand and program. This doesn't require any formatting unlike other languages like C, C++ etc., The compiler is smart enough to identify the data type of input and output variables and does type casting if required.
-Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user.  The parameters of read are separated by a **,** (comma). An example of it is as below
-```c
-$main() << void
-	int x;
-	float y;
-	read(x);		~ Taking a single input
-	read(x,y);		~ Taking multiple inputs
-%
-```   
-Strings with space between them can't be taken as an input through the function *read* which can be achieved by concatenation.
-
-The function **write** which is used to print output to the console.  The parameter of the function write is of data type string. An example of it is as below
-```c
-$main() << void
-	int x = 10;
-	write("The value of x is "+x);
-%
-```
-**x** is type casted to string internally and the string "The value of x is " and x (after type-casting) are concatenated to one and the final result is printed.   
-
-# File handling
-Basic steps while handling files in Tureasy are:
-1. Opening a file
-2. Operations performed by file
-3. Closing the file
-
-A simple code explaining the concept of file handling in Tureasy is as below:
-```c
-$main() << void
-	FILE fptr;
-	string path;
-	read(path);
-	fptr.open(path,"r");
-	while(fptr.readLine() != EOF)
-		write(fptr.readLine());
-	/
-	fptr.close();
-%
-```
-**FILE** is the keyword to denote that the variable *fptr* does operations with the specified file and the path of the file need to be stored.  
-The file can be opened in any of the below methods
-| *r* | *w* | *a* | *br* | *bw* | *ba* |
-|---|---|---|---|---|---|
-
-* **r**: opening a file in *read* mode
-*  **w**: opening a file in *write* mode
-*  **a**: opening a file in *append* mode
-*  **br**: opening a  file in *binary read* mode
-*  **bw**: opening a file in *binary write* mode
-*  **ba**: opening a file in *binary append* mode
-
-**readLine** is a function to read file line to line
-
-A filed open in Tureasy must be close using the function **close**
-
-
 # Strings
-
-
 The ability to manipulate text easily is a major part of most programming languages. Tureasy offers **string** type and includes a variety of useful string operations.
 Strings are stored as a sequence of characters, which are indexed by integers starting from zero. The string type 
 
@@ -136,8 +178,6 @@ string str3 = str1*3;
 ```
 In above example string concatenation operator ` + ` and string duplicate operator ` * `  were used.
 
-
-
 ### Manipulating strings
 
 ```
@@ -151,85 +191,6 @@ cmp(str2) | compares the sum of ASCII values of characters in string and returns
 Replace(str2,str3) | replaces specifed sub-string(str2) with str3
 Find(str) 	| searches for the specified sub-string(str) and outputs position
 WordCount(str)	| gives the count of number of occurences of specifed character in the string OR length of string
-
-# Expressions:
-Down here, we'll see an example code in Tureasy that covers different types of expressions:
-```
-$main() << void
-    int a, b, result;
-    string finalAns;
-    read(a b);
-    result = a*b + (a/b - b%a)*b;
-    `` 
-        The value of expression after equality is computed taking a = 7, b = 3 
-        a*b + (7/3 - b%a)*b
-        a*b + (2 - b%a)*b
-        a*b + (2 - 3%7)*b
-        a*b + (2 - 3)*b         here 7/3 is truncated off to 2
-        a*b + (-1)*b
-        7*3 + (-1)*b
-        21 + (-1)*3
-        21 + (-3)
-        18
-    ``
-    if a > 0 && b > 0
-        finalAns = (result >= 18) ? "Yes" : "No";
-        write(finalAns);
-        / 
-%
-```
-In the above example, values of two variables a, b are read from the user. Assume that the input given from the user for a and  b is 7,3.
-Then following precedence rules, the variable result is computed from the arithmetic expression. Then there is a condition to check if a and 
-b are positive. Since a = 7 and b = 3, the statements under if are executed. See that the above statement has both relational and
-logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 18 >= 18. So the string "Yes" gets printed
-on the console.
-
-# Loops and conditional statements
-This is a program to print factors of a number.
-``` 
-$main() << void 
-    int num;
-    write("Enter a positive integer: ");
-    read(num);
-    write("Factors of "+ num +" are: ");
-    for i: (1;num) 
-        if num % i == 0 
-            write(i +" "); /
-        else
-            continue; /
- % 
- ```
-The output of this program is factors of the given number separated by spaces.`i` is initialised to 1, \
-`(1;num)` specifies range of `i` till which loop has to run.\
-For each iteration i is incrimented by 1, For loop iterates form i=1 to i=num. when i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
-for loops can also be used for list traversing.\
-`for listA`
-When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and traversesa all elements one by one in ascending order.\
-suppose if we want alternative elements, whille loop can be used as shown below,\
-
-`int n,i=0;
-while i<=n
-    write(a[i]);
-    i=i+2; /`
-    
-Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
-### Type Casting:
-Converting one datatype into another is known as type casting.
-Convertion of values from one type to another explicitly can be done using the cast operator as follows −
-```
-$main() << void
-    int a,b;
-    double result;
-    result = (double) a / b;
-    write("Result = " + result);
-    ``
-    For a = 14, b = 5, the following output gets printed on console:
-    Result = 2.800000
-    ``
-%
-```
-In the above example, variables a and b are declared under integer datatype. Note here that the cast operator has precedence over division, so
-the value of a is first converted to type 'double' and finally it gets divided by b yielding a double value which is assigned to result.
 
 # Functions
 Functions are code-snippets (or parts of code) in Tureasy that attempt to enhance readability, understandability and efficiency of a code. Functions are of 2 types: **pre-defined functions** and **user-defined functions**
@@ -289,11 +250,11 @@ $fibanocci(int n) << int
   /
 %
 ```
-You may notice that the value of _n_ doesn't change in the whole process **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, the value of the input parameters are not modified in these functions. An important point to note is that *recursive function doesn't use loops like for or while*. Recursive functions follow declarative programming **i.e., these kind of functions concentrate more on the mental model of the programmer rather than operational**. In short recursive functions express the logic of the computation without describing it's control flow and hence they find many applications in real world problems which are *model based* 
+You may notice that the value of _n_ doesn't change in this example **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, there are no side effects to this recursive example. Recursive functions can be used to write programs of functional programming paradigm **i.e., these kind of functions concentrate more on the mental model of the programmer rather than operational**. In short recursive functions express the logic of the computation without describing it's control flow and hence they find many applications in real world problems which are *model based* 
 
 ### Local functions
 
-There are another category of functions that can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. 
+There are another category of functions that can be defined inside main itself with a reference to it. These functions use the variables within scope of main as parameters. 
 Here is an example to illustrate the same
 ```c
 $main() << void
@@ -310,6 +271,41 @@ $main() << void
 	write(x);
 %
 ``` 
+
+# File handling
+Basic steps while handling files in Tureasy are:
+1. Opening a file
+2. Operations performed by file
+3. Closing the file
+
+A simple code explaining the concept of file handling in Tureasy is as below:
+```c
+$main() << void
+	FILE fptr;
+	string path;
+	read(path);
+	fptr.open(path,"r");
+	while(fptr.readLine() != EOF)
+		write(fptr.readLine());
+	/
+	fptr.close();
+%
+```
+**FILE** is the keyword to denote that the variable *fptr* does operations with the specified file and the path of the file need to be stored.  
+The file can be opened in any of the below methods
+| *r* | *w* | *a* | *br* | *bw* | *ba* |
+|---|---|---|---|---|---|
+
+* **r**: opening a file in *read* mode
+*  **w**: opening a file in *write* mode
+*  **a**: opening a file in *append* mode
+*  **br**: opening a  file in *binary read* mode
+*  **bw**: opening a file in *binary write* mode
+*  **ba**: opening a file in *binary append* mode
+
+**readLine** is a function to read file line to line
+
+A filed open in Tureasy must be close using the function **close**
 
 # Classes and Objects
 Tureasy supports object-oriented programming and all the objects are instances of a class.
