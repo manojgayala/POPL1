@@ -116,8 +116,8 @@ con-declarator  `'\n'`  func-initializer*
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
-*parent-class-list:
-parent-class-identifier
+*parent-class-list: \
+parent-class-identifier \
 parent-class-list parent-class-identifier<sub>opt</sub>*
 
 
