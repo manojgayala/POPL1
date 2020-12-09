@@ -73,6 +73,16 @@ quotes). Two strings separated by '+' are concatenated to form a single string w
 Array of strings can also be defined as integers whose behavior is implementation-defined.
 
 # Types, values and Variables
+### Variables:
+Identifier is the name you supply for a variable in your program. They must differ in spelling and case from any keywords, i.e,
+keywords cannot be used as identifiers as they are reserved for special use.
+Syntax: *identifier*
+```
+    nondigit: _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+    digit: 0 1 2 3 4 5 6 7 8 9
+    The first character of the identifier must be a nondigit.
+```
 
 # Names
 Names a.k.a identifiers are entities that are declared at some point of the code. They have a scope, the part of code where it is known and a binding, the region of code where a specific location is associated with it. The names also get shadowed sometimes when their linkage is changed. This will be covered in subsequent sections.
@@ -203,25 +213,25 @@ block<sub>opt</sub> block<sub>opt</sub>      block<sub>opt</sub>*
 
 # Conversions:
 
-### Integral Promotion
-Objects of data types which take less number of bits are converted to data types like int or unsigned int during operation. Such conversion is called integral promotion. If an int can represent the value of the original type, then it is converted to int; otherwise the value is converted to unsigned int.
+### Integral Promotion:
+Objects of data types which take less number of bits are converted to data types like int during operation. Such conversion is called integral promotion. If an int can represent the value of the original type, then it is converted to int.
 
-### Integral Conversions
+### Integral Conversions:
 Integral conversions are conversions between integral types. The integral types are char, short, int, long. Tureasy has no data types for unsigned values, so there are no integral conversions for the same.
 
-### Integer and Floating
+### Integer and Floating:
 When an object of floating type is converted to an integral type, the fractional part is truncated. 
 If the resulting value cannot be represented in the integral type, the behavior is undefined.
 When a value of integral type is converted to floating type and the value is not exactly representable, then the result may 
 be either the next higher or next lower representable value. If the result is out of range, the behavior is undefined.
 
-### Floating Types
+### Floating Types:
 A value of floating type can be safely converted to a more precise floating type with the value unchanged, i.e, conversions 
 from float to double or from double to long double are safe.
 When a value of floating type is converted to a less precise type and the value isn't representable precisely, it can be
 converted to either the next higher or the next lower representable value. The result is undefined if result is out of range.
 
-### Arithmetic Converisons
+### Arithmetic Converisons:
 Many binary operators cause conversions of operands, so as to bring them into the same type. These conversions are called arithmetic conversions. These are mostly widening conversions where a lower sized data type gets converted to higher sized data type.
 | Condition: | Conversion: |
 |------|---- |
@@ -230,9 +240,6 @@ Many binary operators cause conversions of operands, so as to bring them into th
 |Otherwise, if either operand is of type float | Other operand is converted to float |                       
 |Otherwise, if either operand is of type long | Other operand is converted to type long |
 |None of the previous conditions met | Operands are converted to type int |
-
-### Void Conversions
-The void refers to NULL value in tureasy. It cannot be converted to any non-void value. It is sometimes returned by function calls based on function definition.
 
 # Expressions
 The expressions are vital to the language. The expressions are evaluated for their side effects (assiginment to variables) or for their values in larger expressions as operands or to affect the execution sequence in statements. The evaluation of expressions would yield one of the following :
@@ -244,7 +251,7 @@ The expression's evaluation respects the rules of precedence and parenthesis.
 ### Primary Expressions
 The simplest form of expressions from which others are constructed are called primary expressions. It includes strings, constants and identifiers. Strings are built in data types in Tureasy, constants and identifiers have been mentioned in Lexical structure section.
 
-### Cast
+### Cast:
 The type_name is a type and cast_expression is a value to be converted to that type.
 ```
     type_name(cast_expression)
@@ -369,7 +376,7 @@ The second operand is evaluated only if the first operand evaluates to false.
 ```
 Expression || Expression
 ```
-he operands must be bool type or must be convertible to it. The result's type is bool.
+The operands must be bool type or must be convertible to it. The result's type is bool.
 
 ### Conditional Expression Operator:
 ```
@@ -391,8 +398,10 @@ It is used to separate the data in grouping of elements. The groups can be argum
 ```
 Expression1,Expression2
 ```
+
+# Blocks and Statements
 # Statements
-Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their effect and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved so they cannot be used as names. statements are terminated by ';'. They fall into several categories.  
+Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their effect and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved such that they cannot be used as names of variables or functions. statements are terminated by ';'. They fall into several groups.  
 
    * labeled-statement
    * expression-statement 
@@ -401,32 +410,28 @@ Statements in tureasy are executed in sequence. The statements of a program cont
    * iteration-statement 
    * jump-statement 
 
-### Labeled statements
-Statements may carry label prefixes. A label is an identifier used to flag a location in a program such as `switch` statement, `mem` statement in class etc.A simple identifier followed by a colon (:) is a label. \
+### labeled statements
+Statements may carry label prefixes. A label is an identifier used to flag a location in a program as the target of a goto statement or switch statement.A simple identifier followed by a colon (:) is a label. \
 
    *labeled-statement: \
-         identifier \
+         identifier : statement \
          case constant-expression : statement \
          default : statement* \
          
-A label name must be unique within the function or class in which it appears.  Label_identifier has a function scope and the same label cannot be redefined within the same function.  Because labels have their own name space, they do not interfere with other identifiers and cannot be redeclared. \
-
+A label name must be unique within the function in which it appears.  Label_identifier has a function scope and the same label cannot be redefined within the same function.  Because labels have their own name space, they do not interfere with other identifiers and cannot be redeclared. \
 Within switch statements, case and default labeled statements exist. A statement of the form
 `case constant-expression : statement`
 indicates that control will pass to this statement if the value of the control expression of the switch statement matches the value of the constant-expression. (In this case, the type of the constant-expression must be an integer or character.) A statement of the form
 `default : statement`
 indicates that control will pass to this statement if the control expression of the switch statement does not match any of the constant-expressions within the switch statement. If the default statement is omitted, the control will pass to the statement following the switch statement. Within a switch statement, there can be only one default statement, unless the switch statement is within another switch statement. 
-The labels inside class are described [here](#Classes)
-
-### Expression statements
+### expression statements
 Most statements are expression statements, which have the form \
 
    *expression-statement: \
         expression <sub>opt</sub>;* \
         
 Expression statements do all of the real work in a program. expression statements are used for assignments and function calls.. All side effects from the expression are completed before the next statement is executed. An empty expression statement is called a null statement. Expressions and expression statements can be arbitrarily complicated. They don't have to consist of exactly one simple function call, or of one simple assignment to a variable. For one thing, many functions return values, and the values they return can then be used by other parts of the expression.
-
-### Compound statement
+### compound statement
 A compound statement (also called a "block") typically appears as the body of another statement, such as the if statement. A compound statement groups multiple statements into a single statement. Declarations and Types describes the form and meaning of the declarations that can appear at the head of a compound statement.
 
 *compound-statement:\
@@ -496,7 +501,7 @@ A function returns caller by the `return` statement. If the function return type
 # Classes
 This section covers the basic semantics of Classes and how they are implemented.
 
-Body of the class contains members, constructors, methods declared under `mem`,`con`,`met` labels respectively.Classes can have subclasses 
+Body of the class contains members, constructors, methods declared in `mem`,`con`,`met` blocks respectively.Classes can have subclasses 
 
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
