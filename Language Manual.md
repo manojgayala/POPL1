@@ -227,8 +227,7 @@ Many binary operators cause conversions of operands, so as to bring them into th
 |------|---- |
 |Either operand is of type long double | Other operand is converted to long double |
 |Otherwise, if either operand is of type double | Other operand is converted to double |
-|Otherwise, if either operand is of type float | Other operand is converted to float |
-|Preceding conditions not met; and| |                        
+|Otherwise, if either operand is of type float | Other operand is converted to float |                       
 |Otherwise, if either operand is of type long | Other operand is converted to type long |
 |None of the previous conditions met | Operands are converted to type int |
 
