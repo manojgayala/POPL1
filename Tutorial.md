@@ -215,6 +215,140 @@ $main() << void
 ```
 In the above example, variables a and b are declared under integer datatype. Note here that the cast operator has precedence over division, so
 the value of a is first converted to type 'double' and finally it gets divided by b yielding a double value which is assigned to result.
+
+# Functions
+Functions are code-snippets (or parts of code) in Tureasy that attempt to enhance readability, understandability and efficiency of a code. Functions are of 2 types: **pre-defined functions** and **user-defined functions**
+Pre-defined functions are those which are provided by the language and user-defined are those which are defined by the programmer.  Some examples of pre-defined functions are **read** , **write** etc., whose functionality is evident.
+Here after we will introduce the concepts of functions in Tureasy using user-defined functions as a better approach.
+ 
+### Definition of a function
+The basic structure of any function in Tureasy is
+```c
+$function_name(parameters *if any*) << return_type
+	declarations and statements
+	return variable *if any*
+%
+```
+function declaration starts with **$** and ends with **%** 
+A function in Tureasy can return only 1 variable
+Eg.,
+```c
+$sum(int a, int b) << int
+	int c;
+	c = a+b;
+	return c;
+%
+```
+This function returns sum of it's parameters which are of type *int*
+
+It is advised that the function name should define the use of that function as shown in the above example. 
+
+Functions can be defined in any order in Tureasy
+Eg.,
+The code
+```c
+$sum(int a, int b) << int
+	int c;
+	c = a+b;
+	return c;
+%
+
+$main() << void
+	write("Hello World!!");
+%
+```
+and the code
+```c
+$main() << void
+	write("Hello World!!");
+%
+$sum(int a, int b) << int
+	int c;
+	c = a+b;
+	return c;
+%
+```
+are the same **i.e., order of function declarations doesn't matter in Tureasy**
+
+### Calling a function
+Only declaring a function doesn't execute it. A function needs to be called in order to run that function as below
+```c
+~ Declaration of the function "sum"
+$sum(int a, int b) << int
+	int c;
+	c = a+b;
+	return c;
+%
+
+$main() << void
+	int x;
+	x = sum(2,3);		~ Calling the function "sum"
+	write(x);
+%
+```
+Similar mechanism is adopted when calling pre-defined functions like **read** etc.,
+
+### Passing parameters
+Parameters can be passed into functions using two methods: **pass by value** and **pass by reference**
+Here is an example that illustrates the difference between passing arguments by value and reference
+```c
+$ sample (string a) << void
+   a = "I am in sample";
+   write(a)
+%
+
+$main() << void
+  string a = "I am in main";
+  function(a)               ~ variable is passed by reference
+  write(a + "\n");          ~ a is "I am in main "
+  function(@a);             ~ '@' suggests that it was passed by reference
+  write(a + "\n");          ~ a is "I am in function"
+%
+```
+The output is
+```c
+I am in sample
+I am in main
+I am in sample
+I am in sample
+```
+In short pass by value mean passing a copy of the variable due to which the original variable doesn't change its value. Pass by reference mean passing the address of the variable due to which the original value stored in the variable is changed. 
+
+### Recursion
+A special kind of function in Tureasy is **recursion** in which a function *calls itself until a stopping condition is reached*.
+Here is a snippet to illustrate this
+```c
+$factorial(int n) << int
+  if n == 1
+    return 1;
+  /
+  else
+    return n*fact(n-1);
+  /
+%
+```
+You may notice that the value of *n* doesn't change in the whole process. In essence, the value of the input parameters are not modified in these functions.
+
+### Local functions
+
+There are another category of functions that can be defined inside main itself with a pointer to it. These functions use the variables within scope of main as parameters. 
+Here is an example to illustrate the same
+```c
+$main() << void
+	List >> int a = [13,45,5,90,7];			~ List of numbers
+ func s = [@] $()	<< int 					~ @ is for reference and no name is given to function since we have reference
+ 	int sum=0;
+	for i : a
+		sum=sum+a[i];		
+	/	
+	return sum;						~ sum is returned
+ %
+ 
+ 	int x = s(); 					~ no parameters required to call which saves a lot of memory during multiple calls
+	write(x);
+%
+``` 
+
 # Tags
 Tureasy offers its programmers a unique feature of tags. These tags help in improving the code and even finds common logical bugs by understanding what the user is intended to do. Let us understand its usage with an example.
 ``` 
