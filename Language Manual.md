@@ -584,7 +584,7 @@ This is the general body of a class.Scope of all the members and functions that 
    Methods which are inherited should not be declared again.  
   
   #### Syntax:
-  *members:*
+  *members:* \
   *`mem:` mem-declaration-list* 
   
  *mem-declaration-list: \
@@ -607,7 +607,7 @@ There are five types of methods:
  5. Methods which are overloaded in this class.
 
 #### Syntax:
-*methods:*
+*methods:* \
 *`met:` met-declaration-list* 
 
 *met-declaration-list: \
@@ -679,7 +679,7 @@ met:
  ## Class Constructors
  A constructor is used in the creation of an object that is an instance of a class.
  #### Syntax:
-*constructors:*
+*constructors:* \
  *`con:` con-declaration-list \
 con-declaration-list* 
 
