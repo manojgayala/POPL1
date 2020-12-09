@@ -105,10 +105,6 @@ Declarations provide the necessary properties of an identifier, they may or may 
 *con-declaration:      -->for constructors\
 con-declarator  `'\n'`  func-initializer*   
 
-
-
-
-
 #### Classes:  
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
@@ -168,17 +164,10 @@ declarator [constant-expression<sub>opt</sub>]  -->for arrays*
 (parameter-type-list) \
 con-declarator`:`(parameter-type-list)<sub>opt</sub> --> to specify the parent class constructor.*
 
-
-
-
 #### Syntax for Class declarator
 
 *class-declarator:   \
 class-identifier `<<`  generic-type-specifier* 
-
-
-
-
 
 ### Initializers
 When an object is declared it's value can be specified by a `initializer` then that declaration is called `definition`.
@@ -218,16 +207,12 @@ block<sub>opt</sub> block<sub>opt</sub>      block<sub>opt</sub>*
 Objects of data types which take less number of bits are converted to data types like int or unsigned int during operation. Such conversion is called integral promotion. If an int can represent the value of the original type, then it is converted to int; otherwise the value is converted to unsigned int.
 
 ### Integral Conversions:
-
-Integral conversions are conversions between integral types. The integral types are char, short, int, long.
-Signed to Unsigned: Objects of signed integral types can be converted to unsigned types.  Here, the actual bit pattern doesn't change. However, it's interpretation changes.
-Unsigned to Signed: Objects of unsigned integral types can be converted to signed types.
-If the unsigned value is outside the representable range of the signed type, the result won't have the correct value.
+Integral conversions are conversions between integral types. The integral types are char, short, int, long. Tureasy has no data types for unsigned values, so there are no integral conversions for the same.
 
 ### Integer and Floating:
 When an object of floating type is converted to an integral type, the fractional part is truncated. 
 If the resulting value cannot be represented in the integral type, the behavior is undefined.
-When a value of integral type is converted to floating, and the value is not exactly representable, then the result may 
+When a value of integral type is converted to floating type and the value is not exactly representable, then the result may 
 be either the next higher or next lower representable value. If the result is out of range, the behavior is undefined.
 
 ### Floating Types:
@@ -237,17 +222,14 @@ When a value of floating type is converted to a less precise type and the value 
 converted to either the next higher or the next lower representable value. The result is undefined if result is out of range.
 
 ### Arithmetic Converisons:
-Many binary operators cause conversions of operands, so as to bring them into the same type. These conversions are called arithmetic conversions.
+Many binary operators cause conversions of operands, so as to bring them into the same type. These conversions are called arithmetic conversions. These are mostly widening conversions where a lower sized data type gets converted to higher sized data type.
 | Condition: | Conversion: |
 |------|---- |
 |Either operand is of type long double | Other operand is converted to long double |
 |Otherwise, if either operand is of type double | Other operand is converted to double |
 |Otherwise, if either operand is of type float | Other operand is converted to float |
-|Preceding conditions not met; and| |
-|If either operand is of type unsigned long | Other operand is converted to type unsigned long |
-|Otherwise, if either operand is of type long and the other of type unsigned int | Both operands are converted to type unsigned long |                          
+|Preceding conditions not met; and| |                        
 |Otherwise, if either operand is of type long | Other operand is converted to type long |
-|Otherwise, either operand is of type unsigned int | Other operand is converted to type unsigned int |
 |None of the previous conditions met | Operands are converted to type int |
 
 # Expressions
