@@ -1,9 +1,8 @@
 # Introduction
-This manual describes the Tureasy language in detail. All the specifications related to language features and basic essentials are covered in subsequent sections. The reader is advised to go through the tutorial before referring to the manual for getting familiarised with the syntax and concepts of Tureasy. The manual is mainly intended for people who are comfortable to code in Tureasy and wish to explore precise rules about particular aspects of the language.
-*This language manual is intended to help the readers dive in deep and explore more on details of Tureasy. The reader is assumed to have already gone thoroughly through the tutorial and is comfortable with coding in Tureasy in order to understand and get more familiarized with the base concepts of Tureasy. The topics will be more clear on going through subsequent sections of the manual.*
+This language manual is intended to help the readers dive in deep and explore more on details of Tureasy. The reader is assumed to have already gone thoroughly through the tutorial and is comfortable with coding in Tureasy in order to understand and get more familiarized with the base concepts of Tureasy. The topics will be covered precisely in the subsequent sections of the manual.
 
 # Lexical Structure
-A program in Tureasy undergoes several processing levels sequentially. After all the processing is done, the program is now been reduced to set a **tokens**.
+A program in Tureasy undergoes several processing levels sequentially. After all the processing is done, the program is reduced to set a **tokens**.
 
 ## Tokens
 Tureasy comprises of the following tokens:
@@ -16,8 +15,8 @@ Tureasy comprises of the following tokens:
 
 White space (blanks, tabs, comments, form feeds etc.,) are ignored in Tureasy since they separate tokens.
 
-## Comments
-Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **\`` \``** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
+### Comments
+Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **\`` \`** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
 
 ## Identifiers
 Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Identifiers are case-sensitive i.e., Tureasy and tureasy are different. An identifier should not begin with a digit or an underscore. Length of identifiers are not restricted. 
