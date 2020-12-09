@@ -250,113 +250,60 @@ Functions are code-snippets (or parts of code) in Tureasy that attempt to enhanc
 Pre-defined functions are those which are provided by the language and user-defined are those which are defined by the programmer.  Some examples of pre-defined functions are **read** , **write** etc., whose functionality is evident.
 Here after we will introduce the concepts of functions in Tureasy using user-defined functions as a better approach.
  
-### Definition of a function
-The basic structure of any function in Tureasy is
+ An example of function in Tureasy is as below:
 ```c
-$function_name(parameters *if any*) << return_type
-	declarations and statements
-	return variable *if any*
-%
-```
-function declaration starts with **$** and ends with **%** 
-A function in Tureasy can return only 1 variable
-Eg.,
-```c
-$sum(int a, int b) << int
-	int c;
-	c = a+b;
-	return c;
-%
-```
-This function returns sum of it's parameters which are of type *int*
-
-It is advised that the function name should define the use of that function as shown in the above example. 
-
-Functions can be defined in any order in Tureasy
-Eg.,
-The code
-```c
-$sum(int a, int b) << int
-	int c;
-	c = a+b;
-	return c;
-%
-
-$main() << void
-	write("Hello World!!");
-%
-```
-and the code
-```c
-$main() << void
-	write("Hello World!!");
-%
-$sum(int a, int b) << int
-	int c;
-	c = a+b;
-	return c;
-%
-```
-are the same **i.e., order of function declarations doesn't matter in Tureasy**
-
-### Calling a function
-Only declaring a function doesn't execute it. A function needs to be called in order to run that function as below
-```c
-~ Declaration of the function "sum"
-$sum(int a, int b) << int
-	int c;
-	c = a+b;
-	return c;
+$passing_values(int a) << void
+	a = 5;
+	write(a);
 %
 
 $main() << void
 	int x;
-	x = sum(2,3);		~ Calling the function "sum"
-	write(x);
+	x = sum(2,3);
+	write("The value of x is "+x);
+	int a = 4;
+	passing_values(a);
+	write(a);
+	passing_values(@a);
+	write(a);
+%
+
+$sum(int a, int b) << int
+	int c;
+	c = a+b;
+	return c;
 %
 ```
-Similar mechanism is adopted when calling pre-defined functions like **read** etc.,
+Declaration of function in Tureasy starts with **$** and ends with **%**  as shown above.
+A function in Tureasy can return either 1 or none values. 
+In the code above, the functions **main** , **sum** , **passing_values** are user-defined and the function **write** is a pre-defined function.
 
-### Passing parameters
+It is advised that the names of function should define the use of that function as shown in the above example. The naming convention for functions is same as for identifiers which is discussed in detail in `Language Manual`.
+
+Functions can be defined in any order in Tureasy **i.e., order of function declarations doesn't matter in Tureasy**. In the example above, the function *sum* is defined after it is called whereas *passing_values* is defined before it is called.
+
+Only declaring a function doesn't execute it. A function needs to be called in order to run that function. This process is referred as **calling of a function**.  In the example above, the statement `x = sum(2,3);` calls the function *sum* and stores the return value in x. Similar mechanism is adopted when calling pre-defined functions like **read** , **write** etc.,
+
 Parameters can be passed into functions using two methods: **pass by value** and **pass by reference**
-Here is an example that illustrates the difference between passing arguments by value and reference
-```c
-$ sample (string a) << void
-   a = "I am in sample";
-   write(a)
-%
-
-$main() << void
-  string a = "I am in main";
-  function(a)               ~ variable is passed by reference
-  write(a + "\n");          ~ a is "I am in main "
-  function(@a);             ~ '@' suggests that it was passed by reference
-  write(a + "\n");          ~ a is "I am in function"
-%
-```
-The output is
-```c
-I am in sample
-I am in main
-I am in sample
-I am in sample
-```
+In the example above, the function *passing_values* is called two times. One by passing it's arguments by value `passing_values(a)`and the other by passing it's arguments by reference `passing_values(@a)`. The variable is preceded by the symbol **@** to pass the parameters by reference.  
 In short pass by value mean passing a copy of the variable due to which the original variable doesn't change its value. Pass by reference mean passing the address of the variable due to which the original value stored in the variable is changed. 
 
 ### Recursion
-A special kind of function in Tureasy is **recursion** in which a function *calls itself until a stopping condition is reached*.
-Here is a snippet to illustrate this
+A special kind of function in Tureasy is **recursion** in which a function *calls itself until a stopping condition (base case) is reached*.
+Here is a snippet to illustrate a recursive function *fibanocci* which returns sum of terms of a fibanocci series to a given digit.
+
+(Fibanocci series is a series which follows the equation T(n) = T(n-1)+T(n-2) where T(0)=T(1)=1)
 ```c
-$factorial(int n) << int
-  if n == 1
-    return 1;
+$fibanocci(int n) << int
+  if n <= 1
+    return n;
   /
   else
-    return n*fact(n-1);
+    return fibanocci(n-1)+fibanocci(n-2);
   /
 %
 ```
-You may notice that the value of *n* doesn't change in the whole process. In essence, the value of the input parameters are not modified in these functions.
+You may notice that the value of *n* doesn't change in the whole process **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, the value of the input parameters are not modified in these functions. An important point to note is that *recursive function doesn't use loops like for or while*. 
 
 ### Local functions
 
@@ -377,6 +324,7 @@ $main() << void
 	write(x);
 %
 ``` 
+
 # Classes and Objects
 Tureasy supports object-oriented programming and all the objects are instances of a class.
  Every class consists of three blocks namely members constructors ,methods represented by `mem` ,`con`,`met` respectively. 
