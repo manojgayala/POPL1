@@ -46,7 +46,7 @@ Down here, we'll see an example code in Tureasy that covers different types of e
 $main() << void
     int a, b, result;
     string finalAns;
-    read(a b);
+    read(a,b);
     result = a*b + (a/b - b%a)*b;
     `` 
         The value of expression after equality is computed taking a = 7, b = 3 
@@ -98,7 +98,7 @@ $main() << void
     write("Enter a positive integer: ");
     read(num);
     write("Factors of "+ num +" are: ");
-    for i: (1;num) 
+    for i: (1,num) 
         if num % i == 0 
             write(i +" "); /
         else
@@ -106,17 +106,19 @@ $main() << void
  % 
  ```
 The output of this program is factors of the given number separated by spaces.`i` is initialised to 1, \
-`(1;num)` specifies range of `i` till which loop has to run.\
+`(1,num)` specifies range of `i` till which loop has to run.\
 For each iteration i is incrimented by 1, For loop iterates form i=1 to i=num. when i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
 for loops can also be used for list traversing.\
 `for listA`
 When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and traversesa all elements one by one in ascending order.\
 suppose if we want alternative elements, whille loop can be used as shown below,\
 
-`int n,i=0;
+```
+int n,i=0;
 while i<=n
     write(a[i]);
-    i=i+2; /`
+    i=i+2; /
+ ````
     
 Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
 
@@ -208,14 +210,10 @@ In above example string concatenation operator ` + ` and string duplicate operat
 
 ### Manipulating strings
 
-```
-examples to be written
-```
-
 Table of some important functions supported for string objects. 
 function | task
 -------- | -----
-cmp(str2) | compares the sum of ASCII values of characters in string and returns -1 if str1<str2,  1 if str1>str2 and 0 if equal 
+str1.cmp(str2) | compares the sum of ASCII values of characters in string and returns -1 if str1<str2,  1 if str1>str2 and 0 if equal 
 Replace(str2,str3) | replaces specifed sub-string(str2) with str3
 Find(str) 	| searches for the specified sub-string(str) and outputs position
 WordCount(str)	| gives the count of number of occurences of specifed character in the string OR length of string
@@ -267,14 +265,14 @@ In short pass by value mean passing a copy of the variable due to which the orig
 A special kind of function in Tureasy is **recursion** in which a function *calls itself until a stopping condition (base case) is reached*.
 Here is a snippet to illustrate a recursive function *fibanocci* which returns sum of terms of a fibanocci series to a given digit.
 
-(Fibanocci series is a series which follows the equation T(n) = T(n-1)+T(n-2) where T(0)=T(1)=1)
+(Fib series is a series which follows the equation T(n) = T(n-1)+T(n-2) where T(0)=T(1)=1)
 ```c
-$fibanocci(int n) << int
+$fib(int n) << int
   if n <= 1
     return n;
   /
   else
-    return fibanocci(n-1)+fibanocci(n-2);
+    return fib(n-1)+fib(n-2);
   /
 %
 ```
@@ -287,7 +285,7 @@ Here is an example to illustrate the same
 ```c
 $main() << void
 	List >> int a = [13,45,5,90,7];			~ List of numbers
- func s = [@] $()	<< int 					~ @ is for reference and no name is given to function since we have reference
+ func s = [@] $()  << int 					~ @ is for reference and no name is given to function since we have reference
  	int sum=0;
 	for i : a
 		sum=sum+a[i];		
@@ -459,7 +457,7 @@ Tureasy offers its programmers a unique feature of tags. These tags help in impr
 ``` 
 $main() << void
 	int w0,m;
-	read(w0 m);                                  
+	read(w0,m);                                  
 	int a[m],b[m];
 	
 	for i : (0,m)
