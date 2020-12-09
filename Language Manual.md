@@ -99,9 +99,13 @@ Declarations provide the necessary properties of an identifier, they may or may 
    storageclass-specifier specifiers<sub>opt</sub>*\
    *type-specifier   type-qualifier<sub>opt</sub> specifiers<sub>opt</sub>*
  
+ ini-declarator-list contains contains the identifiers being declared and specifiers contain the sequence of type and storage class specifiers  which interpret the variable.
+ 
  *ini-declarator-list:\
    ini-declarator\
    ini-declarator-list , ini-declarator*
+
+ini-declarator contains a declarator and also an initializer if the variable is allocated a memory.
 
 *ini-declarator:\
   declarator\
@@ -109,15 +113,32 @@ Declarations provide the necessary properties of an identifier, they may or may 
 
 #### functions and Constructors:
 
+func-declaration along with the declarator also contain the definition of the function which is a given by func-initializer
+
 *func-declaration:     -->for functions\
   `$`func-declarator `<<` type-specifier `'\n'` func-initializer* 
+  
+
+func-initializer is seperated by the remaining part of the declaration syntax by `\n` 
+
+con-declaration contain declarator and the definition of the constructor 
+which is also given by func-initializer simialr to the functions.
 
 *con-declaration:      -->for constructors\
 con-declarator  `'\n'`  func-initializer*   
 
+
+
+
+
 #### Classes:  
+
+class-declaration along with the declarator also contain the definition of the class which is a given by class-initializer
+
    *declaration: \
-     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
+     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer*  
+
+parent-class-list contains sequence of parents(if inherited) of the current class being declared.
 
 *parent-class-list: \
 parent-class-identifier
@@ -127,7 +148,7 @@ parent-class-list parent-class-identifier<sub>opt</sub>*
 
 
 ### StorageClass Specifiers
-These keywords specify the lifetime of a variable.`local` variables have a local lifetime and are allocated new storage each time execution control passes to the block in which they are defined.
+These keywords specify the lifetime and scope of a variable.`local` variables have a local lifetime and are allocated new storage each time execution control passes to the block in which they are defined.
 Also they cannot be accessed outside of that block.Variables named with `static` or `global` specifiers have a memory allocated and exist throughout the program. 
 
 #### Syntax:
@@ -138,8 +159,9 @@ Also they cannot be accessed outside of that block.Variables named with `static`
 
 
 ### Type Specifiers
-
+Type Specifiers specify the data-type of a variable or the class of an object.They also determine the  location of variable in the memory layout.
 #### Syntax: 
+*type-specifiers:* \
 `void` \
 `int` \
 `long` \
@@ -148,13 +170,13 @@ Also they cannot be accessed outside of that block.Variables named with `static`
 
 
 ### Type Qualifiers
-
+These specify the modifiability of a variable or an object.
 #### Syntax 
 `const` \
 `fluid` 
 
 `const` variables and objects cannot be changed after being initialized
- and fluid variables and objects can be changed or modified at any time of the program.If no qualifier is specified it i defaultly qualified as `fluid`
+ and fluid variables and objects can be changed or modified at any time of the program. If no qualifier is specified, then it is qualified as `fluid` by default.
 
 ### Declarators 
 Declarators declare a unique identifier and is a part of declaration.
@@ -168,16 +190,37 @@ declarator [constant-expression<sub>opt</sub>]  -->for arrays*
 #### Syntax for function declarator
 
  *func-declarator:  \
- func-identifier (parameter-type-list)* 
+ func-identifier (parameter-list)*  
+
+parameter-type-list is the list of formal parameters required by the function. 
+
+*parameter-list: \
+parameter-declaration \
+parameter-list , parameter-declaration*
+
+*parameter-declaration: \
+specifiers declarator* 
+
+con-declarator contains no identifier but only the parameters to be passed, also the parameters of the parent class constructor are also specified when there is inheritance.
 
 *con-declarator:  \
 (parameter-type-list) \
 con-declarator`:`(parameter-type-list)<sub>opt</sub> --> to specify the parent class constructor.*
 
+
+
+
 #### Syntax for Class declarator
+Class-declarator contains its identifier and also a generic-type-specifier if the class is a generic class.
+
+generic-type-specifier can take any name other than the keywords of tureasy and the type is resolved at the time of object creation.
 
 *class-declarator:   \
 class-identifier `<<`  generic-type-specifier* 
+
+
+
+
 
 ### Initializers
 When an object is declared it's value can be specified by a `initializer` then that declaration is called `definition`.
@@ -186,29 +229,38 @@ When an object is declared it's value can be specified by a `initializer` then t
 *initializer: \
 assigment-expression.   -->assigning a value \
 { initializer list }.   -->for an array \
-`new` class-identifier (parameter-type-list).   -->calling a constructor. \
+`new` class-identifier (parameter-list).   -->calling a constructor. \
 func-declarator*.  -->calling a function. 
+
+initializer-list contains the list of initializers seperated by comma.
 
 *initializer-list. \
 initializer \
-initializer-list initlializer<sub>opt</sub>* 
+initializer-list , initlializer<sub>opt</sub>* 
 
 #### Function initializers
+func-initializer contains the code of the function/constructor ended with `%`
+
 *func-initializer:  -->also used for constructors. \
 statements `%`* 
+
+'statements' is a series of statements which determine the functionality of the function.
 
 *statements: \
 statement. \
 statements statement<sub>opt</sub>* 
 #### Class initializers
+Class-initializer can contain atmost three blocks 
 
 *class-initializer:  \
-block<sub>opt</sub> block<sub>opt</sub>      block<sub>opt</sub>*  
+block<sub>opt </sub>`\n` block<sub>opt</sub>`\n`      block<sub>opt</sub>* ` *% `
 
 *block: \
 `mem:` declarations  \
 `con:` constructors  \
 `met:` functions* 
+
+Each block is used atmost once.
 
 
 # Conversions:
