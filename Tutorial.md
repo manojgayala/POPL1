@@ -118,7 +118,7 @@ To extract a single character, use indexing operator ` a[i] ` as shown:
 ```
 string b = a[6];	~ b gets "W"
 ```
-To obatain a sub-string, use the slicing operator ` a[i:j]  `, where [i:j] specifies the range as all the characters in a whose index is x such that i <= x <= j. Either index can be ommitted to imply, the beginning or the end of string as shown below:
+To obtain a sub-string, use the slicing operator ` a[i:j]  `, where [i:j] specifies the range as all the characters in a whose index is x such that i <= x <= j. Either index can be ommitted to imply, the beginning or the end of string as shown below:
 ```
 string c = a[2:8];	~ c gets "llo Wor"
 string d = a[:5];	~ d get "Hello "
@@ -162,27 +162,31 @@ $main() << void
     int a, b, result;
     string finalAns;
     read(a,b);
-    result = a*b + (a/b - b%a)*b
+    result = a*b + (a/b - b%a)*b;
     `` 
-        Consider a = 7, b = 3 for this example. Evaluation of value of expression after equality, following precedence rules is shown here:
-        a*b + (7/3 - b%a)*b		~ this is an arithmetic expression
+        The value of expression after equality is computed taking a = 7, b = 3 
+        a*b + (7/3 - b%a)*b
         a*b + (2 - b%a)*b
         a*b + (2 - 3%7)*b
-        a*b + (2 - 3)*b     here 7/3 is truncated off to 2
+        a*b + (2 - 3)*b         here 7/3 is truncated off to 2
         a*b + (-1)*b
         8*3 + (-1)*b
         24 + (-1)*3
         24 + (-3)
         21
     ``
-    ~ the following line has both logical and conditional expressions
-    if a > 0 && b > 0           ~ (true && true)
-    	~ down here is an conditional expression after the = operator
-        finalAns = (result > 18) ? "Yes" : "No";     ~ since result > 18, string variable finalAns is assigned "Yes"
-        write(finalAns);  ~ prints string "Yes" on to the console
+    if a > 0 && b > 0
+        finalAns = (result > 18) ? "Yes" : "No";
+        write(finalAns);
         / 
 %
 ```
+In the above example, values of two variables a, b are read from the user. Assume that the input given from the user for a and  b is 7,3.
+Then following precedence rules, the variable result is computed from the arithmetic expression. Then there is a condition to check if a and 
+b are positive. Since a = 7 and b = 3, the statements under if are executed. See that the above statement has both relational and
+logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 21 > 18. So the string "Yes" gets printed
+on the console.
+
 # Loops and conditional statements
 This is a program to print factors of a number.
 ``` 
