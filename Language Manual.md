@@ -451,7 +451,6 @@ It is used to separate the data in grouping of elements. The groups can be argum
 Expression1,Expression2
 ```
 
-# Blocks and Statements
 # Statements
 Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their effect and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved such that they cannot be used as names of variables or functions. statements are terminated by ';'. They fall into several groups.  
 
