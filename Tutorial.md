@@ -96,7 +96,49 @@ Replace(str2,str3) | replaces specifed sub-string(str2) with str3
 Find(str) 	| searches for the specified sub-string(str) and outputs position
 WordCount(str)	| gives the count of number of occurences of specifed character in the string OR length of string
 
+# Expressions:
+An expression is a formula in which operands are linked to each other by the use of operators to compute a specific value. The operand can be a
+function reference, a variable, an array element or a constant. There are four types of expressions:
+### Arithmetic expressions:
+An arithmetic expression is an expression that consists of operands and arithmetic operators. It computes a value of type int, float or double.
+Ex: 3*2/ (5+1 * 4/2) - 2 * (7/4)
+### Relational expressions:
+A relational expression compares two operands. It's result can be either zero(equivalent to false) or non-zero value(equivalent to true).
+Ex: a>=2
+### Logical expressions:
+A logical expression computes either a zero or non-zero value. It can be seen as a test condition.
+Ex: (x > 2) && (y < 6)
+### Conditional expressions:
+A conditional expression is an expression that returns 1 if the condition is true otherwise 0.
+Ex: eligibility = (age > 18) ? "Yes" : "No";
 
+We'll see an example code in Tureasy that covers all above aspects:
+```
+$main() << void
+    int a, b, result;
+    string finalAns;
+    read(a,b);
+    result = a*b + (a/b - b%a)*b
+    `` 
+        Consider a = 7, b = 3 for this example. Evaluation of value of expression after equality, following precedence rules is shown here:
+        a*b + (7/3 - b%a)*b		~ this is an arithmetic expression
+        a*b + (2 - b%a)*b
+        a*b + (2 - 3%7)*b
+        a*b + (2 - 3)*b     here 7/3 is truncated off to 2
+        a*b + (-1)*b
+        8*3 + (-1)*b
+        24 + (-1)*3
+        24 + (-3)
+        21
+    ``
+    ~ the following line has both logical and conditional expressions
+    if a > 0 && b > 0           ~ (true && true)
+    	~ down here is an conditional expression after the = operator
+        finalAns = (result > 18) ? "Yes" : "No";     ~ since result > 18, string variable finalAns is assigned "Yes"
+        write(finalAns);  ~ prints string "Yes" on to the console
+        / 
+%
+```
 # Tags
 Tureasy offers its programmers a unique feature of tags. These tags help in improving the code and even finds common logical bugs by understanding what the user is intended to do. Let us understand its usage with an example.
 ``` 
