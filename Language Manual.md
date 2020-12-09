@@ -16,28 +16,26 @@ Tureasy comprises of the following tokens:
 White space (blanks, tabs, comments, form feeds etc.,) are ignored in Tureasy since they separate tokens.
 
 ### Comments
-Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **\`\` \`\`** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, character literals, integers etc.,
+Single-line comment: **~** (tilde) starts single-line comment. A multi-line comment is surrounded by **\`\` \`\`** (two open quotes). Comments (both single and multi-line) cannot start within any instructions, string literals, integers etc.,
 
 ## Identifiers
-Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Identifiers are case-sensitive i.e., Tureasy and tureasy are different. An identifier should not begin with a digit or an underscore. Length of identifiers are not restricted. 
+Identifiers in Tureasy are a sequence of alphabets, digits and underscores. Identifiers are case-sensitive i.e., *Tureasy* and *tureasy* are different. An identifier should not begin with a digit or an underscore. Length of identifiers are not restricted. 
 
 ## Keywords
-
 The following are the identifiers reserved to use only as keywords. 
 | Keywords | | | | |
 |---|---|---|---|---|
 | *if* | *else* | *switch* | *case* | *default* |
-| *for* | *while* | *do* | *break* | *continue* |
-| *desc* | *asc* | *void* | *int* | *float* |
-| *string* | *List* | *char* | *return* | *mem* |
-| *met* | *con* | *new* | *here* | *inherit* |
-| *parent* |
+| *for* | *while* | *desc* | *break* | *continue* |
+| *double* | *long* | *void* | *int* | *float* |
+| *string* | *char* | *new* | *return* | *mem* |
+| *met* | *con* | *parent* | *here* | *inherit* |
+| *fixed* | *static* |
 
-const, double, long, short, static, signed, unsigned
-
-These words can't be used as variable names. In any usage of these identifiers as keywords, an error is popped up.
+These words can't be used as variable names. In any usage of these keywords as identifiers, an error is popped up.
 
 ## Tags
+Tags in Tureasy are used to identify the part of code that requires specific modifications. The nodes between the opening and closing tags are colored in the abstract syntax tree formed after the semantical analysis. They begin with **#** and end with **#!**. They should not be used between instructions. string literals, integers etc.
 
 ## Constants
 Constants in Tureasy are classified as
@@ -45,6 +43,7 @@ Constants in Tureasy are classified as
 * Character constants
 * Float constants
 * String constants
+* Tag constants
 
 ### Integer constants
 
@@ -57,7 +56,6 @@ Character constants are sequence of characters. Single-character constants are e
 | backslash | \\\ |
 | horizontal tab | \t |
 | single quote | \\' |
-| backspace | \b |
 | double quote | \\" |
 
 ### Float constants
@@ -65,21 +63,20 @@ Floating point constants consists of 4 parts
 	Decimal part
 	Fraction part
 	character 'e'
-	Precision part
+	Exponential part
 
-Eg., 10.83e-3 is same as 0.01083 where 10 is the decimal part, .83 is the fraction part and -3 defines the precision
+Eg., 10.83e-3 is same as 0.01083 where 10 is the decimal part, .83 is the fraction part and -3 defines the exponent.
 
-### Strings constants
-String constants also known as string literals are written in detail in the section String Literals.
-
-## String Literals
+### String constants/literals
 String literals commonly called as Strings are a sequence of characters surrounded by " " (double
-quotes). Two subsequent/adjacent strings are concatenated to form a single string where the end character '\0' of first string is combined with the next one. 
+quotes). Two strings separated by '+' are concatenated to form a single string where the end character '\0' of first string is replaced by the next string and '\0' is added at the end. 
 Array of strings can also be defined as integers whose behavior is implementation-defined.
 
 # Types, values and Variables
 
 # Names
+Names a.k.a identifiers are entities that are declared at some point of the code. They have a scope, the part of code where it is known and a binding, the region of code where a specific location is associated with it. The names also get shadowed sometimes when their linkage is changed. This will be covered in subsequent sections.
+
 ## Declarations
 Declarations provide the necessary properties of an identifier, they may or may not allocate storage to the identifier, it depends on the specifiers and the initializer.
 
@@ -116,8 +113,8 @@ con-declarator  `'\n'`  func-initializer*
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
-*parent-class-list: \
-parent-class-identifier \
+*parent-class-list:
+parent-class-identifier
 parent-class-list parent-class-identifier<sub>opt</sub>*
 
 
@@ -518,7 +515,7 @@ Body of the class contains members, constructors, methods declared in `mem`,`con
    *declaration: \
      `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
 
-Complete syntax is specified [here](#declarations)
+Complete syntax is specified **here**
    
    This is the basic declaration of a class where *class-declarator* specifies whether the class is a *normal class* or a *generic class*(a class which uses generic type variables which has different declarations among different instances of the class) along with the name of the class *class-identifier*
 
@@ -584,7 +581,7 @@ This is the general body of a class.Scope of all the members and functions that 
    Methods which are inherited should not be declared again.  
   
   #### Syntax:
-  *members:* \
+  *members:*
   *`mem:` mem-declaration-list* 
   
  *mem-declaration-list: \
@@ -607,7 +604,7 @@ There are five types of methods:
  5. Methods which are overloaded in this class.
 
 #### Syntax:
-*methods:* \
+*methods:*
 *`met:` met-declaration-list* 
 
 *met-declaration-list: \
@@ -679,7 +676,7 @@ met:
  ## Class Constructors
  A constructor is used in the creation of an object that is an instance of a class.
  #### Syntax:
-*constructors:* \
+*constructors:*
  *`con:` con-declaration-list \
 con-declaration-list* 
 
