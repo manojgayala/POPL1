@@ -680,10 +680,10 @@ met:
  *`con:` con-declaration-list \
 con-declaration-list* 
 
-*con-declaration:
+*con-declaration: \
 con-declaration-list con-declaration<sub>opt</sub>*
 
-Syntax of con-declaration is specified **here** \
+Syntax of con-declaration is specified [here](#syntax-for-function-declarator) 
 
 Constructors are identified through their parameter list and they don't need a particular  identifier because by default,*class-identifier*(name) is taken as the identifier of the constructor.
 
