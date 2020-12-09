@@ -198,20 +198,15 @@ If an identifier is declared outside of a block and also inside the block, the d
 
 #### Shadowing
 
-Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the newly declared entity.
-
+Some declarations may be shadowed in their scope by another declaration of the same name, in such case a simple name cannot be used to refer to the previously declared entity.
 Shadowing applies to variables and also to members and methods of a class.
-
 When a declaration of a variable/member/method is done then it shadows all the variable/member/method which are in scope at that point.
-
 
 ### Obscuring
 
-A simple name may sometimes be misinterpreted as the name of a variable or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to class and Thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
+A simple name may sometimes be misinterpreted as the name of a variable or a class if they have same names. In these situations we apply the precedence rules which says that a variable will be chosen in precedence to class and thus it may render the other entity unusable via its simple name, even thought its declaration is in scope and not shadowed. Such a declaration is said to be obscured.
 
 Following naming conventions helps to reduce obscuring, like names of parameters and local variables to conventionally begin with a lowercase letter whereas types names to begin with an uppercase letter.
-
-
 
 ### Classes:  
 
@@ -787,8 +782,6 @@ here.y = y;
 %
 *%
 ```
-
-
 *parameter-type-list* is same as the formal parameter list used for the methods and functions
 
 ### Constructor overloading
@@ -840,10 +833,10 @@ The tags are special kind of statements which groups part of code which has some
 
 Some of the commonly used public tags are
 
-|loop	|unique `var`	|`var` < (const)	|	|	|
+|loop	|unique `var`	|`var` < (const)|
 |---	|---	|---	|---	|---	|
 |graph-theory	|number-theory	|`var` in range (range)	|	|	|
-|unused  	|	|	|	|	|
+|unused  	|dp	|innerloop	|	|	|
 |	|	|	|	|	|
 |	|	|	|	|	|
 |	|	|	|	|	|
