@@ -170,13 +170,13 @@ $main() << void
         a*b + (2 - 3%7)*b
         a*b + (2 - 3)*b         here 7/3 is truncated off to 2
         a*b + (-1)*b
-        8*3 + (-1)*b
-        24 + (-1)*3
-        24 + (-3)
-        21
+        7*3 + (-1)*b
+        21 + (-1)*3
+        21 + (-3)
+        18
     ``
     if a > 0 && b > 0
-        finalAns = (result > 18) ? "Yes" : "No";
+        finalAns = (result >= 18) ? "Yes" : "No";
         write(finalAns);
         / 
 %
@@ -184,7 +184,7 @@ $main() << void
 In the above example, values of two variables a, b are read from the user. Assume that the input given from the user for a and  b is 7,3.
 Then following precedence rules, the variable result is computed from the arithmetic expression. Then there is a condition to check if a and 
 b are positive. Since a = 7 and b = 3, the statements under if are executed. See that the above statement has both relational and
-logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 21 > 18. So the string "Yes" gets printed
+logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 18 >= 18. So the string "Yes" gets printed
 on the console.
 
 # Loops and conditional statements
