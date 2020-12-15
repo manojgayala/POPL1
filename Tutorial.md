@@ -14,52 +14,52 @@ This creates a default executable file named a.out which can be executed with th
 `./a.out`
 And we get the output as "Hello World" printed in a single line and program terminates.
 
-Now we would try to understand the code line by line. The first line has `main` which is a special function which marks the beginning of the program execution. The functions section would cover more about the syntax and details about it. The second line is the heart of the code where we give instruction of displaying a set of characters on console output. The `write` command is used for this purpose. The third line marks the end of function which is followed by program termination.
+Now we would try to understand the code line by line. The first line has `main` which is a special function which marks the beginning of the program execution. The functions section would cover more about the syntax and details about it. The second line is the heart of the code where we give instruction of displaying a set of characters on console output. The `write` method is used for this purpose. The third line `%` marks the end of function which is followed by program termination.
 
 The set of characters enclosed within double quotes(" ") is called string. Some characters beginning with '\' are called escape sequences which are used for representing hard to type or invisible characters. The escape sequences would be covered in the later sections.
 
 # I/O Handling
-Console Input and Output in Tureasy is easy to program. This doesn't require any formatting unlike other languages like C, C++ etc., The compiler is smart enough to identify the data type of input and output variables and does type casting if required.
-Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user.  The parameters of read are separated by a **,** (comma). An example of it is as below
+Console Input and Output in Tureasy is easy to program. This doesn't require any formatting unlike C, the compiler is smart enough to identify the data type of input and output variables and does type casting if required.
+Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user. The parameters of read are separated by a **,** (comma). An example of it is as below
 ```c
 $main() << void
 	int x;
 	float y;
-	read(x);		~ Taking a single input
-	read(x,y);		~ Taking multiple inputs
+	read(@x);		~ passed 
+	read(@x,@y);		~ Taking multiple inputs	
 %
 ```   
-Strings with space between them can't be taken as an input through the function *read* which can be achieved by concatenation later.
+Strings are taken as input with space as delimiter.
 
-The function **write** which is used to print output to the console.  The parameter of the function write is of data type string. An example of it is as below
+The function **write** is used to print output to the console. The parameter of the function write is of data type string. An example of it is as below
 ```c
 $main() << void
 	int x = 10;
 	write("The value of x is "+x);
 %
 ```
-**x** is type casted to string internally and the string "The value of x is " and x (after type-casting) are concatenated to one and the final result is printed. 
+**x** is type casted to string internally and the string "The value of x is " and x are concatenated and the final result is printed. 
 
 # Variables and Operators:
-Down here, we'll see an example code in Tureasy that covers different types of expressions:
+A variable is like placeholder for the data to be processed. The operators are used to manipulate this data. Here is an example for variables and operators.
 ```
 $main() << void
     int a, b, result;
     string finalAns;
     read(a,b);
     result = a*b + (a/b - b%a)*b;
-    `` 
-        The value of expression after equality is computed taking a = 7, b = 3 
-        a*b + (7/3 - b%a)*b
-        a*b + (2 - b%a)*b
-        a*b + (2 - 3%7)*b
-        a*b + (2 - 3)*b         here 7/3 is truncated off to 2
-        a*b + (-1)*b
-        7*3 + (-1)*b
-        21 + (-1)*3
-        21 + (-3)
-        18
-    ``
+	    `` 
+		The value of expression after equality is computed taking a = 7, b = 3 
+		a*b + (7/3 - b%a)*b
+		a*b + (2 - b%a)*b
+		a*b + (2 - 3%7)*b
+		a*b + (2 - 3)*b         here 7/3 is truncated off to 2
+		a*b + (-1)*b
+		7*3 + (-1)*b
+		21 + (-1)*3
+		21 + (-3)
+		18
+	    ``
     if a > 0 && b > 0
         finalAns = (result >= 18) ? "Yes" : "No";
         write(finalAns);
