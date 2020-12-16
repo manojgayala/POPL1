@@ -45,23 +45,32 @@ A variable is like placeholder for the data to be processed. The operators are u
 ```
 $main() << void
     ``
-        This program, given a positive number, prints all its factors
-        separated by a space, on the console.  
+        This program, given a positive number N, prints all prime numbers
+        from 1 to N separated by a space on the console. 
     ``
-    int  num, i = 1;
+    int num, i = 1, j, flag;
     write("Enter a positive number: ");
     read(@num); ~ reads input from the user and stores in it variable num
-    write("Factors of " + num + "are:");
+    write("Prime numbers between 1 and " + num + " are:\n");
     while i <= num
-        if num % i == 0
-            write(i + " ");   /
+        if i == 1
+        continue;   /
+        flag = 1, j = 2;
+        while j <= i
+            if i % j == 0
+                flag = 0;
+                break;  /
+            j = j + 1;
+        /
+        if flag == 1
+            write(i + " ");    /
         i = i + 1;
     /
 %
 ```
 The above program contains variables and their types, arithmetic expressions, loops, comments and formatted output.
-In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. In the above example, variables *num* and *i* are 
-declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. \
+In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. In the above example, variables *num*, *i*, *j* and 
+*flag* are declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. \
 When a variable is declared, it will have a random value as its initial value. So if we don't initialise a variable, it stores some random value in it. It is good programming 
 practice to always intialise variables when they are declared.  Here, variable *i* is immediately initialised to 1 after declaring. \
 The lines of code enclosed within `` and `` are called multiline comments which are used for programmer readability. These comments are not compiled. We also have single-line 
@@ -69,7 +78,7 @@ comments; the characters that follow ~ in the same line are ignored by the compi
 And the while loop operates as follows: The condition that follows(i.e, i<= num) is tested. If it is true, the body of the loop(all statements that precede / in the code)
 are executed. Then the condition is re-tested, and if true, the body is executed again. The loop ends only when the test condition fails (i.e, i > num). We'll see more about 
 loops in the following sections in this tutorial. \
-And the expressions such as num % i == 0 are evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed 
+And the expressions such as i % j == 0 are evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed 
 in an expression. The precedence table is mentioned in `Language Manual`. 
 
 ### Type Casting:
