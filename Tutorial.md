@@ -59,15 +59,15 @@ $main() << void
         write("Sorry! You didn't pass the course.");    /
 %
 ```
-The above program contains variables and their types, arithmetic expressions, if-else statements, comments and formatted output./
+The above program contains variables and their types, arithmetic expressions, if-else statements, comments and formatted output. \
 In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. When a variable is declared, it will have a random 
 value as its initial value. So if we don't initialise a variable, it stores some random value in it. It is good programming practice to always intialise variables when they are 
-declared. /
-In the above example, variables a1,a2 are declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. /
-The lines of code enclosed within `` and `` are called multiline comments which are used for programmer readability. These comments are not compiled. We can also have single-
-line comments; the characters that follow ~ in the same line are ignored by the compiler here.  /
+declared. \
+In the above example, variables a1,a2 are declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. \
+The lines of code enclosed within double backticks are called multiline comments which are used for programmer readability. These comments are not compiled. We can also have 
+single-line comments; the characters that follow ~ in the same line are ignored by the compiler here.  \
 Also if-else statements execute different statements depending on whether the expression is true or false. (Here the condition is whether the final score is greater than 40 or 
-not). We'll see more on this in the upcoming sections of this tutorial.  /
+not). We'll see more on this in the upcoming sections of this tutorial.  \
 The value of final_score is evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed in an expression. 
 The precedence table is mentioned in ``Language Manual``.
 
