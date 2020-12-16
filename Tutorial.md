@@ -45,41 +45,31 @@ A variable is like placeholder for the data to be processed. The operators are u
 ```
 $main() << void
     ``
-        This program, given a positive number N, prints all prime numbers
-        from 1 to N separated by a space on the console. 
+        This program, given the scores of the assignments and quiz
+        tells if the user has passed the course or not.
     ``
-    int num, i = 1, j, flag;
-    write("Enter a positive number: ");
-    read(@num); ~ reads input from the user and stores in it variable num
-    write("Prime numbers between 1 and " + num + " are:\n");
-    while i <= num
-        if i == 1
-        continue;   /
-        flag = 1, j = 2;
-        while j <= i
-            if i % j == 0
-                flag = 0;
-                break;  /
-            j = j + 1;
-        /
-        if flag == 1
-            write(i + " ");    /
-        i = i + 1;
-    /
+    int a1,a2,quiz;
+    float final_score;
+    write("Enter marks of Assignments 1,2 and Quiz (out of 100) respectively: ");
+    read(@a1,@a2,@quiz);   ~ reads input from the user and stores them in variables a1, a2, quiz
+    final_score = 0.3 * a1 + 0.2 * a2 + 0.5 * quiz;
+    if final_score > 40
+        write("You've passed the course :)");    /
+    else
+        write("Sorry! You didn't pass the course.");    /
 %
 ```
-The above program contains variables and their types, arithmetic expressions, loops, comments and formatted output.
-In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. In the above example, variables *num*, *i*, *j* and 
-*flag* are declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. \
-When a variable is declared, it will have a random value as its initial value. So if we don't initialise a variable, it stores some random value in it. It is good programming 
-practice to always intialise variables when they are declared.  Here, variable *i* is immediately initialised to 1 after declaring. \
-The lines of code enclosed within `` and `` are called multiline comments which are used for programmer readability. These comments are not compiled. We also have single-line 
-comments; the characters that follow ~ in the same line are ignored by the compiler here. \
-And the while loop operates as follows: The condition that follows(i.e, i<= num) is tested. If it is true, the body of the loop(all statements that precede / in the code)
-are executed. Then the condition is re-tested, and if true, the body is executed again. The loop ends only when the test condition fails (i.e, i > num). We'll see more about 
-loops in the following sections in this tutorial. \
-And the expressions such as i % j == 0 are evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed 
-in an expression. The precedence table is mentioned in `Language Manual`. 
+The above program contains variables and their types, arithmetic expressions, if-else statements, comments and formatted output./
+In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. When a variable is declared, it will have a random 
+value as its initial value. So if we don't initialise a variable, it stores some random value in it. It is good programming practice to always intialise variables when they are 
+declared. /
+In the above example, variables a1,a2 are declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. /
+The lines of code enclosed within `` and `` are called multiline comments which are used for programmer readability. These comments are not compiled. We can also have single-
+line comments; the characters that follow ~ in the same line are ignored by the compiler here.  /
+Also if-else statements execute different statements depending on whether the expression is true or false. (Here the condition is whether the final score is greater than 40 or 
+not). We'll see more on this in the upcoming sections of this tutorial.  /
+The value of final_score is evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed in an expression. 
+The precedence table is mentioned in ``Language Manual``.
 
 ### Type Casting:
 Converting one datatype into another is known as type casting.
