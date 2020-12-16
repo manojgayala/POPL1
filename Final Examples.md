@@ -22,17 +22,15 @@ $validateDate(int d,int m,int y) << int
         return 0;   /               ~ invalid year
 %
 
-$weekDay(int day, int month, int year) << int
+$weekDay(int d, int m, int y) << int
     int temp = 0;
-    temp = (day  + ((153 * (month + 12 * ((14 - month) / 12) - 3) + 2) / 5) + (365 * (year + 4800 - ((14 - month) / 12)))
-        + ((year + 4800 - ((14 - month) / 12)) / 4) - ((year + 4800 - ((14 - month) / 12)) / 100)
-        + ((year + 4800 - ((14 - month) / 12)) / 400) - 32045)%7;
+    temp = (d+=m<3?y--:y-2,23*m/9+d+4+y/4-y/100+y/400)%7;
     return temp;
 %
 
 $main() << int
     int day, month, year, weekDayNum = 0;
-    List>>string dayName = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    List>>string dayName = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     write("Input date (DD MM YYYY): ");
     read(@day,@month,@year);
     if validateDate(day,month,year) == 1
