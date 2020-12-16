@@ -46,8 +46,9 @@ A variable is like placeholder for the data to be processed. The operators are u
 $main() << void
     int a, b, result;
     string finalAns;
-    read(a,b);
-    result = a*b + (a/b - b%a)*b;
+    read(@a,@b);
+    if a > 0 && b > 0
+    	result = a*b + (a/b - b%a)*b;/
 	    `` 
 		The value of expression after equality is computed taking a = 7, b = 3 
 		a*b + (7/3 - b%a)*b
@@ -60,17 +61,16 @@ $main() << void
 		21 + (-3)
 		18
 	    ``
-    if a > 0 && b > 0
-        finalAns = (result >= 18) ? "Yes" : "No";
-        write(finalAns);
-        / 
+    
+    finalAns = (result >= 18) ? "Yes" : "No";
+    write(finalAns);
 %
 ```
-In the above example, values of two variables a, b are read from the user. Assume that the input given from the user for a and  b is 7,3.
-Then following precedence rules, the variable result is computed from the arithmetic expression. Then there is a condition to check if a and 
-b are positive. Since a = 7 and b = 3, the statements under if are executed. See that the above statement has both relational and
-logical expressions. And the string variable finalAns is assigned "Yes" here, as result = 18 >= 18. So the string "Yes" gets printed
-on the console.
+The lines of code enclosed within \`\` and \`\` are called multiline comments which are used for programmer readability. These comments are not compiled.
+The values of two variables a, b are read from the user. The operations are done following the precedence rules in Tureasy. The precedence table is mentioned in `Language Manual`.
+ Assume that the input given from the user for a and  b is 7,3 respectively. The condition is checked at the beginning and since it is true get executed to result in 18. The 
+
+
 
 ### Type Casting:
 Converting one datatype into another is known as type casting.
