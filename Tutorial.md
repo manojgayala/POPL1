@@ -21,7 +21,7 @@ The set of characters enclosed within double quotes(" ") is called string. Some 
 # I/O Handling
 Console Input and Output in Tureasy is easy to program. This doesn't require any formatting unlike C, the compiler is smart enough to identify the data type of input and output variables and does type casting if required.
 Tureasy has some inbuilt functions some of which are offered by default (more on functions is discussed in the subsequent section `Functions`). One of which is the function **read** which is used to take input from the user. The parameters of read are separated by a **,** (comma). An example of it is as below
-```c
+```
 $main() << void
 	int x;
 	float y;
@@ -32,7 +32,7 @@ $main() << void
 Strings are taken as input with space as delimiter.
 
 The function **write** is used to print output to the console. The parameter of the function write is of data type string. An example of it is as below
-```c
+```
 $main() << void
 	int x = 10;
 	write("The value of x is "+x);
@@ -68,13 +68,11 @@ $main() << void
 ```
 The lines of code enclosed within \`\` and \`\` are called multiline comments which are used for programmer readability. These comments are not compiled.
 The values of two variables a, b are read from the user. The operations are done following the precedence rules in Tureasy. The precedence table is mentioned in `Language Manual`.
- Assume that the input given from the user for a and  b is 7,3 respectively. The condition is checked at the beginning and since it is true get executed to result in 18. The 
-
-
+ Assume that the input given from the user for a and  b is 7,3 respectively. The condition is checked at the beginning and since it is true we 18 as result. Finally the condition is checked for printing of "Yes" or "No". 
 
 ### Type Casting:
 Converting one datatype into another is known as type casting.
-Convertion of values from one type to another explicitly can be done using the cast operator as follows −
+The casting can be done explicitly as follows −
 ```
 $main() << void
     int a,b;
@@ -98,68 +96,38 @@ $main() << void
     write("Enter a positive integer: ");
     read(num);
     write("Factors of "+ num +" are: ");
-    for i: (1,num) 
+    for i: (1,num) 			~ both 1 and num inclusive
         if num % i == 0 
             write(i +" "); /
         else
             continue; /
  % 
  ```
-The output of this program is factors of the given number separated by spaces.`i` is initialised to 1, \
-`(1,num)` specifies range of `i` till which loop has to run.\
-For each iteration i is incrimented by 1, For loop iterates form i=1 to i=num. when i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
-for loops can also be used for list traversing.\
-`for listA`
-When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and traversesa all elements one by one in ascending order.\
-suppose if we want alternative elements, whille loop can be used as shown below,\
+The output of this program is factors of the given number separated by space. The `for` statement is used for repeatedly executing a block of statements.
+`i` is initialised to 1 and `(1,num)` specifies range of `i` of the for loop. For each iteration i is incremented by 1, the loop iterates from i=1 to i=num. When i>num the loop is terminated. For each iteration the `if` statement is checked if the expression `num%i==0` is true then the sub statement in `if` is executed i.e. the number is displayed in the screen, else next iteration is continued. \
+This `if` statement is a conditional statement and the `==` operator is used for comparing two values equality.
 
+For loops can also be used for list traversing.\
+`for i : listA`
+When this statement is executed ,the loop runs till all the elements of list are traversed. The loop begins with first element and i contains the list element.\
+There is another iterative statement called `while`. Here is an example.
 ```
 int n,i=0;
 while i<=n
     write(a[i]);
     i=i+2; /
  ````
-    
 Here i is incremented by 2 in each iteration, the output consists of alternative elements of the array. The loop runs repeatedly till i<=n, once i exceeds n the loop breaks.
 
-# Lists and Arrays
-
-### Lists
-List is a generic data type in Tureasy, it is a sequence of objects.
-
-A list can be created by the declaration `List>>type identifierName;`
-The above declaration creates an empty list.
-
-The elements of a list can be initilized during declaration by enclosing them in square brackets as shown
-`  List>>int  scores = [ 22 , 36, 14, 21, 40]; `
-
-To add new elements to an existing list, using append( )
-` scores.append(29); ~ this adds 29 to end of the list`
-
-
-Multiple elements can be added to an existing list by concatenate them shown
-```
-scores += [ 19, 27];
-```
-You can reassign or extract a part of a list using slicing operator `:`
-```
-List>>int scores2 = scores[0:3]; ~scores2 will get [ 22, 36, 14, 21]
-
-List>>int score3 = score[:2]; ~score3 will get [22, 36, 14]
-
-score[1:3] = [35, 15, 20] ~Replaces 36,14,21 with 35,15,20 espectively
-``` 
+# Arrays and Generic types
 
 ### Arrays
-Array is almost like a list, except that its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
+Array is a continuous sequence of storage locations. Its size and contents are constrained to a single type. The type and size of array are determined at time of creation.
 
 ### Initializiation of arrays
 Initialization of all elements of array is done by  ` type arrayname[ ] = {list of values}; `
 We can also initilize particular elements by using array subscripts ` arrayname[subscript] = value; `
-
-
-  
-  one more subtle difference to note is that character arrays are initized to exact length of sequence of characters. For instance,
+one more subtle difference to note is that character arrays are initized to exact length of sequence of characters. For instance,
   ```
   char sequence[] = "abcd";
   ~the length of array will be 4
@@ -170,13 +138,39 @@ We can also initilize particular elements by using array subscripts ` arrayname[
   ~ the length of above will be 5 as it will include "\0" at end
   ```
   
+### Lists
+List is one of the generic data types in Tureasy, it is a sequence of objects.
+
+A list can be created by the declaration `List>>type identifierName;`
+The above declaration creates an empty list.
+
+The elements of a list can be initilized during declaration by enclosing them in square brackets as shown
+`  List>>int  scores = [ 22 , 36, 14, 21, 40]; `
+
+To add new elements to an existing list, using append( )
+` scores.append(29); ~ this adds 29 to end of the list`
+
+Multiple elements can be added to an existing list by concatenating them as shown
+```
+scores += [ 19, 27];		~ this can be used for single element too
+```
+You can reassign or extract a part of a list using slicing operator `:`
+```
+List>>int scores2 = scores[0:3]; ~scores2 will get [ 22, 36, 14, 21]
+
+List>>int score3 = score[:2]; ~score3 will get [22, 36, 14]
+
+score[1:3] = [35, 15, 20] ~Replaces 36,14,21 with 35,15,20 espectively
+``` 
+There are more generic types which are explained in `Language Manual`.
+  
 # Strings
 The ability to manipulate text easily is a major part of most programming languages. Tureasy offers **string** type and includes a variety of useful string operations.
-Strings are stored as a sequence of characters, which are indexed by integers starting from zero. The string type 
+Strings are stored as a sequence of characters, which are indexed by integers starting from zero.
 
 ### Creating strings
 
-This programming language allows literal strings to be specified as a sequence of characters enclosed in double quote marks.
+Tureasy allows literal strings to be specified as a sequence of characters enclosed in double quote marks.
 
 ```
 string a = “Hello World”;
