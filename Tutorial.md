@@ -242,12 +242,12 @@ $sum(int a, int b) << int
 %
 ```
 Declaration of function in Tureasy starts with **$** and ends with **%**  as shown above.
-A function in Tureasy can return either 1 or none values. 
+A function in Tureasy can return either void or some value.
 In the code above, the functions **main** , **sum** , **passing_values** are user-defined and the function **write** is a pre-defined function.
 
 It is advised that the names of function should define the use of that function as shown in the above example. The naming convention for functions is same as for identifiers which is discussed in detail in `Language Manual`.
 
-Functions can be defined in any order in Tureasy **i.e., order of function declarations doesn't matter in Tureasy**. In the example above, the function *sum* is defined after it is called whereas *passing_values* is defined before it is called.
+Functions can be defined in any order in Tureasy **i.e., order of function definitions doesn't matter in Tureasy**. In the example above, the function *sum* is defined after it is called whereas *passing_values* is defined before it is called.
 
 Only declaring a function doesn't execute it. A function needs to be called in order to run that function. This process is referred as **calling of a function**.  In the example above, the statement `x = sum(2,3);` calls the function *sum* and stores the return value in x. Similar mechanism is adopted when calling pre-defined functions like **read** , **write** etc.,
 
