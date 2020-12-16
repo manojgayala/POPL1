@@ -192,14 +192,13 @@ To extract a single character, use indexing operator ` a[i] ` as shown:
 ```
 string b = a[6];	~ b gets "W"
 ```
-To obtain a sub-string, use the slicing operator ` a[i:j]  `, where [i:j] specifies the range as all the characters in a whose index is x such that i <= x <= j. Either index can be ommitted to imply, the beginning or the end of string as shown below:
+To obtain a sub-string, use the slicing operator ` a[i:j]  `, where [i:j] specifies the range of characters with index x such that i <= x <= j. Either index can be ommitted to imply the beginning or the end of string as shown below:
 ```
 string c = a[2:8];	~ c gets "llo Wor"
 string d = a[:5];	~ d get "Hello "
 string e = a[:];	~ as both ommited, e gets entire "Hello World"
 
 ```
-
 Strings are mutable, i.e. content in the strings can be modified without creating a new object. The size of the arrays holding the strings can change size dynamically to provide flexibility for the strings.
 ```
 string str1 = "Hello";
@@ -219,9 +218,9 @@ Table of some important functions supported for string objects.
 function | task
 -------- | -----
 str1.cmp(str2) | compares the sum of ASCII values of characters in string and returns -1 if str1<str2,  1 if str1>str2 and 0 if equal 
-Replace(str2,str3) | replaces specifed sub-string(str2) with str3
-Find(str) 	| searches for the specified sub-string(str) and outputs position
-WordCount(str)	| gives the count of number of occurences of specifed character in the string OR length of string
+str1.replace(str2,str3) | replaces specifed sub-string(str2) in str1 with str3
+str1.find(str) 	| searches for the specified sub-string(str) in str1 and outputs first occurence
+str1.wordCount(str)	| gives the count of number of occurences of specifed sub-string(str) in the string or length of string if no parameter is given
 
 # Functions
 Functions are code-snippets (or parts of code) in Tureasy that attempt to enhance readability, understandability and efficiency of a code. Functions are of 2 types: **pre-defined functions** and **user-defined functions**
