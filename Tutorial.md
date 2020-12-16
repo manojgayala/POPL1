@@ -474,7 +474,7 @@ $main() << void
 %
 ```
 The opening tags begin with  `#` and closing tags begin with `#!`. The tag names are unique, in this case it is innerloop.
-This code gets compiled and executed perfectly fine. But this code can be improved by reducing the time complexity of O(n*n) to O(n). The reader can observe that the inner loop has no variation in the value of `w`. This implies that the inner loop could have been written  out of the while loop leading to linear time complexity. The tags provide such suggestions to the programmer.
+This code gets compiled and executed perfectly fine. But this code can be improved by reducing the time complexity of O(n\*n) to O(n). The reader can observe that the inner loop has no variation in the value of `w`. This implies that the inner loop could have been written  out of the while loop leading to linear time complexity. The tags provide such suggestions to the programmer.
 The tip would look like
 ```
 Tip : Replace line 16-19 with {
