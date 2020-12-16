@@ -41,34 +41,36 @@ $main() << void
 **x** is type casted to string internally and the string "The value of x is " and x are concatenated and the final result is printed. 
 
 # Variables and Operators:
-A variable is like placeholder for the data to be processed. The operators are used to manipulate this data. Here is an example for variables and operators.
+A variable is like placeholder for the data to be processed. The operators are used to manipulate this data.
 ```
 $main() << void
-    int a, b, result;
-    string finalAns;
-    read(@a,@b);
-    if a > 0 && b > 0
-    	result = a*b + (a/b - b%a)*b;/
-	    `` 
-		The value of expression after equality is computed taking a = 7, b = 3 
-		a*b + (7/3 - b%a)*b
-		a*b + (2 - b%a)*b
-		a*b + (2 - 3%7)*b
-		a*b + (2 - 3)*b         here 7/3 is truncated off to 2
-		a*b + (-1)*b
-		7*3 + (-1)*b
-		21 + (-1)*3
-		21 + (-3)
-		18
-	    ``
-    
-    finalAns = (result >= 18) ? "Yes" : "No";
-    write(finalAns);
+    ``
+        This program, given a positive number, prints all its factors
+        separated by a space, on the console.  
+    ``
+    int  num, i = 1;
+    write("Enter a positive number: ");
+    read(@num); ~ reads input from the user and stores in it variable num
+    write("Factors of " + num + "are:");
+    while i <= num
+        if num % i == 0
+            write(i + " ");   /
+        i = i + 1;
+    /
 %
 ```
-The lines of code enclosed within \`\` and \`\` are called multiline comments which are used for programmer readability. These comments are not compiled.
-The values of two variables a, b are read from the user. The operations are done following the precedence rules in Tureasy. The precedence table is mentioned in `Language Manual`.
- Assume that the input given from the user for a and  b is 7,3 respectively. The condition is checked at the beginning and since it is true we 18 as result. Finally the condition is checked for printing of "Yes" or "No". 
+The above program contains variables and their types, arithmetic expressions, loops, comments and formatted output.
+In Tureasy, all variables must be declared before they are used. During declaration, the type of the variable is announced. In the above example, variables *num* and *i* are 
+declared under type int meaning that they are integers. Tureasy also provides different datatypes like float, double, short and long. \
+When a variable is declared, it will have a random value as its initial value. So if we don't initialise a variable, it stores some random value in it. It is good programming 
+practice to always intialise variables when they are declared.  Here, variable *i* is immediately initialised to 1 after declaring. \
+The lines of code enclosed within `` and `` are called multiline comments which are used for programmer readability. These comments are not compiled. We also have single-line 
+comments; the characters that follow ~ in the same line are ignored by the compiler here. \
+And the while loop operates as follows: The condition that follows(i.e, i<= num) is tested. If it is true, the body of the loop(all statements that precede / in the code)
+are executed. Then the condition is re-tested, and if true, the body is executed again. The loop ends only when the test condition fails (i.e, i > num). We'll see more about 
+loops in the following sections in this tutorial. \
+And the expressions such as num % i == 0 are evaluated following the precedence rules in Tureasy. These rules specify the order in which certain operations need to be performed 
+in an expression. The precedence table is mentioned in `Language Manual`. 
 
 ### Type Casting:
 Converting one datatype into another is known as type casting.
