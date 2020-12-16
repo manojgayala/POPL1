@@ -293,20 +293,20 @@ $main() << void
 These functions are called local functions. These functions are mostly leaf procedures to makes sure stack implementations doesn't consume time. Since the parameters are also not needed in function call, the potentially reduce the time for execution. The `s` is a functional reference to the function which is of special datatype named `func`.
 
 # File handling
-Basic steps while handling files in Tureasy are:
+Basic steps in handling files in Tureasy are:
 1. Opening a file
 2. Operations performed by file
 3. Closing the file
 
 A simple code explaining the concept of file handling in Tureasy is as below:
-```c
+```
 $main() << void
 	FILE fptr;
 	string path;
 	read(path);
 	fptr.open(path,"r");
 	while(fptr.readLine() != EOF)
-		write(fptr.readLine());
+		write(fptr.readLine());	 	
 	/
 	fptr.close();
 %
@@ -323,9 +323,9 @@ The file can be opened in any of the below methods
 *  **bw**: opening a file in *binary write* mode
 *  **ba**: opening a file in *binary append* mode
 
-**readLine** is a function to read file line to line
+**readLine** is a function to read file line to line which accepts no parameters.
 
-A filed open in Tureasy must be close using the function **close**
+A file opened in Tureasy must be closed using the function **close**
 
 # Classes and Objects
 Tureasy supports object-oriented programming and all the objects are instances of a class.
@@ -341,13 +341,16 @@ mem:               ~member block.
 int a;
 string b;
 met:                ~method block.
+
 $printmem() << void
 write(a+" "+b);
 %
+
 $setmem(int x,string s)<< void
 b = s;
 a = x;
 %
+
 con:                ~constructor block.
 (int x,string s)
 a = x;
