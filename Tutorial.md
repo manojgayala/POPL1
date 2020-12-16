@@ -253,7 +253,6 @@ Only declaring a function doesn't execute it. A function needs to be called in o
 
 Parameters can be passed into functions using two methods: **pass by value** and **pass by reference**
 In the example above, the function *passing_values* is called two times. One by passing it's arguments by value `passing_values(a)`and the other by passing it's arguments by reference `passing_values(@a)`. The variable is preceded by the symbol **@** to pass the parameters by reference.  
-In short pass by value mean passing a copy of the variable due to which the original variable doesn't change its value. Pass by reference mean passing the address of the variable due to which the original value stored in the variable is changed. 
 
 ### Recursion
 A special kind of function in Tureasy is **recursion** in which a function *calls itself until a stopping condition (base case) is reached*.
@@ -270,7 +269,7 @@ $fib(int n) << int
   /
 %
 ```
-You may notice that the value of _n_ doesn't change in this example **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, there are no side effects to this recursive example. Recursive functions can be used to write programs of functional programming paradigm **i.e., these kind of functions concentrate more on the mental model of the programmer rather than operational**. In short recursive functions express the logic of the computation without describing it's control flow and hence they find many applications in real world problems which are *model based* 
+You may notice that the value of _n_ doesn't change in this example **i.e., the state of the input parameter is the same through out the scope of the function**. In essence, there are no side effects to this recursive example. Recursive functions can be used to write programs of functional programming paradigm **i.e., these kind of functions concentrate more on the mental model of the programmer rather than operational details**. In short recursive functions express the logic of the computation without describing it's control flow and hence they find many applications in real world problems which are *model based*. 
 
 ### Local functions
 
@@ -291,6 +290,7 @@ $main() << void
 	write(x);
 %
 ``` 
+These functions are called local functions. These functions are mostly leaf procedures to makes sure stack implementations doesn't consume time. Since the parameters are also not needed in function call, the potentially reduce the time for execution. The `s` is a functional reference to the function which is of special datatype named `func`.
 
 # File handling
 Basic steps while handling files in Tureasy are:
