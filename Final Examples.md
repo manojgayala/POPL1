@@ -172,7 +172,7 @@ $ dijkstra(Graph G, int start, int end,int n) << void
 			int newWeight = j + dist[current];
 			
 			if !vis[i] && newWeight < dist[i]
-				dist[i] = newWeight;
+				dist[i] = newWeight;		~line 23
 				visited[i] = 1;
 				
 				if i !q.check(:,i)
