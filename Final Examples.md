@@ -80,12 +80,12 @@ $main() << int
 %
 ```
 ### Example 3:
-The following code, given a list of numbers, find the average, variance and standard deviation.
+The following code, given a list of numbers, finds the average, variance and standard deviation.
 ```
 $computeVarAndSD(List numbers, float avg, int n) << void
     float sum = 0, variance, std_deviation;
     for i:(0,n-1)
-        sum = sum + pow((numbers[i] - avg), 2);   /    
+        sum = sum + power((numbers[i] - avg), 2);   /    
     ~ variable sum stores sum of squares of difference of all numbers from mean(or average)
     variance = sum / (float)n;
     write("\nVariance = " + variance);
@@ -133,7 +133,7 @@ $binarySearch(List elements, int n, int i, int j) << int
 
 $main << int
     List>> int elements = [ 1, 6, 11, 17, 23, 76, 134, 219 ]; 
-    int i, n = sizeof(elements) / sizeof(elements[0]);
+    int i, n = memsize(elements) / memsize(elements[0]);
     write("Enter any element from whose position you want to find: ");
     read(@i);
     int result = binarySearch(elements, i, 0, n - 1);
