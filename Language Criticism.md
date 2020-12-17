@@ -11,17 +11,16 @@ When a program of tureasy is seen superficially for the first time, it seems to 
 Tureasy has an optimal range of primitive datatypes to make things clear for the user. For Eg: Tureasy doesn't provide any datatypes for the unsigned numbers because their usage can be served by other ways in tureasy (larger data types) ensuring that the behaviour of variables is not complicated.
 **It has a sufficient range to let the user choose the type, having suitable size and properties.**
 
-   Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of [classes](###Classes and OOPs) and objects.
+   Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of classes and objects.
 
-Tureasy provides storage class specifiers and type specifiers to choose the scope and rigidity of the variable.Even though out of the scope variables cannot be accessed or can be updated, tureasy boldly presents a way to change the value of a variable in functions called at the moment, with a single symbol `@` a variable can be passed by reference i.e a procedure can change the parameter values
-and reflect those changes in the caller scope. 
-      This doesn't seem to be convincible for the users who have experience in other languages but tureasy provides this ability, by dealing the things at the backend and for the sake of abstraction.
+Tureasy provides storage class specifiers and type specifiers to choose the scope and rigidity of the variable.Even though out of the scope variables cannot be accessed or can be updated, tureasy boldly presents a way to change the value of a variable in functions called, with a symbol `@`. This implies that a variable can be passed by reference i.e a procedure can change the actual parameter values in the caller scope. 
 
+As the program size increases, it becomes necessary to do casts for some variables in tureasy which can be seen as a disadvantage unlike python which takes care of such conversions internally. 
 
 ### Statements and Blocks - rendering  hierarchy.
- Tureasy provides all the types of statements that are needed to express logic  in a programming language. i.e **Tureasy is Turing Complete.** (of course it will, as it is dedicated to the legend.)
+ Tureasy provides all the types of statements that are needed to express logic  in a programming language. i.e **Tureasy is Turing Complete.** (of course it will, as it is dedicated to the legendary computer scientist.)
        
-The formatted labelling of the some statements  make the control flow easier to manage.These statements can contain multiple expressions which makes the language more compact.
+The formatted labelling of some statements make the control flow easier to manage.These statements can contain multiple expressions which makes the language more compact.
 
 Block of statements(Compound statements) in tureasy brings the concept of scope.These blocks are surrounded or bounded by the end of a statement for which it is considered as a body and ended with typically with a `\` .
 
