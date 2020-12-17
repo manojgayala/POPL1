@@ -143,6 +143,146 @@ $main << int
 %
 ```
 
+### Example 5:
+This program calculates binomial scan n<sub>C<sub>r </sub></sub> using the formula n<sub>C<sub>r </sub></sub> = n-1<sub>C<sub>r </sub></sub> + n-1<sub>C<sub>r-1 </sub></sub> 
+```
+~ This function calculates binomial coefficient for a given n and r
+$findbincoeff(int n, int r) << int
+	~ using a tag *checkhere* to optimize the code
+	#checkhere
+		int result = 0;
+		if n<r
+			return result;
+		/
+		else if n==r || r==0
+			return result+1;
+		/
+		else
+			return findbincoeff(n-1,r) + findbincoeff(n-1,r-1);	~recursive step
+		/
+	#!checkhere ~end the tag *checkhere*
+%
+
+$main() << void
+	int n,r,result;
+	write("Enter the values of n and r: ");
+	read(@n,@r);
+	result = findbinceoff(n,r);
+	write("The value of "+n+"C"+r+" = "+result);
+%
+```
+After compiling this code, the suggestions would be like
+```
+tip: checkhere has result variable unchanged - can be replaced by 0
+```
+### Example 6:
+This program illustrates the Quick Sort algorithm
+```
+~ This function swaps two elements 
+$swap(int a, int b) << void 
+	int temp = a; 
+	a = b; 
+	b = temp; 
+%
+
+`` 
+This function takes last element as pivot, places the pivot element at its
+correct position in sorted array, and places all smaller (smaller than
+pivot) to left of pivot and all greater elements to right of pivot 
+``
+$partition (int arr[], int low, int high) << int
+	int pivot = arr[high]; ~ pivot 
+	int i = (low - 1); ~ Index of smaller element 
+	int j = low;
+	while j <= high- 1 
+		~ if current element is smaller than the pivot 
+		if arr[j] < pivot 
+			i++; ~ increment index of smaller element 
+			swap(@arr[i], @arr[j]); 
+		/
+		j++; 
+	/
+	swap(@arr[i + 1], @arr[high]); 
+	return i + 1; 
+%
+
+``
+The main function that implements QuickSort 
+arr[] --> Array to be sorted, 
+low --> Starting index, 
+high --> Ending index
+``
+$quickSort(int arr[], int low, int high) << void 
+	if low < high
+		~ pi is partitioning index, arr[p] is now at right place 
+		int pi = partition(arr, low, high); 
+		~ Separately sort elements before 
+		~ partition and after partition 
+		quickSort(arr, low, pi - 1); 
+		quickSort(arr, pi + 1, high); 
+	/
+%
+
+~ This function prints an array 
+$printArray(int arr[], int size) << void 
+	int i; 
+	for i: (0:size-1) 
+		write(arr[i]+" "); 
+	/
+	write("\n"); 
+%
+
+$main() << int 
+{ 
+	int arr[] = {10, 7, 8, 9, 1, 5}; 
+	int n = 6; 
+	quickSort(arr, 0, n-1); 
+	write("The sorted array is: "); 
+	printArray(arr, n); 
+	return 0; 
+} 
+```
+
+### Example 7:
+This program adds elements of two arrays which illustrates the concept of local functions
+
+```
+$main() << void
+	int a[5] = {1,2,3,4,5}
+	int b[5] = {6,7,8,9,10}
+
+	~ This function adds two arrays
+	func add = [@] $() << void    ~ @ is for reference and no name is given to function since we have reference
+		int c[5];
+		for i:(0,4)
+			c[i] = a[i]+b[i];
+		/
+		
+		~This function prints an array
+		func print = [@] $(int c[]) << void 
+			for i:(0,4)
+				write(c[i]+" ");
+			/
+			write("\n");
+		%
+		print(c);
+	%
+	write("The first array is: ");
+	print(a);
+	write("The second array is: ");
+	print(b);
+	write("The sum of the two arrays is: ");
+	add(a,b);
+%
+```
+The output of this program is 
+```
+The first array is: 1 2 3 4 5
+The second array is: 6 7 8 9 10
+The sum of the two arrays is: 7 9 11 13 15
+```
+The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
+
 ### Example 13:
 Using tags to find mistakes or to improve the efficiency of code.
 
