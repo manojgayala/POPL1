@@ -494,7 +494,26 @@ It is used to separate the data in grouping of elements. The groups can be argum
 ```
 Expression1,Expression2
 ```
-
+### Precedence Table:
+Operator precedence determines the order in which certain operations need to be performed in an expression. Grouping of terms in an expression takes place accoringly and thus 
+value of the expression is computed. Within an expression, higher precedence operators will be evaluated first. Operators Associativity is used when two operators of same 
+precedence appear in an expression. \
+Here in the table, operators on the same line have the same precedence; rows are in order of decreasing precedence.
+|Category | Operator | Associativity |
+|--- |------ |--- |
+| Unary | + - : ! memsize() | Right to Left |
+| Multiplicative | * / % | Left to Right |
+| Additive | + - | Left to Right |
+| Shift	| <<  >> | Left to Right |
+| Relational | <  <=  >  >= | Left to Right |
+| Equality | == != | Left to Right |
+| Bitwise AND |	& | Left to Right |
+| Bitwise OR |  | Left to Right |
+| Logical AND |	&& | Left to Right |
+| Logical OR |  | Left to Right |
+| Conditional | ?: | Right to Left |
+| Assignment | = += -= /= %= >>= <<= &= ^=  | Right to Left |
+| Comma | , | Left to Right |
 # Statements
 Statements in tureasy are executed in sequence. The statements of a program control the flow of program execution. They are executed for their side effects and do not have values. Statements can have internal componentes such as expressions. Statements are begin with identifiers like if,for,etc. Often statement keywords are reserved so they cannot be used as names of variables or functions. statements are terminated by ';'. They fall into several categories.  
 
