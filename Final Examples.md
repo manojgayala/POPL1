@@ -82,7 +82,7 @@ $main() << int
 ### Example 3:
 The following code, given a list of numbers, finds the average, variance and standard deviation.
 ```
-$computeVarAndSD(List numbers, float avg, int n) << void
+$computeVarAndSD(List << int numbers, float avg, int n) << void
     float sum = 0, variance, std_deviation;
     for i:(0,n-1)
         sum = sum + pow((numbers[i] - avg), 2);   /    
