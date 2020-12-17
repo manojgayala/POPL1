@@ -376,14 +376,13 @@ Tiling using divide and conquer
  ```
 int size_of_grid, b, a, cnt = 0;
 
-$place(int @a[][],int x1, int y1, int x2,int y2, int x3, int y3) << void		~ Placing tile at the given coordinates
+$place(int @a[][],int x1, int y1, int x2,int y2, int x3, int y3) << void	~ Placing tile at the given coordinates
     cnt++;
     a[x1][y1] = cnt;
     a[x2][y2] = cnt;
     a[x3][y3] = cnt;
 %
-
-	# divide_and_conquer
+#divide_and_conquer
 $tile(int @a[][],int n, int x, int y)<< int
     int r,i,j, c;
     if n == 2
@@ -403,46 +402,36 @@ $tile(int @a[][],int n, int x, int y)<< int
             if a[i][j] != 0
                 r = i;
                 c = j; / 
-        /
-    /
-    
-    if r < x + n / 2 && c < y + n / 2											~ If missing tile is in first quadrant
+        /	/
+    if r < x + n / 2 && c < y + n / 2				~ If missing tile is in first quadrant
         place(a,x + n / 2, y + (n / 2) - 1, x + n / 2,y + n / 2, x + n / 2 - 1, y + n / 2);	/
- 
-    
-    else if r >= x + n / 2 && c < y + n / 2										~ If missing Tile is in 2st quadrant
+  
+    else if r >= x + n / 2 && c < y + n / 2			~ If missing Tile is in 2st quadrant
         place(a,x + n / 2, y + (n / 2) - 1, x + n / 2, y + n / 2, x + n / 2 - 1, y + n / 2 - 1);	/
  
-    
-    else if r < x + n / 2 && c >= y + n / 2										~ If missing Tile is in 3st quadrant
+    else if r < x + n / 2 && c >= y + n / 2			~ If missing Tile is in 3st quadrant
         place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + n / 2, x + (n / 2) - 1, y + (n / 2) - 1);	/
  
-    
-    else if r >= x + n / 2 && c >= y + n / 2									~ If missing Tile is in 4st quadrant
-        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + (n / 2) - 1, x + (n / 2) - 1, y + (n / 2) - 1);	/
- 
-    
+    else if r >= x + n / 2 && c >= y + n / 	~ If missing Tile is in 4st quadrant
+        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + (n / 2) - 1, x + (n / 2) - 1, y + (n / 2) - 1);	/    
     tile(n / 2, x, y + n / 2);			~ diving it again in 4 quadrants
     tile(n / 2, x, y);
     tile(n / 2, x + n / 2, y);
     tile(n / 2, x + n / 2, y + n / 2);
- 
     return 0;
 %
-		#!divide_and_conquer
+#!divide_and_conquer
 
 $main() <<void
-{
-	int x;
-	read(x);
-	size_of_grid = x;
-	int a[x][x];
-	for (0,x)
-		for j:(0,x)
-			a[x][x]=0;	/
+    int x;
+    read(x);
+    size_of_grid = x;
+    int a[x][x];
+    for (0,x)
+	for j:(0,x)
+            a[x][x]=0;	/
 		/
-    a = 0, b = 0;
-    ~Here tile can not be placed
+    a = 0, b = 0;     ~Here tile can not be placed
     a[a][b] = -1;
     tile(@a,size_of_grid, 0, 0);
     for i: (0,size_of_grid)
