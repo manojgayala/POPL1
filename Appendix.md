@@ -1,16 +1,22 @@
 # Functions
-Syntax and structure of functions : [Function Declaration](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Examples.md#program-1-to-print-hello-world-using-tureasy)
-Types of functions : [pre-defined and user-defined](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-functions:~:text=Functions%20are%20of%202%20types%3A%20pre%2Ddefined,user%2Ddefined%20functions%20as%20a%20better%20approach.)
-Passing arguments : [Pass by value & reference](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-pass-by-value-or-pass-by-reference:~:text=In%20Tureasy%20variables%20can%20be%20passed%20by%20reference%20or%20by%20value)
+Syntax and structure of functions : [**Function Declaration**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Examples.md#program-1-to-print-hello-world-using-tureasy)
+
+Types of functions : [**pre-defined and user-defined**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-functions:~:text=Functions%20are%20of%202%20types%3A%20pre%2Ddefined,user%2Ddefined%20functions%20as%20a%20better%20approach.)
+
+Passing arguments : [**Pass by value & reference**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-pass-by-value-or-pass-by-reference:~:text=In%20Tureasy%20variables%20can%20be%20passed%20by%20reference%20or%20by%20value)
 
 Tureasy supports various types of programming using functions like
-- [Functional paradigm](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-functional-paradigm:~:text=Tureasy%20also%20supports%20functional%20paradigm)
-**Functional paradigm** is a kind of good programming practice where programs are constructed by applying and composing functions. It is a declarative programming paradigm which is strongly recommended to use in Tureasy.
+- [**Functional paradigm**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-functional-paradigm:~:text=Tureasy%20also%20supports%20functional%20paradigm)
 
-- [Functional overriding](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-functional-paradigm:~:text=Overriding%20built%2Din%20functions)
-**Function overriding** is a practice where the pre-defined functions are overridden by the programmer to obtain more useful results from a function. This kind of programming is highly recommended when the programmer wants to observe or use intermediate results of the pre-defined function.
-- [Local functions](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-local-functions:~:text=The%20functions%20can%20be%20defined%20inside,as%20parameters.%20Here%20is%20an%20example)
-**Local functions** are special functions in Tureasy which uses the concept of nested functions. In short this mean that a function is return inside another function. This kind of programming is especially useful for efficiency of memory usage, customize the scope of parameters etc.,
+   **Functional paradigm** is a kind of good programming practice where programs are constructed by applying and composing functions. It is a declarative programming paradigm which is strongly recommended to use in Tureasy.
+
+- [**Functional overriding**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-functional-paradigm:~:text=Overriding%20built%2Din%20functions)
+
+   **Function overriding** is a practice where the pre-defined functions are overridden by the programmer to obtain more useful results from a function. This kind of programming is highly recommended when the programmer wants to observe or use intermediate results of the pre-defined function.
+
+- [**Local functions**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-local-functions:~:text=The%20functions%20can%20be%20defined%20inside,as%20parameters.%20Here%20is%20an%20example)
+
+   **Local functions** are special functions in Tureasy which uses the concept of nested functions. In short this mean that a function is return inside another function. This kind of programming is especially useful for efficiency of memory usage, customize the scope of parameters etc.,
 
 Note that *functional paradigm* is supported by both *user-defined* and *pre-defined* functions whereas *function overriding* and *local functions* are supported by only user-defined functions.
 
