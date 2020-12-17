@@ -1,4 +1,5 @@
 # TUREASY
+### Introduction
 Tureasy is a general-purpose high-level programming language designed to optimize programs. It supports multiple programming paradigms, including object-oriented, functional, and generic programming. It is mainly developed as a reflective language to optimize programs. There are libraries additionally which allow the user to use generic programming and concurrent programming whenever necessary.
 
   The main features of Tureasy are scalability, security, multithreading, easy to learn, produces optimized programs, and is portable. 
