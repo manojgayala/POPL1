@@ -1,8 +1,8 @@
 # Classes
 
-Syntax of Classes :  [**Class Declaration**](https://github.com/manojgayala/POPL1/blob/srikar/Appendix.md#user-content-obscuring:~:text=Classes%3A,which%20is%20a%20given%20by%20class%2Dinitializer)
+Syntax of Classes :  [**Class Declaration**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-obscuring:~:text=Classes%3A,which%20is%20a%20given%20by%20class%2Dinitializer)
 
-Body of the Class: [**Class Body**](https://github.com/manojgayala/POPL1/blob/srikar/Appendix.md#user-content-inherited-classes-and-parent-classes:~:text=Class%20BodyBody%20contains%20declaration%20of%20members%2C%20methods%2C%20constructors)
+Body of the Class: [**Class Body**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-inherited-classes-and-parent-classes:~:text=Class%20BodyBody%20contains%20declaration%20of%20members%2C%20methods%2C%20constructors)
  
 
  - [**Members Syntax**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-syntax:~:text=members%3A,_var_declartion%20%2D%2D%3Eprivate%20members)
