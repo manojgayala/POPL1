@@ -283,6 +283,57 @@ The sum of the two arrays is: 7 9 11 13 15
 ```
 The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
 
+### Example 8:
+This program illustrates the concept of constructor overloading or multiple constructors
+```
+*Distance         						  ~ beginning the class
+	mem:
+		int x1;
+		int x2;
+		int y1;
+		int y2;
+	met:
+		$pointToOrigin() << int
+			return sqrt(pow(x1,2)+pow(y1,2));
+		%
+		$point1Topoint2() << int
+			return sqrt(pow(x1-x2,2)+pow(y1-y2,2));
+		%
+	con:
+		(int x1, int y1, int x2, int y2)  ~constructor with four arguments
+			here.x1 = x1;
+			here.y1 = y1;
+			here.x2 = x2;
+			here.y2 = y2;
+		%
+		(int x1, int y1)				  ~ constructor with two arguments
+			here.x1 = x1;
+			here.y1 = y1;
+		%
+*%										  ~ end the class *Distance*
+
+$main()
+	int x1,y1,x2,y2;
+	write("Count of number of points you want to enter: ");
+	int count;
+	read(@count);
+	if count == 2
+		write("Enter the coordinates in the order x,y: ");
+		read(@x1,@y1);
+		Distance dist = new Distance(x1,y1);
+		write("The distance of the given point from origin is: "+ dist.pointToOrigin());
+	/
+	else if count == 4
+		write("Enter the coordinates in the order x1,y1,x2,y2: ");
+		read(@x1,@y1,@x2,@y2);
+		Distance dist = new Distance(x1,y1,x2,y2);
+		write("The distance between the given points is: "+ dist.point1Topoint2());
+	/
+	else
+		write("Enter a valid count!!");
+	/
+%
+```
 
 ### Example 12:
 This is a program which calculates roots of a quadratic equation, but can be easily extended to larger polynomials
