@@ -85,7 +85,7 @@ The following code, given a list of numbers, finds the average, variance and sta
 $computeVarAndSD(List numbers, float avg, int n) << void
     float sum = 0, variance, std_deviation;
     for i:(0,n-1)
-        sum = sum + power((numbers[i] - avg), 2);   /    
+        sum = sum + pow((numbers[i] - avg), 2);   /    
     ~ variable sum stores sum of squares of difference of all numbers from mean(or average)
     variance = sum / (float)n;
     write("\nVariance = " + variance);
