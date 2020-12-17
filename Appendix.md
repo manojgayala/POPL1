@@ -593,241 +593,79 @@ The `break` statement appears in iteration and switch statements and terminates 
 The `return` statement is used to return to its caller. If the function return type is void, the function may not return a value; otherwise, the expression represents the value to be returned.
 
 # Classes
-This section covers the basic semantics of Classes and how they are implemented.
 
-Body of the class contains members, constructors, methods declared in `mem`,`con`,`met` blocks respectively.Classes can have subclasses 
+Syntax of Classes :  [**Class Declaration**](https://github.com/manojgayala/POPL1/blob/srikar/Appendix.md#user-content-obscuring:~:text=Classes%3A,which%20is%20a%20given%20by%20class%2Dinitializer)
 
-   *declaration: \
-     `*`class-declarator `inherit`<sub>opt</sub>  parent-class-list<sub>opt</sub> `'\n'` class-initilaizer <sub>opt</sub>* 
-
-Complete syntax is specified [here](#declarations)
-   
-   This is the basic declaration of a class where *class-declarator* specifies whether the class is a *normal class* or a *generic class*(a class which uses generic type variables which has different declarations among different instances of the class) along with the name of the class *class-identifier*
-
-## Generic class declaration 
-```
-*GenClass << G
-mem:
-G g;
-met:
-$display() << void 
-write(g)
-%
-*%
-
-$main << void
-GenClass << int x;
-GenClass << string y;
-%
-```
-
-## Inherited Classes and Parent Classes
-
-Parent classes of a class can be specified using the `inherit` keyword, these specified class are called *immediate parent classes*
-and the latter class is called the *immediate inherited or subclass*.
-
-Subclass relation is transitive closure of the *immediate subclass* relation.
-
-```
-*A inherit B,C
-mem:
-int x:
-*%
-*B inherit D
-mem:
-int y
-*%
-```
-here,A is both subclass of B, C and also D.  
-B, C are the immediate parentclasses of A \
-D is a parentclass of B.
-
-## Class Body
-Class Body contains declaration of members, methods, constructors
-```
-*Class
-mem:
-var-declarations ...
-met:
-functions ...
-con:
-contructors ...
-*%
-```
-This is the general body of a class.Scope of all the members and functions that are declared in or inherited in, is the  entire body of the Class.
-
-## Class Members
-
- There are three types of members 
-                   1.  members that are inherited from its immediate parentclass.
-                   2. members are declared  public in this class
-                   3. members that are declared private in this class.
-     
-   Methods which are inherited should not be declared again.  
-  
-  #### Syntax:
-  *members:* \
-  *`mem:` mem-declaration-list* 
-  
- *mem-declaration-list: \
- mem -declaration \
- mem-declarations mem-declaration<sub>opt</sub>*	
- 	
-*mem-declaration: \
- var-declaration --> public members   \
-`_`var_declartion -->private members*      
-
-Every member of the class can be accessed through `this` keyword.
-        
-## Class Methods
-There are five types of methods:
-
- 1. Methods which are inherited from its immediate parent class.
- 2. Methods which are declared public in the this class
- 3. Methods which are declared private in this class
- 4. Methods which are overridded in this class
- 5. Methods which are overloaded in this class.
-
-#### Syntax:
-*methods:* \
-*`met:` met-declaration-list* 
-
-*met-declaration-list: \
-met-declaration \
-met-declaraion-list met-declaration<sub>opt</sub>*
-
-*met-declaration:
-func-declaration  -->public and overloaded methods \
-`_`func-declaration  -->private methods \
-`.`func-declaration -->overridden methods.*      
-
-  Every method of the class can be accessed through `this` keyword.     
+Body of the Class: [**Class Body**](https://github.com/manojgayala/POPL1/blob/srikar/Appendix.md#user-content-inherited-classes-and-parent-classes:~:text=Class%20BodyBody%20contains%20declaration%20of%20members%2C%20methods%2C%20constructors)
  
- Methods of a generic class can use the generic type to declare objects in their code and can even return the generic type.These methods are called `generic methods`.
 
-### Inherited methods
-A class inherits all the public members and methods from its immediate parent class.
-No other method in the class should have the same method 
-signature(name and parameter-list) and the return type as of the inherited methods.
+ - [**Members Syntax**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-syntax:~:text=members%3A,_var_declartion%20%2D%2D%3Eprivate%20members)
+ - [**Methods Syntax**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-syntax-1:~:text=Syntax%3A-,methods%3A,.func%2Ddeclaration%20%2D%2D%3Eoverridden%20methods,-.)
+ - [**Constructors Syntax**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-syntax-for-function-declarator:~:text=con%2Ddeclarator%20contains%20no%20identifier%20but%20only,also%20specified%20when%20there%20is%20inheritance.)
 
-There is an exception in the inheritance of public methods when multiple inheritance is occurred. All the common public  methods of the parent classes have to be overridden in the present class or one method can be chosen using `parent` keyword.
 
-### Overriden methods
-Only the public methods that are inherited from the parent class can be overridden.Even if the methods are overridden ,the old methods can be invoked using the `parent` keyword (folllowed by the parent class-identifier if multiple inherited)
+Constructors :
+     
 
-The overridden method has to be public.
+ - [**How to use multiple constructors (overloading)**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-constructors:~:text=Multiple%20constructors%20can%20be%20made%20for%20a%20class.)
+ - [**Constructors for Singly Inherited Classes**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-private-methods:~:text=Inheritance,name%20%20in%20the%20class%20definition.%60%60)
+ - [**Constructors for Multiple Inherited Classes**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-multiple-inheritance:~:text=*C%20inherit%20A%2CB,as%20in%20definition.%60%60)
+ - [**Generic Constructors**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-constructor-for-inherited-classes:~:text=Generic%20Constructors,parameter%2Dlist.Only%20generic%20classes%20have%20generic%20constructors.)
+ 
+ Methods:
+ 
+ - [**Private methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-constructors:~:text=Private%20Methods,Private%20methods%20start%20with%20_%24.)
+ - [**Inherited methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-inherited-methods:~:text=A%20class%20inherits%20all%20the%20public,type%20as%20of%20the%20inherited%20methods.)
+ - [**Overridden methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-overriden-methods:~:text=Only%20the%20public%20methods%20that%20are,the%20parent%20class%2Didentifier%20if%20multiple%20inherited))
+ - [**Overloaded methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-overloaded-methods:~:text=Two%20non%20%2Dprivate%20methods%20of%20a,of%20arguments%20of%20both%20the%20methods.)
+ - [**Operator Overloading methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-local-functions:~:text=Functions%20for%20Operator%20Overridding)
+  
+    - Operator Overloading can be done only for the user-defined classes.
 
-Overridden methods should have the same set of parameters as the parent method but the return type can be different.
+
+
+
+
+We know that Classes in Tureasy allow the objects to exhibit polymorphism.
+
+ - It is seen in Method Overloading and Operator Overloading,
+which is a compile-time polymorphism as their functionality is resolved at the compile-time.
+
+Objects in Tureasy can also exhibit Run-time polymorphism.
+
+ - An object of a child class can be referred by both the child class' reference and the parent class' reference.
+- This is used when an object is needed which has the same  structure as the parent class but the overridden, overloaded functions and overloaded operators in the child classes have to be reflected.
+
 ```
-*Parent
-met:
-$foo(int x) << int
-return 1;
-%
-
-*Sub inherit Parent
-met:
-.$foo(int x) << string.      ~overridded method with different return type.
-return '1'
-%
-
-```
-
-
-### Overloaded methods
-Two  non -private methods  of a class having same name with different arguments are called overloaded methods.
-Resolving the methods is done at compile-time using the set of arguments of both the methods.
-
-Return types of overloaded methods may or may not be same.
-```
-*Parent
+*ClassA
 mem:
-int x;
+int a;
 met:
- $getX() << int
-  return x;
- %
-*%
-*sub inherit Parent
-mem:
-float x;
-met:
- $getX() << float
-  return x;
+$printmem() << void
+write(a);
+%
+ *ClassB inherit ClassA
+ mem:
+ float d;
+ met:
+ .$printmem() << void
+ write(a +" "+b);
  %
  *%
- ```
- This return compile-time error as both the getX methods have no difference in their parameter -list to resolve.
- ## Class Constructors
- A constructor is used in the creation of an object that is an instance of a class.
- #### Syntax:
-*constructors:*
- *`con:` con-declaration-list \
-con-declaration-list* 
 
-*con-declaration: \
-con-declaration-list con-declaration<sub>opt</sub>*
-
-Syntax of con-declaration is specified [here](#syntax-for-function-declarator) 
-
-Constructors are identified through their parameter list and they don't need a particular  identifier because by default,*class-identifier*(name) is taken as the identifier of the constructor.
-
-
+$main() << void
+ClassB obj = new ClassB();
+obj.a = 4;
+obj.d = 3.4;
+ClassA parentref = obj;
+parentref.printmem();
 ```
-*Node
-mem:
-int x,y
-con:
-(int x,int y)
-here.x = x;
-here.y = y;
-%
-*%
 ```
-*parameter-type-list* is same as the formal parameter list used for the methods and functions
+Output:
+4 3.4
+```
+The method to be invoked is decided at the run-time.Even the `parentref` can't access  the `d` variable(as tureasy is statically typed, the child's members are not known  at compile-time), overridden `printmem()` will be invoked. 
 
-### Constructor overloading
-It is similar to method overloading ,to overload a constructor formal parameter list has to be unique for both the constructors otherwise it is a compile-time error.
-
-### Constructor for Inherited Classes
-When a class inherits an other class at the time of creation of object, the parentclass constructor should be called before the present class's constructor. So the constructor has to specify the parent's constructor to be called through its parameter-list after specifying the current class' list.
-If multiple inheritance has taken place, the parameter-lists has to be specified sequentially in the same order.
-```
-*Parent
-mem:
-int x,y;
-con:
-(int x,int y)
-here.x = x;
-here.y = here.y;
-%
-*%
-
-*Child inherit Parent
-mem:
-int z;
-con:
-(int z):(int x,int y)
-  here.z = here.z + parent.x +parent.y;
- %
-*%
-```
-### Generic Constructors
-Constructors can also declare objects of generic type and the generic type can also be specified in the parameter-list.Only generic classes have generic constructors.
-```
-*GenClass << G
-mem:
-G g;
-met:
-$display() << void 
-write(g)
-%
-con:
-(G g)
-here.g = g;
-%
-*%
-```
 
 # Tags and Turzers
 The tags are special kind of statements which groups part of code which has some special implementation involved. It is used in this format 
