@@ -1,3 +1,4 @@
+### Example 1:
 This example, given a date, prints its week day if it is valid otherwise informs the user that the date entered is invalid.
 ```
 ~ validateDate function returns 1 if given date is valid, otherwise returns 0
@@ -51,6 +52,7 @@ For input: day = 16, month = 12, year = 2020, the output is:
 Valid Date: 16-12-2020
 Week day is: Wednesday
 ```
+### Example 2:
 This example, given a list of words prints them in the Lexicographical Order.
 ```
 $main() << int
@@ -77,6 +79,7 @@ $main() << int
     return 0;
 %
 ```
+### Example 3:
 The following code, given a list of numbers, find the average, variance and standard deviation.
 ```
 $computeVarAndSD(List numbers, float avg, int n) << void
@@ -111,6 +114,7 @@ $main() << int      ~ main function starts here
     return 0;
 %
 ```
+### Example 4:
 Binary Search Algorithm is implemented in the following example. Given a sorted list of n elements, it prints the index of element we are looking for on finding; else indicates 
 that the element is not found.
 ```
@@ -123,7 +127,7 @@ $binarySearch(List elements, int n, int i, int j) << int
         if elements[mid] > n    ~ element n if exists can be found only in the left part of the list
             ~ recursive call to binarySearch function with diminished range to check for the element
             return binarySearch(elements, n, i, mid - 1);    /
-        return binarySearch(elements, n, mid + 1, j);   ~ element n if exists can be found only in the right part of the list
+        return binarySearch(elements, n, mid + 1, j); ~ element n if exists can be found only in the right part of the list
     return -1;  ~ element not found: so return -1
 %
 
