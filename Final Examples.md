@@ -142,3 +142,55 @@ $main << int
     return 0;
 %
 ```
+
+### Example 13:
+Using tags to find mistakes or to improve the efficiency of code.
+
+```
+# DijkstraPath
+# MinPriorityQueue
+$ dijkstra(Graph G, int start, int end,int n) << void
+	PriorityQueue q{int weight, int vertex};	~it is declared in this way so that weight is given first preference then vertex number
+	int vis[n],dist[n];
+	
+	for i : (0,n) 
+		vis[i]=0;
+		dist[i] = INT_MAX; /
+	
+	dist[start] = 0;
+	q.enqueue({0,start});	
+	 					
+	List>> int neighbors;
+	
+	while !q.empty()
+		int w,current = q.dequeue();
+		vis[current] = 1;
+		
+		neighbors = G[current];	~neighbors will a tuple with vertex and weight
+		
+		for i,j :neighbors
+			int newWeight = j + dist[current];
+			
+			if !vis[i] && newWeight < dist[i]
+				dist[i] = newWeight;
+				visited[i] = 1;
+				
+				if i !q.check(:,i)
+					q.enque(newWeight,i);/	
+				else
+					q.update({:,i},{newWeight,i});//
+		/
+	/
+
+	write("Shortest distance is: ",dist[end]);
+
+			
+%
+#! MinPriorityQueue
+#! DijkstraPath
+``
+Tip: In line 23, the declaration could be done outside loop to save more stack memory
+Criticl: In line 24, in for loop vertices shoul not be marked as visited / does not meet Dijkstra's Algorithm.
+``
+```
+
