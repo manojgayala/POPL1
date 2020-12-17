@@ -283,6 +283,44 @@ The sum of the two arrays is: 7 9 11 13 15
 ```
 The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
 
+
+### Example 12:
+This is a program which calculates roots of a quadratic equation, but can be easily extended to larger polynomials
+```
+$main() << void
+	
+	string line[20];  
+	double  root1,root2;
+
+	write("Enter the quadratic equation in the form of a0*x*x + a1*x + a2 \n");  
+	read(@line);
+
+	List>> string data = line.split("*x");
+	~ above actions gives ["a0"," + a1"," + a2"]
+	
+	                                                              
+	for i: data.WordCount()	~this iterates throught size of data list
+		int (a+str(i)) = (int) data[i].igonre({" ","+"});	/
+	
+	int discriminant  =  a1*a1  -  4*a0*a2;
+
+	if d  <  0    
+	~complex roots, i is for iota (√-1, square root of -1)  
+	write("First root = " +  -b/(double)(2*a) + "+ i" + sqrt(-d)/(2*a));  
+	write("First root = " +  -b/(double)(2*a) + "- i" + sqrt(-d)/(2*a)); 
+	/  
+	else   ~real roots  
+		root1  =  (-b  +  sqrt(d))/(2*a);  
+		root2  =  (-b  -  sqrt(d))/(2*a);
+
+		write("First root = " + root1);  
+		write("Second root = " + root2); 
+	/
+	 
+}
+%
+```
+
 ### Example 13:
 Using tags to find mistakes or to improve the efficiency of code.
 
