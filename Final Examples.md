@@ -27,7 +27,7 @@ $validateDate(int d,int m,int y) << int
 
 $weekDay(int d, int m, int y) << int
     ~ weekDay function given a date, returns a number from 0 to 6, corresponding to Sun, Mon, Tue, Wed, Thurs, Fri, Sat
-    int temp = (d+=m<3?y--:y-2,23*m/9+d+4+y/4-y/100+y/400)%7;
+    int temp = (d+=m<3?(y=y-1):y-2,23*m/9+d+4+y/4-y/100+y/400)%7;
     return temp;
 %
 
