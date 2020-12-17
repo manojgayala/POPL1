@@ -510,7 +510,7 @@ Here in the table, operators on the same line have the same precedence; rows are
 | Bitwise AND |	& | Left to Right |
 | Bitwise OR | \| | Left to Right |
 | Logical AND |	&& | Left to Right |
-| Logical OR | `||` | Left to Right |
+| Logical OR | \|\| | Left to Right |
 | Conditional | ?: | Right to Left |
 | Assignment | = += -= /= %= >>= <<= &= ^=  | Right to Left |
 | Comma | , | Left to Right |
