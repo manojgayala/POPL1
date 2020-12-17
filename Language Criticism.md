@@ -1,17 +1,17 @@
 # Criticism of Tureasy
 
-Tureasy as the name suggests is a programming language that can easily be habituated.But there is something more the name supports.
-It helps the programmer improve their programming skills by giving advices in the same way as elders/professionals nurture newbies.
+Tureasy as the name suggests is simple, easy to code and understandable programming language. But there is something more the name supports.
+It helps the programmer improve her programming skills by giving advices in the same way as elders/professionals nurture newbies.
 
-When a program of tureasy is seen superficially for the first time, seems to have more symbols and one can be intimidated by it.But this is one of the most important things that helps the programmer learn the language more easily as they eventually become more comfortable with the symbols than using large keywords.
+When a program of tureasy is seen superficially for the first time, it seems to have more symbols and one can be intimidated by that. But this is one of the most important things that helps the programmer makes the language more compact and easy as they eventually become more comfortable with the symbols than using large keywords.
 
 ## Insights into some domains of Tureasy.
 
  ### Variables - precisely sufficient.
-Tureasy has an optimal range of primitive datatypes i.e it doesn't have unnecessarily wide range of datatypes as to not let the new users to get confused.For Eg: Tureasy doesn't provide any datatypes for the unsigned numbers because their usage can be served by other ways in tureasy and not to complicate the behaviour of variables.
-It has a sufficient range to let the user choose the type, having suitable size and properties.
+Tureasy has an optimal range of primitive datatypes to make things clear for the user. For Eg: Tureasy doesn't provide any datatypes for the unsigned numbers because their usage can be served by other ways in tureasy (larger data types) ensuring that the behaviour of variables is not complicated.
+**It has a sufficient range to let the user choose the type, having suitable size and properties.**
 
-   Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of objects.
+   Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of [classes](###classes and oops) and objects.
 
 Tureasy provides storage class specifiers and type specifiers to choose the scope and rigidity of the variable.Even though out of the scope variables cannot be accessed or can be updated, tureasy boldly presents a way to change the value of a variable in functions called at the moment, with a single symbol `@` a variable can be passed by reference i.e a procedure can change the parameter values
 and reflect those changes in the caller scope. 
