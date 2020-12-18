@@ -801,3 +801,93 @@ $main() <<void
     /
 %
 ```
+
+
+### Example 17
+This example takes in scores after each over in a cricket match and calculates the probabilty of winning for the team playing in the second inning.
+```
+static int runWeight =1, wicketWeight = -15;	~assumed weights
+
+CalculateProb(int RunDiff, int wickets, int total1, int total2) << float
+
+	int cutoff = RunDiff*runWeight + wickets*wicketWeight;
+	int avg = (total1 + toatal2)/2;
+	
+	float prob = 50 + math.ln( (total1 + (cutoff/avg))/total2 );
+	~math is a built in library, ln is natural logarithm
+	
+	write("chance of winnig for second team is" + prob);
+%
+
+$main() << void
+	FILE fptr1,fptr2;
+	int total1 = 0, total2 = 0, over, runs, wickets = 0;
+	string line;
+	List>> int data;
+	
+	int runWeight =1, wicketWeight = -15;	~assumed weights
+	
+	fptr1 = fptr1.open("firstInning.txt","r");
+	fptr2 = fptr2.open("secondInning.txt","w");
+	
+	while( (line = fptr.readline()) != EOF)
+		data = (int) line.split(" ");
+		~data will be of the form ["OverNumber", "Runs in that over", Wicket in that over"]
+		total2 += data[1];
+		
+		~we wait for user input for 2nd inning in that over
+		
+		read(@over,@runs,@wickets);
+		total1 += runs;
+		
+		fwrite(fptr2,over,runs,wickets);
+
+		CalculateProb(runs-data[1],wicket,total1,total2);
+		
+	/
+	
+%
+``` 
+
+### Example 18
+program to find edit distance of two strings
+
+```
+$min(int a, int b, int c) << int           ~to find min of three numbers
+	if a>b
+		a=b;  /
+	if a>c
+		a=c;  /
+	return a;
+%
+#dynamic_programming
+$editDistDP(string @str1, string @str2, int m, int n) <<int     ~edit distance function
+    int dp[m + 1][n + 1]; 
+    for i:(0,m)
+        for j:(0,n) 
+            if i == 0
+                dp[i][j] = j; / 
+            else if j == 0
+                dp[i][j] = i; /
+
+            else if str1[i - 1] == str2[j - 1] 
+                dp[i][j] = dp[i - 1][j - 1];    /
+  
+            else
+                dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j],dp[i - 1][j - 1]);   /
+        /
+    /
+    return dp[m][n]; 
+%
+#!dynamic_programming
+
+$main()<< void
+	string s1, s2;
+	read(s1);
+	read( s2);
+	int n1=strlen(s1);
+	int n2=strlen(s2);
+	write(editDistDP(s1,s2,n1,n2));
+%
+
+```
