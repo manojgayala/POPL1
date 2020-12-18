@@ -30,7 +30,7 @@ The following are the identifiers reserved to use only as keywords.
 | *double* | *long* | *void* | *int* | *float* |
 | *string* | *char* | *new* | *return* | *mem* |
 | *met* | *con* | *parent* | *here* | *inherit* |
-| *fixed* | *static* |
+| *fixed* | *static* | *func* |
 
 These words can't be used as variable names. In any usage of these keywords as identifiers, an error is popped up.
 
