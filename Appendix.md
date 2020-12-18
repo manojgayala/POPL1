@@ -1,4 +1,40 @@
 
+
+
+# Operators
+* [**Unary operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-tag-expressions:~:text=Unary%20operators,can%20be%20operands%20of%20this%20operator.)
+* [**Multiplicative Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-unary-operators:~:text=operator.-,Multiplicative%20Operators,The%20binary%20operator%20*%20denotes%20multiplication%2C%20with%20the%20operands%20of%20arithmetic%20type.%20And%20the%20binary%20operator%20%2F%20yields%20the%20quotient%2C%20which%20also%20has%20both%20the%20operands%20of%20arithmetic%20type.%20While%20the%20%25%20operator%20the%20remainder%20of%20the%20division%20of%20the%20first%20operand%20by%20the%20second.%20Here%20both%20the%20operands%20must%20have%20integral%20type.%20Incase%20the%20second%20operand%20is%200%20in%20any%20of%20the%20operators%20%2F%20and%20%25%20the%20result%20is%20undefined.%20But%20it%20is%20always%20guaranteed%20that%20the%20absolute%20value%20of%20the%20remainder%20is%20smaller%20than%20that%20of%20the%20divisor.)
+* [**Additive Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-multiplicative-operators:~:text=divisor.-,Additive%20Operators,The%20operands%20can%20be%20integral%20or%20floating%20values.%20The%20result%20of%20the%20%2B%20operator%20is%20the%20sum%20of%20the%20operands%20while%20the%20result%20of%20the%20%2D%20operator%20is%20the%20difference%20of%20the%20operands.)
+* [**Shift Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-additive-operators:~:text=Shift%20Operators,the%20Expression1's%20type%20in%20left%20shift.)
+* [**Relational Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-shift-operators:~:text=type.-,Relational%20Operators,These%20operators%20support%20integral%20or%20floating%2Dpoint%20numeric%20type.%20The%20char%20type%20also%20supports%20these%20operators.%20In%20this%20case%2C%20the%20corresponding%20character%20codes%20are%20compared.%20Here%2C%20the%20result%20type%20is%20bool.%20If%20the%20relationship%20in%20the%20expression%20is%20false%2C%20the%20value%20returned%20is%20false(0)%3B%20otherwise%20true(1).)
+* [**Equality Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-relational-operators:~:text=true(1).-,Equality%20Operators,These%20operators%20are%20analogous%20to%20Relational%20Operators%2C%20i.e%2C%20they%20support%20integral%20or%20floating%2Dpoint%20numeric%20type%20and%20also%20string%20type.%20The%20result%20type%20is%20bool.%20The%20%3D%3D%20operator%20returns%20true(1)%20if%20both%20operands%20have%20the%20same%20value%3B%20otherwise%2C%20it%20returns%20false(0).%20The%20!%3D%20operator%20returns%20true(1)%20if%20the%20operands%20don't%20have%20the%20same%20value%3B%20otherwise%2C%20it%20returns%20false(0).)
+* [**Bitwise Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-equality-operators:~:text=Bitwise%20AND%20Operator,The%20usual%20arithmetic%20conversions%20are%20performed.)
+* [**Logical Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-bitwise-inclusive-or-operator:~:text=Logical%20AND%20Operator,it.%20The%20result's%20type%20is%20bool.)
+* [**Assignment Operator**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-conditional-expression-operator:~:text=void.-,Assignment%20Operator,Assignment_Operator%3A)
+* [**Conditional expression operator**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-logical-or-operator:~:text=Conditional%20Expression%20Operator,type%2C%20the%20result%20type%20is%20void.)
+* [**Comma operator**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-assignment-operator:~:text=Comma%20Operator,elements%2C%20the%20generic%20type%20elements%20etc.)
+
+## Precedence Table
+Operator precedence determines the order in which certain operations need to be performed in an expression. Grouping of terms in an expression takes place accoringly and thus 
+value of the expression is computed. Within an expression, higher precedence operators will be evaluated first. Operators Associativity is used when two operators of same 
+precedence appear in an expression. \
+Here in the table, operators on the same line have the same precedence; rows are in order of decreasing precedence.
+|Category | Operator | Associativity |
+|--- |------ |--- |
+| Unary | + - : ! memsize() | Right to Left |
+| Multiplicative | * / % | Left to Right |
+| Additive | + - | Left to Right |
+| Shift	| <<  >> | Left to Right |
+| Relational | <  <=  >  >= | Left to Right |
+| Equality | == != | Left to Right |
+| Bitwise AND |	& | Left to Right |
+| Bitwise OR | \| | Left to Right |
+| Logical AND |	&& | Left to Right |
+| Logical OR | \|\| | Left to Right |
+| Conditional | ?: | Right to Left |
+| Assignment | = += -= /= %= >>= <<= &= ^=  | Right to Left |
+| Comma | , | Left to Right |
+
 # Statements
  A statement is a command that the programmer gives to the computer. Statements are major part of the program.The body of any function is a sequence of statements. 
  They fall into several categories.
