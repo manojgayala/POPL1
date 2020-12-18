@@ -21,6 +21,27 @@ Tureasy supports various types of programming using functions like
 Note that *functional paradigm* is supported by both *user-defined* and *pre-defined* functions whereas *function overriding* and *local functions* are supported by only user-defined functions.
 
 
+
+# Strings
+- [**Creating a string**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-strings:~:text=Creating%20strings)
+- [**String Operations**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-creating-strings:~:text=World%E2%80%9D%3B-,String%20operations,In%20above%20example%20string%20concatenation%20operator%20%2B%20and%20string%20duplicate%20operator%20*%20were%20used.)
+- [**Accessing characters**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-creations-of-strings:~:text=Accessing%20characters%20in%20a%20string)
+- [**String Manipulation**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-string-operations:~:text=Manipulating%20strings,the%20string%20OR%20length%20of%20string)
+
+In addition to functions mentioned in string manipulation section there are:
+function  |  task
+--------  |  -----
+str.ignore(List of sub-strings | Ignores the sub-strings passed as parameter and returs the concatenated characters from the residue. 
+str.FindAll(str) 	| searches for the specified sub-string(str) and outputs position where it exists
+
+
+Some exmples related to strings:
+- [**Operations on strings**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-accessing-characters-in-a-string:~:text=String%20operations,%60%60)
+- [**Checking existence**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-string-operations:~:text=Existence%20of%20substring%20within%20string%20can,the%20above%20method%20is%20case%20sensetive)
+- [**Using strig functions**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Specifications.md#user-content-string-operations:~:text=Some%20Standard%20String%20functions,outputs%20length%20of%20string%20by%20default)
+
+
+
 # Classes
 
 Syntax of Classes :  [**Class Declaration**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-obscuring:~:text=Classes%3A,which%20is%20a%20given%20by%20class%2Dinitializer)
