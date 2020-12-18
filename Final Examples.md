@@ -19,8 +19,10 @@ $validateDate(int d,int m,int y) << int
             /
             else                    ~ invalid day
                 return 0;   /
+	/	
         else
             return 0;   /           ~ invalid month
+    /
     else
         return 0;   /               ~ invalid year
 %
@@ -251,14 +253,14 @@ $main() << void
 	int a[5] = {1,2,3,4,5}
 	int b[5] = {6,7,8,9,10}
 
-	~ This function adds two arrays
+	~ This local function adds two arrays
 	func add = [@] $() << void    ~ @ is for reference and no name is given to function since we have reference
 		int c[5];
 		for i:(0,4)
 			c[i] = a[i]+b[i];
 		/
 		
-		~This function prints an array
+		~This local function prints an array
 		func print = [@] $(int c[]) << void 
 			for i:(0,4)
 				write(c[i]+" ");
@@ -340,60 +342,60 @@ This code defines the user and group classes and when root is logged in, creates
 ```
 *User                       ~ User Class
 mem:           
-_string name               ~ name of the user
-_int uid                   ~ user id
-_Group primGroup           ~ primary group of the user,which also owns the same list of files.
-_string password.          ~ password for the login.
-_List << string ownedfiles  ~ list of files owned by the user. 
+_string name;               ~ name of the user
+_int uid;                   ~ user id
+_Group primGroup;           ~ primary group of the user,which also owns the same list of files.
+_string password;          ~ password for the login.
+_List << string ownedfiles;  ~ list of files owned by the user. 
 
 met:
 $addToGroup(Group group)
-if(System.login.getuid()==0). ~ only when the current user is root.
-	group.addUser(here) \
+if(System.login.getuid()==0) ~ only when the current user is root.
+	group.addUser(here); \
 else
-	write("not allowed\n"). \	
+	write("not allowed\n"); \	
 %
 $ownfile(string filename)   ~ to own a new file.
 if(System.login.getuid()==0)
-	ownedfiles.append(filename)
-	primGroup.addfile(filename) \
+	ownedfiles.append(filename);
+	primGroup.addfile(filename); \
 else
-	write("not allowed\n")  \	
+	write("not allowed\n");  \	
 %
 $changeprimGroup(Group group)   ~ to change primary group 
 if(System.login.getuid()==0)
-	here.primgroup = primGroup
+	here.primgroup = primGroup;
 	for f : here.files
-		primeGroup.addfile(f) \
+		primeGroup.addfile(f); \
 \		
 else
-	write("not allowed\n"). \
+	write("not allowed\n"); \
 %
-$setpasswd(string password). ~ to set the password for the user.
+$setpasswd(string password) ~ to set the password for the user.
 if(System.login.getuid==0)
-	here.password = password \
+	here.password = password; \
 else
-	write("not allowed\n") \
+	write("not allowed\n"); \
 
 con:
 (string name,int uid,Group primGroup)
-here.name = name
+here.name = name;
 if(!Userids.isPresent(uid))
-	here.uid = uid. \
+	here.uid = uid; \
 else
-	here.uid = Userids.next() \	
-here.primGroup = primGroup
+	here.uid = Userids.next(); \	
+here.primGroup = primGroup;
 for f : here.files
-	primeGroup.addfile(f) \
+	primeGroup.addfile(f); \
 %
 
 (string name)
-here.name = name
-here.primGroup = new Group(name)
-primGroup.adduser(here)
+here.name = name;
+here.primGroup = new Group(name);
+primGroup.adduser(here);
 for f : here.files
-	primeGroup.addfile(f) \
-here.id = Userids.next()
+	primeGroup.addfile(f); \
+here.id = Userids.next();
 %
 
 *%
@@ -401,60 +403,60 @@ here.id = Userids.next()
 *Superuser inherit User ~ this class is for the root user.
 con:
 ():()
-parent.User("root")
-uid = 0
-ownedfiles.append(System.files.ALL())
+parent.User("root");
+uid = 0;
+ownedfiles.append(System.files.ALL());
 %
 *%
 
 
 *Group    ~ Group Class
 mem:
-_string groupname
-_List<< User users
-_List<< string files
-_int gid
+_string groupname;
+_List<< User users;
+_List<< string files;
+_int gid;
 met:
-$addUser(User user)
-if(System.login.getuid()==0)
-	users.append(user)   \
+$addUser(User user);
+if(System.login.getuid()==0);
+	users.append(user);   \
 else
-	write("not allowed\n") \	
+	write("not allowed\n"); \	
 %
 $addfile(string file)
 if(System.login.getuid()==0)
-	files.append(file) \
+	files.append(file); \
 else
-	write("not allowed\n") \
+	write("not allowed\n"); \
 %
 con:
 (string groupname,int gid)
-here.groupname = groupname
+here.groupname = groupname;
 if(!Groupids.ispresent(gid))
-	here.gid = gid \
+	here.gid = gid; \
 else
-	here.gid = Groupids.next()	\
+	here.gid = Groupids.next();	\
 %
 (string groupname)
-here.groupname = groupname
-here.gid = Groupids.next()
+here.groupname = groupname;
+here.gid = Groupids.next();
 %
 *%
 
 
 $main() << void
-Superuser root = new Superuser()
-System.setlogin(root)
-User admin = new User("admin")
-Group gsys = new User("sys_group")
-admin.addToGroup(gsys)
+Superuser root = new Superuser();
+System.setlogin(root);
+User admin = new User("admin");
+Group gsys = new User("sys_group");
+admin.addToGroup(gsys);
 for file : System.files.get("/home/sys")
-	admin.ownfile(file.getname())
-admin.changeprimGroup(gsys)
+	admin.ownfile(file.getname());
+admin.changeprimGroup(gsys);
 
-System.setlogin(admin)
-admin.setpasswd() ~ this prints not allowed as the current login is not root.
-admin.getname()
+System.setlogin(admin);
+admin.setpasswd();          ~ this prints not allowed as the current login is not root.
+admin.getname();
 admin.getownedfiles()
 ```
 Output :
@@ -486,10 +488,10 @@ $main() << void
 			~lineData will be in the form From: abcd@iith.ac.in  "Hi ...."
 			info = lineData[1].split("@");
 			~ the list in info will be of the form ["UserID","Org.domain"]
-			fwrite(fptr2,info[0]);	~UserID will bw written into this file.
+			write(info[0],fptr2);	~UserID will bw written into this file.
 			
 			temp = info[1].split(".");
-			fwrite(fptr3,temp[0]);	~Domain name will be written into thsi file
+			write(temp[0],fptr3);	~Domain name will be written into this file
 			
 			info.clear()	~removes all items in the list
 			
