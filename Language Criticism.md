@@ -27,14 +27,13 @@ Iterative statements in Tureasy provide an intuitive way to iterate over a colle
 
 ### Functions - 	both a procedure and a pure function.
 
-Function in a programming language, is certainly one of the most needed tool.Functions in tureasy start with `$`.  It is already mentioned that tureasy takes the help of symbols to render uniqueness to different parts of the language structure. 
+Function in a programming language, is certainly one of the most needed tool. Functions in tureasy start with `$`.  It is already mentioned that tureasy takes the help of symbols to render uniqueness to different parts of the language structure. 
 
 In a program, normal functions can be declared in any part of the code and can be used (called) in any scope of the program. This has certain advantages in tureasy. One of them is, as they have global recognition, functions called in tags can be resolved easily.
 
 Tureasy also provides some alternative to global scope of functions, which are called as local functions. These local functions are confined to the scope they are defined. This will have a very good impact on the programming style or approach of the user.
 
-Tureasy is able to support both procedural and functional programming, because as mentioned earlier its functions have the ability to take care of the instant decision to pass parameters by values or by references. These lets the programmer to choose fora function whether to have side-effects or not.Almost all of the builtin functions don't have side-effects, this is very helpful for functional programming style.
-
+Tureasy is able to support both procedural and functional programming, because as mentioned earlier its functions have the ability to take care of the instant decision to pass parameters by values or by references. These lets the programmer to choose for a function whether to have side-effects or not.Almost all of the builtin functions don't have side-effects, this is very helpful for functional programming style.
 
 ### Classes and OOPs  -  well fabricated but subtle.
 
@@ -44,8 +43,7 @@ in a block associated to them.This makes the body of a class more organised and 
 
 Classes also let users to define private members and methods in a class and again to promote symbolic coding `_$` and `_specifier` are used for the private methods/members of classes,`.$` is used for overridden methods.
 
-Inheritance in tureasy is well-defined. Child class constructors have to be paired with some parent constructor, this lets the user to create objects without any irregularity(undeclared variables/objects).
-Multiple Inheritance comes with its challenges. But they are carefully taken care in tureasy.For Eg: To resolve the problem of common methods in parent classes, child class has to override this common method. This can be some kind of time-taking job as users have to check whether there are any common methods. However users who create child classes are  most probably aware of their parents. 
+Inheritance in tureasy is well-defined. Child class constructors have to be paired with some parent constructor, this lets the user to create objects without any irregularity(undeclared variables/objects). Multiple Inheritance comes with its challenges. But they are carefully taken care in tureasy.For Eg: To resolve the problem of common methods in parent classes, child class has to override this common method. This can be some kind of time-taking job as users have to check whether there are any common methods. However users who create child classes are  most probably aware of their parents. 
 
  Even constructors are kind of methods, they don't have any identifiers, this again promotes tureasy's idea of not using redundant keywords. 
 
@@ -57,14 +55,11 @@ A single class can be created to be compatible for many datatypes.
 All the above mentioned features in Tureasy are intended to help the possibility of implementing the soul of tureasy, tags.
 Tags are created to help the programmers improve their code in many ways. They are given tips, advices by the tags which are both for their personal development and also to maintain a company's standards.
 
-All this is done at the compiler-level by **turzers** which analyse the semantics.Although tags are so beneficial, effective usage of those are dependent on the user.If not used properly, they may lead to misleading results. So they have to be used only when they are well-known. 
- Full potential of tags may not be visible in the initial stages of this language, as they need more training.
-
+All this is done at the compiler-level by **turzers** which analyse the semantics.Although tags are so beneficial, effective usage of those are dependent on the user.If not used properly, they may lead to misleading results. So they have to be used only when they are well-known. Full potential of tags may not be visible in the initial stages of this language, as they need more training.
 
 ## Conclusion
 
-Finally tureasy can be claimed to be a language which is suitable to use reliably in almost all the domains of programming. Novelty in Tureasy is that it adapts to the coding environment that is associated to the company that uses this language.
-It is a self-developing language which becomes more powerful for every single compilation of its code.
+Finally tureasy can be claimed to be a language which is suitable to use reliably in almost all the domains of programming. Novelty in Tureasy is that it adapts to the coding environment that is associated to the company that uses this language. It is a self-developing language which becomes more powerful for every single compilation of its code.
 
 
 
