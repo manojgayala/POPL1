@@ -840,7 +840,7 @@ $main() << void
 		read(@over,@runs,@wickets);
 		total1 += runs;
 		
-		fwrite(fptr2,over,runs,wickets);
+		write(over,runs,wickets,fptr2);	~writes into "secondInnings"
 
 		CalculateProb(runs-data[1],wicket,total1,total2);
 		
