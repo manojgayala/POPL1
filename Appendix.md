@@ -7,8 +7,8 @@ The variables are the placeholders of the data.
 
 The variables are of different data types and belong to different storage classes.
 
-* [Data types](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-storage-class:~:text=Basic%20types)
-* [Storage classes](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#storage-class)
+* [**Data types**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-storage-class:~:text=Basic%20types)
+* [**Storage classes**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#storage-class)
 
 These data types are extended to include the data structures called the generic data types.
 ## Generic Data Types
