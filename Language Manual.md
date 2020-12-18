@@ -761,6 +761,48 @@ met:
  *%
  ```
  This return compile-time error as both the getX methods have no difference in their parameter -list to resolve.
+ 
+### Polymorphism
+We know that Classes in Tureasy allow the objects to exhibit polymorphism.
+
+ - It is seen in Method Overloading and Operator Overloading,
+which is a compile-time polymorphism as their functionality is resolved at the compile-time.
+
+Objects in Tureasy can also exhibit Run-time polymorphism.
+
+ - An object of a child class can be referred by both the child class' reference and the parent class' reference.
+- This is used when an object is needed which has the same  structure as the parent class but the overridden, overloaded functions and overloaded operators in the child classes have to be reflected.
+
+```
+*ClassA
+mem:
+int a;
+met:
+$printmem() << void
+write(a);
+%
+ *ClassB inherit ClassA
+ mem:
+ float d;
+ met:
+ .$printmem() << void
+ write(a +" "+b);
+ %
+ *%
+
+$main() << void
+ClassB obj = new ClassB();
+obj.a = 4;
+obj.d = 3.4;
+ClassA parentref = obj;
+parentref.printmem();
+```
+```
+Output:
+4 3.4
+```
+The method to be invoked is decided at the run-time.Even the `parentref` can't access  the `d` variable(as tureasy is statically typed, the child's members are not known  at compile-time), overridden `printmem()` will be invoked.  
+
  ## Class Constructors
  A constructor is used in the creation of an object that is an instance of a class.
  #### Syntax:
@@ -815,6 +857,7 @@ con:
  %
 *%
 ```
+
 ### Generic Constructors
 Constructors can also declare objects of generic type and the generic type can also be specified in the parameter-list.Only generic classes have generic constructors.
 ```
