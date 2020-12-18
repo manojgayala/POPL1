@@ -9,7 +9,6 @@ When a program of tureasy is seen superficially for the first time, it seems to 
 
  ### Variables - precisely sufficient.
 Tureasy has an optimal range of primitive datatypes to make things clear for the user. For Eg: Tureasy doesn't provide any datatypes for the unsigned numbers because their usage can be served by other ways in tureasy (larger data types) ensuring that the behaviour of variables is not complicated.
-**It has a sufficient range to let the user choose the type, having suitable size and properties.**
 
    Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of classes and objects.
 
@@ -18,19 +17,13 @@ Tureasy provides storage class specifiers and type specifiers to choose the scop
 As the program size increases, it becomes necessary to do casts for some variables in tureasy which can be seen as a disadvantage unlike python which takes care of such conversions internally. 
 
 ### Statements and Blocks - rendering  hierarchy.
- Tureasy provides all the types of statements that are needed to express logic  in a programming language. i.e **Tureasy is Turing Complete.** (of course it will, as it is dedicated to the legendary computer scientist.)
+ Tureasy provides all the types of statements that are needed to express logic  in a programming language. i.e **Tureasy is Turing Complete.** (dedicated to the legendary computer scientist.)
        
-The formatted labelling of some statements make the control flow easier to manage.These statements can contain multiple expressions which makes the language more compact.
+The formatted labelling of some statements make the control flow easier to manage.These statements can contain multiple expressions which makes the language more compact. Block of statements (Compound statements) in tureasy brings the concept of scope.These blocks are bounded by the end of a statement marked with a `/` .
 
-Block of statements(Compound statements) in tureasy brings the concept of scope.These blocks are surrounded or bounded by the end of a statement for which it is considered as a body and ended with typically with a `\` .
-
-But some blocks end with a different identifier.Functions end with a `%` and classes end with a `*%`.
-having different identifications for blocks depending on their hierarchical position, lets the code be more structured and also improves the readability of the program.
+But some blocks end with a different identifier.Functions end with a `%` and classes end with a `*%`. Having different identifications for blocks can be confusing to the user at first. But such difference also helps programmer in debugging her code unlike C where we have only curly braces for every block.
  
- These bounds for the blocks seem to be sensitive(not so rigid) but actually they are theoretically sufficient to detect a block and makes the compilation simpler.One way to use it effectively is to mention the end of block by `\` at the time when the block is created.
- 
-Iterative statements in Tureasy provide an intuitive way to iterate over a collection of variables or over a range,In both these cases the implementation is the same as they are abstracted accordingly.
-
+Iterative statements in Tureasy provide an intuitive way to iterate over a collection of variables or over a range. In both these cases the implementation is the same as they are abstracted accordingly. Such generic syntax helps programmer to adapt to language easily.
 
 ### Functions - 	both a procedure and a pure function.
 
