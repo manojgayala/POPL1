@@ -12,12 +12,12 @@ are discussed in detail in later sections. Individually there are new concepts i
 Tureasy also offers object oriented programming to the users to make sure it is industry ready. Many concepts of OOPs are accomodated in the language design. It also supports other programming paradigms like, functional, and procedural programming. There are libraries additionally which allow the user to use generic programming and concurrent programming whenever necessary. Tureasy has a good amount of in-built functions which make programmer's life simpler. 
  
 The remainder of the final deliverables is organized as follows:
-1. [Language Evolution] covers the motivation behind language design and related inspirations taken during evolution of Tureasy.
-2. [Language Tutorial] covers the concepts of Tureasy briefly providing the reader with the tools required for writing programs in Tureasy.
-3. [Language Manual] covers the in depth analysis of Tureasy with focus on providing the reader with the internal reasoning and theoretical basis of language design.
-4. [Final Examples] provides a set of complete programs that would familiarize reader with all aspects of Tureasy and related syntax.
-5. [Language Criticism] provides the criticism of Tureasy. It analyzes Tureasy based on its merits and demerits and even provides comparisions with other languages.
-6. [Appendix] provides reader with necessary sub topics of Tureasy and related links to follow for understanding them. Some of the concepts which are not covered in examples, tutorial and manual are covered in it.
-7. [Lessons Learnt] provides the lessons which we have learnt over the design of a programming language. The difficulties we faced are also included in this.
+- [Language Evolution] covers the motivation behind language design and related inspirations taken during evolution of Tureasy.
+- [Language Tutorial] covers the concepts of Tureasy briefly providing the reader with the tools required for writing programs in Tureasy.
+- [Language Manual] covers the in depth analysis of Tureasy with focus on providing the reader with the internal reasoning and theoretical basis of language design.
+- [Final Examples] provides a set of complete programs that would familiarize reader with all aspects of Tureasy and related syntax.
+- [Language Criticism] provides the criticism of Tureasy. It analyzes Tureasy based on its merits and demerits and even provides comparisions with other languages.
+- [Appendix] provides reader with necessary sub topics of Tureasy and related links to follow for understanding them. Some of the concepts which are not covered in examples, tutorial and manual are covered in it.
+- [Lessons Learnt] provides the lessons which we have learnt over the design of a programming language. The difficulties we faced are also included in this.
 
 The reader would get a proper understanding after he covers all the sections. There are still some aspects of Tureasy that need attention which would be improved over years.
