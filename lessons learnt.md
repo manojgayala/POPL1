@@ -11,9 +11,9 @@ After a lot of research, debates, thought processes, and  hardwork, we have desi
 
 
 ### Challenges faced
--Miscommunication among team members during the phase of building the language
--Inconsistency within the team on rules/syntax to be followed
--Cross-validation of each other’s work 
--Bridging the gap between ideas for the language and trying to implement them
+- Miscommunication among team members during the phase of building the language
+- Inconsistency within the team on rules/syntax to be followed
+- Cross-validation of each other’s work 
+- Bridging the gap between ideas for the language and trying to implement them
 
 
