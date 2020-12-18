@@ -144,7 +144,7 @@ $main << int
 ```
 
 ### Example 5:
-This program calculates binomial scan n<sub>C<sub>r </sub></sub> using the formula n<sub>C<sub>r </sub></sub> = n-1<sub>C<sub>r </sub></sub> + n-1<sub>C<sub>r-1 </sub></sub> 
+This program calculates binomial scan n<sub>C<sub>r </sub></sub> using the formula n<sub>C<sub>r </sub></sub> = n-1<sub>C<sub>r </sub></sub> + n-1<sub>C<sub>r-1 </sub></sub> illustrating the concept of optimization in Tureasy using Tags
 ```
 ~ This function calculates binomial coefficient for a given n and r
 $findbincoeff(int n, int r) << int
@@ -284,7 +284,7 @@ The sum of the two arrays is: 7 9 11 13 15
 The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
 
 ### Example 8:
-This program illustrates the concept of constructor overloading or multiple constructors
+This program find distance between two points based on the input i.e., if the no of coordinates given are two, the coordinated of the second point are taken to be origin and of two points are given the distance between those two points are calculated illustrating the concept of constructor overloading or multiple constructors
 ```
 *Distance         						  ~ beginning the class
 	mem:
@@ -293,24 +293,24 @@ This program illustrates the concept of constructor overloading or multiple cons
 		int y1;
 		int y2;
 	met:
-		$pointToOrigin() << int
+		$pointToOrigin() << int				~ This method calculates the distance between the given point and origin
 			return sqrt(pow(x1,2)+pow(y1,2));
 		%
-		$point1Topoint2() << int
+		$point1Topoint2() << int			~ This method calculates the distance between the given two points
 			return sqrt(pow(x1-x2,2)+pow(y1-y2,2));
 		%
 	con:
-		(int x1, int y1, int x2, int y2)  ~constructor with four arguments
+		(int x1, int y1, int x2, int y2)  		~constructor with four arguments
 			here.x1 = x1;
 			here.y1 = y1;
 			here.x2 = x2;
 			here.y2 = y2;
 		%
-		(int x1, int y1)				  ~ constructor with two arguments
+		(int x1, int y1)				 ~ constructor with two arguments
 			here.x1 = x1;
 			here.y1 = y1;
 		%
-*%										  ~ end the class *Distance*
+*%								 ~ end the class *Distance*
 
 $main()
 	int x1,y1,x2,y2;
