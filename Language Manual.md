@@ -678,6 +678,9 @@ This is the general body of a class.Scope of all the members and functions that 
 `_`var_declartion -->private members*      
 
 Every member of the class can be accessed through `this` keyword.
+
+### Private members
+Private members start with `_$` and these are only accessible in the class body but not outside of it and not even in its's subclasses.When private members are delcared,public getter methods for the same are created at the compiled-time i.e their value can be known by calling these methods.
         
 ## Class Methods
 There are five types of methods:
@@ -704,6 +707,7 @@ func-declaration  -->public and overloaded methods \
   Every method of the class can be accessed through `this` keyword.     
  
  Methods of a generic class can use the generic type to declare objects in their code and can even return the generic type.These methods are called `generic methods`.
+
 
 ### Inherited methods
 A class inherits all the public members and methods from its immediate parent class.
@@ -732,7 +736,6 @@ return '1'
 %
 
 ```
-
 
 ### Overloaded methods
 Two  non -private methods  of a class having same name with different arguments are called overloaded methods.
