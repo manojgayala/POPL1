@@ -545,8 +545,8 @@ Using tags to find mistakes or to improve the efficiency of code.
 ```
 # DijkstraPath
 # MinPriorityQueue
-$ dijkstra(Graph G, int start, int end,int n) << void
-	PriorityQueue q{int weight, int vertex};	~it is declared in this way so that weight is given first preference then vertex number
+$ dijkstra(Graph G, int start, int end, int n) << void
+	PriorityQueue >> Pair >> (int,int) q;	~it is declared in this way so that weight is given first preference then vertex number
 	int vis[n],dist[n];
 	
 	for i : (0,n) 
@@ -554,9 +554,9 @@ $ dijkstra(Graph G, int start, int end,int n) << void
 		dist[i] = INT_MAX; /
 	
 	dist[start] = 0;
-	q.enqueue({0,start});	
+	q.enqueue((0,start));	
 	 					
-	List>> int neighbors;
+	List >> int neighbors;
 	
 	while !q.empty()
 		int w,current = q.dequeue();
@@ -564,7 +564,7 @@ $ dijkstra(Graph G, int start, int end,int n) << void
 		
 		neighbors = G[current];	~neighbors will a tuple with vertex and weight
 		
-		for i,j :neighbors
+		for (i,j) : neighbors
 			int newWeight = j + dist[current];
 			
 			if !vis[i] && newWeight < dist[i]
@@ -589,78 +589,9 @@ Tip: In line 23, the declaration could be done outside loop to save more stack m
 Criticl: In line 24, in for loop vertices shoul not be marked as visited / does not meet Dijkstra's Algorithm.
 ``
 ```
-### Example 14:
-Tiling using divide and conquer
- ```
-int size_of_grid, b, a, cnt = 0;
 
-$place(int @a[][],int x1, int y1, int x2,int y2, int x3, int y3) << void	~ Placing tile at the given coordinates
-    cnt++;
-    a[x1][y1] = cnt;
-    a[x2][y2] = cnt;
-    a[x3][y3] = cnt;
-%
-#divide_and_conquer
-$tile(int @a[][],int n, int x, int y)<< int
-    int r,i,j, c;
-    if n == 2
-        cnt++;
-        for i: (0,n)
-            for j: (0,n)
-                if a[x + i][y + j] == 0
-                    a[x + i][y + j] = cnt; /
-            /
-        /
-    /
-    return 0;
-   	i=j=0;
-    ~ finding hole location
-    for i:(x,n+x) 
-        for j:(y,y+n) 
-            if a[i][j] != 0
-                r = i;
-                c = j; / 
-        /	/
-    if r < x + n / 2 && c < y + n / 2				~ If missing tile is in first quadrant
-        place(a,x + n / 2, y + (n / 2) - 1, x + n / 2,y + n / 2, x + n / 2 - 1, y + n / 2);	/
-  
-    else if r >= x + n / 2 && c < y + n / 2			~ If missing Tile is in 2st quadrant
-        place(a,x + n / 2, y + (n / 2) - 1, x + n / 2, y + n / 2, x + n / 2 - 1, y + n / 2 - 1);	/
- 
-    else if r < x + n / 2 && c >= y + n / 2			~ If missing Tile is in 3st quadrant
-        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + n / 2, x + (n / 2) - 1, y + (n / 2) - 1);	/
- 
-    else if r >= x + n / 2 && c >= y + n / 	~ If missing Tile is in 4st quadrant
-        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + (n / 2) - 1, x + (n / 2) - 1, y + (n / 2) - 1);	/    
-    tile(n / 2, x, y + n / 2);			~ diving it again in 4 quadrants
-    tile(n / 2, x, y);
-    tile(n / 2, x + n / 2, y);
-    tile(n / 2, x + n / 2, y + n / 2);
-    return 0;
-%
-#!divide_and_conquer
 
-$main() <<void
-    int x;
-    read(x);
-    size_of_grid = x;
-    int a[x][x];
-    for (0,x)
-	for j:(0,x)
-            a[x][x]=0;	/
-		/
-    a = 0, b = 0;     ~Here tile can not be placed
-    a[a][b] = -1;
-    tile(@a,size_of_grid, 0, 0);
-    for i: (0,size_of_grid)
-        for j:[0,size_of_grid]
-            write(a[i][j] + "\t");		~printing output
-        /
-        write("\n"),
-    /
-%
-```
-### Example 15
+### Example 14
 Program for merge sort
 ```
 merge(int arr[], int l, int m, int r) << void
@@ -732,5 +663,80 @@ printArray(int A[], int size)<< void
     write("\nSorted array is \n");
     printArray(arr, arr_size);
     return 0;
+%
+```
+After compiling the code, suggestions will be like
+```
+Tip : Parallel function call can be done at lines 640 and 641. 
+```
+
+### Example 15:
+Tiling problem using divide and conquer
+ ```
+int size_of_grid, b, a, cnt = 0;
+
+$place(int @a[][],int x1, int y1, int x2,int y2, int x3, int y3) << void	~ Placing tile at the given coordinates
+    cnt++;
+    a[x1][y1] = cnt;
+    a[x2][y2] = cnt;
+    a[x3][y3] = cnt;
+%
+
+$tile(int @a[][],int n, int x, int y)<< int
+    int r,i,j, c;
+    if n == 2
+        cnt++;
+        for i: (0,n)
+            for j: (0,n)
+                if a[x + i][y + j] == 0
+                    a[x + i][y + j] = cnt; /
+            /
+        /
+    /
+    return 0;
+   	i=j=0;
+    ~ finding hole location
+    for i:(x,n+x) 
+        for j:(y,y+n) 
+            if a[i][j] != 0
+                r = i;
+                c = j; / 
+        /	/
+    if r < x + n / 2 && c < y + n / 2				~ If missing tile is in first quadrant
+        place(a,x + n / 2, y + (n / 2) - 1, x + n / 2,y + n / 2, x + n / 2 - 1, y + n / 2);	/
+  
+    else if r >= x + n / 2 && c < y + n / 2			~ If missing Tile is in 2st quadrant
+        place(a,x + n / 2, y + (n / 2) - 1, x + n / 2, y + n / 2, x + n / 2 - 1, y + n / 2 - 1);	/
+ 
+    else if r < x + n / 2 && c >= y + n / 2			~ If missing Tile is in 3st quadrant
+        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + n / 2, x + (n / 2) - 1, y + (n / 2) - 1);	/
+ 
+    else if r >= x + n / 2 && c >= y + n / 	~ If missing Tile is in 4st quadrant
+        place(a,x + (n / 2) - 1, y + (n / 2), x + (n / 2), y + (n / 2) - 1, x + (n / 2) - 1, y + (n / 2) - 1);	/    
+    tile(n / 2, x, y + n / 2);			~ diving it again in 4 quadrants
+    tile(n / 2, x, y);
+    tile(n / 2, x + n / 2, y);
+    tile(n / 2, x + n / 2, y + n / 2);
+    return 0;
+%
+
+$main() <<void
+    int x;
+    read(x);
+    size_of_grid = x;
+    int a[x][x];
+    for (0,x)
+	for j:(0,x)
+            a[x][x]=0;	/
+		/
+    a = 0, b = 0;     ~Here tile can not be placed
+    a[a][b] = -1;
+    tile(@a,size_of_grid, 0, 0);
+    for i: (0,size_of_grid)
+        for j:[0,size_of_grid]
+            write(a[i][j] + "\t");		~printing output
+        /
+        write("\n"),
+    /
 %
 ```
