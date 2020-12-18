@@ -207,7 +207,7 @@ Constructors :
  
  - [**Inherited methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-inherited-methods:~:text=A%20class%20inherits%20all%20the%20public,type%20as%20of%20the%20inherited%20methods.)
  
- - [**Overridden methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-overriden-methods:~:text=Only%20the%20public%20methods%20that%20are,the%20parent%20class%2Didentifier%20if%20multiple%20inherited))
+ - [**Overridden methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-overriden-methods:~:text=Only%20the%20public%20methods%20that%20are,the%20parent%20class%2Didentifier%20if%20multiple%20inherited) & [**Polymorphism**]()
  
  - [**Overloaded methods**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-overloaded-methods:~:text=Two%20non%20%2Dprivate%20methods%20of%20a,of%20arguments%20of%20both%20the%20methods.)
  
@@ -215,47 +215,7 @@ Constructors :
   
     - Operator Overloading can be done only for the user-defined classes.
     
-We know that Classes in Tureasy allow the objects to exhibit polymorphism.
 
- - It is seen in Method Overloading and Operator Overloading,
-which is a compile-time polymorphism as their functionality is resolved at the compile-time.
-
-Objects in Tureasy can also exhibit Run-time polymorphism.
-
- - An object of a child class can be referred by both the child class' reference and the parent class' reference.
-- This is used when an object is needed which has the same  structure as the parent class but the overridden, overloaded functions and overloaded operators in the child classes have to be reflected.
-
-```
-*ClassA
-mem:
-int a;
-met:
-$printmem() << void
-write(a);
-%
- *ClassB inherit ClassA
- mem:
- float d;
- met:
- .$printmem() << void
- write(a +" "+b);
- %
- *%
-
-$main() << void
-ClassB obj = new ClassB();
-obj.a = 4;
-obj.d = 3.4;
-ClassA parentref = obj;
-parentref.printmem();
-```
-```
-Output:
-4 3.4
-```
-The method to be invoked is decided at the run-time.Even the `parentref` can't access  the `d` variable(as tureasy is statically typed, the child's members are not known  at compile-time), overridden `printmem()` will be invoked.  
-
-# Tags
 
 [**Syntax of tags**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-overriding-and-overloading:~:text=*%25-,Tags)
 
