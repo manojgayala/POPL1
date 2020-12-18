@@ -335,6 +335,40 @@ $main()
 %
 ```
 
+### Example 11:
+This example reads a file containing email in complete text form. The program uses file handling and string operations to output a file containing names of pepele you recieved mails from and another file containing the name of organizations from which you recieved mail.
+```
+$main() << void
+	FILE fptr1,fptr2,fptr3;
+	string path, lineData, temp;
+	int Pos;
+	List>> string info;
+	read(@path); 	~inputs name of file containg emails data
+	
+	fptr1.open(path,"r");
+	fptr2.open("NameID.txt","w");
+	fptr3.open("Org.txt","w");
+	
+	while((lineData = fptr1.readLine()) != EOF)	~readline the file line by line till end of file
+		Pos = lineData.Find("From");
+		if Pos==0
+			~lineData will be in the form From: abcd@iith.ac.in  "Hi ...."
+			info = lineData[1].split("@");
+			~ the list in info will be of the form ["UserID","Org.domain"]
+			fwrite(fptr2,info[0]);	~UserID will bw written into this file.
+			
+			temp = info[1].split(".");
+			fwrite(fptr3,temp[0]);	~Domain name will be written into thsi file
+			
+		/	 	
+	/
+	fptr3.close();
+	fptr2.close();
+	fptr1.close();
+%
+```
+
+
 ### Example 12:
 This is a program which calculates roots of a quadratic equation, but can be easily extended to larger polynomials
 ```
