@@ -1,6 +1,22 @@
 
 
 
+# Generic Data Types
+### Lists
+List is one of the generic data types in Tureasy, it is a sequence of objects.
+More explaination regaring lists can be found in tutorial  [**Lists**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Tutorial.md#user-content-initializiation-of-arrays:~:text=Lists,20%5D%20~Replaces%2036%2C14%2C21%20with%2035%2C15%2C20%20espectively)
+
+Items can be added to list one at a time, or many at a time with the help of .append() function of a list
+```
+List>> int a;
+a.append(10);	~APPENDS 19 TO END OF LIST
+
+a.append({21,17,12,25});	~the same append function can be overloaded to add multiple elements at the same time 
+```
+
+### Queues
+
+
 # Operators
 * [**Unary operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-tag-expressions:~:text=Unary%20operators,can%20be%20operands%20of%20this%20operator.)
 * [**Multiplicative Operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-unary-operators:~:text=operator.-,Multiplicative%20Operators,The%20binary%20operator%20*%20denotes%20multiplication%2C%20with%20the%20operands%20of%20arithmetic%20type.%20And%20the%20binary%20operator%20%2F%20yields%20the%20quotient%2C%20which%20also%20has%20both%20the%20operands%20of%20arithmetic%20type.%20While%20the%20%25%20operator%20the%20remainder%20of%20the%20division%20of%20the%20first%20operand%20by%20the%20second.%20Here%20both%20the%20operands%20must%20have%20integral%20type.%20Incase%20the%20second%20operand%20is%200%20in%20any%20of%20the%20operators%20%2F%20and%20%25%20the%20result%20is%20undefined.%20But%20it%20is%20always%20guaranteed%20that%20the%20absolute%20value%20of%20the%20remainder%20is%20smaller%20than%20that%20of%20the%20divisor.)
