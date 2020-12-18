@@ -1,7 +1,21 @@
+# Variables and Storage Classes
+The variables are the placeholders of the data. 
 
+* [**Syntax**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Tutorial.md#user-content-io-handling:~:text=Variables%20and%20Operators%3A)
+* [**Declarations**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-lvalues:~:text=Declarations,-Declarations)
+* [**Scope and Linkage**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-types-of-identifiers:~:text=Scope,-The%20scope)
 
+The variables are of different data types and belong to different storage classes.
 
-# Generic Data Types
+* [Data types](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#user-content-storage-class:~:text=Basic%20types)
+* [Storage classes](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Language%20Manual.md#storage-class)
+
+These data types are extended to include the data structures called the generic data types.
+## Generic Data Types
+All of these have a common syntax. The type followed by `>>` datatype of constituent elements followed by variable name.
+```
+<Generic> >> <datatype> <variable_name>
+```
 ### Lists
 List is one of the generic data types in Tureasy, it is a sequence of objects.
 More explaination regaring lists can be found in tutorial  [**Lists**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Tutorial.md#user-content-initializiation-of-arrays:~:text=Lists,20%5D%20~Replaces%2036%2C14%2C21%20with%2035%2C15%2C20%20espectively)
@@ -11,11 +25,49 @@ Items can be added to list one at a time, or many at a time with the help of .ap
 List>> int a;
 a.append(10);	~APPENDS 19 TO END OF LIST
 
-a.append({21,17,12,25});	~the same append function can be overloaded to add multiple elements at the same time 
+a.append([21,17,12,25]);	~the same append function can be overloaded to add multiple elements at the same time 
 ```
 
 ### Queues
+Queue is a data structure that follows FIFO (First In First Out) policy. It provides methods like 
 
+- enqueue(a) : adds element
+- dequeue() : removes element
+- back() : last element
+- front() : first element
+- size() : number of elements
+
+### Stacks
+Stack is a data structure that follows LIFO (Last In First Out) policy. It provides methods like
+
+- push(a) : adds element
+- pop() : removes element
+- top() : last added element
+- size() : number of elements
+- reverse() : reverses the order of elements in stack
+
+### Dictionaries
+These are basically red black trees and are enclosed by curly braces to signify the same. The methods provided are
+
+- find(a) : searches for key a in the dictionary
+- remove(a) : removes key a from dictionary
+- getValue(a) : value of key a is returned
+- getKeys() : all the keys are returned
+- getPairs() : all the key value pairs are returned in a list datatype
+- getPred(a) : the immediate key less than key a is returned
+- getSucc(a) : the immediate key greater than key a is returned
+
+### Memset
+These are basically memory optimized ways of storing a set of elements. They are binary numbers basically. 1 represents exists and 0 represents do not exists. It provides all the logical operations. The size can be specified for the memset at the declaration step.
+
+### Rangetree
+These are basically segment trees. These are used for the range queries and range updates. They take an array and a function reference as parameters. The function must contain the aggregate method we are trying to follow for the tree buildup. It provides methods like
+
+- query(a,b) : the answer to range a to b query
+- update(a,x) : the update x happens to the position a
+- update(a,b,x) : the update happens to range a to b with x    
+
+The last method is basically overloaded.
 
 # Operators
 * [**Unary operators**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-tag-expressions:~:text=Unary%20operators,can%20be%20operands%20of%20this%20operator.)
