@@ -1,4 +1,291 @@
-### Example 1:
+### Example 1
+The program is based on matrix multiplication and related tag suggestions.
+```
+$matrix_mul(int n,int a[][n], int b[][n], int c[][n])	<< void
+	for i : (0,n-1)
+		for j : (0,n-1)
+			c[i][j] = 0;
+			for k : (0,n-1)
+				c[i][j] += a[i][k]*b[k][j];	///
+%
+
+$main() << void
+	int n;
+	read(@n);
+	int a[n][n],b[n][n];
+	for i : (0,n-1)
+		for j : (0,n-1)
+			read(@a[i][j]);	//
+	for i : (0,n-1)
+		for j : (0,n-1)
+			read(@b[i][j]);	//
+	
+	int c[n][n];
+	matrix_mul(n,a,b,c);
+	for i : (0,n-1)
+		for j : (0,n-1)
+			write(c[i]+" ");	/
+		write("\n");			/
+	return 0;
+%
+```
+The code after compilation would give the suggestion
+```
+Tip : forAsync i : (0,n-1)
+		forAsync j : (0,n-1)
+				=> in line 
+```
+
+### Example 2
+This small piece of code finds a power b and tags help optimize it.
+```
+$main() << void
+	int a,b;
+	read(@a,@b);
+#number_theory
+#exponentiation
+int ans = 1;
+for i : (0,b)					~ calculation of a power b
+	ans= ans*a; /
+write(ans);
+	return 0;
+%
+```
+The code after compilation would give the following results
+```
+Tip: {while b>0
+	if b&1 ans = ans*a;/
+	a = a*a; 
+	b=b/2; 	/} in line 2 =>
+O(lg(n)) method possible using binary exponentiation
+```
+
+### Example 3:
+Binary Search Algorithm is implemented in the following example. Given a sorted list of n elements, it prints the index of element we are looking for on finding; else indicates 
+that the element is not found.
+```
+$binarySearch(List elements, int n, int i, int j) << int
+    ~ binarySearch function given a number returns its index in the list on existance, else returns -1
+    if j >= i
+        int mid = i + (j - i) / 2;
+        if elements[mid] == n   ~ element n found at index number mid in the list
+            return mid;     /
+        if elements[mid] > n    ~ element n if exists can be found only in the left part of the list
+            ~ recursive call to binarySearch function with diminished range to check for the element
+            return binarySearch(elements, n, i, mid - 1);    /
+        return binarySearch(elements, n, mid + 1, j); ~ element n if exists can be found only in the right part of the list
+    return -1;  ~ element not found: so return -1
+%
+
+$main << int
+    List>> int elements = [ 1, 6, 11, 17, 23, 76, 134, 219 ]; 
+    int i, n = memsize(elements) / memsize(elements[0]);
+    write("Enter any element from whose position you want to find: ");
+    read(@i);
+    int result = binarySearch(elements, i, 0, n - 1);
+    ~ if result = -1, string "Element not found" is printed on the console; else prints ""Element found at index: _index_"
+    (result == -1) ? write("Element not found") : write("Element found at index: " + result); 
+    return 0;
+%
+```
+
+### Example 4:
+This program calculates binomial scan n<sub>C<sub>r </sub></sub> using the formula n<sub>C<sub>r </sub></sub> = n-1<sub>C<sub>r </sub></sub> + n-1<sub>C<sub>r-1 </sub></sub> illustrating the concept of optimization in Tureasy using Tags
+```
+~ This function calculates binomial coefficient for a given n and r
+$findbincoeff(int n, int r) << int
+	~ using a tag *checkhere* to optimize the code
+	#checkhere
+		int result = 0;
+		if n<r
+			return result;
+		/
+		else if n==r || r==0
+			return result+1;
+		/
+		else
+			return findbincoeff(n-1,r) + findbincoeff(n-1,r-1);	~recursive step
+		/
+	#!checkhere ~end the tag *checkhere*
+%
+
+$main() << void
+	int n,r,result;
+	write("Enter the values of n and r: ");
+	read(@n,@r);
+	result = findbinceoff(n,r);
+	write("The value of "+n+"C"+r+" = "+result);
+%
+```
+After compiling this code, the suggestions would be like
+```
+tip: checkhere has result variable unchanged - can be replaced by 0
+```
+
+### Example 5:
+This program illustrates the Quick Sort algorithm
+```
+~ This function swaps two elements 
+$swap(int a, int b) << void 
+	int temp = a; 
+	a = b; 
+	b = temp; 
+%
+
+`` 
+This function takes last element as pivot, places the pivot element at its
+correct position in sorted array, and places all smaller (smaller than
+pivot) to left of pivot and all greater elements to right of pivot 
+``
+$partition (int arr[], int low, int high) << int
+	int pivot = arr[high]; ~ pivot 
+	int i = (low - 1); ~ Index of smaller element 
+	int j = low;
+	while j <= high- 1 
+		~ if current element is smaller than the pivot 
+		if arr[j] < pivot 
+			i++; ~ increment index of smaller element 
+			swap(@arr[i], @arr[j]); 
+		/
+		j++; 
+	/
+	swap(@arr[i + 1], @arr[high]); 
+	return i + 1; 
+%
+
+``
+The main function that implements QuickSort 
+arr[] --> Array to be sorted, 
+low --> Starting index, 
+high --> Ending index
+``
+$quickSort(int arr[], int low, int high) << void 
+	if low < high
+		~ pi is partitioning index, arr[p] is now at right place 
+		int pi = partition(arr, low, high); 
+		~ Separately sort elements before 
+		~ partition and after partition 
+		quickSort(arr, low, pi - 1); 
+		quickSort(arr, pi + 1, high); 
+	/
+%
+
+$main() << int 
+{ 
+	int arr[] = {10, 7, 8, 9, 1, 5}; 
+	int n = 6; 
+	quickSort(arr, 0, n-1); 
+	write("The sorted array is: "); 
+	printArray(arr, n); 
+	return 0; 
+} 
+```
+
+### Example 6:
+This example, given a list of words prints them in the Lexicographical Order.
+```
+$main() << int
+    List>> string words;                      ~ List which stores words
+    string name, temp;
+    int i,n;
+    write("Enter the number of words: ");     ~ prompts user to enter number of words 
+    read(@n);                                 ~ reads input n from the user
+    for i: (1,n)
+        write("Enter word " + i + ": ");      ~ prompts user to enter ith word
+        read(@name);
+        words.append(name);    /              ~ appends the input read from user to the words List
+    for i: (0,n-1)
+        for j : (i+1,n-1)
+            if words[i].cmp(words[j]) > 0     ~ if words[i] > words[j]
+                temp = words[i];              ~ string temp holds content of words[i]  
+                words[i] = words[j];          ~ words[i] gets content of words[j]   
+                words[j] = temp;   /          ~ string words[j] finally holds content of temp 
+        /
+    /
+    write("Lexicographical order of given words: \n");
+    for i: (0,n-1)                            ~ print all the elements of List, each on a new line  
+        write(words[i] + "\n"); /
+    return 0;
+%
+```
+
+### Example 7:
+The following code, given a list of numbers, finds the average, variance and standard deviation.
+```
+$computeVarAndSD(List << int numbers, float avg, int n) << void
+    float sum = 0, variance, std_deviation;
+    for i:(0,n-1)
+        sum = sum + pow((numbers[i] - avg), 2);   /    
+    ~ variable sum stores sum of squares of difference of all numbers from mean(or average)
+    variance = sum / (float)n;
+    write("\nVariance = " + variance);
+    std_deviation = sqrt(variance);
+    write("\nStandard Deviation = " + std_deviation);
+    return;
+%
+
+$main() << int      ~ main function starts here
+    int  i, j, n;
+    float average, sum = 0;
+    List>> int numbers;
+    write("Enter the value of N: ");
+    read(@n);
+    write("Enter all " + n + " integers:\n");
+    for i: (0,n-1)      ~ reads all numbers from the user
+        read(@j);
+        numbers.append(j);   ~ numbers read are appended to the list   
+    /
+    for i: (0,n-1)
+        sum = sum + numbers[i];   /
+    ~ at the end of this loop variable sum stores sum of all the numbers
+    average = sum / (float) n;
+    write("Average of all elements = " + average);  ~ prints average of the number
+    computeVarAndSD(numbers,average,n);     ~ function call to compute variance and standard deviation
+    return 0;
+%
+```
+
+### Example 8:
+This program adds elements of two arrays which illustrates the concept of local functions
+
+```
+$main() << void
+	int a[5] = {1,2,3,4,5}
+	int b[5] = {6,7,8,9,10}
+
+	~ This local function adds two arrays
+	func add = [@] $() << void    ~ @ is for reference and no name is given to function since we have reference
+		int c[5];
+		for i:(0,4)
+			c[i] = a[i]+b[i];
+		/
+		
+		~This local function prints an array
+		func print = [@] $(int c[]) << void 
+			for i:(0,4)
+				write(c[i]+" ");
+			/
+			write("\n");
+		%
+		print(c);
+	%
+	write("The first array is: ");
+	print(a);
+	write("The second array is: ");
+	print(b);
+	write("The sum of the two arrays is: ");
+	add(a,b);
+%
+```
+The output of this program is 
+```
+The first array is: 1 2 3 4 5
+The second array is: 6 7 8 9 10
+The sum of the two arrays is: 7 9 11 13 15
+```
+The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
+
+### Example 9:
 This example, given a date, prints its week day if it is valid otherwise informs the user that the date entered is invalid.
 ```
 ~ validateDate function returns 1 if given date is valid, otherwise returns 0
@@ -54,238 +341,8 @@ For input: day = 16, month = 12, year = 2020, the output is:
 Valid Date: 16-12-2020
 Week day is: Wednesday
 ```
-### Example 2:
-This example, given a list of words prints them in the Lexicographical Order.
-```
-$main() << int
-    List>> string words;                      ~ List which stores words
-    string name, temp;
-    int i,n;
-    write("Enter the number of words: ");     ~ prompts user to enter number of words 
-    read(@n);                                 ~ reads input n from the user
-    for i: (1,n)
-        write("Enter word " + i + ": ");      ~ prompts user to enter ith word
-        read(@name);
-        words.append(name);    /              ~ appends the input read from user to the words List
-    for i: (0,n-1)
-        for j : (i+1,n-1)
-            if words[i].cmp(words[j]) > 0     ~ if words[i] > words[j]
-                temp = words[i];              ~ string temp holds content of words[i]  
-                words[i] = words[j];          ~ words[i] gets content of words[j]   
-                words[j] = temp;   /          ~ string words[j] finally holds content of temp 
-        /
-    /
-    write("Lexicographical order of given words: \n");
-    for i: (0,n-1)                            ~ print all the elements of List, each on a new line  
-        write(words[i] + "\n"); /
-    return 0;
-%
-```
-### Example 3:
-The following code, given a list of numbers, finds the average, variance and standard deviation.
-```
-$computeVarAndSD(List << int numbers, float avg, int n) << void
-    float sum = 0, variance, std_deviation;
-    for i:(0,n-1)
-        sum = sum + pow((numbers[i] - avg), 2);   /    
-    ~ variable sum stores sum of squares of difference of all numbers from mean(or average)
-    variance = sum / (float)n;
-    write("\nVariance = " + variance);
-    std_deviation = sqrt(variance);
-    write("\nStandard Deviation = " + std_deviation);
-    return;
-%
 
-$main() << int      ~ main function starts here
-    int  i, j, n;
-    float average, sum = 0;
-    List>> int numbers;
-    write("Enter the value of N: ");
-    read(@n);
-    write("Enter all " + n + " integers:\n");
-    for i: (0,n-1)      ~ reads all numbers from the user
-        read(@j);
-        numbers.append(j);   ~ numbers read are appended to the list   
-    /
-    for i: (0,n-1)
-        sum = sum + numbers[i];   /
-    ~ at the end of this loop variable sum stores sum of all the numbers
-    average = sum / (float) n;
-    write("Average of all elements = " + average);  ~ prints average of the number
-    computeVarAndSD(numbers,average,n);     ~ function call to compute variance and standard deviation
-    return 0;
-%
-```
-### Example 4:
-Binary Search Algorithm is implemented in the following example. Given a sorted list of n elements, it prints the index of element we are looking for on finding; else indicates 
-that the element is not found.
-```
-$binarySearch(List elements, int n, int i, int j) << int
-    ~ binarySearch function given a number returns its index in the list on existance, else returns -1
-    if j >= i
-        int mid = i + (j - i) / 2;
-        if elements[mid] == n   ~ element n found at index number mid in the list
-            return mid;     /
-        if elements[mid] > n    ~ element n if exists can be found only in the left part of the list
-            ~ recursive call to binarySearch function with diminished range to check for the element
-            return binarySearch(elements, n, i, mid - 1);    /
-        return binarySearch(elements, n, mid + 1, j); ~ element n if exists can be found only in the right part of the list
-    return -1;  ~ element not found: so return -1
-%
-
-$main << int
-    List>> int elements = [ 1, 6, 11, 17, 23, 76, 134, 219 ]; 
-    int i, n = memsize(elements) / memsize(elements[0]);
-    write("Enter any element from whose position you want to find: ");
-    read(@i);
-    int result = binarySearch(elements, i, 0, n - 1);
-    ~ if result = -1, string "Element not found" is printed on the console; else prints ""Element found at index: _index_"
-    (result == -1) ? write("Element not found") : write("Element found at index: " + result); 
-    return 0;
-%
-```
-
-### Example 5:
-This program calculates binomial scan n<sub>C<sub>r </sub></sub> using the formula n<sub>C<sub>r </sub></sub> = n-1<sub>C<sub>r </sub></sub> + n-1<sub>C<sub>r-1 </sub></sub> illustrating the concept of optimization in Tureasy using Tags
-```
-~ This function calculates binomial coefficient for a given n and r
-$findbincoeff(int n, int r) << int
-	~ using a tag *checkhere* to optimize the code
-	#checkhere
-		int result = 0;
-		if n<r
-			return result;
-		/
-		else if n==r || r==0
-			return result+1;
-		/
-		else
-			return findbincoeff(n-1,r) + findbincoeff(n-1,r-1);	~recursive step
-		/
-	#!checkhere ~end the tag *checkhere*
-%
-
-$main() << void
-	int n,r,result;
-	write("Enter the values of n and r: ");
-	read(@n,@r);
-	result = findbinceoff(n,r);
-	write("The value of "+n+"C"+r+" = "+result);
-%
-```
-After compiling this code, the suggestions would be like
-```
-tip: checkhere has result variable unchanged - can be replaced by 0
-```
-### Example 6:
-This program illustrates the Quick Sort algorithm
-```
-~ This function swaps two elements 
-$swap(int a, int b) << void 
-	int temp = a; 
-	a = b; 
-	b = temp; 
-%
-
-`` 
-This function takes last element as pivot, places the pivot element at its
-correct position in sorted array, and places all smaller (smaller than
-pivot) to left of pivot and all greater elements to right of pivot 
-``
-$partition (int arr[], int low, int high) << int
-	int pivot = arr[high]; ~ pivot 
-	int i = (low - 1); ~ Index of smaller element 
-	int j = low;
-	while j <= high- 1 
-		~ if current element is smaller than the pivot 
-		if arr[j] < pivot 
-			i++; ~ increment index of smaller element 
-			swap(@arr[i], @arr[j]); 
-		/
-		j++; 
-	/
-	swap(@arr[i + 1], @arr[high]); 
-	return i + 1; 
-%
-
-``
-The main function that implements QuickSort 
-arr[] --> Array to be sorted, 
-low --> Starting index, 
-high --> Ending index
-``
-$quickSort(int arr[], int low, int high) << void 
-	if low < high
-		~ pi is partitioning index, arr[p] is now at right place 
-		int pi = partition(arr, low, high); 
-		~ Separately sort elements before 
-		~ partition and after partition 
-		quickSort(arr, low, pi - 1); 
-		quickSort(arr, pi + 1, high); 
-	/
-%
-
-~ This function prints an array 
-$printArray(int arr[], int size) << void 
-	int i; 
-	for i: (0:size-1) 
-		write(arr[i]+" "); 
-	/
-	write("\n"); 
-%
-
-$main() << int 
-{ 
-	int arr[] = {10, 7, 8, 9, 1, 5}; 
-	int n = 6; 
-	quickSort(arr, 0, n-1); 
-	write("The sorted array is: "); 
-	printArray(arr, n); 
-	return 0; 
-} 
-```
-
-### Example 7:
-This program adds elements of two arrays which illustrates the concept of local functions
-
-```
-$main() << void
-	int a[5] = {1,2,3,4,5}
-	int b[5] = {6,7,8,9,10}
-
-	~ This local function adds two arrays
-	func add = [@] $() << void    ~ @ is for reference and no name is given to function since we have reference
-		int c[5];
-		for i:(0,4)
-			c[i] = a[i]+b[i];
-		/
-		
-		~This local function prints an array
-		func print = [@] $(int c[]) << void 
-			for i:(0,4)
-				write(c[i]+" ");
-			/
-			write("\n");
-		%
-		print(c);
-	%
-	write("The first array is: ");
-	print(a);
-	write("The second array is: ");
-	print(b);
-	write("The sum of the two arrays is: ");
-	add(a,b);
-%
-```
-The output of this program is 
-```
-The first array is: 1 2 3 4 5
-The second array is: 6 7 8 9 10
-The sum of the two arrays is: 7 9 11 13 15
-```
-The functions **add** and **print** are called local functions. Parameters need not to be passed into local functions due to which a lot of memory can be reserved. *print* can access the variables in the scope of both *main* and *add*. *add* can access the variables in the scope of *main* only.
-
-### Example 8:
+### Example 10:
 This program find distance between two points based on the input i.e., if the no of coordinates given are two, the coordinated of the second point are taken to be origin and of two points are given the distance between those two points are calculated illustrating the concept of constructor overloading or multiple constructors
 ```
 *Distance         						  ~ beginning the class
@@ -336,7 +393,7 @@ $main()
 	/
 %
 ```
-### Example 9:
+### Example 11:
 This example gives a little sneak-peek into how OOPs can be used to create a user & group management of a system.
 This code defines the user and group classes and when root is logged in, creates a admin user who owns system files 
 ```
@@ -468,7 +525,7 @@ admin
 ```
 `...` ->remaining files in the list.
 
-### Example 11:
+### Example 12:
 This example reads a file containing email in complete text form. The program uses file handling and string operations to output a file containing names of pepele you recieved mails from and another file containing the name of organizations from which you recieved mail.
 ```
 $main() << void
@@ -504,7 +561,7 @@ $main() << void
 ```
 
 
-### Example 12:
+### Example 13:
 This is a program which calculates roots of a quadratic equation, but can be easily extended to larger polynomials
 ```
 $main() << void
@@ -541,47 +598,49 @@ $main() << void
 %
 ```
 
-### Example 13:
+### Example 14:
 Using tags to find mistakes or to improve the efficiency of code.
 
 ```
 # DijkstraPath
 # MinPriorityQueue
-$ dijkstra(Graph G, int start, int end, int n) << void
+$ dijkstra(Graph G, int start, int end, int n) << void			~ Graph class is taken for granted
 	PriorityQueue >> Pair >> (int,int) q;	~it is declared in this way so that weight is given first preference then vertex number
-	int vis[n],dist[n];
+	int vis[n],dist[n],close[n];
 	
 	for i : (0,n) 
 		vis[i]=0;
+		close[i]=0;
 		dist[i] = INT_MAX; /
 	
 	dist[start] = 0;
 	q.enqueue((0,start));	
+	close[start]=1;
 	 					
-	List >> int neighbors;
+	List >> Pair >> (int,int) neighbors;
 	
 	while !q.empty()
-		int w,current = q.dequeue();
+		Pair >> (int,int) p = q.dequeue();
 		vis[current] = 1;
 		
-		neighbors = G[current];	~neighbors will a tuple with vertex and weight
+		neighbors = G[p.value];	~neighbors will be a pair with key=weight and value=vertex
 		
 		for (i,j) : neighbors
-			int newWeight = j + dist[current];
+			int newWeight = i + dist[j];
 			
-			if !vis[i] && newWeight < dist[i]
-				dist[i] = newWeight;		~line 23
-				visited[i] = 1;
+			if !vis[i] && newWeight < dist[j]
+				dist[j] = newWeight;		~line 23
+				visited[j] = 1;
 				
-				if i !q.check(:,i)
-					q.enque(newWeight,i);/	
+				if !close[j]					
+					q.enque(newWeight,j);/	
 				else
-					q.update({:,i},{newWeight,i});//
-		/
-	/
+					q.update((i,j),(newWeight,j));		/
+					/
+					/
+					/
 
 	write("Shortest distance is: ",dist[end]);
-
 			
 %
 #! MinPriorityQueue
@@ -593,7 +652,7 @@ Criticl: In line 24, in for loop vertices shoul not be marked as visited / does 
 ```
 
 
-### Example 14
+### Example 15
 Program for merge sort
 ```
 merge(int arr[], int l, int m, int r) << void
@@ -672,7 +731,7 @@ After compiling the code, suggestions will be like
 Tip : Parallel function call can be done at lines 640 and 641. 
 ```
 
-### Example 15:
+### Example 16:
 Tiling problem using divide and conquer
  ```
 int size_of_grid, b, a, cnt = 0;
