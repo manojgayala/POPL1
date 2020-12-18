@@ -886,7 +886,7 @@ Some of the commonly used public tags are
 |loop	|unique `var`	|`var` < (const)|
 |graph-theory	|number-theory	|`var` in range (range)	|
 |unused  	|dp	|innerloop	|
-|checkhere||divide and conquer|
+|checkhere|exponentiation|divide and conquer|
 
 The tags provide programmers with tips related to
 1. Parallelism	: 	There are some constructs of Tureasy which support parallel execution. The programs including such constructs would improve performance but are hard to code. The tags analyze the data and provide suitable constructs that could replace the existing code.
