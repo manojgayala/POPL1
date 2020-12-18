@@ -1,3 +1,28 @@
+
+# Statements
+ A statement is a command that the programmer gives to the computer. Statements are major part of the program.The body of any function is a sequence of statements. 
+ They fall into several categories.
+   * [**Labled statements:**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-statements:~:text=Labeled%20statementsstatements%20exist.%20A%20statement%20of%20the%20form%20case%20constant%2Dexpression%20%3A%20statement%20indicates%20that%20control%20will%20pass%20to%20this%20statement%20if%20the%20value%20of%20the%20control%20expression%20of%20the%20switch%20statement%20matches%20the%20value%20of%20the%20constant%2Dexpression.%20(In%20this%20case%2C%20the%20type%20of%20the%20constant%2Dexpression%20must%20be%20an%20integer%20or%20character.)%20A%20statement%20of%20the%20form%20default%20%3A%20statement%20indicates%20that%20control%20will%20pass%20to%20this%20statement%20if%20the%20control%20expression%20of%20the%20switch%20statement%20does%20not%20match%20any%20of%20the%20constant%2Dexpressions%20within%20the%20switch%20statement.%20If%20the%20default%20statement%20is%20omitted%2C%20the%20control%20will%20pass%20to%20the%20statement%20following%20the%20switch%20statement.%20Within%20a%20switch%20statement%2C%20there%20can%20be%20only%20one%20default%20statement%2C%20unless%20the%20switch%20statement%20is%20within%20another%20switch%20statement.%20In%20classes%20there%20are%20labels%20which%20are%20precisely%20described%20here)       
+   * [**Expression-statement :**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-expression-statements:~:text=Expression%20statements%20do%20most%20of%20the,one%20simple%20assignment%20to%20a%20variable.)\
+   It is combination of variables,Constants,operators,Function Calls and followed by a semicolon. Expression can be any operation like Arithmetic operation or Logical Operation.
+   * [**Compound-statement:**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-expression-statements:~:text=variable.-,Compound%20statements)\
+     Compound statement is combination of several expression statements. Compound statement is also called as Block Statement.
+   * [**Selection-statement:**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-selectionconditional-statement:~:text=Selection%20statements%20choose%20one%20of%20several,over%20the%20initialization%20of%20such%20variables.)\
+     Selection Statements are used in decisions making situations ,there are 3 different types:
+      * [**If**](https://github.com/manojgayala/POPL1/blob/srikar/Tutorial.md#user-content-loops-and-conditional-statements:~:text=This%20if%20statement%20is%20a%20conditional,used%20for%20comparing%20two%20values%20equality.)
+      * [**If-Else**](https://github.com/manojgayala/POPL1/blob/srikar/Specifications.md#user-content-if-else-statement:~:text=If%20else%20statement,Switch)
+      * [**Switch**](https://github.com/manojgayala/POPL1/blob/srikar/Specifications.md#user-content-switch:~:text=%2F-,Switch,Functions)
+   * [**Iteration-statement:**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-selectionconditional-statement:~:text=variables.-,Iteration%20statement,A%20for%20statement%20also%20terminates%20when%20a%20break%20or%20return%20statement%20within%20its%20body%20is%20executed.%20A%20continue%20statement%20in%20a%20for%20loop%20causes%20loop%20to%20start%20its%20next%20iteration%20abruptly)\
+   These are also Called as Loops. If we want to Execute a part of program many times we will use loops.We will going to explain each and Every loop in Detail in     Later Tutorials. Here is the List of Basic loops in Tureasy language:
+      * [**For**](https://github.com/manojgayala/POPL1/blob/srikar/Specifications.md#user-content-file-handling:~:text=f.close()%3B-,For%20Loops,By)
+      * [**while**](https://github.com/manojgayala/POPL1/blob/srikar/Specifications.md#user-content-for-loops:~:text=error.-,While%20loop,%7D)
+   * [**Jump-statements:**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-iteration-statement:~:text=abruptly.-,Jump%20statement,The%20return%20statement%20is%20used%20to%20return%20to%20its%20caller.%20If%20the%20function%20return%20type%20is%20void%2C%20the%20function%20may%20not%20return%20a%20value%3B%20otherwise%2C%20the%20expression%20represents%20the%20value%20to%20be%20returned.)\
+   They are used for nonconsecutive execution.These are Unconditional statements Jump statements are useful for Transfer the Control one part of program to other part of Program there are few Jump Statements in tureasy:
+        * [**break**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-jump-statement:~:text=The%20break%20statement%20appears%20in%20iteration,to%20the%20statement%20follwing%20the%20block.)
+        * [**continue**](https://github.com/manojgayala/POPL1/blob/srikar/Specifications.md#user-content-while-loop:~:text=%7D-,Continue%20statement,count%20%2B%3Di%3B)
+        * [**return**](https://github.com/manojgayala/POPL1/blob/srikar/Language%20Manual.md#user-content-jump-statement:~:text=The%20return%20statement%20is%20used%20to,represents%20the%20value%20to%20be%20returned.)
+
+
 # Functions
 Syntax and structure of functions : [**Function Declaration**](https://github.com/IITH-POPL1/language-manual-iith3/blob/main/Examples.md#program-1-to-print-hello-world-using-tureasy)
 
