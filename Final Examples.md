@@ -845,6 +845,8 @@ $main() << void
 		CalculateProb(runs-data[1],wicket,total1,total2);
 		
 	/
+	fptr1.close();
+	fptr2.close();
 	
 %
 ``` 
