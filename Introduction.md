@@ -1,6 +1,6 @@
 # Introduction
 
-*“A year spent in artificial intelligence is enough to make one believe in God.”*
+*“A year spent in artificial intelligence is enough to make one believe in God.”*/
                                                             - *Alan Perlin *
 
 For many years, compilers were translators of the high level code to the assembly code or binary code. This made the efficiency of programs to depend entirely on the programmer's coding skills. As AI is advancing in all the fileds in recent years, compilers shouldn't be left behind. The compilers must be more than mere translators. A lot of research is going on in different parts of the world for the same. We took it as an opportunity to proudly present our new programming language **"Tureasy"** which tries to achieve this goal.
