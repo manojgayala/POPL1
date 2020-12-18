@@ -308,6 +308,17 @@ $main() << void
 	fptr.close();
 %
 ```
+A simple code which writes to the file
+```
+$main() << void
+	FILE fptr;
+	string path;
+	read(path);
+	fptr.open(path,"w");   ~ file is opened in write mode.
+	string content = "Write this line to the file"
+	write(content,fptr);     ~write function is overloaded to allow a FILE parameter
+%
+```
 **FILE** is the keyword to denote that the variable *fptr* does operations with the specified file and the path of the file need to be stored.  
 The file can be opened in any of the below methods
 | *r* | *w* | *a* | *br* | *bw* | *ba* |
