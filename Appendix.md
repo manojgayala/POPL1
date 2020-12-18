@@ -49,8 +49,8 @@ Stack is a data structure that follows LIFO (Last In First Out) policy. It provi
 ### Pairs
 Pair stores a pair of values and is used in dictionaries. The methods present in are
 
-- first() : first element in the Pair
-- second() : second element in the Pair
+- key() : first element in the Pair
+- value() : second element in the Pair
 
 ### Dictionaries
 These are basically red black trees and are enclosed by curly braces to signify the same. The methods provided are
