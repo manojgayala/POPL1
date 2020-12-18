@@ -850,7 +850,7 @@ $main() << void
 ``` 
 
 ### Example 18
-program to find edit distance of two strings
+Program to find edit distance of two strings using dynamic programming
 
 ```
 $min(int a, int b, int c) << int           ~to find min of three numbers
