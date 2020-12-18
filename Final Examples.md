@@ -491,6 +491,8 @@ $main() << void
 			temp = info[1].split(".");
 			fwrite(fptr3,temp[0]);	~Domain name will be written into thsi file
 			
+			info.clear()	~removes all items in the list
+			
 		/	 	
 	/
 	fptr3.close();
