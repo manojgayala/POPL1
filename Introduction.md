@@ -1,19 +1,23 @@
-# TUREASY
-### Introduction
-Tureasy is a general-purpose high-level programming language designed to optimize programs. It supports multiple programming paradigms, including object-oriented, functional, and generic programming. It is mainly developed to optimize programs. There are libraries additionally which allow the user to use generic programming and concurrent programming whenever necessary.
+# Introduction
 
-  Tureasy was first invented in 2020, by group of students as a part of project. 
-  Tureasy has a wide range of usafe, it can be used to write optimezed programms, webpages, design applications and many more.
-  
-  The main features of Tureasy are scalability, security, multithreading, easy to learn, produces optimized programs, and is portable. 
-Object-oriented programming is also a key feature of Tureasy. The definitions of classes are organized in tureasy for programmer readability. The real-life problems can be coded efficiently in Tureasy based on data abstraction, encapsulation, data hiding and polymorphism. 
+*“A year spent in artificial intelligence is enough to make one believe in God.”*
 
-  Another feature of 'Tureasy' programming is that it can extend itself. A 'Tureasy' program contains various functions which are part of a library. We can add our features and functions to the library. We can access and use these functions anytime we want in our program. This feature makes it simple while working with complex programming. 
-  
-  The symbols and indentation form a key aspect in the Tureasy language syntax. 'Tureasy' contains 40 keywords, various data types and a set of powerful built-in functions that make programming very efficient. 
-  
-  All the Tureasy programs are written into text files with the extension `.te` for example; hello.te. 
+For many years, compilers were translators of the high level code to the assembly code or binary code. This made the efficiency of programs to depend entirely on the programmer's coding skills. As AI is advancing in all the fileds in recent years, compilers shouldn't be left behind. The compilers must be more than mere translators. A lot of research is going on in different parts of the world for the same. We took it as an opportunity to proudly present our new programming language **"Tureasy"** which tries to achieve this goal.
 
+The compiler could be smart only when there is support from the programming language design. Tureasy supports this by introducing a new concept called tags that would group the data for analysis. The main challenge faced in data analysis and model creation in AI based problems is the requirement of large amounts of data segregated properly. The tags would help handling this situation. In further section, we would discuss this in detail.
 
-Tureasy has a smart compiler that helps the user to optimize programs by giving suggestions (tips) during the compilation of the program., using Turzers which use different Ai techniques to provide optimized code.  The suggestions and optimizations are implemented using reflective programming, which is a type of meta-programming. There are private Turzers to secure the content of different organizations. Tags play an important role in the proper implementation of Turzers. Tags also help in identifying bugs during runtime. 
+Apart from tags, Tureasy provides all the required components of programming language. All of the details about the variables, operators, statements and functions
+are discussed in detail in later sections. Individually there are new concepts included in the components of language design. Tureasy is highly inspired by Java because of its tremendous use in the industry. It took inspiration from other languages for some aspects of design. The details about these inspiraton is covered in the [Language Evolution]___________________
 
+Tureasy also offers object oriented programming to the users to make sure it is industry ready. Many concepts of OOPs are accomodated in the language design. It also supports other programming paradigms like, functional, and procedural programming. There are libraries additionally which allow the user to use generic programming and concurrent programming whenever necessary. Tureasy has a good amount of in-built functions which make programmer's life simpler. 
+ 
+The remainder of the final deliverables is organized as follows:
+1. [Language Evolution] covers the motivation behind language design and related inspirations taken during evolution of Tureasy.
+2. [Language Tutorial] covers the concepts of Tureasy briefly providing the reader with the tools required for writing programs in Tureasy.
+3. [Language Manual] covers the in depth analysis of Tureasy with focus on providing the reader with the internal reasoning and theoretical basis of language design.
+4. [Final Examples] provides a set of complete programs that would familiarize reader with all aspects of Tureasy and related syntax.
+5. [Language Criticism] provides the criticism of Tureasy. It analyzes Tureasy based on its merits and demerits and even provides comparisions with other languages.
+6. [Appendix] provides reader with necessary sub topics of Tureasy and related links to follow for understanding them. Some of the concepts which are not covered in examples, tutorial and manual are covered in it.
+7. [Lessons Learnt] provides the lessons which we have learnt over the design of a programming language. The difficulties we faced are also included in this.
+
+The reader would get a proper understanding after he covers all the sections. There are still some aspects of Tureasy that need attention which would be improved over years.
