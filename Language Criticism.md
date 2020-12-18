@@ -10,7 +10,7 @@ When a program of tureasy is seen superficially for the first time, it seems to 
  ### Variables - precisely sufficient.
 Tureasy has an optimal range of primitive datatypes to make things clear for the user. For Eg: Tureasy doesn't provide any datatypes for the unsigned numbers because their usage can be served by other ways in tureasy (larger data types) ensuring that the behaviour of variables is not complicated.
 
-   Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of classes and objects.
+Along with the primitives, tureasy has many special datatypes in its libraries which are useful for the programs demanding non-trivial data structures.Also users can create their own datatypes by abstracting them using the concept of classes and objects.
 
 Tureasy provides storage class specifiers and type specifiers to choose the scope and rigidity of the variable.Even though out of the scope variables cannot be accessed or can be updated, tureasy boldly presents a way to change the value of a variable in functions called, with a symbol `@`. This implies that a variable can be passed by reference i.e a procedure can change the actual parameter values in the caller scope. 
 
