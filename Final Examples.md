@@ -334,6 +334,137 @@ $main()
 	/
 %
 ```
+### Example 9:
+This example gives a little sneak-peek into how OOPs can be used to create a user & group management of a system.
+This code defines the user and group classes and when root is logged in, creates a admin user who owns system files 
+```
+*User                       ~ User Class
+mem:           
+_string name               ~ name of the user
+_int uid                   ~ user id
+_Group primGroup           ~ primary group of the user,which also owns the same list of files.
+_string password.          ~ password for the login.
+_List << string ownedfiles  ~ list of files owned by the user. 
+
+met:
+$addToGroup(Group group)
+if(System.login.getuid()==0). ~ only when the current user is root.
+	group.addUser(here) \
+else
+	write("not allowed\n"). \	
+%
+$ownfile(string filename)   ~ to own a new file.
+if(System.login.getuid()==0)
+	ownedfiles.append(filename)
+	primGroup.addfile(filename) \
+else
+	write("not allowed\n")  \	
+%
+$changeprimGroup(Group group)   ~ to change primary group 
+if(System.login.getuid()==0)
+	here.primgroup = primGroup
+	for f : here.files
+		primeGroup.addfile(f) \
+\		
+else
+	write("not allowed\n"). \
+%
+$setpasswd(string password). ~ to set the password for the user.
+if(System.login.getuid==0)
+	here.password = password \
+else
+	write("not allowed\n") \
+
+con:
+(string name,int uid,Group primGroup)
+here.name = name
+if(!Userids.isPresent(uid))
+	here.uid = uid. \
+else
+	here.uid = Userids.next() \	
+here.primGroup = primGroup
+for f : here.files
+	primeGroup.addfile(f) \
+%
+
+(string name)
+here.name = name
+here.primGroup = new Group(name)
+primGroup.adduser(here)
+for f : here.files
+	primeGroup.addfile(f) \
+here.id = Userids.next()
+%
+
+*%
+
+*Superuser inherit User ~ this class is for the root user.
+con:
+():()
+parent.User("root")
+uid = 0
+ownedfiles.append(System.files.ALL())
+%
+*%
+
+
+*Group    ~ Group Class
+mem:
+_string groupname
+_List<< User users
+_List<< string files
+_int gid
+met:
+$addUser(User user)
+if(System.login.getuid()==0)
+	users.append(user)   \
+else
+	write("not allowed\n") \	
+%
+$addfile(string file)
+if(System.login.getuid()==0)
+	files.append(file) \
+else
+	write("not allowed\n") \
+%
+con:
+(string groupname,int gid)
+here.groupname = groupname
+if(!Groupids.ispresent(gid))
+	here.gid = gid \
+else
+	here.gid = Groupids.next()	\
+%
+(string groupname)
+here.groupname = groupname
+here.gid = Groupids.next()
+%
+*%
+
+
+$main() << void
+Superuser root = new Superuser()
+System.setlogin(root)
+User admin = new User("admin")
+Group gsys = new User("sys_group")
+admin.addToGroup(gsys)
+for file : System.files.get("/home/sys")
+	admin.ownfile(file.getname())
+admin.changeprimGroup(gsys)
+
+System.setlogin(admin)
+admin.setpasswd() ~ this prints not allowed as the current login is not root.
+admin.getname()
+admin.getownedfiles()
+```
+Output :
+```
+not allowed
+admin
+/home/sys/file1 
+...
+```
+`...` ->remaining files in the list.
 
 ### Example 11:
 This example reads a file containing email in complete text form. The program uses file handling and string operations to output a file containing names of pepele you recieved mails from and another file containing the name of organizations from which you recieved mail.
